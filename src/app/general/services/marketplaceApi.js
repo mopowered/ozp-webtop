@@ -129,7 +129,7 @@ app.service('localStorageMarketplaceApiImpl', function($http, LocalStorage) {
         },
         {
           'name': 'Greek Analysis',
-          'icon': 'assets/mock/img/diff-eq-icon.png',
+          'icon': 'assets/mock/img/math-icon.png',
           'shortDescription': 'This is the Greek Analysis app',
           'description': 'This is the Greek Analysis app',
           'version': '1.0.0',
