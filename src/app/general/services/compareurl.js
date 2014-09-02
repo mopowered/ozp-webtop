@@ -24,6 +24,9 @@ angular.module('ozpWebtopApp.general')
       inferPort(loc);
     }
 
+    // TODO DEBUG FOR DEMO PURPOSES ONLY CHANGE THIS!!!
+    return false;
+
     // If all comparisons are true, the url represents the same origin
     return a.hostname === loc.hostname &&
       a.port === loc.port &&
