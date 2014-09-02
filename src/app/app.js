@@ -1,5 +1,6 @@
 'use strict';
-angular.module('ozpWebtopApp', [
+
+angular.module( 'ozpWebtopApp', [
   'templates-app',
   'templates-common',
   'ozpWebtopApp.general',
@@ -13,38 +14,38 @@ angular.module('ozpWebtopApp', [
   'ui.bootstrap',
   'gridster',
   'ozpClassification'
-]).config([
-  '$stateProvider',
-  '$urlRouterProvider',
-  function ($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('grid', {
+])
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+    .state('grid', {
       url: '/grid/{dashboardId}',
       templateUrl: 'dashboardView/grid/grid.tpl.html',
       controller: 'GridController'
-    }).state('desktop', {
+    })
+    .state('desktop', {
       url: '/desktop/{dashboardId}',
       templateUrl: 'dashboardView/desktop/desktop.tpl.html',
       controller: 'DesktopController'
     });
+
     $urlRouterProvider.otherwise('/grid/0');
-  }
-]).run([
-  'dashboardApi',
-  'marketplaceApi',
-  'userSettingsApi',
-  function run(dashboardApi, marketplaceApi, userSettingsApi) {
+  })
+
+.run( function run (dashboardApi, marketplaceApi, userSettingsApi) {
+    // create example marketplace and dashboard resources
     marketplaceApi.createExampleMarketplace();
     dashboardApi.createExampleDashboards();
+    // create example user settings
     userSettingsApi.createExampleUserSettings();
-  }
-]);
+});
+
 angular.module('ozpWebtopApp.general', []);
 angular.module('ozpWebtopApp.userSettings', ['ozpWebtopApp.apis']);
 angular.module('ozpWebtopApp.apis', ['ozpWebtopApp.general']);
 angular.module('ozpWebtopApp.components', []);
 angular.module('ozpWebtopApp.dashboardToolbar', ['ozpWebtopApp.apis']);
-angular.module('ozpWebtopApp.appToolbar', [
-  'ui.router',
-  'ozpWebtopApp.apis'
-]);
+angular.module('ozpWebtopApp.appToolbar', ['ui.router', 'ozpWebtopApp.apis']);
 angular.module('ozpWebtopApp.dashboardView', ['ozpWebtopApp.apis']);
+
