@@ -1,126 +1,60 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html>
-
+<!-- detect older browsers -->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ozp-webtop : OZONE Platform Web Desktop" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OZP Webtop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/ozpwebtop-0.0.0.css" />
 
-    <title>Ozp-webtop</title>
+    <!-- Standard iPhone -->
+    <!-- TODO: is there a better way? -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/touch-icon-iphone-114.png" />
+    <!-- Retina iPhone -->
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/touch-icon-iphone-114.png" />
+    <!-- Standard iPad -->
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/touch-icon-ipad-144.png" />
+    <!-- Retina iPad -->
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/touch-icon-ipad-144.png" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="assets/ozpwebtop-0.0.0.js"></script>
+
   </head>
+  <body ng-app="ozpWebtopApp" ozp-classification="U">
 
-  <body>
+    <div ng-include="'dashboardToolbar/dashboardToolbar.tpl.html'"></div>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ozone-development/ozp-webtop">View on GitHub</a>
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser.
+      Please <a href="http://browsehappy.com/">upgrade your browser</a> to
+      improve your experience.</p>
+    <![endif]-->
 
-          <h1 id="project_title">Ozp-webtop</h1>
-          <h2 id="project_tagline">OZONE Platform Web Desktop</h2>
+    <!-- View is used as the 'workspace' -->
+    <div class="ui-view-style" ui-view=""></div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ozone-development/ozp-webtop/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ozone-development/ozp-webtop/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+    <!-- user settings modal -->
+    <div ng-include="userSettings/settingsModal.tpl.html" ng-controller="UserSettingsCtrl"></div>
+
+    <div class="app-toolbar-ng-include"
+      ng-include="'appToolbar/appToolbar.tpl.html'">
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="ozp-webtop" class="anchor" href="#ozp-webtop"><span class="octicon octicon-link"></span></a>ozp-webtop</h1>
-
-<p><a href="https://travis-ci.org/ozone-development/ozp-webtop"><img src="https://travis-ci.org/ozone-development/ozp-webtop.svg?branch=master" alt="Build Status"></a></p>
-
-<p>Next Gen OZONE UI</p>
-
-<h2>
-<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
-
-<p>Install Node.js and npm. Head over to <a href="http://nodejs.org/">the Node.js website</a> if you need to do that.
-Next, install <a href="http://gruntjs.com/">Grunt</a> and <a href="http://bower.io/">Bower</a> with the command below.</p>
-
-<pre><code>(sudo) npm install -g bower grunt-cli
-</code></pre>
-
-<h2>
-<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
-
-<p>First clone the repo. Then install development dependencies with npm. Install frontend app dependencies with Bower:</p>
-
-<pre><code>cd ozp-webtop
-npm install &amp;&amp; bower install
-</code></pre>
-
-<p>Development tasks are run with Grunt. Run <code>grunt serve</code> to bring up a live preview of the webtop. Run <code>grunt -h</code> for a full list of Grunt tasks.</p>
-
-<h2>
-<a name="development-notes" class="anchor" href="#development-notes"><span class="octicon octicon-link"></span></a>Development Notes</h2>
-
-<h3>
-<a name="use-of-yeoman" class="anchor" href="#use-of-yeoman"><span class="octicon octicon-link"></span></a>Use of Yeoman</h3>
-
-<p>This app was scaffolded with <a href="http://yeoman.io/">Yeoman</a>. You may want to install it to aid in contributing to this repo. You can install it with npm with the following commands:</p>
-
-<pre><code>(sudo) npm install -g yo generator-angular
-</code></pre>
-
-<p>If you install <code>yo</code>, it will install Grunt and Bower for you. You can then scaffold out new pieces of the app with:</p>
-
-<pre><code>cd ozp-webtop
-yo angular:directive myNewDirective
-</code></pre>
-
-<p>You can find more at the <code>generator-angular</code> <a href="https://github.com/yeoman/generator-angular">Github repo</a>.</p>
-
-<h3>
-<a name="directory-structure" class="anchor" href="#directory-structure"><span class="octicon octicon-link"></span></a>Directory Structure</h3>
-
-<p>The directory structure is a result of the Yeoman scaffolding, however some additional directories have been added. The app is structured in the following way:</p>
-
-<pre><code>app/            
-    examples/       # HTML to use as webtop frames
-    fonts/          # Provided by Yeoman
-    images/         # Placeholder images 
-    mock/           # JSON which mocks a server response
-    scripts/        # Contains JavaScript with Angular pieces of the application
-        ...
-    templates/      # Templates are HTML fragments that are used by one or more directives
-    views/          # HTML which corresponds to a route. A view is the composite of HTML and many directives
-test/ 
-    runner.html     # Spec runner
-    spec/           # Child directories correspond to the code in app/scripts/         
-        ...
-</code></pre>
-
-<h2>
-<a name="copyrights" class="anchor" href="#copyrights"><span class="octicon octicon-link"></span></a>Copyrights</h2>
-
-<blockquote>
-<p>Software (c) 2014 <a href="http://defense.gov/" title="DoD">Department of Defense</a></p>
-
-<p>The United States Government has unlimited rights in this software.  </p>
-</blockquote>
-
-<p>The OZONE Platform Webtop is released to the public as Open Source Software, because it's the Right Thing To Do. Also, it was required by <a href="http://www.gpo.gov/fdsys/pkg/PLAW-112publ81/pdf/PLAW-112publ81.pdf" title="NDAA FY12">Section 924 of the 2012 National Defense Authorization Act</a>.</p>
-
-<p>Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" title="Apache License v2">Apache License, Version 2</a>.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Ozp-webtop maintained by <a href="https://github.com/ozone-development">ozone-development</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
+    <!-- TODO: handle this nicer - should come from gruntfile, not be hard coded -->
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
   </body>
 </html>
