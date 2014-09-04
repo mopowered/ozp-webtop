@@ -25,13 +25,13 @@ angular.module('ozpWebtopApp.general')
     }
 
     // TODO DEBUG FOR DEMO PURPOSES ONLY CHANGE THIS!!!
-    return false;
+    //return false;
 
     // TODO: PUT THIS BACK IN AFTER DEMO
     // If all comparisons are true, the url represents the same origin
-//    return a.hostname === loc.hostname &&
-//      a.port === loc.port &&
-//      a.protocol === loc.protocol;
+    return a.hostname === loc.hostname &&
+      a.port === loc.port &&
+      a.protocol === loc.protocol;
   };
 
   /**
