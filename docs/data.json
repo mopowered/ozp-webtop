@@ -1,0 +1,535 @@
+{
+    "project": {
+        "name": "ozpwebtop",
+        "description": "",
+        "version": "0.0.0",
+        "url": "https://github.com/ozone-development/ozp-webtop"
+    },
+    "files": {
+        "src/app/components/button/ozpbutton.js": {
+            "name": "src/app/components/button/ozpbutton.js",
+            "modules": {},
+            "classes": {
+                "components.ozpButton": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "components": 1
+            }
+        },
+        "src/app/components/chrome/chromecontroller.js": {
+            "name": "src/app/components/chrome/chromecontroller.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/app/components/icon/ozpicon.js": {
+            "name": "src/app/components/icon/ozpicon.js",
+            "modules": {},
+            "classes": {
+                "components.ozpIcon": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "components": 1
+            }
+        },
+        "src/app/dashboardView/desktop/frames/ozpmanagedframe.js": {
+            "name": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
+            "modules": {},
+            "classes": {
+                "directives.ozpManagedFrame": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "directives": 1
+            }
+        },
+        "src/app/dashboardView/grid/grid.js": {
+            "name": "src/app/dashboardView/grid/grid.js",
+            "modules": {},
+            "classes": {
+                "controllers.GridController": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "controllers": 1
+            }
+        },
+        "src/app/dashboardView/grid/gridster.js": {
+            "name": "src/app/dashboardView/grid/gridster.js",
+            "modules": {},
+            "classes": {
+                "directives.ozpGridster": 1,
+                "directives.gridsterItem": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "directives": 1
+            }
+        },
+        "src/app/dashboardView/iframe.js": {
+            "name": "src/app/dashboardView/iframe.js",
+            "modules": {},
+            "classes": {
+                "dashboardView.IframeController": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            }
+        },
+        "src/app/general/services/compareurl.js": {
+            "name": "src/app/general/services/compareurl.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "ozpWebtopApp.general": 1
+            }
+        },
+        "src/app/general/services/dashboardChangeMonitor.js": {
+            "name": "src/app/general/services/dashboardChangeMonitor.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "general": 1
+            }
+        },
+        "src/app/general/services/localstorage.js": {
+            "name": "src/app/general/services/localstorage.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "general": 1
+            }
+        },
+        "src/app/general/services/utilities.js": {
+            "name": "src/app/general/services/utilities.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "general": 1
+            }
+        },
+        "src/app/general/shortenText.js": {
+            "name": "src/app/general/shortenText.js",
+            "modules": {},
+            "classes": {
+                "general.elliptical": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "general": 1
+            }
+        },
+        "src/app/app.js": {
+            "name": "src/app/app.js",
+            "modules": {
+                "ozpWebtopApp": 1,
+                "ozpWebtopApp.general": 1,
+                "ozpWebtopApp.userSettings": 1,
+                "ozpWebtopApp.apis": 1,
+                "ozpWebtopApp.components": 1,
+                "ozpWebtopApp.dashboardToolbar": 1,
+                "ozpWebtopApp.appToolbar": 1,
+                "ozpWebtopApp.dashboardView": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ozpWebtopApp": {
+            "name": "ozpWebtopApp",
+            "submodules": {},
+            "classes": {
+                "components.ozpButton": 1,
+                "components.ozpIcon": 1,
+                "directives.ozpManagedFrame": 1,
+                "controllers.GridController": 1,
+                "directives.ozpGridster": 1,
+                "directives.gridsterItem": 1,
+                "dashboardView.IframeController": 1,
+                "general.elliptical": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/general/shortenText.js",
+            "line": 3,
+            "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps the Webtop.",
+            "example": [
+                " \n    <body ng-app=\"ozpWebtopApp\"> ... </body>"
+            ],
+            "requires": [
+                "ozpWebtopApp.general",
+                "ozpWebtopApp.apis",
+                "ozpWebtopApp.components",
+                "ozpWebtopApp.appToolbar",
+                "ozpWebtopApp.dashboardToolbar",
+                "ozpWebtopApp.dashboardView",
+                "ozpWebtopApp.userSettings",
+                "ui.router",
+                "ui.bootstrap",
+                "gridster",
+                "ozpClassification"
+            ]
+        },
+        "ozpWebtopApp.general": {
+            "name": "ozpWebtopApp.general",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 63,
+            "description": "General utilities for use in Webtop. Includes some services and other fairly generic \ncapabilities."
+        },
+        "ozpWebtopApp.userSettings": {
+            "name": "ozpWebtopApp.userSettings",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 71,
+            "description": "The modal encompassing user settings functionality.",
+            "requires": [
+                "ozpWebtopApp.apis"
+            ]
+        },
+        "ozpWebtopApp.apis": {
+            "name": "ozpWebtopApp.apis",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 79,
+            "description": "APIs retrieve and send data to places external to the Webtop.",
+            "requires": [
+                "ozpWebtopApp.general"
+            ]
+        },
+        "ozpWebtopApp.components": {
+            "name": "ozpWebtopApp.components",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 87,
+            "description": "Reusable components for the Webtop."
+        },
+        "ozpWebtopApp.dashboardToolbar": {
+            "name": "ozpWebtopApp.dashboardToolbar",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 94,
+            "description": "The dashboard toolbar component shown in the Webtop.",
+            "requires": [
+                "ozpWebtopApp.apis"
+            ]
+        },
+        "ozpWebtopApp.appToolbar": {
+            "name": "ozpWebtopApp.appToolbar",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 102,
+            "description": "The application toolbar in the Webtop.",
+            "requires": [
+                "ui.router",
+                "ozpWebtopApp.apis"
+            ]
+        },
+        "ozpWebtopApp.dashboardView": {
+            "name": "ozpWebtopApp.dashboardView",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 111,
+            "description": "The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets.",
+            "requires": [
+                "ozpWebtopApp.apis"
+            ]
+        }
+    },
+    "classes": {
+        "components.ozpButton": {
+            "name": "components.ozpButton",
+            "shortname": "components.ozpButton",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "components",
+            "file": "src/app/components/button/ozpbutton.js",
+            "line": 3,
+            "description": "ozpButton Renders button with an icon to the left and text to the right.",
+            "is_constructor": 1
+        },
+        "components.ozpIcon": {
+            "name": "components.ozpIcon",
+            "shortname": "components.ozpIcon",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "components",
+            "file": "src/app/components/icon/ozpicon.js",
+            "line": 3,
+            "description": "ozpIcon Renders an icon as an anchor. It has an image on top and text below.",
+            "is_constructor": 1
+        },
+        "directives.ozpManagedFrame": {
+            "name": "directives.ozpManagedFrame",
+            "shortname": "directives.ozpManagedFrame",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "directives",
+            "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
+            "line": 3,
+            "description": "ozpManagedFrame includes an html document in the webtop",
+            "is_constructor": 1
+        },
+        "controllers.GridController": {
+            "name": "controllers.GridController",
+            "shortname": "controllers.GridController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "controllers",
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 3,
+            "description": "GridController retrieves the state of a number of tiles and binds it to an\nAngular scope.",
+            "is_constructor": 1
+        },
+        "directives.ozpGridster": {
+            "name": "directives.ozpGridster",
+            "shortname": "directives.ozpGridster",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "directives",
+            "file": "src/app/dashboardView/grid/gridster.js",
+            "line": 3,
+            "description": "ozpGridster is a wrapper around a 'ul' element used to manage the grid layout.",
+            "is_constructor": 1
+        },
+        "directives.gridsterItem": {
+            "name": "directives.gridsterItem",
+            "shortname": "directives.gridsterItem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "directives",
+            "file": "src/app/dashboardView/grid/gridster.js",
+            "line": 12,
+            "description": "gridsterItem is a wrapper around a tile in the grid",
+            "is_constructor": 1
+        },
+        "dashboardView.IframeController": {
+            "name": "dashboardView.IframeController",
+            "shortname": "dashboardView.IframeController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "dashboardView",
+            "file": "src/app/dashboardView/iframe.js",
+            "line": 3,
+            "description": "IframeController ensures that a widget can be properly displayed in an iframe.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": "An Angular scope"
+                },
+                {
+                    "name": "$sce",
+                    "description": "The Angular service for Strict Contextual Escaping - [API Docs](https://docs.angularjs.org/api/ng/service/$sce)"
+                }
+            ]
+        },
+        "general.elliptical": {
+            "name": "general.elliptical",
+            "shortname": "general.elliptical",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "general",
+            "file": "src/app/general/shortenText.js",
+            "line": 3,
+            "description": "An Angular Filter to truncate a string of text and add an ellipsis, if\ndesired by the state",
+            "static": 1,
+            "params": [
+                {
+                    "name": "text",
+                    "description": "a string of text",
+                    "type": "String"
+                },
+                {
+                    "name": "ellipOption",
+                    "description": "a flag if an ellipsis is desired",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "maxLength",
+                    "description": "the maximum length the string can be",
+                    "type": "Number",
+                    "optional": true
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/app/components/chrome/chromecontroller.js",
+            "line": 3,
+            "description": "ChromeController aids the ozpChrome directive in knowing its location (grid or desktop).",
+            "class": "components.ozpIcon",
+            "namespace": "components"
+        },
+        {
+            "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
+            "line": 12,
+            "description": "Decides which template to use.",
+            "itemtype": "method",
+            "name": "getTemplate",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "sameOrigin",
+                    "description": "True if the frame comes from the same origin as the webtop,\n    false otherwise.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "directives.ozpManagedFrame",
+            "namespace": "directives"
+        },
+        {
+            "file": "src/app/general/services/compareurl.js",
+            "line": 3,
+            "description": "compareUrl compares the current location of the webtop to a specified frame URL",
+            "itemtype": "method",
+            "name": "compareUrl",
+            "params": [
+                {
+                    "name": "frameUrl",
+                    "description": "the url of a frame",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "true if the url represents the same origin as the webtop, false otherwise",
+                "type": "Boolean"
+            },
+            "class": "general.elliptical",
+            "namespace": "ozpWebtopApp.general"
+        },
+        {
+            "file": "src/app/general/services/compareurl.js",
+            "line": 37,
+            "description": "An internal method to infer the port based on other information provided",
+            "itemtype": "method",
+            "name": "inferPort",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "an object representing either an anchor tag or the window.location",
+                    "type": "Object"
+                }
+            ],
+            "class": "general.elliptical",
+            "namespace": "ozpWebtopApp.general"
+        },
+        {
+            "file": "src/app/general/services/dashboardChangeMonitor.js",
+            "line": 3,
+            "description": "Broadcast messages down $rootScope when the current dashboard or dashboard\nlayout changes",
+            "is_constructor": 1,
+            "class": "general.elliptical",
+            "namespace": "general"
+        },
+        {
+            "file": "src/app/general/services/localstorage.js",
+            "line": 3,
+            "description": "Provides a simpler interface to the browser's localStorage",
+            "is_constructor": 1,
+            "class": "general.elliptical",
+            "namespace": "general"
+        },
+        {
+            "file": "src/app/general/services/utilities.js",
+            "line": 3,
+            "description": "Utility functions",
+            "is_constructor": 1,
+            "class": "general.elliptical",
+            "namespace": "general"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nChromeController aids the ozpChrome directive in knowing its location (grid or desktop).",
+            "line": " src/app/components/chrome/chromecontroller.js:3"
+        },
+        {
+            "message": "Missing item type\nBroadcast messages down $rootScope when the current dashboard or dashboard\nlayout changes",
+            "line": " src/app/general/services/dashboardChangeMonitor.js:3"
+        },
+        {
+            "message": "Missing item type\nProvides a simpler interface to the browser's localStorage",
+            "line": " src/app/general/services/localstorage.js:3"
+        },
+        {
+            "message": "Missing item type\nUtility functions",
+            "line": " src/app/general/services/utilities.js:3"
+        }
+    ]
+}

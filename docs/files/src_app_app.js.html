@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/app/app.js - ozpwebtop</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="ozpwebtop"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
+            
+                <li><a href="../classes/controllers.GridController.html">controllers.GridController</a></li>
+            
+                <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
+            
+                <li><a href="../classes/directives.gridsterItem.html">directives.gridsterItem</a></li>
+            
+                <li><a href="../classes/directives.ozpGridster.html">directives.ozpGridster</a></li>
+            
+                <li><a href="../classes/directives.ozpManagedFrame.html">directives.ozpManagedFrame</a></li>
+            
+                <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/app/app.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+/**
+ * Top level module of the Webtop. When declared in an HTML file, it bootstraps the Webtop.
+ *
+ * @example 
+ *     &lt;body ng-app=&quot;ozpWebtopApp&quot;&gt; ... &lt;/body&gt;
+ *
+ * @module ozpWebtopApp
+ * @requires ozpWebtopApp.general
+ * @requires ozpWebtopApp.apis
+ * @requires ozpWebtopApp.components
+ * @requires ozpWebtopApp.appToolbar
+ * @requires ozpWebtopApp.dashboardToolbar
+ * @requires ozpWebtopApp.dashboardView
+ * @requires ozpWebtopApp.userSettings
+ * @requires ui.router
+ * @requires ui.bootstrap
+ * @requires gridster
+ * @requires ozpClassification
+ */
+angular.module( &#x27;ozpWebtopApp&#x27;, [
+  &#x27;templates-app&#x27;,
+  &#x27;templates-common&#x27;,
+  &#x27;ozpWebtopApp.general&#x27;,
+  &#x27;ozpWebtopApp.apis&#x27;,
+  &#x27;ozpWebtopApp.components&#x27;,
+  &#x27;ozpWebtopApp.dashboardToolbar&#x27;,
+  &#x27;ozpWebtopApp.appToolbar&#x27;,
+  &#x27;ozpWebtopApp.dashboardView&#x27;,
+  &#x27;ozpWebtopApp.userSettings&#x27;,
+  &#x27;ui.router&#x27;,
+  &#x27;ui.bootstrap&#x27;,
+  &#x27;gridster&#x27;,
+  &#x27;ozpClassification&#x27;
+])
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+    .state(&#x27;grid&#x27;, {
+      url: &#x27;/grid/{dashboardId}&#x27;,
+      templateUrl: &#x27;dashboardView/grid/grid.tpl.html&#x27;,
+      controller: &#x27;GridController&#x27;
+    })
+    .state(&#x27;desktop&#x27;, {
+      url: &#x27;/desktop/{dashboardId}&#x27;,
+      templateUrl: &#x27;dashboardView/desktop/desktop.tpl.html&#x27;,
+      controller: &#x27;DesktopController&#x27;
+    });
+
+    $urlRouterProvider.otherwise(&#x27;/grid/0&#x27;);
+  })
+
+.run( function run (dashboardApi, marketplaceApi, userSettingsApi) {
+    // create example marketplace and dashboard resources
+    marketplaceApi.createExampleMarketplace();
+    dashboardApi.createExampleDashboards();
+    // create example user settings
+    userSettingsApi.createExampleUserSettings();
+});
+
+/**
+ * General utilities for use in Webtop. Includes some services and other fairly generic 
+ * capabilities.
+ *
+ * @module ozpWebtopApp.general
+ */
+angular.module(&#x27;ozpWebtopApp.general&#x27;, []);
+
+/**
+ * The modal encompassing user settings functionality.
+ *
+ * @module ozpWebtopApp.userSettings
+ * @requires ozpWebtopApp.apis
+ */
+angular.module(&#x27;ozpWebtopApp.userSettings&#x27;, [&#x27;ozpWebtopApp.apis&#x27;]);
+
+/**
+ * APIs retrieve and send data to places external to the Webtop.
+ *
+ * @module ozpWebtopApp.apis
+ * @requires ozpWebtopApp.general
+ */
+angular.module(&#x27;ozpWebtopApp.apis&#x27;, [&#x27;ozpWebtopApp.general&#x27;]);
+
+/**
+ * Reusable components for the Webtop.
+ *
+ * @module ozpWebtopApp.components
+ */
+angular.module(&#x27;ozpWebtopApp.components&#x27;, []);
+
+/**
+ * The dashboard toolbar component shown in the Webtop.
+ *
+ * @module ozpWebtopApp.dashboardToolbar
+ * @requires ozpWebtopApp.apis
+ */
+angular.module(&#x27;ozpWebtopApp.dashboardToolbar&#x27;, [&#x27;ozpWebtopApp.apis&#x27;]);
+
+/**
+ * The application toolbar in the Webtop.
+ *
+ * @module ozpWebtopApp.appToolbar
+ * @requires ui.router
+ * @requires ozpWebtopApp.apis
+ */
+angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
+
+/**
+ * The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets.
+ *
+ * @module ozpWebtopApp.dashboardView
+ * @requires ozpWebtopApp.apis
+ */
+angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozpWebtopApp.apis&#x27;]);
+
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

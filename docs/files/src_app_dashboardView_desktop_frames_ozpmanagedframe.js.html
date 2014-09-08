@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/app/dashboardView/desktop/frames/ozpmanagedframe.js - ozpwebtop</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="ozpwebtop"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
+            
+                <li><a href="../classes/controllers.GridController.html">controllers.GridController</a></li>
+            
+                <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
+            
+                <li><a href="../classes/directives.gridsterItem.html">directives.gridsterItem</a></li>
+            
+                <li><a href="../classes/directives.ozpGridster.html">directives.ozpGridster</a></li>
+            
+                <li><a href="../classes/directives.ozpManagedFrame.html">directives.ozpManagedFrame</a></li>
+            
+                <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/app/dashboardView/desktop/frames/ozpmanagedframe.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+/**
+ * ozpManagedFrame includes an html document in the webtop
+ *
+ * @namespace directives
+ * @class ozpManagedFrame
+ * @constructor
+ */
+angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
+.directive(&#x27;ozpManagedFrame&#x27;, function (compareUrl, $http, $compile, $document, dashboardApi) {
+  /**
+   * Decides which template to use.
+   *
+   * @method getTemplate
+   * @private
+   * @param {Boolean} sameOrigin True if the frame comes from the same origin as the webtop,
+   *     false otherwise.
+   */
+  var getTemplate = function (sameOrigin) {
+    var template = &#x27;&#x27;;
+
+    // If different origin, use an iframe template
+    if (!sameOrigin) {
+      template = &#x27;dashboardView/templates/managediframe.tpl.html&#x27;;
+    }
+    // otherwise, use a &#x27;frame&#x27; (div) template
+    else {
+      template = &#x27;dashboardView/templates/managedframe.tpl.html&#x27;;
+    }
+    return template;
+  };
+
+  // Directive definition object
+  return {
+    restrict: &#x27;E&#x27;,
+    template: &#x27;&lt;div ng-include=&quot;getContentUrl()&quot;&gt;&lt;/div&gt;&#x27;,
+    link: function (scope, element) {
+      // Logic for dragging is influenced by Angular directive documentation, under the
+      // heading &quot;Creating a Directive that Adds Event Listeners&quot;.
+      // See: https://docs.angularjs.org/guide/directive
+
+      // Get starting positions from state
+      var startX = scope.frame.desktopLayout.left;
+      var startY = scope.frame.desktopLayout.top;
+
+
+      // &#x27;Current&#x27; positions are changed as the element moves
+      var x = startX, y = startY;
+
+      // React to a mousedown and allow the element to move
+      element.on(&#x27;mousedown&#x27;, function(event) {
+        // Bring frame to foreground
+        if (scope.frame.desktopLayout.zIndex &lt;= scope.max.zIndex) {
+          scope.frame.desktopLayout.zIndex = scope.max.zIndex + 1;
+          scope.max.zIndex = scope.frame.desktopLayout.zIndex;
+
+          element.css({
+            zIndex: scope.frame.desktopLayout.zIndex
+          });
+          dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex);
+        }
+
+        // Prevent default dragging of selected content
+        event.preventDefault();
+        startX = event.pageX - x;
+        startY = event.pageY - y;
+        $document.on(&#x27;mousemove&#x27;, mousemove);
+        $document.on(&#x27;mouseup&#x27;, mouseup);
+        // console.log(&#x27;Starting x is &#x27; + startX + &#x27;, startY is &#x27; + startY);
+      });
+
+      function mousemove(event) {
+        y = event.pageY - startY;
+        x = event.pageX - startX;
+        element.css({
+          top: y + &#x27;px&#x27;,
+          left:  x + &#x27;px&#x27;
+        });
+      }
+
+      function mouseup() {
+        $document.off(&#x27;mousemove&#x27;, mousemove);
+        $document.off(&#x27;mouseup&#x27;, mouseup);
+        dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex);
+      }
+
+      // Is the origin the same as the webtop?
+      var origin = compareUrl(scope.frame.url);
+
+      // configure dynamic template without using $http for ease of testing
+      scope.getContentUrl = function() {
+        return getTemplate(origin);
+      };
+
+      // Note: in iframe template height and width of the iframe is calculated based on
+      // these styles. May need to change it in the future.
+      scope.styles = {
+        &#x27;top&#x27;: scope.frame.desktopLayout.top,
+        &#x27;left&#x27;: scope.frame.desktopLayout.left,
+        &#x27;height&#x27;: function(){
+          console.log(scope.frame.desktopLayout.height);
+          return scope.frame.desktopLayout.height;
+        },
+        &#x27;width&#x27;: scope.frame.desktopLayout.width,
+        &#x27;z-index&#x27;: scope.frame.desktopLayout.zIndex
+      };
+    }
+  };
+});
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
