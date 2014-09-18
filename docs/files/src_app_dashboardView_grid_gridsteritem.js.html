@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/app/dashboardView/grid/gridster.js - ozpwebtop</title>
+    <title>src/app/dashboardView/grid/gridsteritem.js - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,21 +41,29 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
+            
+                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+            
+                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
             
                 <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
             
-                <li><a href="../classes/controllers.GridController.html">controllers.GridController</a></li>
+                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
             
                 <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
             
-                <li><a href="../classes/directives.gridsterItem.html">directives.gridsterItem</a></li>
+                <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
             
-                <li><a href="../classes/directives.ozpGridster.html">directives.ozpGridster</a></li>
+                <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
-                <li><a href="../classes/directives.ozpManagedFrame.html">directives.ozpManagedFrame</a></li>
+                <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
             
             </ul>
 
@@ -74,6 +82,8 @@
                 <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.ozpIwcClient.html">ozpWebtopApp.ozpIwcClient</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
             
@@ -112,28 +122,26 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/app/dashboardView/grid/gridster.js</h1>
+                        <h1 class="file-heading">File: src/app/dashboardView/grid/gridsteritem.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 &#x27;use strict&#x27;;
 
 /**
- * ozpGridster is a wrapper around a &#x27;ul&#x27; element used to manage the grid layout.
+ * ozpGridsterItem is a Angular directive and a wrapper around a tile in the grid
  *
- * @namespace directives
- * @class ozpGridster
+ * @namespace dashboardView
+ * @class ozpGridsterItem
  * @constructor
+ * @param {Object} $compile the Angular compile service
+ * @param {Object} $http the Angular HTTP service
+ * @param {Object} $templateCache the Angular template cache
+ * @param {Object} $timeout the Angular timeout service
+ * @param {Function} compareUrl the compareUrl service {{#crossLink &quot;compareUrl&quot;}}{{/crossLink}} 
+ * @param {Object} dashboardApi the dashboard API service {{#crossLink &quot;dashboardApi&quot;}}{{/crossLink}} 
  */
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
-
-/**
- * gridsterItem is a wrapper around a tile in the grid
- *
- * @namespace directives
- * @class gridsterItem
- * @constructor
- */
 .directive(&#x27;ozpGridsterItem&#x27;, function ($compile, $http, $templateCache,
                                         $timeout, compareUrl, dashboardApi) {
 
@@ -194,7 +202,7 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
         if (data.frameId === scope.frameId) {
           scope.styles.height = data.height;
           scope.styles.width = data.width;
-          // console.log(&#x27;changing size to height: &#x27; + data.height + &#x27;, width: &#x27; + data.width);
+          // console.log(&#x27;changing size to width: &#x27; + data.width + &#x27;, height: &#x27; + data.height);
         }
       });
 
@@ -212,12 +220,16 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       // http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply
       $timeout(function() {
         scope.frameId = element.context.id;
-        var frameSize = dashboardApi.getFrameSizeOnGrid(scope.frameId);
-        // console.log(&#x27;setting initial style: &#x27; + frameSize.width + &#x27;, &#x27; + frameSize.height);
-        scope.styles = {
-          &#x27;height&#x27;: frameSize.height,
-          &#x27;width&#x27;: frameSize.width
-        };
+        dashboardApi.getFrameSizeOnGrid(scope.frameId).then(function(frameSize) {
+          // console.log(&#x27;setting initial style: &#x27; + frameSize.width + &#x27;, &#x27; + frameSize.height);
+          scope.styles = {
+            &#x27;height&#x27;: frameSize.height,
+            &#x27;width&#x27;: frameSize.width
+          };
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+
       });
     }
   };

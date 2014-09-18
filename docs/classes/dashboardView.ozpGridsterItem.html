@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>dashboardView.IframeController - ozpwebtop</title>
+    <title>dashboardView.ozpGridsterItem - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -122,7 +122,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>dashboardView.IframeController Class</h1>
+                        <h1>dashboardView.ozpGridsterItem Class</h1>
 <div class="box meta">
     
 
@@ -130,7 +130,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_dashboardView_iframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;iframe.js:3</code></a>
+            Defined in: <a href="../files/src_app_dashboardView_grid_gridsteritem.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;gridsteritem.js:3</code></a>
         </div>
     
 
@@ -146,15 +146,15 @@
 
 
 <div class="box intro">
-    <p>IframeController ensures that a widget can be properly displayed in an iframe.</p>
+    <p>ozpGridsterItem is a Angular directive and a wrapper around a tile in the grid</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_dashboardView.IframeController" class="method item">
-    <h3 class="name"><code>dashboardView.IframeController</code></h3>
+        <div id="method_dashboardView.ozpGridsterItem" class="method item">
+    <h3 class="name"><code>dashboardView.ozpGridsterItem</code></h3>
 
     
         <div class="args">
@@ -162,13 +162,37 @@
             
                 <li class="arg">
                     
-                        <code>$scope</code>
+                        <code>$compile</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>$sce</code>
+                        <code>$http</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$templateCache</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$timeout</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>compareUrl</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dashboardApi</code>
                     
                 </li>
             
@@ -201,7 +225,7 @@
             
         
         
-        <a href="../files/src_app_dashboardView_iframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;iframe.js:3</code></a>
+        <a href="../files/src_app_dashboardView_grid_gridsteritem.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;gridsteritem.js:3</code></a>
         
         </p>
 
@@ -223,14 +247,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">$scope</code>
+                        <code class="param-name">$compile</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>An Angular scope</p>
+                        <p>the Angular compile service</p>
 
                     </div>
 
@@ -239,14 +263,78 @@
             
                 <li class="param">
                     
-                        <code class="param-name">$sce</code>
+                        <code class="param-name">$http</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The Angular service for Strict Contextual Escaping - <a href="https://docs.angularjs.org/api/ng/service/$sce">API Docs</a></p>
+                        <p>the Angular HTTP service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$templateCache</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the Angular template cache</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$timeout</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the Angular timeout service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">compareUrl</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the compareUrl service CompareUrl</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardApi</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the dashboard API service DashboardApi</p>
 
                     </div>
 

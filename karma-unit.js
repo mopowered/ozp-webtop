@@ -13,6 +13,9 @@ module.exports = function ( karma ) {
                                         // purposes since jqLite is gimped (e.g.
                                         // their find method). Must be loaded
                                         // before angular!
+      'vendor/ozp-iwc/app/js/common/es5-shim.js', // PhantomJS is missing
+                                                  // Function.prototype.call.bind
+                                                  // and requires polyfills
       'vendor/jquery/dist/jquery.js',
       'vendor/jquery-ui/jquery-ui.min.js',
       'vendor/angular/angular.js',
@@ -20,6 +23,7 @@ module.exports = function ( karma ) {
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-gridster/dist/angular-gridster.min.js',
       'vendor/javascript-detect-element-resize/detect-element-resize.js',
+      'vendor/ozp-iwc-angular/dist/js/ozpIwc-client-angular.js',
       'vendor/ozp-classification/jquery.classification.js',
       'vendor/ozp-classification/ozp-classification.js',
       'build/templates-app.js',

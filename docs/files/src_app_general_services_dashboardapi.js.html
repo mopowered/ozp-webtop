@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/app/general/services/dashboardapi.js - ozpwebtop</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="ozpwebtop"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
+            
+                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+            
+                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+            
+                <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
+            
+                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
+            
+                <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
+            
+                <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
+            
+                <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
+            
+                <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
+            
+                <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.ozpIwcClient.html">ozpWebtopApp.ozpIwcClient</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/app/general/services/dashboardapi.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+var apis = angular.module(&#x27;ozpWebtopApp.apis&#x27;);
+
+// TODO: put this somewhere better
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from &lt; 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
+function generalDashboardModel(persistStrategy, Utilities) {
+
+  return {
+    sayHello: function() {
+      if (typeof persistStrategy.sayHello !== &#x27;function&#x27;) {
+        console.log(&#x27;persistStrategy: &#x27; + JSON.stringify(persistStrategy));
+      }
+      return persistStrategy.sayHello().then(function(response) {
+        console.log(response);
+        return response;
+      });
+    },
+    getDashboardData: function() {
+      return persistStrategy.getDashboardData().then(function(response) {
+        return response;
+      });
+    },
+    getDashboards: function() {
+      return this.getDashboardData().then(function(response) {
+        var dashboardData = response;
+        if (dashboardData) {
+          return dashboardData.dashboards;
+        } else {
+          console.log(&#x27;WARNING: dashboardData is null!&#x27;);
+          return null;
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    _setDashboardData: function(dashboardData) {
+      return persistStrategy._setDashboardData(dashboardData).then(function(response) {
+        return response;
+      });
+    },
+    setAllDashboards: function(dashboards) {
+      var that = this;
+      return this.getDashboardData().then(function(dashboardData){
+        dashboardData.dashboards = dashboards;
+        return that._setDashboardData(dashboardData).then(function(response){
+          return response;
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Update dashboard layout
+    // @param layout should be &#x27;grid&#x27; or &#x27;desktop&#x27;
+    updateLayoutType: function(dashboardId, layout) {
+      var that = this;
+      return this.getDashboardById(dashboardId).then(function(dashboard){
+        var validInputs = [&#x27;grid&#x27;, &#x27;desktop&#x27;];
+        if (validInputs.indexOf(layout) === -1) {
+          return false;
+        }
+        dashboard.layout = layout;
+        return that.saveDashboard(dashboard).then(function(response){
+          return response;
+        });
+      });
+    },
+    // toggle the value of a key in a frame
+    toggleFrameKey: function(frameId, key) {
+      var that = this;
+      return this.getFrameById(frameId).then(function(frame) {
+        if (!frame) {
+          return false;
+        }
+        if (frame[key]) {
+          frame[key] = false;
+        }
+        else {
+          console.debug(typeof frame[key]);
+          frame[key] = true;
+        }
+        return that.saveFrame(frame).then(function(resp) {
+          if (resp) {
+            return frame[key];
+          } else {
+            return resp;
+          }
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Update the grid layout of a frame in a dashboard
+    updateGridFrame: function(frameId, row, col, sizeX, sizeY) {
+      var that = this;
+      return this.getFrameById(frameId).then(function(frame) {
+        if (!frame) {
+          return false;
+        }
+        frame.gridLayout.row = row;
+        frame.gridLayout.col = col;
+        frame.gridLayout.sizeX = sizeX;
+        frame.gridLayout.sizeY = sizeY;
+        return that.saveFrame(frame).then(function(response) {
+          if (response) {
+            return frameId;
+          } else {
+            return response;
+          }
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Update the desktop layout of a frame in a dashboard
+    // TODO: what about width and height?
+    updateDesktopFrame: function(frameId, x, y, zIndex) {
+      var that = this;
+      return this.getFrameById(frameId).then(function(frame) {
+        if (!frame) {
+          return false;
+        }
+        frame.desktopLayout.left = x;
+        frame.desktopLayout.top = y;
+        frame.desktopLayout.zIndex = zIndex;
+        return that.saveFrame(frame).then(function(response) {
+          return response;
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Check to see if an application is already on a given dashboard
+    isAppOnDashboard: function(dashboardId, applicationId) {
+      return this.getDashboardById(dashboardId).then(function(dashboard){
+        for (var i=0; i &lt; dashboard.frames.length; i++) {
+          if (dashboard.frames[i].appId === applicationId) {
+            return true;
+          }
+        }
+        return false;
+      });
+    },
+    // Create a new frame in a dashboard for a given application
+    // Creates a frame with with both grid and desktop layout data
+    createFrame: function(dashboardId, appId, gridMaxRows) {
+      var that = this;
+      return this.getDashboardById(dashboardId).then(function(dashboard) {
+        // Calculate the row to place this frame in (for grid layout)
+
+        // for the grid layout, place new app in first col of first empty row
+        // for the desktop layout, just put it on and let user move it
+        var usedRows = [];
+        for (var i=0; i &lt; dashboard.frames.length; i++) {
+          usedRows.push(dashboard.frames[i].gridLayout.row);
+        }
+        var maxUsedRow = Math.max.apply(Math, usedRows);
+        var row = maxUsedRow + 1;
+        if (row &gt; gridMaxRows) {
+          // TODO: handle error
+          return null;
+        }
+
+        // by default, new frames will have minimal size
+        var col = 0;
+        var sizeX = 1;
+        var sizeY = 1;
+
+        // for the desktop layout, just put it on and let the user move it
+        var zIndex = 0;
+        var top = 100;
+        var left = 100;
+        var width = 200;
+        var height = 200;
+
+
+        var utils = new Utilities();
+        var frameId = utils.generateUuid();
+
+        // update the dashboard with this app
+        var newApp = {
+          &#x27;appId&#x27;: appId,
+          &#x27;id&#x27;: frameId,
+          &#x27;gridLayout&#x27;: {
+            &#x27;row&#x27;: row,
+            &#x27;col&#x27;: col,
+            &#x27;sizeX&#x27;: sizeX,
+            &#x27;sizeY&#x27;: sizeY
+          },
+          &#x27;desktopLayout&#x27;: {
+            &#x27;zIndex&#x27;: zIndex,
+            &#x27;top&#x27;: top,
+            &#x27;left&#x27;: left,
+            &#x27;width&#x27;: width,
+            &#x27;height&#x27;: height
+          }
+        };
+
+        dashboard.frames.push(newApp);
+        return that.saveDashboard(dashboard).then(function() {
+          return newApp;
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Remove a frame from a dashboard
+    removeFrame: function(frameId) {
+      var that = this;
+      return this.getDashboards().then(function(dashboards) {
+        var dashboardToUpdate;
+        for (var i=0; i &lt; dashboards.length; i++) {
+          var frames = dashboards[i].frames;
+          for (var j=0; j &lt; frames.length; j++) {
+            if (frameId === frames[j].id) {
+              dashboards[i].frames.splice(j,1);
+              dashboardToUpdate = i;
+            }
+          }
+        }
+        if (dashboardToUpdate &gt;= 0) {
+          return that.saveDashboard(dashboards[dashboardToUpdate]).then(function(saved) {
+            return saved;
+          }).catch(function(error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+
+    },
+    // Change the user&#x27;s default dashboard
+    updateDefaultDashboardName: function(dashboardName) {
+      var that = this;
+      return this.getDashboardData().then(function(dashboardData) {
+        var dashboardFound = false;
+        for (var i=0; i &lt; dashboardData.dashboards.length; i++) {
+          if (dashboardData.dashboards[i].name === dashboardName) {
+            dashboardData.defaultDashboard = dashboardData.dashboards[i].id;
+            dashboardFound = true;
+          }
+        }
+        if (dashboardFound) {
+          return that._setDashboardData(dashboardData).then(function(response) {
+            return response;
+          }).catch(function(error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
+        } else {
+          return false;
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Return the name of the user&#x27;s default dashboard
+    getDefaultDashboardName: function() {
+      return this.getDashboardData().then(function(dashboards) {
+        var defaultDashboardId = dashboards.defaultDashboard;
+        for (var i=0; i &lt; dashboards.dashboards.length; i++) {
+          if (dashboards.dashboards[i].id === defaultDashboardId) {
+            return dashboards.dashboards[i].name;
+          }
+        }
+        return null;
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    // Augment the dashboard.frames data with application-specific data
+    // Note: data is not persisted, but rather the &#x27;frames&#x27; object
+    //  is modified by reference
+    mergeApplicationData: function(frames, marketplaceApps) {
+      for (var i=0; i &lt; marketplaceApps.length; i++) {
+        // check if this app is on our dashboard
+        for (var j=0; j &lt; frames.length; j++) {
+          if (frames[j].appId === marketplaceApps[i].id) {
+            // if it is, then get all relevant info
+            frames[j].icon = marketplaceApps[i].icon;
+            frames[j].url = marketplaceApps[i].url;
+            frames[j].name = marketplaceApps[i].name;
+            frames[j].shortDescription = marketplaceApps[i].shortDescription;
+          }
+        }
+      }
+    },
+
+    // Updates the dynamically generated fields for grid frame size in px
+    updateFrameSizeOnGrid: function(frameId, width, height) {
+      var that = this;
+      return this.getFrameById(frameId).then(function(frame) {
+        frame.gridLayout.width = width;
+        frame.gridLayout.height = height;
+        return that.saveFrame(frame).then(function(response) {
+          return response;
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+
+    // Return the frame size (in px) for a given frame in the grid layout
+    // Note that these values are dynamically generated
+    getFrameSizeOnGrid: function(frameId) {
+      return this.getFrameById(frameId).then(function(frame) {
+        var widgetSize = {};
+        widgetSize.width = frame.gridLayout.width;
+        widgetSize.height = frame.gridLayout.height;
+        return widgetSize;
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+
+    // Save a dashboard
+    // TODO: make sure input is a valid dashboard:
+    //  dashboard.id should be unique
+    //  all frame.id&#x27;s should be unique
+    saveDashboard: function(dashboard) {
+      var foundDashboard = false;
+      var that = this;
+      return this.getDashboards().then(function(dashboards) {
+        for (var i=0; i &lt; dashboards.length; i++) {
+          if (dashboards[i].id === dashboard.id) {
+            dashboards[i] = dashboard;
+            foundDashboard = true;
+          }
+        }
+        if (foundDashboard) {
+          return that.setAllDashboards(dashboards).then(function(response) {
+              return response;
+            }).catch(function(error) {
+              console.log(&#x27;should not have happened: &#x27; + error);
+            });
+        } else {
+          return false;
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+
+    // Save a frame in a dashboard
+    // TODO: make sure input is a valid frame
+    saveFrame: function(frame) {
+      var that = this;
+      return this.getDashboards().then(function(dashboards) {
+        var frameFound = false;
+        for (var i=0; i &lt; dashboards.length; i++) {
+          var frames = dashboards[i].frames;
+          for (var j=0; j &lt; frames.length; j++) {
+            if (frames[j].id === frame.id) {
+              dashboards[i].frames[j] = frame;
+              frameFound = true;
+            }
+          }
+        }
+        if (frameFound) {
+          return that.setAllDashboards(dashboards).then(function(response) {
+            return response;
+          }).catch(function(error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
+        } else {
+          return false;
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+
+    // Retrieve a frame by id
+    getFrameById: function(frameId) {
+      return this.getDashboards().then(function(dashboards) {
+        for (var i=0; i &lt; dashboards.length; i++) {
+          var frames = dashboards[i].frames;
+          for (var j=0; j &lt; frames.length; j++) {
+            if (frames[j].id === frameId) {
+              return frames[j];
+            }
+          }
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+
+    },
+
+    // Retrieve a dashboard by id
+    getDashboardById: function(dashboardId) {
+      return this.getDashboards().then(function(dashboards) {
+        if (!dashboards) {
+          return null;
+        }
+        for (var i=0; i &lt; dashboards.length; i++) {
+          if (dashboards[i].id.toString() === dashboardId.toString()) {
+            return dashboards[i];
+          }
+        }
+        return null;
+      });
+    },
+
+    // Delete a dashboard
+    removeDashboard: function(dashboardId) {
+      var that = this;
+      return this.getDashboardData().then(function(dashboardData) {
+        var dashboards = dashboardData.dashboards;
+        var foundDashboard = false;
+        for (var i=0; i &lt; dashboards.length; i++) {
+          if (dashboards[i].id.toString() === dashboardId.toString()) {
+            dashboards.remove(i);
+            foundDashboard = true;
+          }
+        }
+        if (foundDashboard) {
+          return that._setDashboardData(dashboardData).then(function(resp) {
+            return resp;
+          }).catch(function(error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
+        } else {
+          return false;
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+
+    // Create a new dashboard
+    createDashboard: function(name) {
+      var that = this;
+      return this.getDashboardData().then(function(dashboardData) {
+        // get new id for board
+        return that.getNewDashboardId().then(function(dashboardId) {
+          var newBoard = {
+            &#x27;name&#x27;: name,
+            &#x27;id&#x27;: dashboardId,
+            &#x27;layout&#x27;: &#x27;grid&#x27;,
+            &#x27;frames&#x27;: [
+            ]
+          };
+          return that.getDashboards().then(function(dashboards) {
+            dashboards.push(newBoard);
+            dashboardData.dashboards = dashboards;
+            return that._setDashboardData(dashboardData).then(function(response) {
+              return response;
+            }).catch(function(error) {
+              console.log(&#x27;should not have happened: &#x27; + error);
+            });
+          }).catch(function(error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+
+    // Get the next available id for a new dashboard
+    // TODO: this assumes ids are integers and not uuids
+    getNewDashboardId: function() {
+      return this.getDashboards().then(function(dashboards) {
+        var existingIds = [];
+        var newId = -1;
+        for (var i=0; i &lt; dashboards.length; i++) {
+          existingIds.push(Number(dashboards[i].id));
+        }
+        newId = Math.max.apply(Math, existingIds) + 1;
+        return newId;
+      });
+    },
+    createExampleDashboards: function() {
+      // TODO: Originally this object was placed in a separate json file and fetched
+      // via http, but that led to all sorts of issues with testing.
+      var dashboardData = {
+        &#x27;name&#x27;: &#x27;dashboards&#x27;,
+        &#x27;user&#x27;: &#x27;J Smith&#x27;,
+        &#x27;defaultDashboard&#x27;: &#x27;0&#x27;,
+        &#x27;dashboards&#x27;: [
+          {
+            &#x27;name&#x27;: &#x27;Stock Trader&#x27;,
+            &#x27;id&#x27;: &#x27;0&#x27;,
+            &#x27;layout&#x27;: &#x27;grid&#x27;,
+            &#x27;frames&#x27;: [
+              {
+                &#x27;appId&#x27;: &#x27;cd0e3e24-cae8-4886-a0d4-c7e04b5b104e&#x27;, // Greek analysis
+                &#x27;id&#x27;: &#x27;2b585b22-5de9-4389-b536-57bcb602bf3a&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 0,
+                  &#x27;col&#x27;: 0,
+                  &#x27;sizeX&#x27;: 6,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 200,
+                  &#x27;left&#x27;: 100,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;f38e10db-eb3f-4b90-8ec5-cb0a7dbd9191&#x27;, // Stock Trader
+                &#x27;id&#x27;: &#x27;3886bbea-0421-4a2a-9851-b8e1c6a59f5b&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 1,
+                  &#x27;col&#x27;: 0,
+                  &#x27;sizeX&#x27;: 3,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 1,
+                  &#x27;top&#x27;: 300,
+                  &#x27;left&#x27;: 200,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;00605b24-baff-4270-b0b5-2b6bd6455883&#x27;, // Chart
+                &#x27;id&#x27;: &#x27;fe9fd6bf-e7be-446a-8ab7-a3fc4ac279a8&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 1,
+                  &#x27;col&#x27;: 3,
+                  &#x27;sizeX&#x27;: 3,
+                  &#x27;sizeY&#x27;: 2
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 125,
+                  &#x27;left&#x27;: 400,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              }
+            ] // end frames in dashboard
+          },
+          {
+            &#x27;name&#x27;: &#x27;Simple Apps&#x27;,
+            &#x27;id&#x27;: &#x27;1&#x27;,
+            &#x27;layout&#x27;: &#x27;grid&#x27;,
+            &#x27;frames&#x27;: [
+              {
+                &#x27;appId&#x27;: &#x27;342f3680-18c9-11e4-8c21-0800200c9a66&#x27;, // purple circle
+                &#x27;id&#x27;: &#x27;45a08744-686b-4b14-820a-ebc8c24fbfb0&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 1,
+                  &#x27;col&#x27;: 1,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 200,
+                  &#x27;left&#x27;: 100,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;d9d3b477-7c21-4cab-bd9f-771ee9379be4&#x27;, // red square
+                &#x27;id&#x27;: &#x27;59891c69-dde5-4926-b4b1-e53dac90b271&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 1,
+                  &#x27;col&#x27;: 2,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 125,
+                  &#x27;left&#x27;: 400,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;c3d895d5-f332-4154-b963-c5dd63f8ca49&#x27;, // some text
+                &#x27;id&#x27;: &#x27;23baefc8-872a-4da4-84ed-e8fa62c09819&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 2,
+                  &#x27;col&#x27;: 1,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 1,
+                  &#x27;top&#x27;: 300,
+                  &#x27;left&#x27;: 200,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;34bc3505-5dcc-4609-bcd6-c014d9f27ce5&#x27;, //mbrot
+                &#x27;id&#x27;: &#x27;8ca6dba0-b7bb-47e4-a1a1-06e451f9a0f1&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;row&#x27;: 2,
+                  &#x27;col&#x27;: 2,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 1,
+                  &#x27;top&#x27;: 250,
+                  &#x27;left&#x27;: 500,
+                  &#x27;width&#x27;: 200,
+                  &#x27;height&#x27;: 200
+                }
+              }
+            ] // end frames in dashboard
+          },
+          {
+            &#x27;name&#x27;: &#x27;Just One Thing&#x27;,
+            &#x27;id&#x27;: &#x27;2&#x27;,
+            &#x27;layout&#x27;: &#x27;desktop&#x27;,
+            &#x27;frames&#x27;: [
+              {
+                &#x27;appId&#x27;: &#x27;342f3680-18c9-11e4-8c21-0800200c9a66&#x27;,
+                &#x27;id&#x27;: &#x27;04648023-6ab0-448d-83a1-bb378639237f&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;col&#x27;: 1,
+                  &#x27;row&#x27;: 1,
+                  &#x27;sizeX&#x27;: 3,
+                  &#x27;sizeY&#x27;: 3
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 125,
+                  &#x27;left&#x27;: 200,
+                  &#x27;width&#x27;: 300,
+                  &#x27;height&#x27;: 300
+                }
+              }
+            ] // end frames in dashboard
+          },
+          {
+            &#x27;name&#x27;: &#x27;Bouncing Balls&#x27;,
+            &#x27;id&#x27;: &#x27;3&#x27;,
+            &#x27;layout&#x27;: &#x27;grid&#x27;,
+            &#x27;frames&#x27;: [
+              {
+                &#x27;appId&#x27;: &#x27;998437ef-9191-4d57-91a7-6ab049361583&#x27;,
+                &#x27;id&#x27;: &#x27;6c84a76c-f149-4c4d-90a8-1df397ed588b&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;col&#x27;: 1,
+                  &#x27;row&#x27;: 1,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 125,
+                  &#x27;left&#x27;: 200,
+                  &#x27;width&#x27;: 300,
+                  &#x27;height&#x27;: 300
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;3af849aa-dad0-4223-b15b-9da3b48d1845&#x27;,
+                &#x27;id&#x27;: &#x27;c951a160-0917-45cf-8c7f-a3748958ced1&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;col&#x27;: 2,
+                  &#x27;row&#x27;: 1,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 125,
+                  &#x27;left&#x27;: 700,
+                  &#x27;width&#x27;: 300,
+                  &#x27;height&#x27;: 300
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;e5f52929-3f00-4766-a820-f0452ff74572&#x27;,
+                &#x27;id&#x27;: &#x27;dad15d4a-0da1-4181-9e99-15c9197a0180&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;col&#x27;: 1,
+                  &#x27;row&#x27;: 1,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 500,
+                  &#x27;left&#x27;: 200,
+                  &#x27;width&#x27;: 300,
+                  &#x27;height&#x27;: 300
+                }
+              },
+              {
+                &#x27;appId&#x27;: &#x27;93eb7a1d-618c-4478-a59e-326eccbe86d5&#x27;,
+                &#x27;id&#x27;: &#x27;32769aa5-2c34-45e9-9a63-a155f3d77073&#x27;,
+                &#x27;gridLayout&#x27;: {
+                  &#x27;col&#x27;: 2,
+                  &#x27;row&#x27;: 1,
+                  &#x27;sizeX&#x27;: 1,
+                  &#x27;sizeY&#x27;: 1
+                },
+                &#x27;desktopLayout&#x27;: {
+                  &#x27;zIndex&#x27;: 0,
+                  &#x27;top&#x27;: 500,
+                  &#x27;left&#x27;: 700,
+                  &#x27;width&#x27;: 300,
+                  &#x27;height&#x27;: 300
+                }
+              }
+            ] // end frames in dashboard
+          }
+        ]
+      };
+
+      return this._setDashboardData(dashboardData).then(function(response) {
+        return response;
+      });
+    }
+  };
+}
+
+/**
+ * Angular service which provides a local storage interface to the dashboard api.
+ *
+ * @namespace apis
+ * @class localStorageDashboardApiImpl
+ * @constructor
+ * @param {Object} $http The AngularJS HTTP service
+ * @param {Object} LocalStorage the local storage service
+ * @param {Object} Utilities the utilites
+ */
+apis.service(&#x27;dashboardModelLocalStorage&#x27;, function(dashboardLocalStorageInterface, Utilities) {
+  var model = generalDashboardModel(dashboardLocalStorageInterface, Utilities);
+  for (var prop in model) {
+    if (model.hasOwnProperty(prop)) {
+      this[prop] = model[prop];
+    }
+  }
+});
+
+/**
+ * Angular service which uses the Inter-Widget Communication (IWC) API to store and retrieve
+ * dashboards.
+ *
+ * @class iwcDashboardApiImpl
+ * @constructor
+ */
+apis.service(&#x27;dashboardModelIwc&#x27;, function(dashboardIwcInterface, Utilities) {
+  var model = generalDashboardModel(dashboardIwcInterface, Utilities);
+  for (var prop in model) {
+    if (model.hasOwnProperty(prop)) {
+      this[prop] = model[prop];
+    }
+  }
+});
+
+/**
+ * Angular service which provides an abstraction of the implementations used to store and retrieve
+ * dashboard information.
+ *
+ * @class dashboardApi
+ * @constructor
+ */
+apis.factory(&#x27;dashboardApi&#x27;, function($injector, useIwc) {
+  if (useIwc) {
+    return $injector.get(&#x27;dashboardModelIwc&#x27;);
+  } else if (useIwc === false){
+    return $injector.get(&#x27;dashboardModelLocalStorage&#x27;);
+
+  }
+  else {
+    console.log(&#x27;ERROR: useIwc is undefined!&#x27;);
+  }
+});
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

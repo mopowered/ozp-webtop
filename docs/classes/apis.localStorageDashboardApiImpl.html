@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>directives.gridsterItem - ozpwebtop</title>
+    <title>apis.localStorageDashboardApiImpl - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,21 +41,29 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
+            
+                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+            
+                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
             
                 <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
             
-                <li><a href="../classes/controllers.GridController.html">controllers.GridController</a></li>
+                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
             
                 <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
             
-                <li><a href="../classes/directives.gridsterItem.html">directives.gridsterItem</a></li>
+                <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
             
-                <li><a href="../classes/directives.ozpGridster.html">directives.ozpGridster</a></li>
+                <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
-                <li><a href="../classes/directives.ozpManagedFrame.html">directives.ozpManagedFrame</a></li>
+                <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
             
             </ul>
 
@@ -74,6 +82,8 @@
                 <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.ozpIwcClient.html">ozpWebtopApp.ozpIwcClient</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
             
@@ -112,7 +122,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>directives.gridsterItem Class</h1>
+                        <h1>apis.localStorageDashboardApiImpl Class</h1>
 <div class="box meta">
     
 
@@ -120,7 +130,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_dashboardView_grid_gridster.js.html#l12"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;gridster.js:12</code></a>
+            Defined in: <a href="../files/src_app_general_services_dashboardapi.js.html#l744"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;dashboardapi.js:744</code></a>
         </div>
     
 
@@ -136,18 +146,40 @@
 
 
 <div class="box intro">
-    <p>gridsterItem is a wrapper around a tile in the grid</p>
+    <p>Angular service which provides a local storage interface to the dashboard api.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_directives.gridsterItem" class="method item">
-    <h3 class="name"><code>directives.gridsterItem</code></h3>
+        <div id="method_apis.localStorageDashboardApiImpl" class="method item">
+    <h3 class="name"><code>apis.localStorageDashboardApiImpl</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>$http</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>LocalStorage</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>Utilities</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -175,7 +207,7 @@
             
         
         
-        <a href="../files/src_app_dashboardView_grid_gridster.js.html#l12"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;gridster.js:12</code></a>
+        <a href="../files/src_app_general_services_dashboardapi.js.html#l744"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;dashboardapi.js:744</code></a>
         
         </p>
 
@@ -189,6 +221,62 @@
         
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">$http</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The AngularJS HTTP service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">LocalStorage</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the local storage service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">Utilities</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the utilites</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     

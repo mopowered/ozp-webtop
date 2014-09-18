@@ -2,42 +2,52 @@ angular.module('templates-app', ['appToolbar/appToolbar.tpl.html', 'components/b
 
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",
-    "<nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners navbar-fixed-bottom\"\n" +
-    "     role=\"navigation\" ng-controller=\"appToolbarCtrl\">\n" +
-    "  <div class=\"container-fluid\">\n" +
-    "    <!-- Brand and toggle get grouped for better mobile display -->\n" +
-    "    <div class=\"navbar-header\">\n" +
-    "      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n" +
-    "        <span class=\"sr-only\">Toggle navigation</span>\n" +
-    "        <span class=\"icon-bar\"></span>\n" +
-    "        <span class=\"icon-bar\"></span>\n" +
-    "        <span class=\"icon-bar\"></span>\n" +
-    "      </button>\n" +
-    "      <div class=\"dropdown\">\n" +
-    "        <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></a>\n" +
-    "        <ul class=\"dropdown-menu\">\n" +
-    "          <li ng-repeat=\"app in myApps\">\n" +
-    "            <a ng-click=\"appClicked(app)\" class=\"link-pointer\"\n" +
-    "                tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
-    "              <img ng-src=\"{{app.icon}}\" height=\"20\" width=\"20\" />\n" +
-    "              {{app.name}}</a>\n" +
+    "<div ng-controller=\"appToolbarCtrl\">\n" +
+    "  <nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners navbar-fixed-bottom\"\n" +
+    "       role=\"navigation\" ng-class=\"{true: 'hide', false: ''}[appboardhide]\">\n" +
+    "    <div class=\"container-fluid\">\n" +
+    "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
+    "      <div class=\"navbar-header\">\n" +
+    "        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n" +
+    "          <span class=\"sr-only\">Toggle navigation</span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "        </button>\n" +
+    "        <div class=\"dropdown\">\n" +
+    "          <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></a>\n" +
+    "          <ul class=\"dropdown-menu\">\n" +
+    "            <li ng-repeat=\"app in myApps\">\n" +
+    "              <a ng-click=\"appClicked(app)\" class=\"link-pointer\"\n" +
+    "                  tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
+    "                <img ng-src=\"{{app.icon}}\" height=\"20\" width=\"20\" />\n" +
+    "                {{app.name}}</a>\n" +
+    "            </li>\n" +
+    "          </ul>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +
+    "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
+    "        <ul class=\"nav navbar-nav\">\n" +
+    "          <!-- stuff on the left side of the nav bar -->\n" +
+    "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\" ng-class=\"app.isMinimized && layout === 'desktop'? 'inactive-app' : 'active-app'\">\n" +
+    "            <a><img class=\"chrome-icon app-toolbar-img\" ng-src=\"{{app.icon}}\"/>{{app.name}}</i></a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
-    "      </div>\n" +
-    "    </div>\n" +
-    "\n" +
-    "    <!-- Collect the nav links, forms, and other content for toggling -->\n" +
-    "    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
-    "      <ul class=\"nav navbar-nav\">\n" +
-    "        <!-- stuff on the left side of the nav bar -->\n" +
-    "        <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\">\n" +
-    "          <a><img class=\"chrome-icon app-toolbar-img\" ng-src=\"{{app.icon}}\"/>{{app.name}}</i>\n" +
-    "        </li>\n" +
-    "      </ul>\n" +
-    "    </div><!-- /.navbar-collapse -->\n" +
-    "  </div><!-- /.container-fluid -->\n" +
-    "</nav>\n" +
-    "");
+    "        <ul class=\"nav navbar-nav navbar-right\">\n" +
+    "        <li class=\"divider-vertical\"></li>\n" +
+    "          <li class='hideToolbarButton'>\n" +
+    "            <a ng-click=\"appboardhider();\">\n" +
+    "              <i class=\"fa fa-step-forward fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "        </ul>\n" +
+    "      </div><!-- /.navbar-collapse -->\n" +
+    "    </div><!-- /.container-fluid -->\n" +
+    "  </nav>\n" +
+    "<button class=\"hiddenToggle appHiddenToggle\" ng-click=\"appboardhider();\" ng-class=\"{false: 'hide'}[appboardhide]\"><i class=\"fa fa-step-backward\"></i></button>\n" +
+    "</div>");
 }]);
 
 angular.module("components/button/ozpbutton.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -61,10 +71,10 @@ angular.module("components/chrome/ozpchrome.tpl.html", []).run(["$templateCache"
     "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"isGrid\" ng-click=\"minimizeFrame(frame)\">\n" +
     "      <span class=\"glyphicon glyphicon-minus\"></span>\n" +
     "    </button>\n" +
-    "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"isGrid\" ng-click=\"maximizeFrame()\">\n" +
+    "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"isGrid\" ng-click=\"maximizeFrame(frame)\">\n" +
     "      <span class=\"glyphicon glyphicon-plus\"></span>\n" +
     "    </button>\n" +
-    "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"isDisabled(frame.id)\">\n" +
+    "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"isDisabled(frame)\">\n" +
     "      <span class=\"glyphicon glyphicon-remove\"></span>\n" +
     "    </button>\n" +
     "  </span>\n" +
@@ -86,81 +96,89 @@ angular.module("components/icon/ozpicon.tpl.html", []).run(["$templateCache", fu
 
 angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardToolbar/dashboardToolbar.tpl.html",
-    "<nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
-    "  no-rounded-corners\" role=\"navigation\" ng-controller=\"dashboardToolbarCtrl\">\n" +
-    "  <div class=\"container-fluid\">\n" +
-    "    <!-- Brand and toggle get grouped for better mobile display -->\n" +
-    "    <div class=\"navbar-header\">\n" +
-    "      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n" +
-    "        <span class=\"sr-only\">Toggle navigation</span>\n" +
-    "        <span class=\"icon-bar\"></span>\n" +
-    "        <span class=\"icon-bar\"></span>\n" +
-    "        <span class=\"icon-bar\"></span>\n" +
-    "      </button>\n" +
-    "      <a class=\"navbar-brand\" href=\"#\">OZONE</a>\n" +
-    "    </div>\n" +
+    "<div ng-controller=\"dashboardToolbarCtrl\">\n" +
+    "  <nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
+    "    no-rounded-corners\" role=\"navigation\"  ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
+    "    <div class=\"container-fluid\" >\n" +
+    "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
+    "      <div class=\"navbar-header\">\n" +
+    "        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n" +
+    "          <span class=\"sr-only\">Toggle navigation</span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "        </button>\n" +
+    "        <a class=\"navbar-brand\" href=\"#\">OZONE</a>\n" +
+    "      </div>\n" +
     "\n" +
     "\n" +
-    "    <!-- Collect the nav links, forms, and other content for toggling -->\n" +
-    "    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
-    "      <ul class=\"nav navbar-nav\">\n" +
-    "        <!-- stuff on the left side of the nav bar -->\n" +
-    "      </ul>\n" +
+    "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +
+    "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
+    "        <ul class=\"nav navbar-nav\">\n" +
+    "          <!-- stuff on the left side of the nav bar -->\n" +
+    "        </ul>\n" +
     "\n" +
-    "      <ul class=\"nav navbar-nav navbar-right\">\n" +
-    "        <li class=\"dropdown\">\n" +
-    "          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name}} <span class=\"caret\"></span></a>\n" +
-    "          <ul class=\"dropdown-menu\" role=\"menu\">\n" +
-    "            <li ng-repeat=\"board in dashboards\">\n" +
-    "              <a ng-click=\"setCurrentDashboard(board)\" href=\"#/{{board.layout}}/{{board.id}}\">{{board.name}}</a>\n" +
-    "            </li>\n" +
-    "          </ul>\n" +
-    "        </li>\n" +
-    "        <li class=\"divider-vertical\"></li>\n" +
-    "        <li>\n" +
-    "          <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\" ng-class=\"{navLinkSelected: layout == 'grid'}\">\n" +
-    "            <i ng-class=\"{iconWhite: layout == 'grid'}\" class=\"fa fa-th fa-lg\"></i>\n" +
-    "          </a>\n" +
-    "        </li>\n" +
-    "        <li class=\"divider-vertical\"></li>\n" +
-    "        <li>\n" +
-    "          <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\" ng-class=\"{navLinkSelected: layout == 'desktop'}\">\n" +
-    "            <i ng-class=\"{iconWhite: layout == 'desktop'}\" class=\"fa fa-clipboard fa-lg\"></i>\n" +
-    "          </a>\n" +
-    "        </li>\n" +
-    "        <li class=\"divider-vertical\"></li>\n" +
-    "        <li>\n" +
-    "          <a href=\"#\"><span class=\"badge\">{{messages.unread}}</span></a>\n" +
-    "        </li>\n" +
-    "        <li class=\"divider-vertical\"></li>\n" +
-    "        <li>\n" +
+    "        <ul class=\"nav navbar-nav navbar-right\">\n" +
     "          <li class=\"dropdown\">\n" +
-    "          <a href=\"#\" class=\"dropdown-toggle testt\" data-toggle=\"dropdown\">\n" +
-    "            <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user.username}} <span class=\"caret\"></span></a>\n" +
-    "          <ul class=\"dropdown-menu\" role=\"menu\">\n" +
-    "            <li>\n" +
-    "              <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\"><i class=\"fa fa-cogs\">&nbsp&nbsp</i>Settings</a>\n" +
+    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name}} <span class=\"caret\"></span></a>\n" +
+    "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
+    "              <li ng-repeat=\"board in dashboards\">\n" +
+    "                <a ng-click=\"setCurrentDashboard(board)\" href=\"#/{{board.layout}}/{{board.id}}\">{{board.name}}</a>\n" +
+    "              </li>\n" +
+    "            </ul>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li>\n" +
+    "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\" ng-class=\"{navLinkSelected: layout == 'grid'}\">\n" +
+    "              <i ng-class=\"{iconWhite: layout == 'grid'}\" class=\"fa fa-th fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li>\n" +
+    "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\" ng-class=\"{navLinkSelected: layout == 'desktop'}\">\n" +
+    "              <i ng-class=\"{iconWhite: layout == 'desktop'}\" class=\"fa fa-clipboard fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li>\n" +
+    "            <a href=\"#\"><span class=\"badge\">{{messages.unread}}</span></a>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li>\n" +
+    "            <li class=\"dropdown\">\n" +
+    "            <a href=\"#\" class=\"dropdown-toggle testt\" data-toggle=\"dropdown\">\n" +
+    "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user}} <span class=\"caret\"></span></a>\n" +
+    "              <ul class=\"dropdown-menu\" role=\"menu\">\n" +
+    "                <li>\n" +
+    "                  <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\"><i class=\"fa fa-cogs\">&nbsp&nbsp</i>Settings</a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a href=\"#\"><i class=\"fa fa-question-circle\">&nbsp&nbsp</i>Take a tour</a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a href=\"#\"><i class=\"fa fa-sign-out\">&nbsp&nbsp</i>Logout</a>\n" +
+    "                </li>\n" +
+    "              </ul>\n" +
     "            </li>\n" +
-    "            <li>\n" +
-    "              <a href=\"#\"><i class=\"fa fa-question-circle\">&nbsp&nbsp</i>Take a tour</a>\n" +
-    "            </li>\n" +
-    "            <li>\n" +
-    "              <a href=\"#\"><i class=\"fa fa-sign-out\">&nbsp&nbsp</i>Logout</a>\n" +
-    "            </li>\n" +
-    "          </ul>\n" +
-    "        </li>\n" +
-    "        </li>\n" +
-    "      </ul>\n" +
-    "    </div><!-- /.navbar-collapse -->\n" +
-    "  </div><!-- /.container-fluid -->\n" +
-    "</nav>\n" +
-    "");
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li class='hideToolbarButton'>\n" +
+    "            <a ng-click=\"dashboardhider();\">\n" +
+    "              <i class=\"fa fa-step-forward fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "        </ul>\n" +
+    "      </div><!-- /.navbar-collapse -->\n" +
+    "    </div><!-- /.container-fluid -->\n" +
+    "  </nav>\n" +
+    "  <button class=\"hiddenToggle dashToggle\" ng-click=\"dashboardhider();\" ng-class=\"{false: 'hide'}[dashboardhide]\"><i class=\"fa fa-step-backward\"></i></button>\n" +
+    "</div>");
 }]);
 
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
-    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\"></ozp-managed-frame>\n" +
+    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized, 'appToggle' : frame.isMaximized && appBarHidden, 'dashToggle' : frame.isMaximized && dashBarHidden}\"></ozp-managed-frame>\n" +
     "\n" +
     "<!-- Place icons in the desktop -->\n" +
     "<div class='icon-container'>\n" +
@@ -170,10 +188,12 @@ angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCach
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/grid/grid.tpl.html",
-    "<div class=\"container gridster-container-settings\">\n" +
+    "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !appBarHidden}\">\n" +
     "  <div gridster=\"gridOptions\">\n" +
     "    <ul>\n" +
-    "      <li gridster-item=\"customItemMap\" ng-repeat=\"item in frames\" id=\"{{item.id}}\"\n" +
+    "      <li gridster-item row=\"item.gridLayout.row\" col=\"item.gridLayout.col\"\n" +
+    "          size-x=\"item.gridLayout.sizeX\" size-y=\"item.gridLayout.sizeY\"\n" +
+    "          ng-repeat=\"item in frames\" id=\"{{item.id}}\"\n" +
     "          ozp-gridster-item=\"\" frame=\"item\" ng-hide=\"isDisabled\">\n" +
     "      </li>\n" +
     "    </ul>\n" +
@@ -201,7 +221,7 @@ angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$temp
 
 angular.module("userSettings/settingsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("userSettings/settingsModal.tpl.html",
-    "<div ng-controller=\"UserSettingsCtrl\">\n" +
+    "<div>\n" +
     "  <div class=\"modal-header\">\n" +
     "    <h3 class=\"modal-title\">Settings</h3>\n" +
     "  </div>\n" +

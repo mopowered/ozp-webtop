@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>dashboardView.IframeController - ozpwebtop</title>
+    <title>dashboardView.ozpManagedFrame - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -122,7 +122,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>dashboardView.IframeController Class</h1>
+                        <h1>dashboardView.ozpManagedFrame Class</h1>
 <div class="box meta">
     
 
@@ -130,7 +130,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_dashboardView_iframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;iframe.js:3</code></a>
+            Defined in: <a href="../files/src_app_dashboardView_desktop_frames_ozpmanagedframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;desktop&#x2F;frames&#x2F;ozpmanagedframe.js:3</code></a>
         </div>
     
 
@@ -146,15 +146,17 @@
 
 
 <div class="box intro">
-    <p>IframeController ensures that a widget can be properly displayed in an iframe.</p>
+    <p>Used to include an html document in the webtop. If the html in question is from a different 
+origin than the webtop, then an iframe will be used. If the html is from the same origin as
+the webtop, a &quot;frame&quot; (div) will be used.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_dashboardView.IframeController" class="method item">
-    <h3 class="name"><code>dashboardView.IframeController</code></h3>
+        <div id="method_dashboardView.ozpManagedFrame" class="method item">
+    <h3 class="name"><code>dashboardView.ozpManagedFrame</code></h3>
 
     
         <div class="args">
@@ -162,13 +164,31 @@
             
                 <li class="arg">
                     
-                        <code>$scope</code>
+                        <code>compareUrl</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>$sce</code>
+                        <code>$http</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$compile</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$document</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dashboardApi</code>
                     
                 </li>
             
@@ -201,7 +221,7 @@
             
         
         
-        <a href="../files/src_app_dashboardView_iframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;iframe.js:3</code></a>
+        <a href="../files/src_app_dashboardView_desktop_frames_ozpmanagedframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;desktop&#x2F;frames&#x2F;ozpmanagedframe.js:3</code></a>
         
         </p>
 
@@ -223,14 +243,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">$scope</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">compareUrl</code>
+                        <span class="type">Function</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>An Angular scope</p>
+                        <p>the URL comparison service</p>
 
                     </div>
 
@@ -239,14 +259,62 @@
             
                 <li class="param">
                     
-                        <code class="param-name">$sce</code>
+                        <code class="param-name">$http</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The Angular service for Strict Contextual Escaping - <a href="https://docs.angularjs.org/api/ng/service/$sce">API Docs</a></p>
+                        <p>the Angular HTTP service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$compile</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the Angular compile service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$document</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the Angular document service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardApi</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the API for dashboard information DashboardApi</p>
 
                     </div>
 
@@ -270,6 +338,8 @@
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
         
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
         
         
         
@@ -280,6 +350,21 @@
             <h2 class="off-left">Item Index</h2>
 
             
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method private">
+                                <a href="#method_getTemplate">getTemplate</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
 
             
 
@@ -288,6 +373,104 @@
             
         </div>
 
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_getTemplate" class="method item private">
+    <h3 class="name"><code>getTemplate</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>sameOrigin</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_desktop_frames_ozpmanagedframe.js.html#l20"><code>src&#x2F;app&#x2F;dashboardView&#x2F;desktop&#x2F;frames&#x2F;ozpmanagedframe.js:20</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Decides which template to use.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">sameOrigin</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>True if the frame comes from the same origin as the webtop,
+    false otherwise.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

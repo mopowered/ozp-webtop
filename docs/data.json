@@ -39,34 +39,33 @@
             "name": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
             "modules": {},
             "classes": {
-                "directives.ozpManagedFrame": 1
+                "dashboardView.ozpManagedFrame": 1
             },
             "fors": {},
             "namespaces": {
-                "directives": 1
+                "dashboardView": 1
             }
         },
         "src/app/dashboardView/grid/grid.js": {
             "name": "src/app/dashboardView/grid/grid.js",
             "modules": {},
             "classes": {
-                "controllers.GridController": 1
+                "dashboardView.GridController": 1
             },
             "fors": {},
             "namespaces": {
-                "controllers": 1
+                "dashboardView": 1
             }
         },
-        "src/app/dashboardView/grid/gridster.js": {
-            "name": "src/app/dashboardView/grid/gridster.js",
+        "src/app/dashboardView/grid/gridsteritem.js": {
+            "name": "src/app/dashboardView/grid/gridsteritem.js",
             "modules": {},
             "classes": {
-                "directives.ozpGridster": 1,
-                "directives.gridsterItem": 1
+                "dashboardView.ozpGridsterItem": 1
             },
             "fors": {},
             "namespaces": {
-                "directives": 1
+                "dashboardView": 1
             }
         },
         "src/app/dashboardView/iframe.js": {
@@ -92,10 +91,25 @@
         "src/app/general/services/dashboardChangeMonitor.js": {
             "name": "src/app/general/services/dashboardChangeMonitor.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "general.dashboardChangeMonitor": 1
+            },
             "fors": {},
             "namespaces": {
                 "general": 1
+            }
+        },
+        "src/app/general/services/dashboardapi.js": {
+            "name": "src/app/general/services/dashboardapi.js",
+            "modules": {},
+            "classes": {
+                "apis.localStorageDashboardApiImpl": 1,
+                "apis.iwcDashboardApiImpl": 1,
+                "apis.dashboardApi": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "apis": 1
             }
         },
         "src/app/general/services/localstorage.js": {
@@ -110,14 +124,16 @@
         "src/app/general/services/utilities.js": {
             "name": "src/app/general/services/utilities.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "general.Utiliites": 1
+            },
             "fors": {},
             "namespaces": {
                 "general": 1
             }
         },
-        "src/app/general/shortenText.js": {
-            "name": "src/app/general/shortenText.js",
+        "src/app/general/elliptical.js": {
+            "name": "src/app/general/elliptical.js",
             "modules": {},
             "classes": {
                 "general.elliptical": 1
@@ -132,6 +148,7 @@
             "modules": {
                 "ozpWebtopApp": 1,
                 "ozpWebtopApp.general": 1,
+                "ozpWebtopApp.ozpIwcClient": 1,
                 "ozpWebtopApp.userSettings": 1,
                 "ozpWebtopApp.apis": 1,
                 "ozpWebtopApp.components": 1,
@@ -151,17 +168,21 @@
             "classes": {
                 "components.ozpButton": 1,
                 "components.ozpIcon": 1,
-                "directives.ozpManagedFrame": 1,
-                "controllers.GridController": 1,
-                "directives.ozpGridster": 1,
-                "directives.gridsterItem": 1,
+                "dashboardView.ozpManagedFrame": 1,
+                "dashboardView.GridController": 1,
+                "dashboardView.ozpGridsterItem": 1,
                 "dashboardView.IframeController": 1,
+                "general.dashboardChangeMonitor": 1,
+                "apis.localStorageDashboardApiImpl": 1,
+                "apis.iwcDashboardApiImpl": 1,
+                "apis.dashboardApi": 1,
+                "general.Utiliites": 1,
                 "general.elliptical": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "src/app/general/shortenText.js",
+            "file": "src/app/general/elliptical.js",
             "line": 3,
             "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps the Webtop.",
             "example": [
@@ -189,8 +210,19 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 63,
+            "line": 70,
             "description": "General utilities for use in Webtop. Includes some services and other fairly generic \ncapabilities."
+        },
+        "ozpWebtopApp.ozpIwcClient": {
+            "name": "ozpWebtopApp.ozpIwcClient",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 79,
+            "description": "Provides an OZP IWC client using a Promises to indicate valid connection"
         },
         "ozpWebtopApp.userSettings": {
             "name": "ozpWebtopApp.userSettings",
@@ -200,7 +232,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 71,
+            "line": 86,
             "description": "The modal encompassing user settings functionality.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -214,7 +246,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 79,
+            "line": 94,
             "description": "APIs retrieve and send data to places external to the Webtop.",
             "requires": [
                 "ozpWebtopApp.general"
@@ -228,7 +260,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 87,
+            "line": 103,
             "description": "Reusable components for the Webtop."
         },
         "ozpWebtopApp.dashboardToolbar": {
@@ -239,7 +271,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 94,
+            "line": 111,
             "description": "The dashboard toolbar component shown in the Webtop.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -253,7 +285,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 102,
+            "line": 119,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -268,7 +300,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 111,
+            "line": 128,
             "description": "The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -306,65 +338,141 @@
             "description": "ozpIcon Renders an icon as an anchor. It has an image on top and text below.",
             "is_constructor": 1
         },
-        "directives.ozpManagedFrame": {
-            "name": "directives.ozpManagedFrame",
-            "shortname": "directives.ozpManagedFrame",
+        "dashboardView.ozpManagedFrame": {
+            "name": "dashboardView.ozpManagedFrame",
+            "shortname": "dashboardView.ozpManagedFrame",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
             "module": "ozpWebtopApp",
-            "namespace": "directives",
+            "namespace": "dashboardView",
             "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
             "line": 3,
-            "description": "ozpManagedFrame includes an html document in the webtop",
-            "is_constructor": 1
+            "description": "Used to include an html document in the webtop. If the html in question is from a different \norigin than the webtop, then an iframe will be used. If the html is from the same origin as\nthe webtop, a \"frame\" (div) will be used.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "compareUrl",
+                    "description": "the URL comparison service",
+                    "type": "Function"
+                },
+                {
+                    "name": "$http",
+                    "description": "the Angular HTTP service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$compile",
+                    "description": "the Angular compile service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$document",
+                    "description": "the Angular document service",
+                    "type": "Object"
+                },
+                {
+                    "name": "dashboardApi",
+                    "description": "the API for dashboard information {{#crossLink \"dashboardApi\"}}{{/crossLink}}",
+                    "type": "Object"
+                }
+            ]
         },
-        "controllers.GridController": {
-            "name": "controllers.GridController",
-            "shortname": "controllers.GridController",
+        "dashboardView.GridController": {
+            "name": "dashboardView.GridController",
+            "shortname": "dashboardView.GridController",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
             "module": "ozpWebtopApp",
-            "namespace": "controllers",
+            "namespace": "dashboardView",
             "file": "src/app/dashboardView/grid/grid.js",
             "line": 3,
             "description": "GridController retrieves the state of a number of tiles and binds it to an\nAngular scope.",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": "an Angular scope",
+                    "type": "Object"
+                },
+                {
+                    "name": "$rootScope",
+                    "description": "the Angular root scope",
+                    "type": "Object"
+                },
+                {
+                    "name": "$location",
+                    "description": "the Angular location service",
+                    "type": "Object"
+                },
+                {
+                    "name": "dashboardApi",
+                    "description": "the API for dashboard information",
+                    "type": "Object"
+                },
+                {
+                    "name": "marketplaceApi",
+                    "description": "the API for marketplace application information",
+                    "type": "Object"
+                },
+                {
+                    "name": "dashboardChangeMonitor",
+                    "description": "the service that monitors dashboard changes",
+                    "type": "Object"
+                }
+            ]
         },
-        "directives.ozpGridster": {
-            "name": "directives.ozpGridster",
-            "shortname": "directives.ozpGridster",
+        "dashboardView.ozpGridsterItem": {
+            "name": "dashboardView.ozpGridsterItem",
+            "shortname": "dashboardView.ozpGridsterItem",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
             "module": "ozpWebtopApp",
-            "namespace": "directives",
-            "file": "src/app/dashboardView/grid/gridster.js",
+            "namespace": "dashboardView",
+            "file": "src/app/dashboardView/grid/gridsteritem.js",
             "line": 3,
-            "description": "ozpGridster is a wrapper around a 'ul' element used to manage the grid layout.",
-            "is_constructor": 1
-        },
-        "directives.gridsterItem": {
-            "name": "directives.gridsterItem",
-            "shortname": "directives.gridsterItem",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtopApp",
-            "namespace": "directives",
-            "file": "src/app/dashboardView/grid/gridster.js",
-            "line": 12,
-            "description": "gridsterItem is a wrapper around a tile in the grid",
-            "is_constructor": 1
+            "description": "ozpGridsterItem is a Angular directive and a wrapper around a tile in the grid",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$compile",
+                    "description": "the Angular compile service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$http",
+                    "description": "the Angular HTTP service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$templateCache",
+                    "description": "the Angular template cache",
+                    "type": "Object"
+                },
+                {
+                    "name": "$timeout",
+                    "description": "the Angular timeout service",
+                    "type": "Object"
+                },
+                {
+                    "name": "compareUrl",
+                    "description": "the compareUrl service {{#crossLink \"compareUrl\"}}{{/crossLink}}",
+                    "type": "Function"
+                },
+                {
+                    "name": "dashboardApi",
+                    "description": "the dashboard API service {{#crossLink \"dashboardApi\"}}{{/crossLink}}",
+                    "type": "Object"
+                }
+            ]
         },
         "dashboardView.IframeController": {
             "name": "dashboardView.IframeController",
@@ -391,6 +499,98 @@
                 }
             ]
         },
+        "general.dashboardChangeMonitor": {
+            "name": "general.dashboardChangeMonitor",
+            "shortname": "general.dashboardChangeMonitor",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "general",
+            "file": "src/app/general/services/dashboardChangeMonitor.js",
+            "line": 3,
+            "description": "Broadcast messages down $rootScope when the current dashboard or dashboard\nlayout changes",
+            "is_constructor": 1
+        },
+        "apis.localStorageDashboardApiImpl": {
+            "name": "apis.localStorageDashboardApiImpl",
+            "shortname": "apis.localStorageDashboardApiImpl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "apis",
+            "file": "src/app/general/services/dashboardapi.js",
+            "line": 744,
+            "description": "Angular service which provides a local storage interface to the dashboard api.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$http",
+                    "description": "The AngularJS HTTP service",
+                    "type": "Object"
+                },
+                {
+                    "name": "LocalStorage",
+                    "description": "the local storage service",
+                    "type": "Object"
+                },
+                {
+                    "name": "Utilities",
+                    "description": "the utilites",
+                    "type": "Object"
+                }
+            ]
+        },
+        "apis.iwcDashboardApiImpl": {
+            "name": "apis.iwcDashboardApiImpl",
+            "shortname": "iwcDashboardApiImpl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "apis",
+            "file": "src/app/general/services/dashboardapi.js",
+            "line": 763,
+            "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store and retrieve\ndashboards.",
+            "is_constructor": 1
+        },
+        "apis.dashboardApi": {
+            "name": "apis.dashboardApi",
+            "shortname": "dashboardApi",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "apis",
+            "file": "src/app/general/services/dashboardapi.js",
+            "line": 779,
+            "description": "Angular service which provides an abstraction of the implementations used to store and retrieve\ndashboard information.",
+            "is_constructor": 1
+        },
+        "general.Utiliites": {
+            "name": "general.Utiliites",
+            "shortname": "general.Utiliites",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "general",
+            "file": "src/app/general/services/utilities.js",
+            "line": 3,
+            "description": "Utility functions",
+            "is_constructor": 1
+        },
         "general.elliptical": {
             "name": "general.elliptical",
             "shortname": "general.elliptical",
@@ -401,7 +601,7 @@
             "extension_for": [],
             "module": "ozpWebtopApp",
             "namespace": "general",
-            "file": "src/app/general/shortenText.js",
+            "file": "src/app/general/elliptical.js",
             "line": 3,
             "description": "An Angular Filter to truncate a string of text and add an ellipsis, if\ndesired by the state",
             "static": 1,
@@ -435,7 +635,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 12,
+            "line": 20,
             "description": "Decides which template to use.",
             "itemtype": "method",
             "name": "getTemplate",
@@ -448,8 +648,98 @@
                     "type": "Boolean"
                 }
             ],
-            "class": "directives.ozpManagedFrame",
-            "namespace": "directives"
+            "class": "dashboardView.ozpManagedFrame",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 127,
+            "description": "Calculates the size of a frame, saves it, and sends a gridSizeChanged\n message",
+            "params": [
+                {
+                    "name": "frameId",
+                    "description": "Id of the frame to update",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "fulfilled with boolean true if frame was updated\n                    successfully",
+                "type": "Promise"
+            },
+            "class": "dashboardView.GridController",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 161,
+            "description": "Reloads the current dashboard",
+            "return": {
+                "description": "Promise fulfilled with Boolean, true if dashboard was\n                   found",
+                "type": "Promise"
+            },
+            "class": "dashboardView.GridController",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 200,
+            "description": "Update a single frame after a change (move or resize) has occurred",
+            "params": [
+                {
+                    "name": "frame",
+                    "description": "The frame to update",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Promise fulfilled with the frame id that was updated",
+                "type": "Promise"
+            },
+            "class": "dashboardView.GridController",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 220,
+            "description": "Update all frames after the user finishes moving or resizing a frame",
+            "class": "dashboardView.GridController",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 291,
+            "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
+            "params": [
+                {
+                    "name": "frame",
+                    "description": "The frame for which to calculate size",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "height and width",
+                "type": "Object"
+            },
+            "class": "dashboardView.GridController",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 331,
+            "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
+            "params": [
+                {
+                    "name": "frameId",
+                    "description": "The id of the frame for which to update size",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "widget size (height and width) and the frame id",
+                "type": "Object"
+            },
+            "class": "dashboardView.GridController",
+            "namespace": "dashboardView"
         },
         {
             "file": "src/app/general/services/compareurl.js",
@@ -457,6 +747,7 @@
             "description": "compareUrl compares the current location of the webtop to a specified frame URL",
             "itemtype": "method",
             "name": "compareUrl",
+            "static": 1,
             "params": [
                 {
                     "name": "frameUrl",
@@ -468,12 +759,12 @@
                 "description": "true if the url represents the same origin as the webtop, false otherwise",
                 "type": "Boolean"
             },
-            "class": "general.elliptical",
+            "class": "general.dashboardChangeMonitor",
             "namespace": "ozpWebtopApp.general"
         },
         {
             "file": "src/app/general/services/compareurl.js",
-            "line": 37,
+            "line": 38,
             "description": "An internal method to infer the port based on other information provided",
             "itemtype": "method",
             "name": "inferPort",
@@ -486,50 +777,70 @@
                     "type": "Object"
                 }
             ],
-            "class": "general.elliptical",
+            "class": "general.dashboardChangeMonitor",
             "namespace": "ozpWebtopApp.general"
-        },
-        {
-            "file": "src/app/general/services/dashboardChangeMonitor.js",
-            "line": 3,
-            "description": "Broadcast messages down $rootScope when the current dashboard or dashboard\nlayout changes",
-            "is_constructor": 1,
-            "class": "general.elliptical",
-            "namespace": "general"
         },
         {
             "file": "src/app/general/services/localstorage.js",
             "line": 3,
             "description": "Provides a simpler interface to the browser's localStorage",
             "is_constructor": 1,
-            "class": "general.elliptical",
-            "namespace": "general"
-        },
-        {
-            "file": "src/app/general/services/utilities.js",
-            "line": 3,
-            "description": "Utility functions",
-            "is_constructor": 1,
-            "class": "general.elliptical",
+            "class": "general.Utiliites",
             "namespace": "general"
         }
     ],
     "warnings": [
         {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/dashboardView/grid/grid.js:127"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/dashboardView/grid/grid.js:161"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/dashboardView/grid/grid.js:200"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/dashboardView/grid/grid.js:291"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/dashboardView/grid/grid.js:331"
+        },
+        {
             "message": "Missing item type\nChromeController aids the ozpChrome directive in knowing its location (grid or desktop).",
             "line": " src/app/components/chrome/chromecontroller.js:3"
         },
         {
-            "message": "Missing item type\nBroadcast messages down $rootScope when the current dashboard or dashboard\nlayout changes",
-            "line": " src/app/general/services/dashboardChangeMonitor.js:3"
+            "message": "Missing item type\nCalculates the size of a frame, saves it, and sends a gridSizeChanged\n message",
+            "line": " src/app/dashboardView/grid/grid.js:127"
+        },
+        {
+            "message": "Missing item type\nReloads the current dashboard",
+            "line": " src/app/dashboardView/grid/grid.js:161"
+        },
+        {
+            "message": "Missing item type\nUpdate a single frame after a change (move or resize) has occurred",
+            "line": " src/app/dashboardView/grid/grid.js:200"
+        },
+        {
+            "message": "Missing item type\nUpdate all frames after the user finishes moving or resizing a frame",
+            "line": " src/app/dashboardView/grid/grid.js:220"
+        },
+        {
+            "message": "Missing item type\nCalculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
+            "line": " src/app/dashboardView/grid/grid.js:291"
+        },
+        {
+            "message": "Missing item type\nUpdate the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
+            "line": " src/app/dashboardView/grid/grid.js:331"
         },
         {
             "message": "Missing item type\nProvides a simpler interface to the browser's localStorage",
             "line": " src/app/general/services/localstorage.js:3"
-        },
-        {
-            "message": "Missing item type\nUtility functions",
-            "line": " src/app/general/services/utilities.js:3"
         }
     ]
 }

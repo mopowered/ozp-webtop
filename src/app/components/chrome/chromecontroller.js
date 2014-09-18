@@ -1,39 +1,48 @@
 'use strict';
-angular.module('ozpWebtopApp.components').controller('ChromeController', [
-  '$scope',
-  '$rootScope',
-  'dashboardApi',
-  'dashboardChangeMonitor',
-  function ($scope, $rootScope, dashboardApi, dashboardChangeMonitor) {
-    dashboardChangeMonitor.run();
-    $scope.$on('dashboardChange', function (event, dashboardChange) {
-      if (dashboardChange.layout === 'grid') {
-        $scope.isGrid = true;
-      } else {
-        $scope.isGrid = false;
-      }
+
+/**
+ * ChromeController aids the ozpChrome directive in knowing its location (grid or desktop).
+ */
+angular.module('ozpWebtopApp.components')
+.controller('ChromeController', function ($scope, $rootScope, dashboardApi, dashboardChangeMonitor) {
+
+  // register to receive notifications if dashboard changes
+  dashboardChangeMonitor.run();
+
+  $scope.$on('dashboardChange', function(event, dashboardChange) {
+    // Determine if chrome is being used in the grid view
+    if (dashboardChange.layout === 'grid') {
+      $scope.isGrid = true;
+    } else {
+      $scope.isGrid = false;
+    }
+  });
+
+  $scope.isDisabled = function(e){
+
+    dashboardApi.removeFrame(e.id).then(function() {
+      $rootScope.$broadcast('dashboard-change');
+    }).catch(function(error) {
+      console.log('should not have happened: ' + error);
     });
-    $scope.isDisabled = function (e) {
-      for (var i = 0; i < $rootScope.activeFrames.length; i++) {
-        if ($rootScope.activeFrames[i].id.indexOf(e) !== -1) {
-          $rootScope.activeFrames.splice(i, 1);
-        }
-      }
-      dashboardApi.removeFrame($scope.frame.id);
-    };
-    $scope.minimizeFrame = function (e) {
-      for (var i = 0; i < $rootScope.activeFrames.length; i++) {
-        if ($rootScope.activeFrames[i].id === e.id) {
-          if ($rootScope.activeFrames[i].isMinimized === false || !$rootScope.activeFrames[i].isMinimized) {
-            $rootScope.activeFrames[i].isMinimized = true;
-          } else {
-            $rootScope.activeFrames[i].isMinimized = false;
-          }
-        }
-      }
-    };
-    $scope.maximizeFrame = function () {
-      console.log('someone wants to maximize!');
-    };
-  }
-]);
+
+  };
+
+  $scope.minimizeFrame = function(e){
+    dashboardApi.toggleFrameKey(e.id, 'isMinimized').then(function() {
+      $rootScope.$broadcast('dashboard-change');
+    }).catch(function(error) {
+      console.log('should not have happened: ' + error);
+    });
+
+  };
+
+  $scope.maximizeFrame = function(e){
+    dashboardApi.toggleFrameKey(e.id, 'isMaximized').then(function() {
+      $rootScope.$broadcast('dashboard-change');
+    }).catch(function(error) {
+      console.log('should not have happened: ' + error);
+    });
+  };
+
+});

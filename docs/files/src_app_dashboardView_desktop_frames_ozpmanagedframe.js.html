@@ -41,21 +41,29 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
+            
+                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+            
+                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
             
                 <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
             
-                <li><a href="../classes/controllers.GridController.html">controllers.GridController</a></li>
+                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
             
                 <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
             
-                <li><a href="../classes/directives.gridsterItem.html">directives.gridsterItem</a></li>
+                <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
             
-                <li><a href="../classes/directives.ozpGridster.html">directives.ozpGridster</a></li>
+                <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
-                <li><a href="../classes/directives.ozpManagedFrame.html">directives.ozpManagedFrame</a></li>
+                <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
             
             </ul>
 
@@ -74,6 +82,8 @@
                 <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.ozpIwcClient.html">ozpWebtopApp.ozpIwcClient</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
             
@@ -119,14 +129,22 @@
 &#x27;use strict&#x27;;
 
 /**
- * ozpManagedFrame includes an html document in the webtop
+ * Used to include an html document in the webtop. If the html in question is from a different 
+ * origin than the webtop, then an iframe will be used. If the html is from the same origin as
+ * the webtop, a &quot;frame&quot; (div) will be used. 
  *
- * @namespace directives
+ * @namespace dashboardView
  * @class ozpManagedFrame
  * @constructor
+ * @param {Function} compareUrl the URL comparison service
+ * @param {Object} $http the Angular HTTP service
+ * @param {Object} $compile the Angular compile service
+ * @param {Object} $document the Angular document service
+ * @param {Object} dashboardApi the API for dashboard information {{#crossLink &quot;dashboardApi&quot;}}{{/crossLink}}
  */
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 .directive(&#x27;ozpManagedFrame&#x27;, function (compareUrl, $http, $compile, $document, dashboardApi) {
+  
   /**
    * Decides which template to use.
    *
@@ -168,6 +186,12 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
       // React to a mousedown and allow the element to move
       element.on(&#x27;mousedown&#x27;, function(event) {
+        // TODO: find a more maintainable way?
+        // Ignore click event if we clicked a button
+        if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
+          event.preventDefault();
+          return;
+        }
         // Bring frame to foreground
         if (scope.frame.desktopLayout.zIndex &lt;= scope.max.zIndex) {
           scope.frame.desktopLayout.zIndex = scope.max.zIndex + 1;
@@ -176,7 +200,13 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
           element.css({
             zIndex: scope.frame.desktopLayout.zIndex
           });
-          dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex);
+          dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex).then(function(update) {
+            if (!update) {
+              console.log(&#x27;Error updating desktop frame&#x27;);
+            }
+          }).catch(function(error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
         }
 
         // Prevent default dragging of selected content
@@ -198,6 +228,12 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       }
 
       function mouseup() {
+        // TODO: find a more maintainable way?
+        // Ignore click event if we clicked a button
+        if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
+          event.preventDefault();
+          return;
+        }
         $document.off(&#x27;mousemove&#x27;, mousemove);
         $document.off(&#x27;mouseup&#x27;, mouseup);
         dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex);

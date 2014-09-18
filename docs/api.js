@@ -1,13 +1,17 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "apis.dashboardApi",
+        "apis.iwcDashboardApiImpl",
+        "apis.localStorageDashboardApiImpl",
         "components.ozpButton",
         "components.ozpIcon",
-        "controllers.GridController",
+        "dashboardView.GridController",
         "dashboardView.IframeController",
-        "directives.gridsterItem",
-        "directives.ozpGridster",
-        "directives.ozpManagedFrame",
+        "dashboardView.ozpGridsterItem",
+        "dashboardView.ozpManagedFrame",
+        "general.Utiliites",
+        "general.dashboardChangeMonitor",
         "general.elliptical"
     ],
     "modules": [
@@ -18,6 +22,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtopApp.dashboardToolbar",
         "ozpWebtopApp.dashboardView",
         "ozpWebtopApp.general",
+        "ozpWebtopApp.ozpIwcClient",
         "ozpWebtopApp.userSettings"
     ],
     "allModules": [
@@ -55,6 +60,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtopApp.general",
             "name": "ozpWebtopApp.general",
             "description": "General utilities for use in Webtop. Includes some services and other fairly generic \ncapabilities."
+        },
+        {
+            "displayName": "ozpWebtopApp.ozpIwcClient",
+            "name": "ozpWebtopApp.ozpIwcClient",
+            "description": "Provides an OZP IWC client using a Promises to indicate valid connection"
         },
         {
             "displayName": "ozpWebtopApp.userSettings",
