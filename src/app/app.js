@@ -1,14 +1,18 @@
 'use strict';
 
 /**
- * Top level module of the Webtop. When declared in an HTML file, it bootstraps the Webtop.
+ * Top level module of the Webtop. When declared in an HTML file, it bootstraps
+ * the Webtop.
  *
  * @example 
  *     <body ng-app="ozpWebtopApp"> ... </body>
  *
  * @module ozpWebtopApp
+ * @requires ozpWebtopApp.constants
  * @requires ozpWebtopApp.general
+ * @requires ozpWebtopApp.ozpIwcClient
  * @requires ozpWebtopApp.apis
+ * @requires ozpWebtopApp.appLauncher
  * @requires ozpWebtopApp.components
  * @requires ozpWebtopApp.appToolbar
  * @requires ozpWebtopApp.dashboardToolbar
@@ -17,6 +21,7 @@
  * @requires ui.router
  * @requires ui.bootstrap
  * @requires gridster
+ * @requires ozpIwcAngular
  * @requires ozpClassification
  */
 angular.module( 'ozpWebtopApp', [
@@ -26,6 +31,7 @@ angular.module( 'ozpWebtopApp', [
   'ozpWebtopApp.general',
   'ozpWebtopApp.ozpIwcClient',
   'ozpWebtopApp.apis',
+  'ozpWebtopApp.appLauncher',
   'ozpWebtopApp.components',
   'ozpWebtopApp.dashboardToolbar',
   'ozpWebtopApp.appToolbar',
@@ -44,44 +50,75 @@ angular.module( 'ozpWebtopApp', [
     .state('grid', {
       url: '/grid/{dashboardId}',
       templateUrl: 'dashboardView/grid/grid.tpl.html',
-      controller: 'GridController'
+      controller: 'GridCtrl'
     })
     .state('desktop', {
       url: '/desktop/{dashboardId}',
       templateUrl: 'dashboardView/desktop/desktop.tpl.html',
-      controller: 'DesktopController'
+      controller: 'DesktopCtrl'
+    })
+    .state('launchApp', {
+      url: '/launch/{appId}',
+      controller: 'AppLauncherCtrl'
     });
 
+    // TODO: will need a new default when grid ids are changed to uuids
     $urlRouterProvider.otherwise('/grid/0');
   })
 
-.run( function run ($rootScope, dashboardApi, marketplaceApi, userSettingsApi) {
-    // create example marketplace and dashboard resources
-    marketplaceApi.createExampleMarketplace();
-    //console.log('attempting to create example dashboards from app.js');
-    dashboardApi.createExampleDashboards().then(function() {
-      //console.log('created example dashboards from app.js');
-    });
-    // create example user settings
-    userSettingsApi.createExampleUserSettings();
-    //$rootScope.$apply();
+.run( function run ($rootScope, dashboardApi, marketplaceApi, userSettingsApi,
+                    useIwc) {
+
+    // if using LocalStorage, generate sample data up front
+    if (!useIwc) {
+      // create example marketplace and dashboard resources
+      marketplaceApi.createExampleMarketplace();
+      //console.log('attempting to create example dashboards from app.js');
+      dashboardApi.createExampleDashboards().then(function() {
+        //console.log('created example dashboards from app.js');
+      });
+      // create example user settings
+      userSettingsApi.createExampleUserSettings().then(function() {
+        // created example user settings
+      });
+    }
+
 });
 
 /**
- * General utilities for use in Webtop. Includes some services and other fairly generic 
- * capabilities.
+ * Constants used throughout the application
  *
- * @module ozpWebtopApp.general
+ * @module ozpWebtopApp.constants
  */
 angular.module('ozpWebtopApp.constants', []);
-angular.module('ozpWebtopApp.general', ['ozpWebtopApp.constants']);
 
 /**
  * Provides an OZP IWC client using a Promises to indicate valid connection
  *
  * @module ozpWebtopApp.ozpIwcClient
+ * @requires ozpIwcAngular
+ * @requires ozpWebtopApp.constants
  */
-angular.module('ozpWebtopApp.ozpIwcClient', ['ozpIwcAngular', 'ozpWebtopApp.constants']);
+angular.module('ozpWebtopApp.ozpIwcClient', ['ozpIwcAngular',
+  'ozpWebtopApp.constants']);
+
+/**
+ * General utilities for use in Webtop. Includes some services and other fairly
+ * generic capabilities.
+ *
+ * @module ozpWebtopApp.general
+ * @requires ozpWebtopApp.constants
+ */
+angular.module('ozpWebtopApp.general', ['ozpWebtopApp.constants']);
+
+/**
+ * APIs retrieve and send data to places external to the Webtop.
+ *
+ * @module ozpWebtopApp.apis
+ * @requires ozpWebtopApp.general
+ */
+angular.module('ozpWebtopApp.apis', ['ozpIwcAngular',
+  'ozpWebtopApp.ozpIwcClient', 'ozpWebtopApp.general']);
 
 /**
  * The modal encompassing user settings functionality.
@@ -92,21 +129,18 @@ angular.module('ozpWebtopApp.ozpIwcClient', ['ozpIwcAngular', 'ozpWebtopApp.cons
 angular.module('ozpWebtopApp.userSettings', ['ozpWebtopApp.apis']);
 
 /**
- * APIs retrieve and send data to places external to the Webtop.
- *
- * @module ozpWebtopApp.apis
- * @requires ozpWebtopApp.general
- */
-angular.module('ozpWebtopApp.apis', ['ozpIwcAngular', 'ozpWebtopApp.constants',
-  'ozpWebtopApp.ozpIwcClient', 'ozpWebtopApp.general']);
-
-/**
  * Reusable components for the Webtop.
  *
  * @module ozpWebtopApp.components
  */
-
 angular.module('ozpWebtopApp.components', []);
+
+/**
+ * Launches apps from other sources
+ *
+ * @module ozpWebtopApp.appLauncher
+ */
+angular.module('ozpWebtopApp.appLauncher', ['ui.router', 'ozpWebtopApp.apis']);
 
 /**
  * The dashboard toolbar component shown in the Webtop.
@@ -134,3 +168,19 @@ angular.module('ozpWebtopApp.appToolbar', ['ui.router', 'ozpWebtopApp.apis']);
 angular.module('ozpWebtopApp.dashboardView', ['ozpIwcAngular', 'ozpWebtopApp.apis']);
 
 
+// TODO: cleanup and document these messages used throughout the application
+/*
+  Messages defined throughout the application:
+
+   dashboardChange:
+
+   dashboard-change:
+
+   userSettings-change:
+
+   userSettingsChanged:
+
+   launchSettingsModal:
+
+   gridSizeChanged:
+ */

@@ -41,7 +41,7 @@ function generalDashboardModel(persistStrategy, Utilities) {
       });
     },
     _setDashboardData: function(dashboardData) {
-      return persistStrategy._setDashboardData(dashboardData).then(function(response) {
+      return persistStrategy.setDashboardData(dashboardData).then(function(response) {
         return response;
       });
     },
@@ -491,6 +491,15 @@ function generalDashboardModel(persistStrategy, Utilities) {
         return newId;
       });
     },
+    // Get the user's default dashboard
+    getDefaultDashboard: function() {
+      var that = this;
+      return this.getDashboardData().then(function(dashboardData) {
+        return that.getDashboardById(dashboardData.defaultDashboard);
+      }).catch(function(error) {
+        console.log('should not have happened: ' + error);
+      });
+    },
     createExampleDashboards: function() {
       // TODO: Originally this object was placed in a separate json file and fetched
       // via http, but that led to all sorts of issues with testing.
@@ -751,8 +760,8 @@ function generalDashboardModel(persistStrategy, Utilities) {
  * @param {Object} LocalStorage the local storage service
  * @param {Object} Utilities the utilites
  */
-apis.service('dashboardModelLocalStorage', function(dashboardLocalStorageInterface, Utilities) {
-  var model = generalDashboardModel(dashboardLocalStorageInterface, Utilities);
+apis.service('dashboardModelLocalStorage', function(localStorageInterface, Utilities) {
+  var model = generalDashboardModel(localStorageInterface, Utilities);
   for (var prop in model) {
     if (model.hasOwnProperty(prop)) {
       this[prop] = model[prop];
@@ -767,8 +776,8 @@ apis.service('dashboardModelLocalStorage', function(dashboardLocalStorageInterfa
  * @class iwcDashboardApiImpl
  * @constructor
  */
-apis.service('dashboardModelIwc', function(dashboardIwcInterface, Utilities) {
-  var model = generalDashboardModel(dashboardIwcInterface, Utilities);
+apis.service('dashboardModelIwc', function(iwcInterface, Utilities) {
+  var model = generalDashboardModel(iwcInterface, Utilities);
   for (var prop in model) {
     if (model.hasOwnProperty(prop)) {
       this[prop] = model[prop];

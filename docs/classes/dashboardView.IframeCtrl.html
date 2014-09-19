@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>dashboardView.GridController - ozpwebtop</title>
+    <title>dashboardView.IframeCtrl - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -47,13 +47,17 @@
             
                 <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
             
+                <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
+            
+                <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
             
                 <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
             
-                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
+                <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
-                <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
+                <li><a href="../classes/dashboardView.IframeCtrl.html">dashboardView.IframeCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
             
@@ -73,9 +77,13 @@
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
             
+                <li><a href="../modules/ozpWebtopApp.appLauncher.html">ozpWebtopApp.appLauncher</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.constants.html">ozpWebtopApp.constants</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
             
@@ -122,7 +130,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>dashboardView.GridController Class</h1>
+                        <h1>dashboardView.IframeCtrl Class</h1>
 <div class="box meta">
     
 
@@ -130,7 +138,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_dashboardView_grid_grid.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:3</code></a>
+            Defined in: <a href="../files/src_app_dashboardView_iframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;iframe.js:3</code></a>
         </div>
     
 
@@ -146,16 +154,15 @@
 
 
 <div class="box intro">
-    <p>GridController retrieves the state of a number of tiles and binds it to an
-Angular scope.</p>
+    <p>IframeCtrl ensures that a widget can be properly displayed in an iframe.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_dashboardView.GridController" class="method item">
-    <h3 class="name"><code>dashboardView.GridController</code></h3>
+        <div id="method_dashboardView.IframeCtrl" class="method item">
+    <h3 class="name"><code>dashboardView.IframeCtrl</code></h3>
 
     
         <div class="args">
@@ -169,31 +176,7 @@ Angular scope.</p>
             
                 <li class="arg">
                     
-                        <code>$rootScope</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>$location</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>dashboardApi</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>marketplaceApi</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>dashboardChangeMonitor</code>
+                        <code>$sce</code>
                     
                 </li>
             
@@ -226,7 +209,7 @@ Angular scope.</p>
             
         
         
-        <a href="../files/src_app_dashboardView_grid_grid.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:3</code></a>
+        <a href="../files/src_app_dashboardView_iframe.js.html#l3"><code>src&#x2F;app&#x2F;dashboardView&#x2F;iframe.js:3</code></a>
         
         </p>
 
@@ -255,7 +238,7 @@ Angular scope.</p>
                     
 
                     <div class="param-description">
-                        <p>an Angular scope</p>
+                        <p>An Angular scope</p>
 
                     </div>
 
@@ -264,78 +247,14 @@ Angular scope.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">$rootScope</code>
+                        <code class="param-name">$sce</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the Angular root scope</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">$location</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the Angular location service</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">dashboardApi</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the API for dashboard information</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">marketplaceApi</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the API for marketplace application information</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">dashboardChangeMonitor</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the service that monitors dashboard changes</p>
+                        <p>The Angular service for Strict Contextual Escaping - <a href="https://docs.angularjs.org/api/ng/service/$sce">API Docs</a></p>
 
                     </div>
 

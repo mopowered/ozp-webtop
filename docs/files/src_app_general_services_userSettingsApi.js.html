@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ozpWebtopApp.general - ozpwebtop</title>
+    <title>src/app/general/services/userSettingsApi.js - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -130,48 +130,108 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ozpWebtopApp.general Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src/app/general/services/userSettingsApi.js</h1>
 
-    
-        <div class="uses">
-            Requires
-            <ul class="inline commas">
-                
-                    <li><a href="../modules/ozpWebtopApp.constants.html">ozpWebtopApp.constants</a></li>
-                
-            </ul>
-        </div>
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_app_app.js.html#l105"><code>src&#x2F;app&#x2F;app.js:105</code></a>
-        </div>
-    
+var apis = angular.module(&#x27;ozpWebtopApp.apis&#x27;);
 
-    
-</div>
+function generalUserSettingsdModel(persistStrategy) {
 
+  return {
+    getUserSettings: function() {
+      return persistStrategy.getUserSettings().then(function(response) {
+        return response;
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    updateAllUserSettings: function(userSettings) {
+      return persistStrategy.setUserSettingsData(userSettings).then(function(response) {
+        return response;
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    updateUserSettingByKey: function(key, value) {
+      var that = this;
+      return this.getUserSettings().then(function(userSettings) {
+        userSettings[key] = value;
+        return that.updateAllUserSettings(userSettings).then(function(response) {
+          return response;
+        }).catch(function(error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    },
+    createExampleUserSettings: function() {
+      var userSettings = {
+        &#x27;theme&#x27;: &#x27;dark&#x27;,
+        &#x27;autohideToolbars&#x27;: false
+      };
+      return this.updateAllUserSettings(userSettings).then(function(response) {
+        return response;
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    }
+  };
+}
 
+/**
+ * Angular service which provides a local storage interface to the userSettings api.
+ *
+ * @namespace apis
+ * @constructor
+ */
+apis.service(&#x27;userSettingsModelLocalStorage&#x27;, function(localStorageInterface) {
+  var model = generalUserSettingsdModel(localStorageInterface);
+  for (var prop in model) {
+    if (model.hasOwnProperty(prop)) {
+      this[prop] = model[prop];
+    }
+  }
+});
 
-<div class="box intro">
-    <p>General utilities for use in Webtop. Includes some services and other fairly
-generic capabilities.</p>
+/**
+ * Angular service which uses the Inter-Widget Communication (IWC) API to store
+ * and retrieve user settings.
+ *
+ * @constructor
+ */
+apis.service(&#x27;userSettingsModelIwc&#x27;, function(iwcInterface) {
+  var model = generalUserSettingsdModel(iwcInterface);
+  for (var prop in model) {
+    if (model.hasOwnProperty(prop)) {
+      this[prop] = model[prop];
+    }
+  }
+});
 
-</div>
+/**
+ * Angular service which provides an abstraction of the implementations used to
+ * store and retrieve user settings information.
+ *
+ * @class userSettingsApi
+ * @constructor
+ */
+apis.factory(&#x27;userSettingsApi&#x27;, function($injector, useIwc) {
+  if (useIwc) {
+    return $injector.get(&#x27;userSettingsModelIwc&#x27;);
+  } else if (useIwc === false){
+    return $injector.get(&#x27;userSettingsModelLocalStorage&#x27;);
 
+  }
+  else {
+    console.log(&#x27;ERROR: useIwc is undefined!&#x27;);
+  }
+});
 
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

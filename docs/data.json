@@ -50,7 +50,7 @@
             "name": "src/app/dashboardView/grid/grid.js",
             "modules": {},
             "classes": {
-                "dashboardView.GridController": 1
+                "dashboardView.GridCtrl": 1
             },
             "fors": {},
             "namespaces": {
@@ -72,7 +72,7 @@
             "name": "src/app/dashboardView/iframe.js",
             "modules": {},
             "classes": {
-                "dashboardView.IframeController": 1
+                "dashboardView.IframeCtrl": 1
             },
             "fors": {},
             "namespaces": {
@@ -121,6 +121,28 @@
                 "general": 1
             }
         },
+        "src/app/general/services/marketplaceApi.js": {
+            "name": "src/app/general/services/marketplaceApi.js",
+            "modules": {},
+            "classes": {
+                "apis.marketplaceApi": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "apis": 1
+            }
+        },
+        "src/app/general/services/userSettingsApi.js": {
+            "name": "src/app/general/services/userSettingsApi.js",
+            "modules": {},
+            "classes": {
+                "apis.userSettingsApi": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "apis": 1
+            }
+        },
         "src/app/general/services/utilities.js": {
             "name": "src/app/general/services/utilities.js",
             "modules": {},
@@ -147,11 +169,13 @@
             "name": "src/app/app.js",
             "modules": {
                 "ozpWebtopApp": 1,
-                "ozpWebtopApp.general": 1,
+                "ozpWebtopApp.constants": 1,
                 "ozpWebtopApp.ozpIwcClient": 1,
-                "ozpWebtopApp.userSettings": 1,
+                "ozpWebtopApp.general": 1,
                 "ozpWebtopApp.apis": 1,
+                "ozpWebtopApp.userSettings": 1,
                 "ozpWebtopApp.components": 1,
+                "ozpWebtopApp.appLauncher": 1,
                 "ozpWebtopApp.dashboardToolbar": 1,
                 "ozpWebtopApp.appToolbar": 1,
                 "ozpWebtopApp.dashboardView": 1
@@ -169,13 +193,15 @@
                 "components.ozpButton": 1,
                 "components.ozpIcon": 1,
                 "dashboardView.ozpManagedFrame": 1,
-                "dashboardView.GridController": 1,
+                "dashboardView.GridCtrl": 1,
                 "dashboardView.ozpGridsterItem": 1,
-                "dashboardView.IframeController": 1,
+                "dashboardView.IframeCtrl": 1,
                 "general.dashboardChangeMonitor": 1,
                 "apis.localStorageDashboardApiImpl": 1,
                 "apis.iwcDashboardApiImpl": 1,
                 "apis.dashboardApi": 1,
+                "apis.marketplaceApi": 1,
+                "apis.userSettingsApi": 1,
                 "general.Utiliites": 1,
                 "general.elliptical": 1
             },
@@ -184,13 +210,16 @@
             "tag": "module",
             "file": "src/app/general/elliptical.js",
             "line": 3,
-            "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps the Webtop.",
+            "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps\nthe Webtop.",
             "example": [
                 " \n    <body ng-app=\"ozpWebtopApp\"> ... </body>"
             ],
             "requires": [
+                "ozpWebtopApp.constants",
                 "ozpWebtopApp.general",
+                "ozpWebtopApp.ozpIwcClient",
                 "ozpWebtopApp.apis",
+                "ozpWebtopApp.appLauncher",
                 "ozpWebtopApp.components",
                 "ozpWebtopApp.appToolbar",
                 "ozpWebtopApp.dashboardToolbar",
@@ -199,7 +228,34 @@
                 "ui.router",
                 "ui.bootstrap",
                 "gridster",
+                "ozpIwcAngular",
                 "ozpClassification"
+            ]
+        },
+        "ozpWebtopApp.constants": {
+            "name": "ozpWebtopApp.constants",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 88,
+            "description": "Constants used throughout the application"
+        },
+        "ozpWebtopApp.ozpIwcClient": {
+            "name": "ozpWebtopApp.ozpIwcClient",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 95,
+            "description": "Provides an OZP IWC client using a Promises to indicate valid connection",
+            "requires": [
+                "ozpIwcAngular",
+                "ozpWebtopApp.constants"
             ]
         },
         "ozpWebtopApp.general": {
@@ -210,32 +266,10 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 70,
-            "description": "General utilities for use in Webtop. Includes some services and other fairly generic \ncapabilities."
-        },
-        "ozpWebtopApp.ozpIwcClient": {
-            "name": "ozpWebtopApp.ozpIwcClient",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 79,
-            "description": "Provides an OZP IWC client using a Promises to indicate valid connection"
-        },
-        "ozpWebtopApp.userSettings": {
-            "name": "ozpWebtopApp.userSettings",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 86,
-            "description": "The modal encompassing user settings functionality.",
+            "line": 105,
+            "description": "General utilities for use in Webtop. Includes some services and other fairly\ngeneric capabilities.",
             "requires": [
-                "ozpWebtopApp.apis"
+                "ozpWebtopApp.constants"
             ]
         },
         "ozpWebtopApp.apis": {
@@ -246,10 +280,24 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 94,
+            "line": 114,
             "description": "APIs retrieve and send data to places external to the Webtop.",
             "requires": [
                 "ozpWebtopApp.general"
+            ]
+        },
+        "ozpWebtopApp.userSettings": {
+            "name": "ozpWebtopApp.userSettings",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 123,
+            "description": "The modal encompassing user settings functionality.",
+            "requires": [
+                "ozpWebtopApp.apis"
             ]
         },
         "ozpWebtopApp.components": {
@@ -260,8 +308,19 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 103,
+            "line": 131,
             "description": "Reusable components for the Webtop."
+        },
+        "ozpWebtopApp.appLauncher": {
+            "name": "ozpWebtopApp.appLauncher",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 138,
+            "description": "Launches apps from other sources"
         },
         "ozpWebtopApp.dashboardToolbar": {
             "name": "ozpWebtopApp.dashboardToolbar",
@@ -271,7 +330,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 111,
+            "line": 145,
             "description": "The dashboard toolbar component shown in the Webtop.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -285,7 +344,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 119,
+            "line": 153,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -300,7 +359,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 128,
+            "line": 162,
             "description": "The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -380,9 +439,9 @@
                 }
             ]
         },
-        "dashboardView.GridController": {
-            "name": "dashboardView.GridController",
-            "shortname": "dashboardView.GridController",
+        "dashboardView.GridCtrl": {
+            "name": "dashboardView.GridCtrl",
+            "shortname": "dashboardView.GridCtrl",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -392,7 +451,7 @@
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/grid/grid.js",
             "line": 3,
-            "description": "GridController retrieves the state of a number of tiles and binds it to an\nAngular scope.",
+            "description": "GridCtrl retrieves the state of a number of tiles and binds it to an\nAngular scope.",
             "is_constructor": 1,
             "params": [
                 {
@@ -474,9 +533,9 @@
                 }
             ]
         },
-        "dashboardView.IframeController": {
-            "name": "dashboardView.IframeController",
-            "shortname": "dashboardView.IframeController",
+        "dashboardView.IframeCtrl": {
+            "name": "dashboardView.IframeCtrl",
+            "shortname": "dashboardView.IframeCtrl",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -486,7 +545,7 @@
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/iframe.js",
             "line": 3,
-            "description": "IframeController ensures that a widget can be properly displayed in an iframe.",
+            "description": "IframeCtrl ensures that a widget can be properly displayed in an iframe.",
             "is_constructor": 1,
             "params": [
                 {
@@ -525,7 +584,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 744,
+            "line": 753,
             "description": "Angular service which provides a local storage interface to the dashboard api.",
             "is_constructor": 1,
             "params": [
@@ -557,7 +616,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 763,
+            "line": 772,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store and retrieve\ndashboards.",
             "is_constructor": 1
         },
@@ -572,8 +631,38 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 779,
+            "line": 788,
             "description": "Angular service which provides an abstraction of the implementations used to store and retrieve\ndashboard information.",
+            "is_constructor": 1
+        },
+        "apis.marketplaceApi": {
+            "name": "apis.marketplaceApi",
+            "shortname": "marketplaceApi",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "apis",
+            "file": "src/app/general/services/marketplaceApi.js",
+            "line": 203,
+            "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve marketplace data",
+            "is_constructor": 1
+        },
+        "apis.userSettingsApi": {
+            "name": "apis.userSettingsApi",
+            "shortname": "userSettingsApi",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtopApp",
+            "namespace": "apis",
+            "file": "src/app/general/services/userSettingsApi.js",
+            "line": 79,
+            "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve user settings information.",
             "is_constructor": 1
         },
         "general.Utiliites": {
@@ -629,7 +718,7 @@
         {
             "file": "src/app/components/chrome/chromecontroller.js",
             "line": 3,
-            "description": "ChromeController aids the ozpChrome directive in knowing its location (grid or desktop).",
+            "description": "ChromeCtrl aids the ozpChrome directive in knowing its location (grid or desktop).",
             "class": "components.ozpIcon",
             "namespace": "components"
         },
@@ -653,7 +742,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 127,
+            "line": 136,
             "description": "Calculates the size of a frame, saves it, and sends a gridSizeChanged\n message",
             "params": [
                 {
@@ -666,23 +755,23 @@
                 "description": "fulfilled with boolean true if frame was updated\n                    successfully",
                 "type": "Promise"
             },
-            "class": "dashboardView.GridController",
+            "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 161,
+            "line": 170,
             "description": "Reloads the current dashboard",
             "return": {
                 "description": "Promise fulfilled with Boolean, true if dashboard was\n                   found",
                 "type": "Promise"
             },
-            "class": "dashboardView.GridController",
+            "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 200,
+            "line": 207,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "params": [
                 {
@@ -695,19 +784,19 @@
                 "description": "Promise fulfilled with the frame id that was updated",
                 "type": "Promise"
             },
-            "class": "dashboardView.GridController",
+            "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 220,
+            "line": 227,
             "description": "Update all frames after the user finishes moving or resizing a frame",
-            "class": "dashboardView.GridController",
+            "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 291,
+            "line": 298,
             "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
             "params": [
                 {
@@ -720,12 +809,12 @@
                 "description": "height and width",
                 "type": "Object"
             },
-            "class": "dashboardView.GridController",
+            "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 331,
+            "line": 338,
             "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
             "params": [
                 {
@@ -738,7 +827,7 @@
                 "description": "widget size (height and width) and the frame id",
                 "type": "Object"
             },
-            "class": "dashboardView.GridController",
+            "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
@@ -785,62 +874,110 @@
             "line": 3,
             "description": "Provides a simpler interface to the browser's localStorage",
             "is_constructor": 1,
-            "class": "general.Utiliites",
+            "class": "apis.marketplaceApi",
             "namespace": "general"
+        },
+        {
+            "file": "src/app/general/services/marketplaceApi.js",
+            "line": 172,
+            "description": "Angular service which provides a local storage interface to the marketplace\napi",
+            "is_constructor": 1,
+            "class": "apis.marketplaceApi",
+            "namespace": "apis"
+        },
+        {
+            "file": "src/app/general/services/marketplaceApi.js",
+            "line": 188,
+            "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
+            "is_constructor": 1,
+            "class": "apis.marketplaceApi",
+            "namespace": "apis"
+        },
+        {
+            "file": "src/app/general/services/userSettingsApi.js",
+            "line": 49,
+            "description": "Angular service which provides a local storage interface to the userSettings api.",
+            "is_constructor": 1,
+            "class": "apis.userSettingsApi",
+            "namespace": "apis"
+        },
+        {
+            "file": "src/app/general/services/userSettingsApi.js",
+            "line": 64,
+            "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve user settings.",
+            "is_constructor": 1,
+            "class": "apis.userSettingsApi",
+            "namespace": "apis"
         }
     ],
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:127"
+            "line": " src/app/dashboardView/grid/grid.js:136"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:161"
+            "line": " src/app/dashboardView/grid/grid.js:170"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:200"
+            "line": " src/app/dashboardView/grid/grid.js:207"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:291"
+            "line": " src/app/dashboardView/grid/grid.js:298"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:331"
+            "line": " src/app/dashboardView/grid/grid.js:338"
         },
         {
-            "message": "Missing item type\nChromeController aids the ozpChrome directive in knowing its location (grid or desktop).",
+            "message": "Missing item type\nChromeCtrl aids the ozpChrome directive in knowing its location (grid or desktop).",
             "line": " src/app/components/chrome/chromecontroller.js:3"
         },
         {
             "message": "Missing item type\nCalculates the size of a frame, saves it, and sends a gridSizeChanged\n message",
-            "line": " src/app/dashboardView/grid/grid.js:127"
+            "line": " src/app/dashboardView/grid/grid.js:136"
         },
         {
             "message": "Missing item type\nReloads the current dashboard",
-            "line": " src/app/dashboardView/grid/grid.js:161"
+            "line": " src/app/dashboardView/grid/grid.js:170"
         },
         {
             "message": "Missing item type\nUpdate a single frame after a change (move or resize) has occurred",
-            "line": " src/app/dashboardView/grid/grid.js:200"
+            "line": " src/app/dashboardView/grid/grid.js:207"
         },
         {
             "message": "Missing item type\nUpdate all frames after the user finishes moving or resizing a frame",
-            "line": " src/app/dashboardView/grid/grid.js:220"
+            "line": " src/app/dashboardView/grid/grid.js:227"
         },
         {
             "message": "Missing item type\nCalculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
-            "line": " src/app/dashboardView/grid/grid.js:291"
+            "line": " src/app/dashboardView/grid/grid.js:298"
         },
         {
             "message": "Missing item type\nUpdate the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
-            "line": " src/app/dashboardView/grid/grid.js:331"
+            "line": " src/app/dashboardView/grid/grid.js:338"
         },
         {
             "message": "Missing item type\nProvides a simpler interface to the browser's localStorage",
             "line": " src/app/general/services/localstorage.js:3"
+        },
+        {
+            "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
+            "line": " src/app/general/services/marketplaceApi.js:172"
+        },
+        {
+            "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
+            "line": " src/app/general/services/marketplaceApi.js:188"
+        },
+        {
+            "message": "Missing item type\nAngular service which provides a local storage interface to the userSettings api.",
+            "line": " src/app/general/services/userSettingsApi.js:49"
+        },
+        {
+            "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve user settings.",
+            "line": " src/app/general/services/userSettingsApi.js:64"
         }
     ]
 }

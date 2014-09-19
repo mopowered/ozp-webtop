@@ -47,13 +47,17 @@
             
                 <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
             
+                <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
+            
+                <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
             
                 <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
             
-                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
+                <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
-                <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
+                <li><a href="../classes/dashboardView.IframeCtrl.html">dashboardView.IframeCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
             
@@ -73,9 +77,13 @@
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
             
+                <li><a href="../modules/ozpWebtopApp.appLauncher.html">ozpWebtopApp.appLauncher</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.constants.html">ozpWebtopApp.constants</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
             
@@ -129,14 +137,18 @@
 &#x27;use strict&#x27;;
 
 /**
- * Top level module of the Webtop. When declared in an HTML file, it bootstraps the Webtop.
+ * Top level module of the Webtop. When declared in an HTML file, it bootstraps
+ * the Webtop.
  *
  * @example 
  *     &lt;body ng-app=&quot;ozpWebtopApp&quot;&gt; ... &lt;/body&gt;
  *
  * @module ozpWebtopApp
+ * @requires ozpWebtopApp.constants
  * @requires ozpWebtopApp.general
+ * @requires ozpWebtopApp.ozpIwcClient
  * @requires ozpWebtopApp.apis
+ * @requires ozpWebtopApp.appLauncher
  * @requires ozpWebtopApp.components
  * @requires ozpWebtopApp.appToolbar
  * @requires ozpWebtopApp.dashboardToolbar
@@ -145,6 +157,7 @@
  * @requires ui.router
  * @requires ui.bootstrap
  * @requires gridster
+ * @requires ozpIwcAngular
  * @requires ozpClassification
  */
 angular.module( &#x27;ozpWebtopApp&#x27;, [
@@ -154,6 +167,7 @@ angular.module( &#x27;ozpWebtopApp&#x27;, [
   &#x27;ozpWebtopApp.general&#x27;,
   &#x27;ozpWebtopApp.ozpIwcClient&#x27;,
   &#x27;ozpWebtopApp.apis&#x27;,
+  &#x27;ozpWebtopApp.appLauncher&#x27;,
   &#x27;ozpWebtopApp.components&#x27;,
   &#x27;ozpWebtopApp.dashboardToolbar&#x27;,
   &#x27;ozpWebtopApp.appToolbar&#x27;,
@@ -172,44 +186,75 @@ angular.module( &#x27;ozpWebtopApp&#x27;, [
     .state(&#x27;grid&#x27;, {
       url: &#x27;/grid/{dashboardId}&#x27;,
       templateUrl: &#x27;dashboardView/grid/grid.tpl.html&#x27;,
-      controller: &#x27;GridController&#x27;
+      controller: &#x27;GridCtrl&#x27;
     })
     .state(&#x27;desktop&#x27;, {
       url: &#x27;/desktop/{dashboardId}&#x27;,
       templateUrl: &#x27;dashboardView/desktop/desktop.tpl.html&#x27;,
-      controller: &#x27;DesktopController&#x27;
+      controller: &#x27;DesktopCtrl&#x27;
+    })
+    .state(&#x27;launchApp&#x27;, {
+      url: &#x27;/launch/{appId}&#x27;,
+      controller: &#x27;AppLauncherCtrl&#x27;
     });
 
+    // TODO: will need a new default when grid ids are changed to uuids
     $urlRouterProvider.otherwise(&#x27;/grid/0&#x27;);
   })
 
-.run( function run ($rootScope, dashboardApi, marketplaceApi, userSettingsApi) {
-    // create example marketplace and dashboard resources
-    marketplaceApi.createExampleMarketplace();
-    //console.log(&#x27;attempting to create example dashboards from app.js&#x27;);
-    dashboardApi.createExampleDashboards().then(function() {
-      //console.log(&#x27;created example dashboards from app.js&#x27;);
-    });
-    // create example user settings
-    userSettingsApi.createExampleUserSettings();
-    //$rootScope.$apply();
+.run( function run ($rootScope, dashboardApi, marketplaceApi, userSettingsApi,
+                    useIwc) {
+
+    // if using LocalStorage, generate sample data up front
+    if (!useIwc) {
+      // create example marketplace and dashboard resources
+      marketplaceApi.createExampleMarketplace();
+      //console.log(&#x27;attempting to create example dashboards from app.js&#x27;);
+      dashboardApi.createExampleDashboards().then(function() {
+        //console.log(&#x27;created example dashboards from app.js&#x27;);
+      });
+      // create example user settings
+      userSettingsApi.createExampleUserSettings().then(function() {
+        // created example user settings
+      });
+    }
+
 });
 
 /**
- * General utilities for use in Webtop. Includes some services and other fairly generic 
- * capabilities.
+ * Constants used throughout the application
  *
- * @module ozpWebtopApp.general
+ * @module ozpWebtopApp.constants
  */
 angular.module(&#x27;ozpWebtopApp.constants&#x27;, []);
-angular.module(&#x27;ozpWebtopApp.general&#x27;, [&#x27;ozpWebtopApp.constants&#x27;]);
 
 /**
  * Provides an OZP IWC client using a Promises to indicate valid connection
  *
  * @module ozpWebtopApp.ozpIwcClient
+ * @requires ozpIwcAngular
+ * @requires ozpWebtopApp.constants
  */
-angular.module(&#x27;ozpWebtopApp.ozpIwcClient&#x27;, [&#x27;ozpIwcAngular&#x27;, &#x27;ozpWebtopApp.constants&#x27;]);
+angular.module(&#x27;ozpWebtopApp.ozpIwcClient&#x27;, [&#x27;ozpIwcAngular&#x27;,
+  &#x27;ozpWebtopApp.constants&#x27;]);
+
+/**
+ * General utilities for use in Webtop. Includes some services and other fairly
+ * generic capabilities.
+ *
+ * @module ozpWebtopApp.general
+ * @requires ozpWebtopApp.constants
+ */
+angular.module(&#x27;ozpWebtopApp.general&#x27;, [&#x27;ozpWebtopApp.constants&#x27;]);
+
+/**
+ * APIs retrieve and send data to places external to the Webtop.
+ *
+ * @module ozpWebtopApp.apis
+ * @requires ozpWebtopApp.general
+ */
+angular.module(&#x27;ozpWebtopApp.apis&#x27;, [&#x27;ozpIwcAngular&#x27;,
+  &#x27;ozpWebtopApp.ozpIwcClient&#x27;, &#x27;ozpWebtopApp.general&#x27;]);
 
 /**
  * The modal encompassing user settings functionality.
@@ -220,21 +265,18 @@ angular.module(&#x27;ozpWebtopApp.ozpIwcClient&#x27;, [&#x27;ozpIwcAngular&#x27;
 angular.module(&#x27;ozpWebtopApp.userSettings&#x27;, [&#x27;ozpWebtopApp.apis&#x27;]);
 
 /**
- * APIs retrieve and send data to places external to the Webtop.
- *
- * @module ozpWebtopApp.apis
- * @requires ozpWebtopApp.general
- */
-angular.module(&#x27;ozpWebtopApp.apis&#x27;, [&#x27;ozpIwcAngular&#x27;, &#x27;ozpWebtopApp.constants&#x27;,
-  &#x27;ozpWebtopApp.ozpIwcClient&#x27;, &#x27;ozpWebtopApp.general&#x27;]);
-
-/**
  * Reusable components for the Webtop.
  *
  * @module ozpWebtopApp.components
  */
-
 angular.module(&#x27;ozpWebtopApp.components&#x27;, []);
+
+/**
+ * Launches apps from other sources
+ *
+ * @module ozpWebtopApp.appLauncher
+ */
+angular.module(&#x27;ozpWebtopApp.appLauncher&#x27;, [&#x27;ui.router&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
 /**
  * The dashboard toolbar component shown in the Webtop.
@@ -262,7 +304,22 @@ angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x2
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozpIwcAngular&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
 
+// TODO: cleanup and document these messages used throughout the application
+/*
+  Messages defined throughout the application:
 
+   dashboardChange:
+
+   dashboard-change:
+
+   userSettings-change:
+
+   userSettingsChanged:
+
+   launchSettingsModal:
+
+   gridSizeChanged:
+ */
     </pre>
 </div>
 

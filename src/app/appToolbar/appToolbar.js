@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module( 'ozpWebtopApp.appToolbar')
-  .controller('appToolbarCtrl', function($scope, $rootScope, $state,
+  .controller('ApplicationToolbarCtrl', function($scope, $rootScope, $state,
                                        marketplaceApi, dashboardApi,
                                        dashboardChangeMonitor, userSettingsApi) {
 
@@ -9,13 +9,18 @@ angular.module( 'ozpWebtopApp.appToolbar')
 
     $scope.appboardhide = false;
 
+    marketplaceApi.getAllApps().then(function(apps) {
+      $scope.apps = apps;
+    }).catch(function(error) {
+      console.log('should not have happened: ' + error);
+    });
+
     $scope.updateApps = function() {
       dashboardApi.getDashboards().then(function(dashboards) {
         for (var i=0; i < dashboards.length; i++) {
           if (dashboards[i].id === dashboardChangeMonitor.dashboardId) {
             $scope.frames = dashboards[i].frames;
-            var allApps = marketplaceApi.getAllApps();
-            dashboardApi.mergeApplicationData($scope.frames, allApps);
+            dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
             $scope.myPinnedApps = $scope.frames;
             $scope.layout = dashboardChangeMonitor.layout;
           }
@@ -47,7 +52,11 @@ angular.module( 'ozpWebtopApp.appToolbar')
       });
      };
 
-    $scope.myApps = marketplaceApi.getAllApps();
+    marketplaceApi.getAllApps().then(function(apps) {
+      $scope.myApps = apps;
+    }).catch(function(error) {
+      console.log('should not have happened: ' + error);
+    });
 
     $scope.appClicked = function(app) {
       // check if the app is already on the current dashboard
@@ -74,15 +83,20 @@ angular.module( 'ozpWebtopApp.appToolbar')
     };
 
     $scope.appboardhider = function() {
+      var appboardHideVal = false;
       if ((!$scope.appboardhide) || ($scope.appboardhide = false)) {
-        $scope.appboardhide = true;
-        userSettingsApi.updateUserSettingByKey('isAppboardHidden', true);
+        appboardHideVal = true;
       }
-      else {
-        $scope.appboardhide = false;
-        userSettingsApi.updateUserSettingByKey('isAppboardHidden', false);
-      }
-      $rootScope.$broadcast('userSettings-change');
+      $scope.appboardhide = appboardHideVal;
+      userSettingsApi.updateUserSettingByKey('isAppboardHidden', appboardHideVal).then(function(resp) {
+        if (resp) {
+          $rootScope.$broadcast('userSettings-change');
+        } else {
+          console.log('ERROR failed to update isAppboardHidden in user settings');
+        }
+      }).catch(function(error) {
+        console.log('should not have happened: ' + error);
+      });
     };
 
   });

@@ -2,7 +2,7 @@ angular.module('templates-app', ['appToolbar/appToolbar.tpl.html', 'components/b
 
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",
-    "<div ng-controller=\"appToolbarCtrl\">\n" +
+    "<div ng-controller=\"ApplicationToolbarCtrl\">\n" +
     "  <nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners navbar-fixed-bottom\"\n" +
     "       role=\"navigation\" ng-class=\"{true: 'hide', false: ''}[appboardhide]\">\n" +
     "    <div class=\"container-fluid\">\n" +
@@ -96,7 +96,7 @@ angular.module("components/icon/ozpicon.tpl.html", []).run(["$templateCache", fu
 
 angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardToolbar/dashboardToolbar.tpl.html",
-    "<div ng-controller=\"dashboardToolbarCtrl\">\n" +
+    "<div ng-controller=\"DashboardToolbarCtrl\">\n" +
     "  <nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
     "    no-rounded-corners\" role=\"navigation\"  ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
     "    <div class=\"container-fluid\" >\n" +
@@ -212,7 +212,7 @@ angular.module("dashboardView/templates/managedframe.tpl.html", []).run(["$templ
 angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/templates/managediframe.tpl.html",
     "<ozp-chrome></ozp-chrome>\n" +
-    "<iframe class=\"managed-iframe\" ng-controller=\"IframeController\"\n" +
+    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\"\n" +
     "  ng-src=\"{{frame.trustedUrl}}\"\n" +
     "  frameBorder=\"0\" height=\"{{styles.height}}\"\n" +
     "  width=\"{{styles.width}}\">\n" +

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('ozpWebtopApp.dashboardView')
-  .controller('DesktopController', function ($scope, $rootScope, $location, dashboardApi, marketplaceApi, dashboardChangeMonitor, userSettingsApi) {
+  .controller('DesktopCtrl', function ($scope, $rootScope, $location,
+                                       dashboardApi, marketplaceApi,
+                                       dashboardChangeMonitor, userSettingsApi) {
 
     dashboardApi.getDashboards().then(function(dashboards) {
       if (!dashboards) {
@@ -14,21 +16,30 @@ angular.module('ozpWebtopApp.dashboardView')
       console.log('should not have happened: ' + error);
     });
 
+    marketplaceApi.getAllApps().then(function(apps) {
+      $scope.apps = apps;
+    }).catch(function(error) {
+      console.log('should not have happened: ' + error);
+    });
+
     dashboardChangeMonitor.run();
 
     $scope.$on('userSettings-change', function() {
-      if (userSettingsApi.getUserSettings().isDashboardHidden === true) {
-        $scope.dashBarHidden = true;
-      }
-      else {
-        $scope.dashBarHidden = false;
-      }
-      if (userSettingsApi.getUserSettings().isAppboardHidden === true) {
-        $scope.appBarHidden = true;
-      }
-      else {
-        $scope.appBarHidden = false;
-      }
+      userSettingsApi.getUserSettings().then(function(settings) {
+        if (settings.isDashboardHidden === true) {
+          $scope.dashBarHidden = true;
+        } else {
+          $scope.dashBarHidden = false;
+        }
+
+        if (settings.isAppboardHidden === true) {
+          $scope.appBarHidden = true;
+        } else {
+          $scope.appBarHidden = false;
+        }
+      }).catch(function(error) {
+        console.log('should not have happened: ' + error);
+      });
     });
 
     $scope.$on('dashboard-change', function() {
@@ -97,7 +108,7 @@ angular.module('ozpWebtopApp.dashboardView')
                 //update the frame size so it fits inside its little widget boundary
                 //$scope.updateGridFrameSize(apiDash.frames[b].id);
                 //now quickly merge my local scope for frames with the marketplace api to get important stuff on local scope like url, image, name, etc
-                dashboardApi.mergeApplicationData($scope.frames, marketplaceApi.getAllApps());
+                dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
               }
             }
           }
@@ -135,11 +146,9 @@ angular.module('ozpWebtopApp.dashboardView')
           $scope.currentDashboardId = $scope.currentDashboard.id;
           $scope.frames = $scope.currentDashboard.frames;
 
-          // TODO: There should be a method in Marketplace to get only my apps
-          var allApps = marketplaceApi.getAllApps();
           // Merge application data (app name, icons, descriptions, url, etc)
           // with dashboard app data
-          dashboardApi.mergeApplicationData($scope.frames, allApps);
+          dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
 
           $scope.max = {};
 

@@ -47,13 +47,17 @@
             
                 <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
             
+                <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
+            
+                <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
             
                 <li><a href="../classes/components.ozpIcon.html">components.ozpIcon</a></li>
             
-                <li><a href="../classes/dashboardView.GridController.html">dashboardView.GridController</a></li>
+                <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
-                <li><a href="../classes/dashboardView.IframeController.html">dashboardView.IframeController</a></li>
+                <li><a href="../classes/dashboardView.IframeCtrl.html">dashboardView.IframeCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
             
@@ -73,9 +77,13 @@
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
             
+                <li><a href="../modules/ozpWebtopApp.appLauncher.html">ozpWebtopApp.appLauncher</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.constants.html">ozpWebtopApp.constants</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
             
@@ -129,11 +137,11 @@
 &#x27;use strict&#x27;;
 
 /**
- * GridController retrieves the state of a number of tiles and binds it to an
+ * GridCtrl retrieves the state of a number of tiles and binds it to an
  * Angular scope.
  *
  * @namespace dashboardView
- * @class GridController
+ * @class GridCtrl
  * @constructor
  * @param {Object} $scope an Angular scope
  * @param {Object} $rootScope the Angular root scope
@@ -144,7 +152,7 @@
  */
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
-.controller(&#x27;GridController&#x27;, function ($scope, $rootScope, $location,
+.controller(&#x27;GridCtrl&#x27;, function ($scope, $rootScope, $location,
                                         dashboardApi, marketplaceApi,
                                         dashboardChangeMonitor, userSettingsApi) {
 
@@ -159,6 +167,12 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
     // The applications/widgets on the grid view
     $scope.frames = [];  // to make tests happy
+
+    marketplaceApi.getAllApps().then(function(apps) {
+      $scope.apps = apps;
+    }).catch(function(error) {
+      console.log(&#x27;should not have happened: &#x27; + error);
+    });
 
     $scope.$on(&#x27;dashboard-change&#x27;, function() {
       // Make an array of old frames and new frames
@@ -211,7 +225,7 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
                   // now quickly merge my local scope for frames with the marketplace
                   // api to get important stuff on local scope like url, image, name,
                   // etc
-                  dashboardApi.mergeApplicationData($scope.frames, marketplaceApi.getAllApps());
+                  dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
                 }
               }
             }).catch(function (error) {
@@ -227,12 +241,15 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
 
     $scope.$on(&#x27;userSettings-change&#x27;, function() {
-      if (userSettingsApi.getUserSettings().isAppboardHidden === true) {
-        $scope.appBarHidden = true;
-      }
-      else {
-        $scope.appBarHidden = false;
-      }
+      userSettingsApi.getUserSettings().then(function(settings) {
+        if (settings.isAppboardHidden === true) {
+          $scope.appBarHidden = true;
+        } else {
+          $scope.appBarHidden = false;
+        }
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
     });
 
     // TODO: Originally tried sending broadcast events from dashboardChangeMonitor,
@@ -303,11 +320,9 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
         // Get frames on this dashboard
         $scope.frames = $scope.dashboard.frames;
 
-        // TODO: There should be a method in Marketplace to get only my apps
-        var allApps = marketplaceApi.getAllApps();
         // Merge application data (app name, icons, descriptions, url, etc)
         // with dashboard app data
-        dashboardApi.mergeApplicationData($scope.frames, allApps);
+        dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
 
         // calculate the size (in px) for each frame and send an update message
         $scope.frames.reduce(function (previous, current) {
