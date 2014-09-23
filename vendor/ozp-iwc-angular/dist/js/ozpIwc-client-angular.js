@@ -1,20 +1,37 @@
-angular.module('ozpIwcAngular', []).factory('ozpIwc', function () {
+angular.module('ozpIwcClient', []).factory('iwcClient', function () {
 /** @namespace */
 var ozpIwc=ozpIwc || {};
 
 /**
-	* @class
-	*/
+ * Common classes used between both the Client and the Bus.
+ * @module common
+ */
+
+/**
+ * An Event emmitter/receiver class.
+ * @class Event
+ * @namespace ozpIwc
+ */
 ozpIwc.Event=function() {
+    /**
+     * A key value store of events.
+     * @property events
+     * @type Object
+     * @default {}
+     */
 	this.events={};
 };
 
 /**
  * Registers a handler for the the event.
- * @param {string} event The name of the event to trigger on
- * @param {function} callback Function to be invoked
- * @param {object} [self] Used as the this pointer when callback is invoked.
- * @returns {object} A handle that can be used to unregister the callback via [off()]{@link ozpIwc.Event#off}
+ *
+ * @method on
+ * @param {String} event The name of the event to trigger on.
+ * @param {Function} callback Function to be invoked.
+ * @param {Object} [self] Used as the this pointer when callback is invoked.
+ *
+ * @returns {Object} A handle that can be used to unregister the callback via
+ * {{#crossLink "ozpIwc.Event/off:method"}}{{/crossLink}}
  */
 ozpIwc.Event.prototype.on=function(event,callback,self) {
 	var wrapped=callback;
@@ -31,8 +48,10 @@ ozpIwc.Event.prototype.on=function(event,callback,self) {
 
 /**
  * Unregisters an event handler previously registered.
- * @param {type} event
- * @param {type} callback
+ *
+ * @method off
+ * @param {String} event
+ * @param {Function} callback
  */
 ozpIwc.Event.prototype.off=function(event,callback) {
 	this.events[event]=(this.events[event]||[]).filter( function(h) {
@@ -42,9 +61,12 @@ ozpIwc.Event.prototype.off=function(event,callback) {
 
 /**
  * Fires an event that will be received by all handlers.
- * @param {string} eventName  - Name of the event
- * @param {object} event - Event object to pass to the handers.
- * @returns {object} The event after all handlers have processed it
+ *
+ * @method
+ * @param {String} eventName Name of the event.
+ * @param {Object} event Event object to pass to the handers.
+ *
+ * @returns {Object} The event after all handlers have processed it.
  */
 ozpIwc.Event.prototype.trigger=function(eventName,event) {
 	event = event || new ozpIwc.CancelableEvent();
@@ -58,8 +80,11 @@ ozpIwc.Event.prototype.trigger=function(eventName,event) {
 
 
 /**
- * Adds an on() and off() function to the target that delegate to this object
- * @param {object} target Target to receive the on/off functions
+ * Adds an {{#crossLink "ozpIwc.Event/off:method"}}on(){{/crossLink}} and
+ * {{#crossLink "ozpIwc.Event/off:method"}}off(){{/crossLink}} function to the target that delegate to this object.
+ *
+ * @method mixinOnOff
+ * @param {Object} target Target to receive the on/off functions
  */
 ozpIwc.Event.prototype.mixinOnOff=function(target) {
 	var self=this;
@@ -71,8 +96,10 @@ ozpIwc.Event.prototype.mixinOnOff=function(target) {
  * Convenient base for events that can be canceled.  Provides and manages
  * the properties canceled and cancelReason, as well as the member function
  * cancel().
- * @class
- * @param {object} data - Data that will be copied into the event
+ *
+ * @class CancelableEvent
+ * @namespace ozpIwc
+ * @param {Object} data Data that will be copied into the event
  */
 ozpIwc.CancelableEvent=function(data) {
 	data = data || {};
@@ -85,7 +112,9 @@ ozpIwc.CancelableEvent=function(data) {
 
 /**
  * Marks the event as canceled.
- * @param {type} reason - A text description of why the event was canceled.
+ * @method cancel
+ * @param {String} reason A text description of why the event was canceled.
+ *
  * @returns {ozpIwc.CancelableEvent} Reference to self
  */
 ozpIwc.CancelableEvent.prototype.cancel=function(reason) {
@@ -95,51 +124,6 @@ ozpIwc.CancelableEvent.prototype.cancel=function(reason) {
 	return this;
 };
 
-/** @namespace */
-var ozpIwc=ozpIwc || {};
-
-
-/**
- * A deferred action, but not in the sense of the Javascript standard.
- * @class
- */
-ozpIwc.AsyncAction=function() {
-	this.callbacks={};
-};
-
-ozpIwc.AsyncAction.prototype.when=function(state,callback,self) {
-    self=self || this;
-	
-	if(this.resolution === state) {
-		callback.apply(self,this.value);
-	} else {
-		this.callbacks[state]=function() { return callback.apply(self,arguments); };
-	}
-	return this;
-};
-
-
-ozpIwc.AsyncAction.prototype.resolve=function(status) {
-	if(this.resolution) {
-		throw "Cannot resolve an already resolved AsyncAction";
-	}
-	var callback=this.callbacks[status];
-	this.resolution=status;
-	this.value=Array.prototype.slice.call(arguments,1);
-	
-	if(callback) {
-		callback.apply(this,this.value);
-	}
-	return this;
-};
-
-ozpIwc.AsyncAction.prototype.success=function(callback,self) {
-	return this.when("success",callback,self);
-};
-
-ozpIwc.AsyncAction.prototype.failure=function(callback,self) {
-	return this.when("failure",callback,self);
-};
 /*!
  * https://github.com/es-shims/es5-shim
  * @license es5-shim Copyright 2009-2014 by contributors, MIT License
@@ -169,7 +153,6 @@ ozpIwc.AsyncAction.prototype.failure=function(callback,self) {
 }(this, function () {
 
 var call = Function.prototype.call;
-
 var prototypeOfObject = Object.prototype;
 var owns = call.bind(prototypeOfObject.hasOwnProperty);
 
@@ -2044,45 +2027,25 @@ if (parseInt(ws + '08') !== 8 || parseInt(ws + '0x16') !== 22) {
 
 }));
 
-/** @namespace */
-var ozpIwc=ozpIwc || {};
-
-/**
- * @type {object}
- * @property {function} log - Normal log output.
- * @property {function} error - Error output.
- */
-ozpIwc.log=ozpIwc.log || {
-	log: function() {
-		if(window.console && typeof(window.console.log)==="function") {
-			window.console.log.apply(window.console,arguments);
-		}
-	},
-	error: function() {
-		if(window.console && typeof(window.console.error)==="function") {
-			window.console.error.apply(window.console,arguments);
-		}
-	}
-};
-
 !function(){var a,b,c,d;!function(){var e={},f={};a=function(a,b,c){e[a]={deps:b,callback:c}},d=c=b=function(a){function c(b){if("."!==b.charAt(0))return b;for(var c=b.split("/"),d=a.split("/").slice(0,-1),e=0,f=c.length;f>e;e++){var g=c[e];if(".."===g)d.pop();else{if("."===g)continue;d.push(g)}}return d.join("/")}if(d._eak_seen=e,f[a])return f[a];if(f[a]={},!e[a])throw new Error("Could not find module "+a);for(var g,h=e[a],i=h.deps,j=h.callback,k=[],l=0,m=i.length;m>l;l++)"exports"===i[l]?k.push(g={}):k.push(b(c(i[l])));var n=j.apply(this,k);return f[a]=g||n}}(),a("promise/all",["./utils","exports"],function(a,b){"use strict";function c(a){var b=this;if(!d(a))throw new TypeError("You must pass an array to all.");return new b(function(b,c){function d(a){return function(b){f(a,b)}}function f(a,c){h[a]=c,0===--i&&b(h)}var g,h=[],i=a.length;0===i&&b([]);for(var j=0;j<a.length;j++)g=a[j],g&&e(g.then)?g.then(d(j),c):f(j,g)})}var d=a.isArray,e=a.isFunction;b.all=c}),a("promise/asap",["exports"],function(a){"use strict";function b(){return function(){process.nextTick(e)}}function c(){var a=0,b=new i(e),c=document.createTextNode("");return b.observe(c,{characterData:!0}),function(){c.data=a=++a%2}}function d(){return function(){j.setTimeout(e,1)}}function e(){for(var a=0;a<k.length;a++){var b=k[a],c=b[0],d=b[1];c(d)}k=[]}function f(a,b){var c=k.push([a,b]);1===c&&g()}var g,h="undefined"!=typeof window?window:{},i=h.MutationObserver||h.WebKitMutationObserver,j="undefined"!=typeof global?global:void 0===this?window:this,k=[];g="undefined"!=typeof process&&"[object process]"==={}.toString.call(process)?b():i?c():d(),a.asap=f}),a("promise/config",["exports"],function(a){"use strict";function b(a,b){return 2!==arguments.length?c[a]:(c[a]=b,void 0)}var c={instrument:!1};a.config=c,a.configure=b}),a("promise/polyfill",["./promise","./utils","exports"],function(a,b,c){"use strict";function d(){var a;a="undefined"!=typeof global?global:"undefined"!=typeof window&&window.document?window:self;var b="Promise"in a&&"resolve"in a.Promise&&"reject"in a.Promise&&"all"in a.Promise&&"race"in a.Promise&&function(){var b;return new a.Promise(function(a){b=a}),f(b)}();b||(a.Promise=e)}var e=a.Promise,f=b.isFunction;c.polyfill=d}),a("promise/promise",["./config","./utils","./all","./race","./resolve","./reject","./asap","exports"],function(a,b,c,d,e,f,g,h){"use strict";function i(a){if(!v(a))throw new TypeError("You must pass a resolver function as the first argument to the promise constructor");if(!(this instanceof i))throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.");this._subscribers=[],j(a,this)}function j(a,b){function c(a){o(b,a)}function d(a){q(b,a)}try{a(c,d)}catch(e){d(e)}}function k(a,b,c,d){var e,f,g,h,i=v(c);if(i)try{e=c(d),g=!0}catch(j){h=!0,f=j}else e=d,g=!0;n(b,e)||(i&&g?o(b,e):h?q(b,f):a===D?o(b,e):a===E&&q(b,e))}function l(a,b,c,d){var e=a._subscribers,f=e.length;e[f]=b,e[f+D]=c,e[f+E]=d}function m(a,b){for(var c,d,e=a._subscribers,f=a._detail,g=0;g<e.length;g+=3)c=e[g],d=e[g+b],k(b,c,d,f);a._subscribers=null}function n(a,b){var c,d=null;try{if(a===b)throw new TypeError("A promises callback cannot return that same promise.");if(u(b)&&(d=b.then,v(d)))return d.call(b,function(d){return c?!0:(c=!0,b!==d?o(a,d):p(a,d),void 0)},function(b){return c?!0:(c=!0,q(a,b),void 0)}),!0}catch(e){return c?!0:(q(a,e),!0)}return!1}function o(a,b){a===b?p(a,b):n(a,b)||p(a,b)}function p(a,b){a._state===B&&(a._state=C,a._detail=b,t.async(r,a))}function q(a,b){a._state===B&&(a._state=C,a._detail=b,t.async(s,a))}function r(a){m(a,a._state=D)}function s(a){m(a,a._state=E)}var t=a.config,u=(a.configure,b.objectOrFunction),v=b.isFunction,w=(b.now,c.all),x=d.race,y=e.resolve,z=f.reject,A=g.asap;t.async=A;var B=void 0,C=0,D=1,E=2;i.prototype={constructor:i,_state:void 0,_detail:void 0,_subscribers:void 0,then:function(a,b){var c=this,d=new this.constructor(function(){});if(this._state){var e=arguments;t.async(function(){k(c._state,d,e[c._state-1],c._detail)})}else l(this,d,a,b);return d},"catch":function(a){return this.then(null,a)}},i.all=w,i.race=x,i.resolve=y,i.reject=z,h.Promise=i}),a("promise/race",["./utils","exports"],function(a,b){"use strict";function c(a){var b=this;if(!d(a))throw new TypeError("You must pass an array to race.");return new b(function(b,c){for(var d,e=0;e<a.length;e++)d=a[e],d&&"function"==typeof d.then?d.then(b,c):b(d)})}var d=a.isArray;b.race=c}),a("promise/reject",["exports"],function(a){"use strict";function b(a){var b=this;return new b(function(b,c){c(a)})}a.reject=b}),a("promise/resolve",["exports"],function(a){"use strict";function b(a){if(a&&"object"==typeof a&&a.constructor===this)return a;var b=this;return new b(function(b){b(a)})}a.resolve=b}),a("promise/utils",["exports"],function(a){"use strict";function b(a){return c(a)||"object"==typeof a&&null!==a}function c(a){return"function"==typeof a}function d(a){return"[object Array]"===Object.prototype.toString.call(a)}var e=Date.now||function(){return(new Date).getTime()};a.objectOrFunction=b,a.isFunction=c,a.isArray=d,a.now=e}),b("promise/polyfill").polyfill()}();
 /** @namespace */
 var ozpIwc=ozpIwc || {};
-
-/** @namespace */
-ozpIwc.util=ozpIwc.util || {};
+/**
+ * @submodule common
+ */
 
 /**
- * Generates a large hexidecimal string to serve as a unique ID.  Not a guid.
- * @returns {String}
+ * @class util
+ * @namespace ozpIwc
+ * @static
  */
-ozpIwc.util.generateId=function() {
-    return Math.floor(Math.random() * 0xffffffff).toString(16);
-};
+ozpIwc.util=ozpIwc.util || {};
 
 /**
  * Used to get the current epoch time.  Tests overrides this
  * to allow a fast-forward on time-based actions.
+ *
+ * @method now
  * @returns {Number}
  */
 ozpIwc.util.now=function() {
@@ -2091,32 +2054,29 @@ ozpIwc.util.now=function() {
 
 /**
  * Create a class with the given parent in it's prototype chain.
- * @param {function} baseClass - the class being derived from
- * @param {function} newConstructor - the new base class
- * @returns {Function} newConstructor with an augmented prototype
+ *
+ * @method extend
+ * @param {Function} baseClass The class being derived from.
+ * @param {Function} newConstructor The new base class.
+ *
+ * @returns {Function} New Constructor with an augmented prototype.
  */
 ozpIwc.util.extend=function(baseClass,newConstructor) {
     if(!baseClass || !baseClass.prototype) {
         console.error("Cannot create a new class for ",newConstructor," due to invalid baseclass:",baseClass);
         throw new Error("Cannot create a new class due to invalid baseClass.  Dependency not loaded first?");
-    };
+    }
     newConstructor.prototype = Object.create(baseClass.prototype);
     newConstructor.prototype.constructor = newConstructor;
     return newConstructor;
 };
 
 /**
- * Invokes the callback handler on another event loop as soon as possible.
-*/
-ozpIwc.util.setImmediate=function(f) {
-//    window.setTimeout(f,0);
-    window.setImmediate(f);
-};
-
-/**
  * Detect browser support for structured clones.
- * @returns {boolean} - true if structured clones are supported,
- * false otherwise
+ *
+ * @method structuredCloneSupport
+ *
+ * @returns {Boolean} True if structured clones are supported, false otherwise.
  */
 ozpIwc.util.structuredCloneSupport=function() {
     if (ozpIwc.util.structuredCloneSupport.cache !== undefined) {
@@ -2145,8 +2105,10 @@ ozpIwc.util.structuredCloneSupport.cache=undefined;
 /**
  * Does a deep clone of a serializable object.  Note that this will not
  * clone unserializable objects like DOM elements, Date, RegExp, etc.
- * @param {type} value - value to be cloned.
- * @returns {object} - a deep copy of the object
+ *
+ * @method clone
+ * @param {Array|Object} value The value to be cloned.
+ * @returns {Array|Object}  a deep copy of the object
  */
 ozpIwc.util.clone=function(value) {
 	if(Array.isArray(value) || typeof(value) === 'object') {
@@ -2162,86 +2124,45 @@ ozpIwc.util.clone=function(value) {
 
 
 /**
- * Returns true if every needle is found in the haystack.
- * @param {array} haystack - The array to search.
- * @param {array} needles - All of the values to search.
- * @param {function} [equal] - What constitutes equality.  Defaults to a===b.
- * @returns {boolean}
+ * A regex method to parse query parameters.
+ *
+ * @method parseQueryParams
+ * @param {String} query
+ *
  */
-ozpIwc.util.arrayContainsAll=function(haystack,needles,equal) {
-    equal=equal || function(a,b) { return a===b;};
-    return needles.every(function(needle) { 
-        return haystack.some(function(hay) { 
-            return equal(hay,needle);
-        });
-    });
-};
-
-
-/**
- * Returns true if the value every attribute in needs is equal to 
- * value of the same attribute in haystack.
- * @param {array} haystack - The object that must contain all attributes and values.
- * @param {array} needles - The reference object for the attributes and values.
- * @param {function} [equal] - What constitutes equality.  Defaults to a===b.
- * @returns {boolean}
- */
-ozpIwc.util.objectContainsAll=function(haystack,needles,equal) {
-    equal=equal || function(a,b) { return a===b;};
-    
-    for(var attribute in needles) {
-        if(!equal(haystack[attribute],needles[attribute])) {
-            return false;
-        }
-    }
-    return true;
-};
-
 ozpIwc.util.parseQueryParams=function(query) {
     query = query || window.location.search;
     var params={};
 	var regex=/\??([^&=]+)=?([^&]*)/g;
 	var match;
-	while(match=regex.exec(query)) {
+	while((match=regex.exec(query)) !== null) {
 		params[match[1]]=decodeURIComponent(match[2]);
 	}
     return params;
 };
 
-ozpIwc.util.ajax = function (config) {
-    return new Promise(function(resolve,reject) {
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (request.readyState !== 4) {
-                return;
-            }
-
-            if (request.status === 200) {
-                resolve(JSON.parse(this.responseText));
-            } else {
-                reject(this);
-            }
-        };
-        request.open(config.method, config.href, true);
-
-        if(config.method === "POST") {
-            request.send(config.data);
-        }
-        request.setRequestHeader("Content-Type", "application/json");
-        request.setRequestHeader("Cache-Control", "no-cache");
-        request.send();
-    });
-};
-
+/**
+ * Determines the origin of a given url
+ * @method determineOrigin
+ * @param url
+ * @returns {String}
+ */
 ozpIwc.util.determineOrigin=function(url) {
     var a=document.createElement("a");
     a.href = url;
     var origin=a.protocol + "//" + a.hostname;
-    if(a.port)
+    if(a.port) {
         origin+= ":" + a.port;
+    }
     return origin;
 };
 
+/**
+ * Escapes regular expression characters in a string.
+ * @method escapeRegex
+ * @param {String} str
+ * @returns {String}
+ */
 ozpIwc.util.escapeRegex=function(str) {
     return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
@@ -2932,17 +2853,35 @@ requireModule('promise/polyfill').polyfill();
 var ozpIwc=ozpIwc || {};
 
 /**
- * @class
+ * Client-side functionality of the IWC. This is the API for widget use.
+ * @module client
+ */
+
+/**
  * This class will be heavily modified in the future.
+ * @class Client
+ * @namespace ozpIwc
  *
  * @todo accept a list of peer URLs that are searched in order of preference
- * @param {object} config
- * @param {string} config.peerUrl - Base URL of the peer server
- * @param {boolean} [config.autoPeer=true] - Whether to automatically find and connect to a peer
+ * @param {Object} config
+ * @param {String} config.peerUrl - Base URL of the peer server
+ * @param {Boolean} [config.autoPeer=true] - Whether to automatically find and connect to a peer
  */
 ozpIwc.Client=function(config) {
     config=config || {};
+
+    /**
+     * The address assigned to this client.
+     * @property address
+     * @type String
+     */
     this.address="$nobody";
+
+    /**
+     * Key value store of callback functions for the client to act upon when receiving a reply via the IWC.
+     * @property replyCallbacks
+     * @type Object
+     */
     this.replyCallbacks={};
     // coerce config.peerUrl to a function
     
@@ -2959,32 +2898,88 @@ ozpIwc.Client=function(config) {
             resolve(configUrl[0]);
         };
     } else if(typeof(configUrl) === "function") {
+        /**
+         * @property peerUrlCheck
+         * @type String
+         */
         this.peerUrlCheck=configUrl;
     } else {
         throw new Error("PeerUrl must be a string, array of strings, or function");
     }
-    
-    
+
+    /**
+     * @property autoPeer
+     * @type {Boolean}
+     */
     this.autoPeer=("autoPeer" in config) ? config.autoPeer : true;
+
+    /**
+     * @property msgIdSequence
+     * @type Number
+     * @default 0
+     */
     this.msgIdSequence=0;
 
+    /**
+     * An events module for the Client
+     * @property events
+     * @type ozpIwc.Event
+     */
     this.events=new ozpIwc.Event();
     this.events.mixinOnOff(this);
-    
+
+    /**
+     * @property receivedPackets
+     * @type Number
+     * @default 0
+     */
     this.receivedPackets=0;
+
+    /**
+     * @property receivedBytes
+     * @type Number
+     * @default 0
+     */
     this.receivedBytes=0;
+
+    /**
+     * @property sentPackets
+     * @type Number
+     * @default 0
+     */
     this.sentPackets=0;
+
+    /**
+     * @property sentBytes
+     * @type Number
+     * @default 0
+     */
     this.sentBytes=0;
 
+    /**
+     * The epoch time the Client was instantiated.
+     * @property startTime
+     * @type Number
+     */
     this.startTime=ozpIwc.util.now();
-    
+
+    /**
+     * @property launchParams
+     * @type Object
+     * @default {}
+     */
     this.launchParams={};
     
     this.readLaunchParams(window.name);
     this.readLaunchParams(window.location.search);
     this.readLaunchParams(window.location.hash);
     
-    // @todo pull these from the names.api
+    /**
+     * A map of available apis and their actions.
+     * @todo pull these from the names.api
+     * @property apiMap
+     * @type Object
+     */
     this.apiMap={
         "data.api" : { 'address': 'data.api',
             'actions': ["get","set","delete","watch","unwatch","list","addChild","removeChild"]
@@ -2999,17 +2994,34 @@ ozpIwc.Client=function(config) {
             'actions': ["get","set","delete","watch","unwatch","register","invoke"]
         }
     };
-    this.wrapperMap={};
-    
 
+    /**
+     * @property wrapperMap
+     * @type Object
+     * @default {}
+     */
+    this.wrapperMap={};
+
+
+    /**
+     * @property preconnectionQueue
+     * @type Array
+     * @default []
+     */
     this.preconnectionQueue=[];
 
     if(this.autoPeer) {
         this.connect();
     }
 
+
 };
 
+/**
+ * Parses launch parameters based on the raw string input it receives.
+ * @property readLaunchParams
+ * @param {String} rawString
+ */
 ozpIwc.Client.prototype.readLaunchParams=function(rawString) {
     // of the form ozpIwc.VARIABLE=VALUE, where:
     //   VARIABLE is alphanumeric + "_"
@@ -3023,10 +3035,13 @@ ozpIwc.Client.prototype.readLaunchParams=function(rawString) {
 /**
  * Receive a packet from the connected peer.  If the packet is a reply, then
  * the callback for that reply is invoked.  Otherwise, it fires a receive event
- * @fires ozpIwc.Client#receive
+ *
+ * Fires:
+ *     - {{#crossLink "ozpIwc.Client/receive:event}}{{/crossLink}}
+ *
+ * @method receive
  * @protected
  * @param {ozpIwc.TransportPacket} packet
- * @returns {undefined}
  */
 ozpIwc.Client.prototype.receive=function(packet) {
     if(packet.replyTo && this.replyCallbacks[packet.replyTo]) {
@@ -3034,20 +3049,25 @@ ozpIwc.Client.prototype.receive=function(packet) {
             this.cancelCallback(packet.replyTo);
         }
     } else {
+        /**
+         * Fired when the client receives a packet.
+         * @event #receive
+         */
         this.events.trigger("receive",packet);
     }
 };
 /**
- * Used to send a packet
- * @param {string} dst - where to send the packet
- * @param {object} entity - payload of the packet
- * @param {function} callback - callback for any replies. The callback will be
- * persisted if it returns a truth-like value, canceled if it returns a
- * false-like value.
+ * Sends a packet through the IWC.
+ *
+ * @method send
+ * @param {String} dst Where to send the packet.
+ * @param {Object} entity  The payload of the packet.
+ * @param {Function} callback The Callback for any replies. The callback will be persisted if it returns a truth-like
+ * value, canceled if it returns a false-like value.
  */
 ozpIwc.Client.prototype.send=function(fields,callback,preexistingPromise) {
     var promise= preexistingPromise; // || new Promise();
-    if(!(this.isConnected() || fields.dst=="$transport")) {
+    if(!(this.isConnected() || fields.dst==="$transport")) {
         // when send is switched to promises, create the promise first and return it here, as well
         this.preconnectionQueue.push({
             'fields': fields,
@@ -3082,12 +3102,21 @@ ozpIwc.Client.prototype.send=function(fields,callback,preexistingPromise) {
     return packet;
 };
 
+/**
+ * Returns whether or not the Client is connected to the IWC bus.
+ * @method isConnected
+ * @returns {Boolean}
+ */
 ozpIwc.Client.prototype.isConnected=function(){
     return this.address !== "$nobody";
 };
+
 /**
- * Cancel a callback registration
- * @param (string} msgId - The packet replyTo ID for which the callback was registered
+ * Cancel a callback registration.
+ * @method cancelCallback
+ * @param (String} msgId The packet replyTo ID for which the callback was registered.
+ *
+ * @return {Boolean} True if the cancel was successful, otherwise false.
  */
 ozpIwc.Client.prototype.cancelCallback=function(msgId) {
     var success=false;
@@ -3098,7 +3127,13 @@ ozpIwc.Client.prototype.cancelCallback=function(msgId) {
     return success;
 };
 
-
+/**
+ * Registers callbacks
+ * @method on
+ * @param {String} event The event to call the callback on.
+ * @param {Function} callback The function to be called.
+ *
+ */
 ozpIwc.Client.prototype.on=function(event,callback) {
     if(event==="connected" && this.isConnected()) {
         callback(this);
@@ -3107,10 +3142,21 @@ ozpIwc.Client.prototype.on=function(event,callback) {
     return this.events.on.apply(this.events,arguments);
 };
 
+/**
+ * De-registers callbacks
+ * @method on
+ * @param {String} event The event to call the callback on.
+ * @param {Function} callback The function to be called.
+ *
+ */
 ozpIwc.Client.prototype.off=function(event,callback) {
     return this.events.off.apply(this.events,arguments);
 };
 
+/**
+ * Disconnects the client from the IWC bus.
+ * @method disconnect
+ */
 ozpIwc.Client.prototype.disconnect=function() {
     this.replyCallbacks={};
     window.removeEventListener("message",this.postMessageHandler,false);
@@ -3121,6 +3167,13 @@ ozpIwc.Client.prototype.disconnect=function() {
 };
 
 
+/**
+ * Connects the client from the IWC bus.
+ * Fires:
+ *     - {{#crossLink "ozpIwc.Client/#connected"}}{{/crossLink}}
+ *
+ * @method connect
+ */
 ozpIwc.Client.prototype.connect=function() {
     if(!this.connectPromise) {
         var self=this;
@@ -3155,6 +3208,11 @@ ozpIwc.Client.prototype.connect=function() {
             return new Promise(function(resolve,reject) {
                 self.send({dst:"$transport"},function(message) {
                     self.address=message.dst;
+
+                    /**
+                     * Fired when the client receives its address.
+                     * @event #gotAddress
+                     */
                     self.events.trigger("gotAddress",self);
                     resolve(self.address);
                 });
@@ -3189,6 +3247,10 @@ ozpIwc.Client.prototype.connect=function() {
                 });
             });
         }).then(function() {
+            /**
+             * Fired when the client is connected to the IWC bus.
+             * @event #connected
+             */
             self.events.trigger("connected");
         }).catch(function(error) {
             console.log("Failed to connect to bus ",error);
@@ -3197,6 +3259,10 @@ ozpIwc.Client.prototype.connect=function() {
     return this.connectPromise; 
 };
 
+/**
+ * Creates an invisible iFrame Peer for IWC bus communication.
+ * @method createIframePeer
+ */
 ozpIwc.Client.prototype.createIframePeer=function() {
     var self=this;
     return new Promise(function(resolve,reject) {
@@ -3264,9 +3330,7 @@ ozpIwc.Client.prototype.createIframePeer=function() {
                     return !!otherCallback;
                 });
             });
-
-                };
-        return obj;
+        };
     };
 })();
 //# sourceMappingURL=ozpIwc-client.js.map

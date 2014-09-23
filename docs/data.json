@@ -228,7 +228,7 @@
                 "ui.router",
                 "ui.bootstrap",
                 "gridster",
-                "ozpIwcAngular",
+                "ozpIwcClient",
                 "ozpClassification"
             ]
         },
@@ -254,7 +254,7 @@
             "line": 95,
             "description": "Provides an OZP IWC client using a Promises to indicate valid connection",
             "requires": [
-                "ozpIwcAngular",
+                "ozpIwcClient",
                 "ozpWebtopApp.constants"
             ]
         },

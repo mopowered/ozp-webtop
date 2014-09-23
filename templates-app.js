@@ -31,22 +31,28 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
     "        <ul class=\"nav navbar-nav\">\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
-    "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\" ng-class=\"app.isMinimized && layout === 'desktop'? 'inactive-app' : 'active-app'\">\n" +
+    "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\"\n" +
+    "              ng-class=\"app.isMinimized && layout === 'desktop'? 'inactive-app' : 'active-app'\"\n" +
+    "              >\n" +
     "            <a><img class=\"chrome-icon app-toolbar-img\" ng-src=\"{{app.icon}}\"/>{{app.name}}</i></a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
     "        <li class=\"divider-vertical\"></li>\n" +
-    "          <li class='hideToolbarButton'>\n" +
+    "          <li class=\"hideToolbarButton\" tooltip=\"Hide toolbar\" tooltip-placement=\"top\">\n" +
     "            <a ng-click=\"appboardhider();\">\n" +
-    "              <i class=\"fa fa-step-forward fa-lg\"></i>\n" +
+    "              <i class=\"fa fa-toggle-down fa-lg\"></i>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
     "      </div><!-- /.navbar-collapse -->\n" +
     "    </div><!-- /.container-fluid -->\n" +
     "  </nav>\n" +
-    "<button class=\"hiddenToggle appHiddenToggle\" ng-click=\"appboardhider();\" ng-class=\"{false: 'hide'}[appboardhide]\"><i class=\"fa fa-step-backward\"></i></button>\n" +
+    "<button class=\"hiddenToggle appHiddenToggle\" ng-click=\"appboardhider();\"\n" +
+    "        ng-class=\"{false: 'hide'}[appboardhide]\"\n" +
+    "        tooltip=\"Show toolbar\" tooltip-placement=\"left\">\n" +
+    "  <i class=\"fa fa-toggle-up\"></i>\n" +
+    "</button>\n" +
     "</div>");
 }]);
 
@@ -108,7 +114,7 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "          <span class=\"icon-bar\"></span>\n" +
     "          <span class=\"icon-bar\"></span>\n" +
     "        </button>\n" +
-    "        <a class=\"navbar-brand\" href=\"#\">OZONE</a>\n" +
+    "\n" +
     "      </div>\n" +
     "\n" +
     "\n" +
@@ -116,32 +122,86 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
     "        <ul class=\"nav navbar-nav\">\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
-    "        </ul>\n" +
+    "          <li class=\"dropdown\">\n" +
+    "              <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"\n" +
+    "                  id=\"main-menu-dropdown\">\n" +
+    "                <i class=\"fa fa-list fa-lg\"></i>\n" +
+    "              </a>\n" +
+    "              <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"main-menu-dropdown\">\n" +
+    "                <li>\n" +
+    "                  <a ng-click=\"gotToAppLibrary()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-th\">&nbsp&nbsp</i>App Library</a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a ng-click=\"goToAppBuilder()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-wrench\">&nbsp&nbsp</i>App Builder\n" +
+    "                  </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a href=\"http://ozone-development.github.io/hud-ui/index.html\"\n" +
+    "                     class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-home\">&nbsp&nbsp</i>HUD\n" +
+    "                  </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a ng-click=\"submitListing()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-envelope-o\">&nbsp&nbsp</i>Submit a Listing\n" +
+    "                  </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a ng-click=\"goToMetrics()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-bar-chart\">&nbsp&nbsp</i>Metrics\n" +
+    "                  </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                  <a ng-click=\"goToDeveloperResources()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-terminal\">&nbsp&nbsp</i>Developer Resources\n" +
+    "                  </a>\n" +
+    "                </li>\n" +
+    "              </ul>\n" +
+    "            </li>\n" +
+    "          </ul>\n" +
     "\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
     "          <li class=\"dropdown\">\n" +
     "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name}} <span class=\"caret\"></span></a>\n" +
     "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "              <li ng-repeat=\"board in dashboards\">\n" +
-    "                <a ng-click=\"setCurrentDashboard(board)\" href=\"#/{{board.layout}}/{{board.id}}\">{{board.name}}</a>\n" +
+    "                <a ng-click=\"setCurrentDashboard(board)\"\n" +
+    "                   href=\"#/{{board.layout}}/{{board.id}}\"><i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}}</a>\n" +
     "              </li>\n" +
     "            </ul>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
-    "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\" ng-class=\"{navLinkSelected: layout == 'grid'}\">\n" +
+    "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\"\n" +
+    "               ng-class=\"{navLinkSelected: layout == 'grid'}\"\n" +
+    "                tooltip=\"Grid layout\" tooltip-placement=\"bottom\">\n" +
     "              <i ng-class=\"{iconWhite: layout == 'grid'}\" class=\"fa fa-th fa-lg\"></i>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
-    "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\" ng-class=\"{navLinkSelected: layout == 'desktop'}\">\n" +
+    "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\"\n" +
+    "               ng-class=\"{navLinkSelected: layout == 'desktop'}\" tooltip=\"Desktop layout\"\n" +
+    "                tooltip-placement=\"bottom\">\n" +
     "              <i ng-class=\"{iconWhite: layout == 'desktop'}\" class=\"fa fa-clipboard fa-lg\"></i>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
-    "            <a href=\"#\"><span class=\"badge\">{{messages.unread}}</span></a>\n" +
+    "            <span ng-show=\"!messages.unread\" class=\"fa-stack fa-1x no-notifications-icon\"\n" +
+    "                  tooltip=\"No new messages\" tooltip-placement=\"bottom\">\n" +
+    "                <i class=\"fa fa-bell-slash fa-lg\"></i>\n" +
+    "              </span>\n" +
+    "            <div class=\"stacked-icons notification-icon\">\n" +
+    "              <span ng-show=\"messages.unread\" class=\"fa-stack fa-lg\">\n" +
+    "                <i class=\"fa fa-bell fa-lg fa-inverse\"></i>\n" +
+    "                <strong class=\"fa-stack-1x notification-text\">{{messages.unread}}</strong>\n" +
+    "              </span>\n" +
+    "            </div>\n" +
+    "            <!--<a href=\"#\"><i class=\"fa fa-bell-o fa-lg\"></i></a>-->\n" +
+    "            <!--<a href=\"#\"><span class=\"badge\">{{messages.unread}}</span></a>-->\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
@@ -150,28 +210,39 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user}} <span class=\"caret\"></span></a>\n" +
     "              <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                <li>\n" +
-    "                  <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\"><i class=\"fa fa-cogs\">&nbsp&nbsp</i>Settings</a>\n" +
+    "                  <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-cogs fa-fw menu-icon\"></i>Settings\n" +
+    "                  </a>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                  <a href=\"#\"><i class=\"fa fa-question-circle\">&nbsp&nbsp</i>Take a tour</a>\n" +
+    "                  <a ng-click=\"helpUser()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-question-circle fa-fw menu-icon\"></i>Take a tour\n" +
+    "                  </a>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                  <a href=\"#\"><i class=\"fa fa-sign-out\">&nbsp&nbsp</i>Logout</a>\n" +
+    "                  <a ng-click=\"logOutUser()\" class=\"link-pointer\">\n" +
+    "                    <i class=\"fa fa-sign-out fa-fw menu-icon\"></i>Logout\n" +
+    "                  </a>\n" +
     "                </li>\n" +
     "              </ul>\n" +
     "            </li>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li class='hideToolbarButton'>\n" +
+    "          <li class=\"hideToolbarButton\" tooltip=\"Hide toolbar\" tooltip-placement=\"bottom\"\n" +
+    "              style=\"width: 25px; float: right;\">\n" +
     "            <a ng-click=\"dashboardhider();\">\n" +
-    "              <i class=\"fa fa-step-forward fa-lg\"></i>\n" +
+    "              <i class=\"fa fa-toggle-up fa-lg\"></i>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
     "      </div><!-- /.navbar-collapse -->\n" +
     "    </div><!-- /.container-fluid -->\n" +
     "  </nav>\n" +
-    "  <button class=\"hiddenToggle dashToggle\" ng-click=\"dashboardhider();\" ng-class=\"{false: 'hide'}[dashboardhide]\"><i class=\"fa fa-step-backward\"></i></button>\n" +
+    "  <button class=\"hiddenToggle dashToggle\" ng-click=\"dashboardhider();\"\n" +
+    "          ng-class=\"{false: 'hide'}[dashboardhide]\"\n" +
+    "          tooltip=\"Show toolbar\" tooltip-placement=\"left\">\n" +
+    "    <i class=\"fa fa-toggle-down\"></i>\n" +
+    "  </button>\n" +
     "</div>");
 }]);
 

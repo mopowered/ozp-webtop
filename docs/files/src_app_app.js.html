@@ -157,7 +157,7 @@
  * @requires ui.router
  * @requires ui.bootstrap
  * @requires gridster
- * @requires ozpIwcAngular
+ * @requires ozpIwcClient
  * @requires ozpClassification
  */
 angular.module( &#x27;ozpWebtopApp&#x27;, [
@@ -176,7 +176,7 @@ angular.module( &#x27;ozpWebtopApp&#x27;, [
   &#x27;ui.router&#x27;,
   &#x27;ui.bootstrap&#x27;,
   &#x27;gridster&#x27;,
-  &#x27;ozpIwcAngular&#x27;,
+  &#x27;ozpIwcClient&#x27;,
   &#x27;ozpClassification&#x27;
 ])
 
@@ -232,10 +232,10 @@ angular.module(&#x27;ozpWebtopApp.constants&#x27;, []);
  * Provides an OZP IWC client using a Promises to indicate valid connection
  *
  * @module ozpWebtopApp.ozpIwcClient
- * @requires ozpIwcAngular
+ * @requires ozpIwcClient
  * @requires ozpWebtopApp.constants
  */
-angular.module(&#x27;ozpWebtopApp.ozpIwcClient&#x27;, [&#x27;ozpIwcAngular&#x27;,
+angular.module(&#x27;ozpWebtopApp.ozpIwcClient&#x27;, [&#x27;ozpIwcClient&#x27;,
   &#x27;ozpWebtopApp.constants&#x27;]);
 
 /**
@@ -253,7 +253,7 @@ angular.module(&#x27;ozpWebtopApp.general&#x27;, [&#x27;ozpWebtopApp.constants&#
  * @module ozpWebtopApp.apis
  * @requires ozpWebtopApp.general
  */
-angular.module(&#x27;ozpWebtopApp.apis&#x27;, [&#x27;ozpIwcAngular&#x27;,
+angular.module(&#x27;ozpWebtopApp.apis&#x27;, [&#x27;ozpIwcClient&#x27;,
   &#x27;ozpWebtopApp.ozpIwcClient&#x27;, &#x27;ozpWebtopApp.general&#x27;]);
 
 /**
@@ -301,7 +301,7 @@ angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x2
  * @module ozpWebtopApp.dashboardView
  * @requires ozpWebtopApp.apis
  */
-angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozpIwcAngular&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
+angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozpIwcClient&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
 
 // TODO: cleanup and document these messages used throughout the application
