@@ -5573,7 +5573,7 @@ button.close {
 }
 .modal-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: #191f25;
   border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -5589,7 +5589,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000;
+  background-color: #6e6e6e;
 }
 .modal-backdrop.fade {
   opacity: 0;
@@ -8255,6 +8255,9 @@ a.ozp-icon:active {
 .ozp-chrome > .chrome-controls > .btn:hover,
 .ozp-chrome > .chrome-controls > .btn:active {
   color: #222;
+}
+.modal-fmt {
+  color: white;
 }
 /**
  * Now that all app-wide styles have been applied, we can load the styles for

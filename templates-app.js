@@ -292,7 +292,7 @@ angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$temp
 
 angular.module("userSettings/settingsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("userSettings/settingsModal.tpl.html",
-    "<div>\n" +
+    "<div class=\"modal-fmt\">\n" +
     "  <div class=\"modal-header\">\n" +
     "    <h3 class=\"modal-title\">Settings</h3>\n" +
     "  </div>\n" +
@@ -404,7 +404,7 @@ angular.module("userSettings/settingsModal.tpl.html", []).run(["$templateCache",
     "            class=\"btn btn-primary\" disabled=\"disabled\">Ok</button>\n" +
     "    <button ng-show=\"!editDashboardsForm.$error.pattern && !editDashboardsForm.$error.required\"\n" +
     "            class=\"btn btn-primary\" ng-click=\"ok()\">OK</button>\n" +
-    "    <button class=\"btn\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "    <button class=\"btn btn-primary\" ng-click=\"cancel()\">Cancel</button>\n" +
     "  </div>\n" +
     "</div>");
 }]);
