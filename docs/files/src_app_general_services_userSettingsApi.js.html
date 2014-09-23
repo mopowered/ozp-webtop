@@ -170,8 +170,7 @@ function generalUserSettingsdModel(persistStrategy) {
     },
     createExampleUserSettings: function() {
       var userSettings = {
-        &#x27;theme&#x27;: &#x27;dark&#x27;,
-        &#x27;autohideToolbars&#x27;: false
+        &#x27;theme&#x27;: &#x27;dark&#x27;
       };
       return this.updateAllUserSettings(userSettings).then(function(response) {
         return response;

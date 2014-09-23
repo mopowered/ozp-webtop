@@ -661,7 +661,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/userSettingsApi.js",
-            "line": 79,
+            "line": 78,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve user settings information.",
             "is_constructor": 1
         },
@@ -895,7 +895,7 @@
         },
         {
             "file": "src/app/general/services/userSettingsApi.js",
-            "line": 49,
+            "line": 48,
             "description": "Angular service which provides a local storage interface to the userSettings api.",
             "is_constructor": 1,
             "class": "apis.userSettingsApi",
@@ -903,7 +903,7 @@
         },
         {
             "file": "src/app/general/services/userSettingsApi.js",
-            "line": 64,
+            "line": 63,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve user settings.",
             "is_constructor": 1,
             "class": "apis.userSettingsApi",
@@ -973,11 +973,11 @@
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the userSettings api.",
-            "line": " src/app/general/services/userSettingsApi.js:49"
+            "line": " src/app/general/services/userSettingsApi.js:48"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve user settings.",
-            "line": " src/app/general/services/userSettingsApi.js:64"
+            "line": " src/app/general/services/userSettingsApi.js:63"
         }
     ]
 }

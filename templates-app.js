@@ -322,15 +322,6 @@ angular.module("userSettings/settingsModal.tpl.html", []).run(["$templateCache",
     "                </select>\n" +
     "              </div>\n" +
     "            </div>\n" +
-    "\n" +
-    "            <div class=\"form-group\">\n" +
-    "              <label for=\"autoHideToolbars\" class=\"col-sm-6 control-label\">\n" +
-    "                Auto-hide toolbars </label>\n" +
-    "              <div class=\"checkbox col-sm-6\">\n" +
-    "                <input type=\"checkbox\" id=\"autoHideToolbars\"\n" +
-    "                       ng-model=\"preferences.autohideToolbars\">\n" +
-    "              </div>\n" +
-    "            </div>\n" +
     "          </form>\n" +
     "        </div>\n" +
     "      </div>\n" +
