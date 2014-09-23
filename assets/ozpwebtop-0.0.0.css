@@ -8129,6 +8129,11 @@ body {
 .menu-icon {
   margin-right: 7px;
 }
+#dashboard-clock {
+  color: #999999;
+  padding-top: 10px;
+  padding-right: 8px;
+}
 .gridster-container-settings {
   background-color: #191f25;
   width: 100%;
