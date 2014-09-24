@@ -5589,7 +5589,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #6e6e6e;
+  background-color: #eeeeef;
 }
 .modal-backdrop.fade {
   opacity: 0;
@@ -7921,11 +7921,15 @@ button.close {
  * any variable definitions in our imported stylesheets.
  */
 /**
+ * All colors used throughout the site are defined here
+ */
+/*
+ * Colors from the official OZONE style cheat sheet. All colors used throughout
+ * the site should be from this list (and referenced via the LESS variable)
+*/
+/**
  * These are the variables used throughout the application. This is where 
  * overwrites that are not specific to components should be maintained.
- */
-/**
- * Typography-related.
  */
 /**
  * Typography
@@ -8082,7 +8086,7 @@ body {
   height: 35px;
   margin: 0 9px;
   border-right: 1px solid #ffffff;
-  border-left: 1px solid #f2f2f2;
+  border-left: 1px solid #eeeeef;
 }
 .navbar-inverse .divider-vertical {
   border-right-color: #222222;
@@ -8105,7 +8109,7 @@ body {
   margin-left: 20px;
 }
 .iconWhite {
-  color: white;
+  color: #ffffff;
 }
 #main-menu-dropdown {
   margin-left: -30px;
@@ -8123,7 +8127,7 @@ body {
   padding-top: 2px;
 }
 .no-notifications-icon {
-  color: grey;
+  color: #8f9194;
   padding-top: 7px;
 }
 .menu-icon {
@@ -8161,12 +8165,12 @@ body {
 }
 .active-app {
   margin-right: 5px;
-  background-color: #333333;
+  background-color: #2b3036;
   height: 35px;
 }
 .inactive-app {
   margin-right: 5px;
-  background-color: #212425;
+  background-color: #191f25;
   height: 35px;
 }
 .hiddenToggle {
@@ -8175,9 +8179,9 @@ body {
   right: 0;
   position: fixed;
   z-index: 10000;
-  background-color: #212425;
+  background-color: #191f25;
   border: none;
-  color: white;
+  color: #ffffff;
 }
 body > div.classBanner:last-of-type {
   position: absolute;
@@ -8213,7 +8217,7 @@ a.ozp-icon:active {
 /* Frames must be absolute position */
 .ozp-managed-frame {
   position: absolute;
-  background-color: white;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -8223,8 +8227,8 @@ a.ozp-icon:active {
   box-shadow: 2px 2px 4px 0px rgba(50, 50, 50, 0.15);
 }
 .ozp-chrome {
-  background: #f4f7f8;
-  color: #555;
+  background: #eeeeef;
+  color: #4c5457;
   font-size: 10pt;
   height: 25px;
   cursor: default;
@@ -8254,15 +8258,15 @@ a.ozp-icon:active {
 .ozp-chrome > .chrome-controls > .btn {
   background: transparent;
   padding: 0;
-  color: #ccc;
+  color: #dbdcdd;
   font-size: 10px;
 }
 .ozp-chrome > .chrome-controls > .btn:hover,
 .ozp-chrome > .chrome-controls > .btn:active {
-  color: #222;
+  color: #2b3036;
 }
 .modal-fmt {
-  color: white;
+  color: #dbdcdd;
 }
 /**
  * Now that all app-wide styles have been applied, we can load the styles for
