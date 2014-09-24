@@ -300,16 +300,6 @@ angular.module("userSettings/settingsModal.tpl.html", []).run(["$templateCache",
     "                </select>\n" +
     "              </div>\n" +
     "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "              <label for=\"defaultDashboardSelect\" class=\"col-sm-6 control-label\">\n" +
-    "                Default Dashboard </label>\n" +
-    "              <div class=\"col-sm-6\">\n" +
-    "                <select class=\"form-control\" id=\"defaultDashboardSelect\"\n" +
-    "                        ng-model=\"preferences.defaultDashboard\"\n" +
-    "                        ng-options=\"board.name as board.name for board in dashboards\">\n" +
-    "                </select>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
     "          </form>\n" +
     "        </div>\n" +
     "      </div>\n" +
