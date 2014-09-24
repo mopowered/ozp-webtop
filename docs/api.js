@@ -7,7 +7,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "apis.marketplaceApi",
         "apis.userSettingsApi",
         "components.ozpButton",
-        "components.ozpIcon",
         "dashboardView.GridCtrl",
         "dashboardView.IframeCtrl",
         "dashboardView.ozpGridsterItem",

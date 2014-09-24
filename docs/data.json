@@ -24,17 +24,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/app/components/icon/ozpicon.js": {
-            "name": "src/app/components/icon/ozpicon.js",
-            "modules": {},
-            "classes": {
-                "components.ozpIcon": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "components": 1
-            }
-        },
         "src/app/dashboardView/desktop/frames/ozpmanagedframe.js": {
             "name": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
             "modules": {},
@@ -191,7 +180,6 @@
             "submodules": {},
             "classes": {
                 "components.ozpButton": 1,
-                "components.ozpIcon": 1,
                 "dashboardView.ozpManagedFrame": 1,
                 "dashboardView.GridCtrl": 1,
                 "dashboardView.ozpGridsterItem": 1,
@@ -380,21 +368,6 @@
             "file": "src/app/components/button/ozpbutton.js",
             "line": 3,
             "description": "ozpButton Renders button with an icon to the left and text to the right.",
-            "is_constructor": 1
-        },
-        "components.ozpIcon": {
-            "name": "components.ozpIcon",
-            "shortname": "components.ozpIcon",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtopApp",
-            "namespace": "components",
-            "file": "src/app/components/icon/ozpicon.js",
-            "line": 3,
-            "description": "ozpIcon Renders an icon as an anchor. It has an image on top and text below.",
             "is_constructor": 1
         },
         "dashboardView.ozpManagedFrame": {
@@ -719,7 +692,7 @@
             "file": "src/app/components/chrome/chromecontroller.js",
             "line": 3,
             "description": "ChromeCtrl aids the ozpChrome directive in knowing its location (grid or desktop).",
-            "class": "components.ozpIcon",
+            "class": "dashboardView.ozpManagedFrame",
             "namespace": "components"
         },
         {

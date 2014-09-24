@@ -1,4 +1,4 @@
-angular.module('templates-app', ['appToolbar/appToolbar.tpl.html', 'components/button/ozpbutton.tpl.html', 'components/chrome/ozpchrome.tpl.html', 'components/icon/ozpicon.tpl.html', 'dashboardToolbar/dashboardToolbar.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'userSettings/settingsModal.tpl.html']);
+angular.module('templates-app', ['appToolbar/appToolbar.tpl.html', 'components/button/ozpbutton.tpl.html', 'components/chrome/ozpchrome.tpl.html', 'dashboardToolbar/dashboardToolbar.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'userSettings/settingsModal.tpl.html']);
 
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",
@@ -85,18 +85,6 @@ angular.module("components/chrome/ozpchrome.tpl.html", []).run(["$templateCache"
     "    </button>\n" +
     "  </span>\n" +
     "</div>\n" +
-    "");
-}]);
-
-angular.module("components/icon/ozpicon.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("components/icon/ozpicon.tpl.html",
-    "<a href=\"\" ng-click=\"handleIconClick(icon)\" class=\"ozp-icon\">\n" +
-    "  <!-- Bootstrap icon\n" +
-    "  <span class=\"glyphicon {{icon.icon}}\"></span>\n" +
-    "  -->\n" +
-    "  <img ng-src=\"{{icon.icon}}\">\n" +
-    "  <div>{{icon.text}}</div>\n" +
-    "</a>\n" +
     "");
 }]);
 
@@ -254,11 +242,7 @@ angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCach
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
     "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized, 'appToggle' : frame.isMaximized && appBarHidden, 'dashToggle' : frame.isMaximized && dashBarHidden}\"></ozp-managed-frame>\n" +
-    "\n" +
-    "<!-- Place icons in the desktop -->\n" +
-    "<div class='icon-container'>\n" +
-    "    <ozp-icon ng-repeat=\"icon in icons | orderBy:'index'\" class=\"ozp-icon\"></ozp-icon>\n" +
-    "</div>");
+    "");
 }]);
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
