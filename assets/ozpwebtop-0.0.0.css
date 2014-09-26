@@ -8143,13 +8143,14 @@ body {
   width: 100%;
 }
 .app-toolbar {
-  position: absolute;
+  position: fixed;
   margin-top: 0;
   margin-bottom: 0;
   bottom: 16px;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 35px;
+  z-index: 10000;
 }
 .app-toolbar-ng-include {
   padding-top: 75px;
@@ -8183,8 +8184,15 @@ body {
   border: none;
   color: #ffffff;
 }
+.classBanner {
+  z-index: 10000;
+}
+body > div.classBanner:first-of-type {
+  position: fixed;
+  top: 0px;
+}
 body > div.classBanner:last-of-type {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
 }
 /* Frames must be absolute position */

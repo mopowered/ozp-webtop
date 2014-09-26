@@ -3,7 +3,7 @@ angular.module('templates-app', ['appToolbar/appToolbar.tpl.html', 'components/b
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",
     "<div ng-controller=\"ApplicationToolbarCtrl\">\n" +
-    "  <nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners navbar-fixed-bottom\"\n" +
+    "  <nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners\"\n" +
     "       role=\"navigation\" ng-class=\"{true: 'hide', false: ''}[appboardhide]\">\n" +
     "    <div class=\"container-fluid\">\n" +
     "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
@@ -14,7 +14,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          <span class=\"icon-bar\"></span>\n" +
     "          <span class=\"icon-bar\"></span>\n" +
     "        </button>\n" +
-    "        <div class=\"dropdown\">\n" +
+    "        <div class=\"dropdown dropup\">\n" +
     "          <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></a>\n" +
     "          <ul class=\"dropdown-menu\">\n" +
     "            <li ng-repeat=\"app in myApps\">\n" +
@@ -39,7 +39,9 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "        </ul>\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
     "        <li class=\"divider-vertical\"></li>\n" +
-    "          <li class=\"hideToolbarButton\" tooltip=\"Hide toolbar\" tooltip-placement=\"top\">\n" +
+    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\"\n" +
+    "              tooltip-placement=\"top\"\n" +
+    "              style=\"width: 25px; float: right; margin-right: 5px;\">\n" +
     "            <a ng-click=\"appboardhider();\">\n" +
     "              <i class=\"fa fa-toggle-down fa-lg\"></i>\n" +
     "            </a>\n" +
@@ -90,9 +92,9 @@ angular.module("components/chrome/ozpchrome.tpl.html", []).run(["$templateCache"
 
 angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardToolbar/dashboardToolbar.tpl.html",
-    "<div ng-controller=\"DashboardToolbarCtrl\">\n" +
+    "\n" +
     "  <nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
-    "    no-rounded-corners\" role=\"navigation\"  ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
+    "    no-rounded-corners navbar-fixed-top\" role=\"navigation\"  ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
     "    <div class=\"container-fluid\" >\n" +
     "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
     "      <div class=\"navbar-header\">\n" +
@@ -107,7 +109,8 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "\n" +
     "\n" +
     "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +
-    "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
+    "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\"\n" +
+    "           style=\"padding-left: 15px;\">\n" +
     "        <ul class=\"nav navbar-nav\">\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
     "          <li class=\"dropdown\">\n" +
@@ -220,8 +223,8 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "            </li>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li class=\"hideToolbarButton\" tooltip=\"Hide toolbar\" tooltip-placement=\"bottom\"\n" +
-    "              style=\"width: 25px; float: right;\">\n" +
+    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\" tooltip-placement=\"bottom\"\n" +
+    "              style=\"width: 25px; float: right; margin-right: 15px;\">\n" +
     "            <a ng-click=\"dashboardhider();\">\n" +
     "              <i class=\"fa fa-toggle-up fa-lg\"></i>\n" +
     "            </a>\n" +
@@ -235,7 +238,7 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "          tooltip=\"Show toolbar\" tooltip-placement=\"left\">\n" +
     "    <i class=\"fa fa-toggle-down\"></i>\n" +
     "  </button>\n" +
-    "</div>");
+    "");
 }]);
 
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
