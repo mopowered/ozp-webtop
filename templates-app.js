@@ -206,7 +206,7 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "              <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                <li>\n" +
     "                  <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-cogs fa-fw menu-icon\"></i>Settings\n" +
+    "                    <i class=\"fa fa-cogs fa-fw menu-icon\"></i>Preferences\n" +
     "                  </a>\n" +
     "                </li>\n" +
     "                <li>\n" +
