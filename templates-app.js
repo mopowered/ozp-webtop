@@ -217,11 +217,11 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "                </li>\n" +
     "                <li>\n" +
     "                  <a ng-click=\"helpUser()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-question-circle fa-fw menu-icon\"></i>Take a tour\n" +
+    "                    <i class=\"fa fa-question-circle fa-fw menu-icon\"></i>Help\n" +
     "                  </a>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                  <a ng-click=\"logOutUser()\" class=\"link-pointer\">\n" +
+    "                  <a href=\"http://ozone-development.github.io/hud-ui/logout.html\" class=\"link-pointer\">\n" +
     "                    <i class=\"fa fa-sign-out fa-fw menu-icon\"></i>Logout\n" +
     "                  </a>\n" +
     "                </li>\n" +
