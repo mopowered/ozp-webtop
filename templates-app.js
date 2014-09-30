@@ -34,11 +34,16 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\"\n" +
     "              ng-class=\"app.isMinimized && layout === 'desktop'? 'inactive-app' : 'active-app'\"\n" +
     "              >\n" +
-    "            <a><img class=\"chrome-icon app-toolbar-img\" ng-src=\"{{app.icon}}\"/>{{app.name}}</i></a>\n" +
+    "            <a><img class=\"chrome-icon app-toolbar-img\" ng-src=\"{{app.icon}}\"/>{{app.name | limitTo : 15}}</i></a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
-    "        <li class=\"divider-vertical\"></li>\n" +
+    "          <li ng-show=\"previousAppsVisible\"><i class=\"fa fa-arrow-circle-left fa-inverse fa-lg link-pointer\"\n" +
+    "                 ng-click=\"previousApps()\" style=\"margin-top: 12px;\"></i></li>\n" +
+    "          <li ng-show=\"nextAppsVisible\"><i class=\"fa fa-arrow-circle-right fa-inverse fa-lg link-pointer\"\n" +
+    "                 ng-click=\"nextApps()\" style=\"margin-top: 12px;\"></i></li>\n" +
+    "\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
     "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\"\n" +
     "              tooltip-placement=\"top\"\n" +
     "              style=\"width: 25px; float: right; margin-right: 5px;\">\n" +
@@ -94,7 +99,8 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
   $templateCache.put("dashboardToolbar/dashboardToolbar.tpl.html",
     "\n" +
     "  <nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
-    "    no-rounded-corners navbar-fixed-top\" role=\"navigation\"  ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
+    "    no-rounded-corners navbar-fixed-top\" role=\"navigation\"\n" +
+    "       ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
     "    <div class=\"container-fluid\" >\n" +
     "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
     "      <div class=\"navbar-header\">\n" +
@@ -155,7 +161,7 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
     "          <li class=\"dropdown\">\n" +
-    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name}} <span class=\"caret\"></span></a>\n" +
+    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name | limitTo : dashboardNameLength}} <span class=\"caret\"></span></a>\n" +
     "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "              <li ng-repeat=\"board in dashboards\">\n" +
     "                <a ng-click=\"setCurrentDashboard(board)\"\n" +
@@ -201,8 +207,8 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
     "            <li class=\"dropdown\">\n" +
-    "            <a href=\"#\" class=\"dropdown-toggle testt\" data-toggle=\"dropdown\">\n" +
-    "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user}} <span class=\"caret\"></span></a>\n" +
+    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
+    "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user | limitTo : usernameLength}} <span class=\"caret\"></span></a>\n" +
     "              <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                <li>\n" +
     "                  <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\">\n" +
@@ -223,8 +229,10 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "            </li>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\" tooltip-placement=\"bottom\"\n" +
-    "              style=\"width: 25px; float: right; margin-right: 15px;\">\n" +
+    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\"\n" +
+    "              tooltip-placement=\"bottom\"\n" +
+    "              style=\"width: 15px; float: right; margin-right: 20px;\n" +
+    "              margin-left: 0px; padding-left: 0px;\">\n" +
     "            <a ng-click=\"dashboardhider();\">\n" +
     "              <i class=\"fa fa-toggle-up fa-lg\"></i>\n" +
     "            </a>\n" +
@@ -253,8 +261,8 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
     "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !appBarHidden}\">\n" +
     "  <div gridster=\"gridOptions\">\n" +
     "    <ul>\n" +
-    "      <li gridster-item row=\"item.gridLayout.row\" col=\"item.gridLayout.col\"\n" +
-    "          size-x=\"item.gridLayout.sizeX\" size-y=\"item.gridLayout.sizeY\"\n" +
+    "      <li gridster-item row=\"item.gridLayout[deviceSize].row\" col=\"item.gridLayout[deviceSize].col\"\n" +
+    "          size-x=\"item.gridLayout[deviceSize].sizeX\" size-y=\"item.gridLayout[deviceSize].sizeY\"\n" +
     "          ng-repeat=\"item in frames\" id=\"{{item.id}}\"\n" +
     "          ozp-gridster-item=\"\" frame=\"item\" ng-hide=\"isDisabled\">\n" +
     "      </li>\n" +

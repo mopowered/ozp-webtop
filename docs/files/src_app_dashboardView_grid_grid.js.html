@@ -71,6 +71,8 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/ozp.common.html">ozp.common</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
@@ -151,9 +153,50 @@
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
 .controller(&#x27;GridCtrl&#x27;, function ($scope, $rootScope, $location,
-                                        dashboardApi, marketplaceApi,
-                                        dashboardChangeMonitor, userSettingsApi) {
+                                        $interval, dashboardApi, marketplaceApi,
+                                        dashboardChangeMonitor, userSettingsApi,
+                                        windowSizeWatcher) {
 
+
+    // Detect window resize events
+    windowSizeWatcher.run();
+
+    // promise returned by $interval (keep track of it so it can be canceled)
+    var intervalPromise;
+
+    // notified each time the window is resized, but only want to redraw when
+    // user has finished resizing (or at least as few times as possible)
+    $scope.$on(&#x27;window-px-size-change&#x27;, function() {
+      $interval.cancel(intervalPromise);
+      intervalPromise = $interval($scope.updateAllFramesAfterChange, 200, 1);
+    });
+
+    // notified whenever the screen size changes past device size boundaries
+    // as defined by Bootstrap (xs, sm, md, lg)
+    $scope.$on(&#x27;window-size-change&#x27;, function(event, value) {
+      if (value.deviceSize === &#x27;sm&#x27;) {
+        $scope.deviceSize = value.deviceSize;
+        $scope.gridOptions.columns = 3;
+        $scope.updateAllFramesAfterChange();
+      } else if (value.deviceSize === &#x27;md&#x27;) {
+          $scope.deviceSize = value.deviceSize;
+          $scope.gridOptions.columns = 6;
+          $scope.updateAllFramesAfterChange();
+      } else if (value.deviceSize === &#x27;lg&#x27;) {
+          $scope.deviceSize = &#x27;md&#x27;; // TODO: for now, md == lg
+          $scope.gridOptions.columns = 6;
+          $scope.updateAllFramesAfterChange();
+      }
+    });
+
+    // initialize device size
+    $scope.deviceSize = windowSizeWatcher.getCurrentSize();
+    if ($scope.deviceSize === &#x27;lg&#x27;) {
+      $scope.deviceSize = &#x27;md&#x27;;
+      console.log(&#x27;size changed from lg to md&#x27;);
+    }
+
+    // retrieve the user&#x27;s dashboards
     if(!$scope.dashboards){
       dashboardApi.getDashboards().then(function(dashboards) {
         $scope.dashboards = dashboards;
@@ -161,17 +204,21 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
         console.log(&#x27;should not have happened: &#x27; + error);
       });
     }
+
+    // receive notification when the current dashboard changes (via URL)
     dashboardChangeMonitor.run();
 
-    // The applications/widgets on the grid view
-    $scope.frames = [];  // to make tests happy
+    // applications/widgets on the grid view
+    $scope.frames = [];  // initialize to make tests happy
 
+    // get application data
     marketplaceApi.getAllApps().then(function(apps) {
       $scope.apps = apps;
     }).catch(function(error) {
       console.log(&#x27;should not have happened: &#x27; + error);
     });
 
+    // current dashboard changed
     $scope.$on(&#x27;dashboard-change&#x27;, function() {
       // Make an array of old frames and new frames
       $scope.newFrames = [];
@@ -237,7 +284,7 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
     });
 
-
+    // user settings have changed
     $scope.$on(&#x27;userSettings-change&#x27;, function() {
       userSettingsApi.getUserSettings().then(function(settings) {
         if (settings.isAppboardHidden === true) {
@@ -281,7 +328,11 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       // to calculate new size (pixels)
       var widgetSize = $scope.updateLocalGridFrameSize(frameId);
       // save the changes
-      return dashboardApi.updateFrameSizeOnGrid(widgetSize.id, widgetSize.width,
+      if (!$scope.deviceSize) {
+        console.log(&#x27;WARNING: device size is undefined, setting to sm as default&#x27;);
+        $scope.deviceSize = &#x27;sm&#x27;;
+      }
+      return dashboardApi.updateFrameSizeOnGrid(widgetSize.id, $scope.deviceSize, widgetSize.width,
         widgetSize.height).then(function(update) {
           if (!update) {
             console.log(&#x27;Error updating framesize on grid&#x27;);
@@ -345,9 +396,7 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
      */
     $scope.updateFrameAfterChange = function(frame) {
       // save the basic grid settings
-      return dashboardApi.updateGridFrame(frame.id, frame.gridLayout.row,
-        frame.gridLayout.col, frame.gridLayout.sizeX,
-        frame.gridLayout.sizeY).then(function(frameId) {
+      return dashboardApi.updateGridFrame(frame.id, frame.gridLayout).then(function(frameId) {
           if (!frameId) {
             console.log(&#x27;ERROR: could not update grid frame&#x27;);
             return;
@@ -429,6 +478,11 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       }
     };
 
+    // Initialize grid columns based on screen size
+    if (windowSizeWatcher.getCurrentSize() === &#x27;sm&#x27;) {
+      $scope.gridOptions.columns = 3;
+    }
+
     /**
      * Calculates the size in pixels for a given frame
      * Necessary because the built-in angular-gridster method that calculates a
@@ -457,8 +511,8 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       var baseWidgetHeight = baseWidgetWidth;
 
       // now take the frame into account
-      var sizeX = frame.gridLayout.sizeX;
-      var sizeY = frame.gridLayout.sizeY;
+      var sizeX = frame.gridLayout[$scope.deviceSize].sizeX;
+      var sizeY = frame.gridLayout[$scope.deviceSize].sizeY;
       var widgetWidth = baseWidgetWidth * sizeX + (colMargin*(sizeX-1));
       // Make small adjustment to width
       widgetWidth -= 2*sizeX;

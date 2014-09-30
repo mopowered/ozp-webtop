@@ -71,6 +71,8 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/ozp.common.html">ozp.common</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
@@ -235,16 +237,21 @@ function generalDashboardModel(persistStrategy, Utilities) {
       });
     },
     // Update the grid layout of a frame in a dashboard
-    updateGridFrame: function(frameId, row, col, sizeX, sizeY) {
+    updateGridFrame: function(frameId, sizeData) {
       var that = this;
       return this.getFrameById(frameId).then(function(frame) {
         if (!frame) {
           return false;
         }
-        frame.gridLayout.row = row;
-        frame.gridLayout.col = col;
-        frame.gridLayout.sizeX = sizeX;
-        frame.gridLayout.sizeY = sizeY;
+        frame.gridLayout.sm.row = sizeData.sm.row;
+        frame.gridLayout.sm.col = sizeData.sm.col;
+        frame.gridLayout.sm.sizeX = sizeData.sm.sizeX;
+        frame.gridLayout.sm.sizeY = sizeData.sm.sizeY;
+
+        frame.gridLayout.md.row = sizeData.md.row;
+        frame.gridLayout.md.col = sizeData.md.col;
+        frame.gridLayout.md.sizeX = sizeData.md.sizeX;
+        frame.gridLayout.md.sizeY = sizeData.md.sizeY;
         return that.saveFrame(frame).then(function(response) {
           if (response) {
             return frameId;
@@ -300,7 +307,8 @@ function generalDashboardModel(persistStrategy, Utilities) {
         // for the desktop layout, just put it on and let user move it
         var usedRows = [];
         for (var i=0; i &lt; dashboard.frames.length; i++) {
-          usedRows.push(dashboard.frames[i].gridLayout.row);
+          // TODO: arbitrarily chose to use small size
+          usedRows.push(dashboard.frames[i].gridLayout.sm.row);
         }
         var maxUsedRow = Math.max.apply(Math, usedRows);
         var row = maxUsedRow + 1;
@@ -330,10 +338,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
           &#x27;appId&#x27;: appId,
           &#x27;id&#x27;: frameId,
           &#x27;gridLayout&#x27;: {
-            &#x27;row&#x27;: row,
-            &#x27;col&#x27;: col,
-            &#x27;sizeX&#x27;: sizeX,
-            &#x27;sizeY&#x27;: sizeY
+            &#x27;sm&#x27;: {
+              &#x27;row&#x27;: row,
+              &#x27;col&#x27;: col,
+              &#x27;sizeX&#x27;: sizeX,
+              &#x27;sizeY&#x27;: sizeY
+            },
+            &#x27;md&#x27;: {
+              &#x27;row&#x27;: row,
+              &#x27;col&#x27;: col,
+              &#x27;sizeX&#x27;: sizeX,
+              &#x27;sizeY&#x27;: sizeY
+            }
           },
           &#x27;desktopLayout&#x27;: {
             &#x27;zIndex&#x27;: zIndex,
@@ -437,11 +453,15 @@ function generalDashboardModel(persistStrategy, Utilities) {
     },
 
     // Updates the dynamically generated fields for grid frame size in px
-    updateFrameSizeOnGrid: function(frameId, width, height) {
+    updateFrameSizeOnGrid: function(frameId, size, width, height) {
+      // TODO: may need to adjust this someday
+      if (size === &#x27;lg&#x27;) {
+        size = &#x27;md&#x27;;
+      }
       var that = this;
       return this.getFrameById(frameId).then(function(frame) {
-        frame.gridLayout.width = width;
-        frame.gridLayout.height = height;
+        frame.gridLayout[size].width = width;
+        frame.gridLayout[size].height = height;
         return that.saveFrame(frame).then(function(response) {
           return response;
         }).catch(function(error) {
@@ -456,9 +476,11 @@ function generalDashboardModel(persistStrategy, Utilities) {
     // Note that these values are dynamically generated
     getFrameSizeOnGrid: function(frameId) {
       return this.getFrameById(frameId).then(function(frame) {
-        var widgetSize = {};
-        widgetSize.width = frame.gridLayout.width;
-        widgetSize.height = frame.gridLayout.height;
+        var widgetSize = {&#x27;sm&#x27;: {}, &#x27;md&#x27;: {}};
+        widgetSize.sm.width = frame.gridLayout.sm.width;
+        widgetSize.sm.height = frame.gridLayout.sm.height;
+        widgetSize.md.width = frame.gridLayout.md.width;
+        widgetSize.md.height = frame.gridLayout.md.height;
         return widgetSize;
       }).catch(function(error) {
         console.log(&#x27;should not have happened: &#x27; + error);
@@ -651,10 +673,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;cd0e3e24-cae8-4886-a0d4-c7e04b5b104e&#x27;, // Greek analysis
                 &#x27;id&#x27;: &#x27;2b585b22-5de9-4389-b536-57bcb602bf3a&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 0,
-                  &#x27;col&#x27;: 0,
-                  &#x27;sizeX&#x27;: 6,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 0,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 0,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 6,
+                    &#x27;sizeY&#x27;: 1
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -668,10 +698,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;f38e10db-eb3f-4b90-8ec5-cb0a7dbd9191&#x27;, // Stock Trader
                 &#x27;id&#x27;: &#x27;3886bbea-0421-4a2a-9851-b8e1c6a59f5b&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 1,
-                  &#x27;col&#x27;: 0,
-                  &#x27;sizeX&#x27;: 3,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 1,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 1,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 1,
@@ -685,10 +723,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;00605b24-baff-4270-b0b5-2b6bd6455883&#x27;, // Chart
                 &#x27;id&#x27;: &#x27;fe9fd6bf-e7be-446a-8ab7-a3fc4ac279a8&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 1,
-                  &#x27;col&#x27;: 3,
-                  &#x27;sizeX&#x27;: 3,
-                  &#x27;sizeY&#x27;: 2
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 2,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 2
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 1,
+                    &#x27;col&#x27;: 3,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 2
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -709,10 +755,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;342f3680-18c9-11e4-8c21-0800200c9a66&#x27;, // purple circle
                 &#x27;id&#x27;: &#x27;45a08744-686b-4b14-820a-ebc8c24fbfb0&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 1,
-                  &#x27;col&#x27;: 1,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 0,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 1,
+                    &#x27;col&#x27;: 1,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -726,10 +780,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;d9d3b477-7c21-4cab-bd9f-771ee9379be4&#x27;, // red square
                 &#x27;id&#x27;: &#x27;59891c69-dde5-4926-b4b1-e53dac90b271&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 1,
-                  &#x27;col&#x27;: 2,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 1,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 1,
+                    &#x27;col&#x27;: 2,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -743,10 +805,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;c3d895d5-f332-4154-b963-c5dd63f8ca49&#x27;, // some text
                 &#x27;id&#x27;: &#x27;23baefc8-872a-4da4-84ed-e8fa62c09819&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 2,
-                  &#x27;col&#x27;: 1,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 2,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 2,
+                    &#x27;col&#x27;: 1,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 1,
@@ -760,10 +830,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;34bc3505-5dcc-4609-bcd6-c014d9f27ce5&#x27;, //mbrot
                 &#x27;id&#x27;: &#x27;8ca6dba0-b7bb-47e4-a1a1-06e451f9a0f1&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;row&#x27;: 2,
-                  &#x27;col&#x27;: 2,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;row&#x27;: 3,
+                    &#x27;col&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;row&#x27;: 2,
+                    &#x27;col&#x27;: 2,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 1,
@@ -784,10 +862,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;342f3680-18c9-11e4-8c21-0800200c9a66&#x27;,
                 &#x27;id&#x27;: &#x27;04648023-6ab0-448d-83a1-bb378639237f&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;col&#x27;: 1,
-                  &#x27;row&#x27;: 1,
-                  &#x27;sizeX&#x27;: 3,
-                  &#x27;sizeY&#x27;: 3
+                  &#x27;sm&#x27;: {
+                    &#x27;col&#x27;: 0,
+                    &#x27;row&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 3
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;col&#x27;: 1,
+                    &#x27;row&#x27;: 1,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 3
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -808,10 +894,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;998437ef-9191-4d57-91a7-6ab049361583&#x27;,
                 &#x27;id&#x27;: &#x27;6c84a76c-f149-4c4d-90a8-1df397ed588b&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;col&#x27;: 1,
-                  &#x27;row&#x27;: 1,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;col&#x27;: 0,
+                    &#x27;row&#x27;: 0,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;col&#x27;: 0,
+                    &#x27;row&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 2
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -825,10 +919,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;3af849aa-dad0-4223-b15b-9da3b48d1845&#x27;,
                 &#x27;id&#x27;: &#x27;c951a160-0917-45cf-8c7f-a3748958ced1&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;col&#x27;: 2,
-                  &#x27;row&#x27;: 1,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;col&#x27;: 1,
+                    &#x27;row&#x27;: 0,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;col&#x27;: 3,
+                    &#x27;row&#x27;: 0,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 2
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -842,10 +944,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;e5f52929-3f00-4766-a820-f0452ff74572&#x27;,
                 &#x27;id&#x27;: &#x27;dad15d4a-0da1-4181-9e99-15c9197a0180&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;col&#x27;: 1,
-                  &#x27;row&#x27;: 1,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;col&#x27;: 2,
+                    &#x27;row&#x27;: 0,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;col&#x27;: 0,
+                    &#x27;row&#x27;: 2,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 2
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,
@@ -859,10 +969,18 @@ function generalDashboardModel(persistStrategy, Utilities) {
                 &#x27;appId&#x27;: &#x27;93eb7a1d-618c-4478-a59e-326eccbe86d5&#x27;,
                 &#x27;id&#x27;: &#x27;32769aa5-2c34-45e9-9a63-a155f3d77073&#x27;,
                 &#x27;gridLayout&#x27;: {
-                  &#x27;col&#x27;: 2,
-                  &#x27;row&#x27;: 1,
-                  &#x27;sizeX&#x27;: 1,
-                  &#x27;sizeY&#x27;: 1
+                  &#x27;sm&#x27;: {
+                    &#x27;col&#x27;: 1,
+                    &#x27;row&#x27;: 1,
+                    &#x27;sizeX&#x27;: 1,
+                    &#x27;sizeY&#x27;: 1
+                  },
+                  &#x27;md&#x27;: {
+                    &#x27;col&#x27;: 3,
+                    &#x27;row&#x27;: 2,
+                    &#x27;sizeX&#x27;: 3,
+                    &#x27;sizeY&#x27;: 2
+                  }
                 },
                 &#x27;desktopLayout&#x27;: {
                   &#x27;zIndex&#x27;: 0,

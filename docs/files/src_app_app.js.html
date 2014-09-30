@@ -71,6 +71,8 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/ozp.common.html">ozp.common</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
@@ -142,6 +144,7 @@
  *     &lt;body ng-app=&quot;ozpWebtopApp&quot;&gt; ... &lt;/body&gt;
  *
  * @module ozpWebtopApp
+ * @requires ozp.common
  * @requires ozpWebtopApp.constants
  * @requires ozpWebtopApp.general
  * @requires ozpWebtopApp.ozpIwcClient
@@ -159,6 +162,7 @@
  * @requires ozpClassification
  */
 angular.module( &#x27;ozpWebtopApp&#x27;, [
+  &#x27;ozp.common&#x27;,
   &#x27;templates-app&#x27;,
   &#x27;templates-common&#x27;,
   &#x27;ozpWebtopApp.constants&#x27;,
@@ -218,6 +222,13 @@ angular.module( &#x27;ozpWebtopApp&#x27;, [
     }
 
 });
+
+/**
+ * Common services
+ *
+ * @module ozp.common
+ */
+angular.module(&#x27;ozp.common&#x27;, []);
 
 /**
  * Constants used throughout the application
@@ -280,9 +291,10 @@ angular.module(&#x27;ozpWebtopApp.appLauncher&#x27;, [&#x27;ui.router&#x27;, &#x
  * The dashboard toolbar component shown in the Webtop.
  *
  * @module ozpWebtopApp.dashboardToolbar
+ * @requires ozp.common
  * @requires ozpWebtopApp.apis
  */
-angular.module(&#x27;ozpWebtopApp.dashboardToolbar&#x27;, [&#x27;ozpWebtopApp.apis&#x27;]);
+angular.module(&#x27;ozpWebtopApp.dashboardToolbar&#x27;, [&#x27;ozp.common&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
 /**
  * The application toolbar in the Webtop.
@@ -291,7 +303,7 @@ angular.module(&#x27;ozpWebtopApp.dashboardToolbar&#x27;, [&#x27;ozpWebtopApp.ap
  * @requires ui.router
  * @requires ozpWebtopApp.apis
  */
-angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
+angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;ui.bootstrap&#x27;, &#x27;ozp.common&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
 /**
  * The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets.
@@ -299,7 +311,7 @@ angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x2
  * @module ozpWebtopApp.dashboardView
  * @requires ozpWebtopApp.apis
  */
-angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozpIwcClient&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
+angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozp.common&#x27;, &#x27;ozpIwcClient&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
 
 // TODO: cleanup and document these messages used throughout the application

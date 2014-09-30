@@ -71,6 +71,8 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/ozp.common.html">ozp.common</a></li>
+            
                 <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
             
                 <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
@@ -212,6 +214,10 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
         }
       });
 
+      scope.$on(&#x27;window-size-change&#x27;, function(event, value) {
+        scope.deviceSize = value.deviceSize;
+      });
+
       // TODO: get minimum values from somewhere based on the size of the
       //      current grid
       scope.styles = {
@@ -228,10 +234,17 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
         scope.frameId = element.context.id;
         dashboardApi.getFrameSizeOnGrid(scope.frameId).then(function(frameSize) {
           // console.log(&#x27;setting initial style: &#x27; + frameSize.width + &#x27;, &#x27; + frameSize.height);
-          scope.styles = {
-            &#x27;height&#x27;: frameSize.height,
-            &#x27;width&#x27;: frameSize.width
+          if (scope.deviceSize === &#x27;sm&#x27;) {
+            scope.styles = {
+            &#x27;height&#x27;: frameSize.sm.height,
+            &#x27;width&#x27;: frameSize.sm.width
           };
+          } else {
+            scope.styles = {
+            &#x27;height&#x27;: frameSize.md.height,
+            &#x27;width&#x27;: frameSize.md.width
+          };
+          }
         }).catch(function(error) {
           console.log(&#x27;should not have happened: &#x27; + error);
         });

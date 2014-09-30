@@ -16,6 +16,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "general.elliptical"
     ],
     "modules": [
+        "ozp.common",
         "ozpWebtopApp",
         "ozpWebtopApp.apis",
         "ozpWebtopApp.appLauncher",
@@ -29,6 +30,11 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtopApp.userSettings"
     ],
     "allModules": [
+        {
+            "displayName": "ozp.common",
+            "name": "ozp.common",
+            "description": "Common services"
+        },
         {
             "displayName": "ozpWebtopApp",
             "name": "ozpWebtopApp",

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>apis.marketplaceApi - ozpwebtop</title>
+    <title>src/common/windowSizeWatcher/windowSizeWatcher.js - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -130,125 +130,63 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>apis.marketplaceApi Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/windowSizeWatcher/windowSizeWatcher.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_app_general_services_marketplaceApi.js.html#l203"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;marketplaceApi.js:203</code></a>
-        </div>
-    
+/**
+ * windowSizeWatcher sends a message when the window size changes device sizes
+ * as defined by Bootstrap:
+ *
+ * &lt; 768px  = extra-small (xs)
+ * &gt;= 768px = small (sm)
+ * &gt;= 992 = medium (md)
+ * &gt;= 1200 = large (lg)
+ *
+ * @namespace ozp.common
+ * @method windowSizeWatcher
+ * @static
+ */
+angular.module(&#x27;ozp.common&#x27;)
+.factory(&#x27;windowSizeWatcher&#x27;, function ($rootScope, $window) {
+    var previousDeviceSize = &#x27;&#x27;;
+    var deviceSize = &#x27;&#x27;;
+    return {
+      run: function() {
+        $rootScope.$watch(function(){
+        return $window.innerWidth;
+      }, function(value) {
+          // invoked each time the window size is changed (as the user drags,
+          // no just on mouseup)
+          // console.log(&#x27;window size changed to: &#x27; + value);
+          if (value &lt; 768) {
+            deviceSize = &#x27;xs&#x27;;
+          } else if (value &lt; 992) {
+            deviceSize = &#x27;sm&#x27;;
+          } else if (value &lt; 1200) {
+            deviceSize = &#x27;md&#x27;;
+          } else {
+            deviceSize = &#x27;lg&#x27;;
+          }
 
-    
-        
-            Module: <a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a>
-        
-    
+          if (previousDeviceSize !== deviceSize) {
+            previousDeviceSize = deviceSize;
+            $rootScope.$broadcast(&#x27;window-size-change&#x27;, {
+              deviceSize: deviceSize,
+            });
+          }
+          $rootScope.$broadcast(&#x27;window-px-size-change&#x27;);
 
-    
-</div>
-
-
-
-<div class="box intro">
-    <p>Angular service which provides an abstraction of the implementations used to
-store and retrieve marketplace data</p>
-
-</div>
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_apis.marketplaceApi" class="method item">
-    <h3 class="name"><code>apis.marketplaceApi</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_app_general_services_marketplaceApi.js.html#l203"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;marketplaceApi.js:203</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
-
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-
-        
-
-        
-
-        
-    </div>
+         });
+      },
+      getCurrentSize: function() {
+        return deviceSize;
+      }
+    };
+});
+    </pre>
 </div>
 
                     </div>

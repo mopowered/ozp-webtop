@@ -158,6 +158,7 @@
             "name": "src/app/app.js",
             "modules": {
                 "ozpWebtopApp": 1,
+                "ozp.common": 1,
                 "ozpWebtopApp.constants": 1,
                 "ozpWebtopApp.ozpIwcClient": 1,
                 "ozpWebtopApp.general": 1,
@@ -172,6 +173,15 @@
             "classes": {},
             "fors": {},
             "namespaces": {}
+        },
+        "src/common/windowSizeWatcher/windowSizeWatcher.js": {
+            "name": "src/common/windowSizeWatcher/windowSizeWatcher.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "ozp.common": 1
+            }
         }
     },
     "modules": {
@@ -203,6 +213,7 @@
                 " \n    <body ng-app=\"ozpWebtopApp\"> ... </body>"
             ],
             "requires": [
+                "ozp.common",
                 "ozpWebtopApp.constants",
                 "ozpWebtopApp.general",
                 "ozpWebtopApp.ozpIwcClient",
@@ -220,6 +231,17 @@
                 "ozpClassification"
             ]
         },
+        "ozp.common": {
+            "name": "ozp.common",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 90,
+            "description": "Common services"
+        },
         "ozpWebtopApp.constants": {
             "name": "ozpWebtopApp.constants",
             "submodules": {},
@@ -228,7 +250,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 88,
+            "line": 97,
             "description": "Constants used throughout the application"
         },
         "ozpWebtopApp.ozpIwcClient": {
@@ -239,7 +261,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 95,
+            "line": 104,
             "description": "Provides an OZP IWC client using a Promises to indicate valid connection",
             "requires": [
                 "ozpIwcClient",
@@ -254,7 +276,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 105,
+            "line": 114,
             "description": "General utilities for use in Webtop. Includes some services and other fairly\ngeneric capabilities.",
             "requires": [
                 "ozpWebtopApp.constants"
@@ -268,7 +290,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 114,
+            "line": 123,
             "description": "APIs retrieve and send data to places external to the Webtop.",
             "requires": [
                 "ozpWebtopApp.general"
@@ -282,7 +304,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 123,
+            "line": 132,
             "description": "The modal encompassing user settings functionality.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -296,7 +318,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 131,
+            "line": 140,
             "description": "Reusable components for the Webtop."
         },
         "ozpWebtopApp.appLauncher": {
@@ -307,7 +329,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 138,
+            "line": 147,
             "description": "Launches apps from other sources"
         },
         "ozpWebtopApp.dashboardToolbar": {
@@ -318,9 +340,10 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 145,
+            "line": 154,
             "description": "The dashboard toolbar component shown in the Webtop.",
             "requires": [
+                "ozp.common",
                 "ozpWebtopApp.apis"
             ]
         },
@@ -332,7 +355,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 153,
+            "line": 163,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -344,10 +367,12 @@
             "submodules": {},
             "classes": {},
             "fors": {},
-            "namespaces": {},
+            "namespaces": {
+                "ozp.common": 1
+            },
             "tag": "module",
             "file": "src/app/app.js",
-            "line": 162,
+            "line": 172,
             "description": "The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets.",
             "requires": [
                 "ozpWebtopApp.apis"
@@ -557,7 +582,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 753,
+            "line": 869,
             "description": "Angular service which provides a local storage interface to the dashboard api.",
             "is_constructor": 1,
             "params": [
@@ -589,7 +614,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 772,
+            "line": 888,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store and retrieve\ndashboards.",
             "is_constructor": 1
         },
@@ -604,7 +629,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 788,
+            "line": 904,
             "description": "Angular service which provides an abstraction of the implementations used to store and retrieve\ndashboard information.",
             "is_constructor": 1
         },
@@ -715,7 +740,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 136,
+            "line": 181,
             "description": "Calculates the size of a frame, saves it, and sends a gridSizeChanged\n message",
             "params": [
                 {
@@ -733,7 +758,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 170,
+            "line": 219,
             "description": "Reloads the current dashboard",
             "return": {
                 "description": "Promise fulfilled with Boolean, true if dashboard was\n                   found",
@@ -744,7 +769,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 207,
+            "line": 256,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "params": [
                 {
@@ -762,14 +787,14 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 227,
+            "line": 274,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "class": "dashboardView.GridCtrl",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 298,
+            "line": 350,
             "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
             "params": [
                 {
@@ -787,7 +812,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 338,
+            "line": 390,
             "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
             "params": [
                 {
@@ -881,28 +906,39 @@
             "is_constructor": 1,
             "class": "apis.userSettingsApi",
             "namespace": "apis"
+        },
+        {
+            "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
+            "line": 3,
+            "description": "windowSizeWatcher sends a message when the window size changes device sizes\nas defined by Bootstrap:\n\n< 768px  = extra-small (xs)\n>= 768px = small (sm)\n>= 992 = medium (md)\n>= 1200 = large (lg)",
+            "itemtype": "method",
+            "name": "windowSizeWatcher",
+            "static": 1,
+            "class": "",
+            "module": "ozpWebtopApp.dashboardView",
+            "namespace": "ozp.common"
         }
     ],
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:136"
+            "line": " src/app/dashboardView/grid/grid.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:170"
+            "line": " src/app/dashboardView/grid/grid.js:219"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:207"
+            "line": " src/app/dashboardView/grid/grid.js:256"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:298"
+            "line": " src/app/dashboardView/grid/grid.js:350"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:338"
+            "line": " src/app/dashboardView/grid/grid.js:390"
         },
         {
             "message": "Missing item type\nChromeCtrl aids the ozpChrome directive in knowing its location (grid or desktop).",
@@ -910,27 +946,27 @@
         },
         {
             "message": "Missing item type\nCalculates the size of a frame, saves it, and sends a gridSizeChanged\n message",
-            "line": " src/app/dashboardView/grid/grid.js:136"
+            "line": " src/app/dashboardView/grid/grid.js:181"
         },
         {
             "message": "Missing item type\nReloads the current dashboard",
-            "line": " src/app/dashboardView/grid/grid.js:170"
+            "line": " src/app/dashboardView/grid/grid.js:219"
         },
         {
             "message": "Missing item type\nUpdate a single frame after a change (move or resize) has occurred",
-            "line": " src/app/dashboardView/grid/grid.js:207"
+            "line": " src/app/dashboardView/grid/grid.js:256"
         },
         {
             "message": "Missing item type\nUpdate all frames after the user finishes moving or resizing a frame",
-            "line": " src/app/dashboardView/grid/grid.js:227"
+            "line": " src/app/dashboardView/grid/grid.js:274"
         },
         {
             "message": "Missing item type\nCalculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
-            "line": " src/app/dashboardView/grid/grid.js:298"
+            "line": " src/app/dashboardView/grid/grid.js:350"
         },
         {
             "message": "Missing item type\nUpdate the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
-            "line": " src/app/dashboardView/grid/grid.js:338"
+            "line": " src/app/dashboardView/grid/grid.js:390"
         },
         {
             "message": "Missing item type\nProvides a simpler interface to the browser's localStorage",
