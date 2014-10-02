@@ -8078,6 +8078,8 @@ html {
   position: relative;
   min-height: 100%;
   background-color: #191f25;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
 }
 body {
   margin-bottom: 35px;
