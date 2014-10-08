@@ -582,7 +582,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 869,
+            "line": 871,
             "description": "Angular service which provides a local storage interface to the dashboard api.",
             "is_constructor": 1,
             "params": [
@@ -614,7 +614,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 888,
+            "line": 890,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store and retrieve\ndashboards.",
             "is_constructor": 1
         },
@@ -629,7 +629,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/dashboardapi.js",
-            "line": 904,
+            "line": 906,
             "description": "Angular service which provides an abstraction of the implementations used to store and retrieve\ndashboard information.",
             "is_constructor": 1
         },
@@ -722,7 +722,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 20,
+            "line": 45,
             "description": "Decides which template to use.",
             "itemtype": "method",
             "name": "getTemplate",
@@ -794,7 +794,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 350,
+            "line": 353,
             "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
             "params": [
                 {
@@ -812,7 +812,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 390,
+            "line": 393,
             "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
             "params": [
                 {
@@ -934,11 +934,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:350"
+            "line": " src/app/dashboardView/grid/grid.js:353"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:390"
+            "line": " src/app/dashboardView/grid/grid.js:393"
         },
         {
             "message": "Missing item type\nChromeCtrl aids the ozpChrome directive in knowing its location (grid or desktop).",
@@ -962,11 +962,11 @@
         },
         {
             "message": "Missing item type\nCalculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n hard-coded value of gridster container padding\n accesses $scope.gridOptions",
-            "line": " src/app/dashboardView/grid/grid.js:350"
+            "line": " src/app/dashboardView/grid/grid.js:353"
         },
         {
             "message": "Missing item type\nUpdate the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
-            "line": " src/app/dashboardView/grid/grid.js:390"
+            "line": " src/app/dashboardView/grid/grid.js:393"
         },
         {
             "message": "Missing item type\nProvides a simpler interface to the browser's localStorage",

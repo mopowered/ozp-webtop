@@ -152,7 +152,32 @@
  */
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 .directive(&#x27;ozpManagedFrame&#x27;, function (compareUrl, $http, $compile, $document, dashboardApi) {
-  
+  var resizableConfig = {
+    // handles: &#x27;all&#x27;,
+    handles: &#x27;nw, sw, se, ne&#x27;,
+    aspectRatio: false,
+    ghost: true,
+    start: function(event,ui) {
+      if(!event){
+        console.debug(ui.element);
+      }
+      (ui.element).parent().parent().parent().css(&#x27;pointer-events&#x27;,&#x27;none&#x27;);//this is not smart, but works for the demo... will probably need a workaround for ie9
+    },
+    stop: function(event, ui) {
+      if(!event){
+        console.debug(ui.element);
+      }
+      (ui.element).parent().parent().parent().css(&#x27;pointer-events&#x27;,&#x27;auto&#x27;);//this is not smart, but works for the demo... will probably need a workaround for ie9
+    }
+  };
+
+  var draggableConfig = {
+    addClasses: true,
+    scrollSensitivity: 100,
+    scrollSpeed: 100,
+    iframeFix: true,
+    containment: &#x27;document&#x27;
+  };
   /**
    * Decides which template to use.
    *
@@ -179,7 +204,9 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
   return {
     restrict: &#x27;E&#x27;,
     template: &#x27;&lt;div ng-include=&quot;getContentUrl()&quot;&gt;&lt;/div&gt;&#x27;,
-    link: function (scope, element) {
+    link: function postLink(scope, element) {
+      element.draggable(draggableConfig);
+      element.resizable(resizableConfig);
       // Logic for dragging is influenced by Angular directive documentation, under the
       // heading &quot;Creating a Directive that Adds Event Listeners&quot;.
       // See: https://docs.angularjs.org/guide/directive
@@ -188,14 +215,16 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       var startX = scope.frame.desktopLayout.left;
       var startY = scope.frame.desktopLayout.top;
 
-
       // &#x27;Current&#x27; positions are changed as the element moves
       var x = startX, y = startY;
 
       // React to a mousedown and allow the element to move
-      element.on(&#x27;mousedown&#x27;, function(event) {
+
         // TODO: find a more maintainable way?
         // Ignore click event if we clicked a button
+      function start (event) {
+        console.debug(&#x27;event&#x27;);
+        console.debug(event);
         if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
           event.preventDefault();
           return;
@@ -208,45 +237,37 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
           element.css({
             zIndex: scope.frame.desktopLayout.zIndex
           });
-          dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex).then(function(update) {
-            if (!update) {
-              console.log(&#x27;Error updating desktop frame&#x27;);
-            }
-          }).catch(function(error) {
-            console.log(&#x27;should not have happened: &#x27; + error);
-          });
         }
 
         // Prevent default dragging of selected content
         event.preventDefault();
         startX = event.pageX - x;
         startY = event.pageY - y;
-        $document.on(&#x27;mousemove&#x27;, mousemove);
-        $document.on(&#x27;mouseup&#x27;, mouseup);
-        // console.log(&#x27;Starting x is &#x27; + startX + &#x27;, startY is &#x27; + startY);
-      });
-
-      function mousemove(event) {
-        y = event.pageY - startY;
-        x = event.pageX - startX;
-        element.css({
-          top: y + &#x27;px&#x27;,
-          left:  x + &#x27;px&#x27;
-        });
       }
 
-      function mouseup() {
+
+      function stop (event) {
+        y = event.pageY - startY;
+        x = event.pageX - startX;
         // TODO: find a more maintainable way?
-        // Ignore click event if we clicked a button
+
         if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
           event.preventDefault();
           return;
         }
-        $document.off(&#x27;mousemove&#x27;, mousemove);
-        $document.off(&#x27;mouseup&#x27;, mouseup);
-        dashboardApi.updateDesktopFrame(scope.frame.id, x, y, scope.max.zIndex);
-      }
 
+        dashboardApi.updateDesktopFrame(
+          scope.frame.id, 
+          element[0].offsetLeft, 
+          element[0].offsetTop, 
+          element[0].offsetWidth, 
+          element[0].offsetHeight, 
+          scope.max.zIndex
+        );
+      }
+      //add listeners
+      element.on(&#x27;mousedown resizestart&#x27;, start);
+      element.on(&#x27;mouseup mouseleave resizestop&#x27;, stop);
       // Is the origin the same as the webtop?
       var origin = compareUrl(scope.frame.url);
 
@@ -257,13 +278,11 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
 
       // Note: in iframe template height and width of the iframe is calculated based on
       // these styles. May need to change it in the future.
+
       scope.styles = {
         &#x27;top&#x27;: scope.frame.desktopLayout.top,
         &#x27;left&#x27;: scope.frame.desktopLayout.left,
-        &#x27;height&#x27;: function(){
-          console.log(scope.frame.desktopLayout.height);
-          return scope.frame.desktopLayout.height;
-        },
+        &#x27;height&#x27;: scope.frame.desktopLayout.height,
         &#x27;width&#x27;: scope.frame.desktopLayout.width,
         &#x27;z-index&#x27;: scope.frame.desktopLayout.zIndex
       };

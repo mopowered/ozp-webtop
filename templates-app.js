@@ -252,8 +252,7 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
-    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized, 'appToggle' : frame.isMaximized && appBarHidden, 'dashToggle' : frame.isMaximized && dashBarHidden}\"></ozp-managed-frame>\n" +
-    "");
+    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized, 'appToggle' : frame.isMaximized && appBarHidden, 'dashToggle' : frame.isMaximized && dashBarHidden}\"></ozp-managed-frame>");
 }]);
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -275,18 +274,14 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
 angular.module("dashboardView/templates/managedframe.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/templates/managedframe.tpl.html",
     "<ozp-chrome></ozp-chrome>\n" +
-    "<div class=\"managed-frame\" ng-include=\"frame.url\" ></div>\n" +
+    "<div class=\"managed-frame\" ng-include=\"frame.url\" height=\"style.height\" width=\"style.width\"></div>\n" +
     "");
 }]);
 
 angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/templates/managediframe.tpl.html",
-    "<ozp-chrome></ozp-chrome>\n" +
-    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\"\n" +
-    "  ng-src=\"{{frame.trustedUrl}}\"\n" +
-    "  frameBorder=\"0\" height=\"{{styles.height}}\"\n" +
-    "  width=\"{{styles.width}}\">\n" +
-    "</iframe>");
+    "<ozp-chrome ></ozp-chrome>\n" +
+    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\" height=\"style.height\" width=\"style.width\"></iframe>");
 }]);
 
 angular.module("userSettings/settingsModal.tpl.html", []).run(["$templateCache", function($templateCache) {

@@ -156,7 +156,6 @@ angular.module(&#x27;ozpWebtopApp.components&#x27;)
   });
 
   $scope.isDisabled = function(e){
-
     dashboardApi.removeFrame(e.id).then(function() {
       $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
     }).catch(function(error) {
