@@ -644,7 +644,7 @@
             "module": "ozpWebtopApp",
             "namespace": "apis",
             "file": "src/app/general/services/marketplaceApi.js",
-            "line": 203,
+            "line": 564,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve marketplace data",
             "is_constructor": 1
         },
@@ -877,7 +877,7 @@
         },
         {
             "file": "src/app/general/services/marketplaceApi.js",
-            "line": 172,
+            "line": 533,
             "description": "Angular service which provides a local storage interface to the marketplace\napi",
             "is_constructor": 1,
             "class": "apis.marketplaceApi",
@@ -885,7 +885,7 @@
         },
         {
             "file": "src/app/general/services/marketplaceApi.js",
-            "line": 188,
+            "line": 549,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
             "is_constructor": 1,
             "class": "apis.marketplaceApi",
@@ -974,11 +974,11 @@
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
-            "line": " src/app/general/services/marketplaceApi.js:172"
+            "line": " src/app/general/services/marketplaceApi.js:533"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
-            "line": " src/app/general/services/marketplaceApi.js:188"
+            "line": " src/app/general/services/marketplaceApi.js:549"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the userSettings api.",

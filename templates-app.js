@@ -20,7 +20,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            <li ng-repeat=\"app in myApps\">\n" +
     "              <a ng-click=\"appClicked(app)\" class=\"link-pointer\"\n" +
     "                  tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
-    "                <img ng-src=\"{{app.icon}}\" height=\"20\" width=\"20\" />\n" +
+    "                <img ng-src=\"{{app.icons.small}}\" height=\"20\" width=\"20\" />\n" +
     "                {{app.name}}</a>\n" +
     "            </li>\n" +
     "          </ul>\n" +
