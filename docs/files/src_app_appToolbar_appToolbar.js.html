@@ -401,10 +401,10 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
      */
     $scope.appClicked = function(app) {
       // check if the app is already on the current dashboard
-      // TODO: support non-singleton apps
       dashboardApi.isAppOnDashboard($scope.currentDashboardId, app.id).then(function(isOnDashboard) {
-        if (isOnDashboard) {
-          alert(&#x27;This application is already on your dashboard&#x27;);
+        if (isOnDashboard &amp;&amp; app.uiHints.singleton) {
+          alert(&#x27;Only one instance of this application may be on your &#x27; +
+            &#x27;dashboard&#x27;);
         } else {
           // add this app to the dashboard
           // TODO: use message broadcast to get grid max rows and grid max cols
