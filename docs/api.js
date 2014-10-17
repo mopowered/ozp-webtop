@@ -2,18 +2,33 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "apis.dashboardApi",
-        "apis.iwcDashboardApiImpl",
-        "apis.localStorageDashboardApiImpl",
+        "apis.iwcInterface",
+        "apis.localStorageInterface",
         "apis.marketplaceApi",
         "apis.userSettingsApi",
+        "appLauncher.AppLauncherCtrl",
+        "appToolbar.ApplicationToolbarCtrl",
+        "appToolbar.appToolbar",
+        "common.windowSizeWatcher",
+        "components.ChromeCtrl",
         "components.ozpButton",
+        "components.ozpChrome",
+        "dashboardToolbar.DashboardToolbarCtrl",
+        "dashboardToolbar.dashboardToolbar",
+        "dashboardView.DesktopCtrl",
         "dashboardView.GridCtrl",
         "dashboardView.IframeCtrl",
         "dashboardView.ozpGridsterItem",
         "dashboardView.ozpManagedFrame",
-        "general.Utiliites",
+        "general.LocalStorage",
+        "general.Utilities",
+        "general.compareUrl",
+        "general.constants",
         "general.dashboardChangeMonitor",
-        "general.elliptical"
+        "general.elliptical",
+        "ozpIwcClient.iwcConnectedClient",
+        "userSettings.ModalInstanceCtrl",
+        "userSettings.userSettings"
     ],
     "modules": [
         "ozp.common",
@@ -33,7 +48,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "ozp.common",
             "name": "ozp.common",
-            "description": "Common services"
+            "description": "Common services that are not specific to Webtop"
         },
         {
             "displayName": "ozpWebtopApp",

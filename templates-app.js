@@ -17,7 +17,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "        <div class=\"dropdown dropup\">\n" +
     "          <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></a>\n" +
     "          <ul class=\"dropdown-menu\">\n" +
-    "            <li ng-repeat=\"app in myApps\">\n" +
+    "            <li ng-repeat=\"app in apps\">\n" +
     "              <a ng-click=\"appClicked(app)\" class=\"link-pointer\"\n" +
     "                  tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
     "                <img ng-src=\"{{app.icons.small}}\" height=\"20\" width=\"20\" />\n" +

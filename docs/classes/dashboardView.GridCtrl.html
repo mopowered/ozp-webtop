@@ -43,15 +43,33 @@
             
                 <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
             
-                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.iwcInterface.html">apis.iwcInterface</a></li>
             
-                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.localStorageInterface.html">apis.localStorageInterface</a></li>
             
                 <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
             
                 <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
             
+                <li><a href="../classes/appLauncher.AppLauncherCtrl.html">appLauncher.AppLauncherCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+            
+                <li><a href="../classes/common.windowSizeWatcher.html">common.windowSizeWatcher</a></li>
+            
+                <li><a href="../classes/components.ChromeCtrl.html">components.ChromeCtrl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpChrome.html">components.ozpChrome</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.dashboardToolbar.html">dashboardToolbar.dashboardToolbar</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.DashboardToolbarCtrl.html">dashboardToolbar.DashboardToolbarCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
@@ -61,11 +79,23 @@
             
                 <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
+                <li><a href="../classes/general.compareUrl.html">general.compareUrl</a></li>
+            
+                <li><a href="../classes/general.constants.html">general.constants</a></li>
+            
                 <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
             
-                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
+                <li><a href="../classes/general.LocalStorage.html">general.LocalStorage</a></li>
+            
+                <li><a href="../classes/general.Utilities.html">general.Utilities</a></li>
+            
+                <li><a href="../classes/ozpIwcClient.iwcConnectedClient.html">ozpIwcClient.iwcConnectedClient</a></li>
+            
+                <li><a href="../classes/userSettings.ModalInstanceCtrl.html">userSettings.ModalInstanceCtrl</a></li>
+            
+                <li><a href="../classes/userSettings.userSettings.html">userSettings.userSettings</a></li>
             
             </ul>
 
@@ -154,8 +184,8 @@
 
 
 <div class="box intro">
-    <p>GridCtrl retrieves the state of a number of tiles and binds it to an
-Angular scope.</p>
+    <p>Controller managing the frames in the grid layout</p>
+<p>ngtype: controller</p>
 
 </div>
 
@@ -189,6 +219,12 @@ Angular scope.</p>
             
                 <li class="arg">
                     
+                        <code>$interval</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
                         <code>dashboardApi</code>
                     
                 </li>
@@ -202,6 +238,18 @@ Angular scope.</p>
                 <li class="arg">
                     
                         <code>dashboardChangeMonitor</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>userSettingsApi</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>windowSizeWatcher</code>
                     
                 </li>
             
@@ -304,6 +352,22 @@ Angular scope.</p>
             
                 <li class="param">
                     
+                        <code class="param-name">$interval</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the Angular interval service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
                         <code class="param-name">dashboardApi</code>
                         <span class="type">Object</span>
                     
@@ -327,7 +391,8 @@ Angular scope.</p>
                     
 
                     <div class="param-description">
-                        <p>the API for marketplace application information</p>
+                        <p>the API for marketplace application
+information</p>
 
                     </div>
 
@@ -343,7 +408,41 @@ Angular scope.</p>
                     
 
                     <div class="param-description">
-                        <p>the service that monitors dashboard changes</p>
+                        <p>the service that monitors dashboard
+changes</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">userSettingsApi</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the API for user settings</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">windowSizeWatcher</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>service that notifies on window size
+changes</p>
 
                     </div>
 
@@ -367,6 +466,10 @@ Angular scope.</p>
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
         
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -377,7 +480,187 @@ Angular scope.</p>
             <h2 class="off-left">Item Index</h2>
 
             
+                <div class="index-section methods">
+                    <h3>Methods</h3>
 
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_calculateGridFrameSize">calculateGridFrameSize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleDashboardChange">handleDashboardChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleDeviceSizeChange">handleDeviceSizeChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleGridsterResizeStart">handleGridsterResizeStart</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleGridsterResizeStop">handleGridsterResizeStop</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleUserSettingsChange">handleUserSettingsChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleWindowSizeChange">handleWindowSizeChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_reloadDashboard">reloadDashboard</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateAllFramesAfterChange">updateAllFramesAfterChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateDashboardFramePx">updateDashboardFramePx</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateFrameAfterChange">updateFrameAfterChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateLocalGridFrameSize">updateLocalGridFrameSize</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_activeFrames TODO clean this up">activeFrames TODO clean this up</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_appBarHidden Flag indicating whether the application toolbar
+is hidden">appBarHidden Flag indicating whether the application toolbar
+is hidden</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_apps Applications in the marketplace
+TODO: only need the apps the user has favorited">apps Applications in the marketplace
+TODO: only need the apps the user has favorited</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashboard Current dashboard">dashboard Current dashboard</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashboardId Current dashboardId
+TODO: duplicate info?">dashboardId Current dashboardId
+TODO: duplicate info?</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashboards User&#x27;s dashboards">dashboards User&#x27;s dashboards</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_deviceSize Current screen size (xs, sm, md, lg)">deviceSize Current screen size (xs, sm, md, lg)</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_frames Frames (widgets/apps) on the current dashboard">frames Frames (widgets/apps) on the current dashboard</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_gridOptions Configuration options for Gridster
+TODO: make these available to other components somehow">gridOptions Configuration options for Gridster
+TODO: make these available to other components somehow</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_intervalPromise promise returned by $interval (keep track of it
+so it can be canceled)">intervalPromise promise returned by $interval (keep track of it
+so it can be canceled)</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
 
             
@@ -386,7 +669,1490 @@ Angular scope.</p>
         </div>
 
         
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
 
+                
+                    <div id="method_calculateGridFrameSize" class="method item">
+    <h3 class="name"><code>calculateGridFrameSize</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>frame</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l520"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:520</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Calculates the size in pixels for a given frame
+Necessary because the built-in angular-gridster method that calculates a
+grid tile&#39;s size after resizing does not yield the correct results.</p>
+<p>Notes:</p>
+<ul>
+<li>hard-coded value of gridster container padding</li>
+<li>accesses $scope.gridOptions</li>
+</ul>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The frame for which to calculate size</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>height and width</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleDashboardChange" class="method item">
+    <h3 class="name"><code>handleDashboardChange</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l313"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:313</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handle the dashboard-change event</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleDeviceSizeChange" class="method item">
+    <h3 class="name"><code>handleDeviceSizeChange</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l289"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:289</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handles the window-size-change event, which occurs whenever the
+screen size changes device sizes (as defined by Bootstrap)</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>value.deviceSize is one of &#39;xs&#39;, &#39;sm&#39;, &#39;md&#39;, or
+&#39;lg&#39;</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleGridsterResizeStart" class="method item">
+    <h3 class="name"><code>handleGridsterResizeStart</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>uiWidget</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l234"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:234</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handle start event resizing a widget on Gridster</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">uiWidget</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Gridster widget</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleGridsterResizeStop" class="method item">
+    <h3 class="name"><code>handleGridsterResizeStop</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>uiWidget</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l263"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:263</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handle stop event when resizing Gridster widget</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">uiWidget</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleUserSettingsChange" class="method item">
+    <h3 class="name"><code>handleUserSettingsChange</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l385"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:385</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handle the userSettings-change event</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleWindowSizeChange" class="method item">
+    <h3 class="name"><code>handleWindowSizeChange</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l275"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:275</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handler for window-px-size-change event (each time the window size
+changes, even by a single pixel)</p>
+<p>Cancels the existing $interval promise and creates a new one to update
+all frames in 200ms</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_reloadDashboard" class="method item">
+    <h3 class="name"><code>reloadDashboard</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l443"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:443</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Reloads the current dashboard</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Promise</span>:
+                    
+                    <p>Promise fulfilled with Boolean, true if dashboard was
+                   found</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_updateAllFramesAfterChange" class="method item">
+    <h3 class="name"><code>updateAllFramesAfterChange</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l502"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:502</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update all frames after the user finishes moving or resizing a frame</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Promise</span>:
+                    
+                    <p>Promise fulfilled with TODO</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_updateDashboardFramePx" class="method item">
+    <h3 class="name"><code>updateDashboardFramePx</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>frameId</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l402"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:402</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Calculates the size of a frame, saves it, and sends a gridSizeChanged
+ message</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">frameId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Id of the frame to update</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Promise</span>:
+                    
+                    <p>fulfilled with boolean true if frame was updated
+                    successfully</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_updateFrameAfterChange" class="method item">
+    <h3 class="name"><code>updateFrameAfterChange</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>frame</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l482"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:482</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update a single frame after a change (move or resize) has occurred</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The frame to update</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Promise</span>:
+                    
+                    <p>Promise fulfilled with the frame id that was updated</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_updateLocalGridFrameSize" class="method item">
+    <h3 class="name"><code>updateLocalGridFrameSize</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>frameId</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l560"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:560</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update the widget&#39;s pixel size on the grid (this update is local, the
+data is not persisted to the dashboard api)</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">frameId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The id of the frame for which to update size</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>widget size (height and width) and the frame id</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_activeFrames TODO clean this up" class="property item">
+    <h3 class="name"><code>activeFrames TODO clean this up</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l67"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:67</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_appBarHidden Flag indicating whether the application toolbar
+is hidden" class="property item">
+    <h3 class="name"><code>appBarHidden Flag indicating whether the application toolbar
+is hidden</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l60"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:60</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_apps Applications in the marketplace
+TODO: only need the apps the user has favorited" class="property item">
+    <h3 class="name"><code>apps Applications in the marketplace
+TODO: only need the apps the user has favorited</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l53"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:53</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashboard Current dashboard" class="property item">
+    <h3 class="name"><code>dashboard Current dashboard</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l73"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:73</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashboardId Current dashboardId
+TODO: duplicate info?" class="property item">
+    <h3 class="name"><code>dashboardId Current dashboardId
+TODO: duplicate info?</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l79"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:79</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashboards User&#x27;s dashboards" class="property item">
+    <h3 class="name"><code>dashboards User&#x27;s dashboards</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l41"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:41</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_deviceSize Current screen size (xs, sm, md, lg)" class="property item">
+    <h3 class="name"><code>deviceSize Current screen size (xs, sm, md, lg)</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l35"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:35</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_frames Frames (widgets/apps) on the current dashboard" class="property item">
+    <h3 class="name"><code>frames Frames (widgets/apps) on the current dashboard</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l47"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:47</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_gridOptions Configuration options for Gridster
+TODO: make these available to other components somehow" class="property item">
+    <h3 class="name"><code>gridOptions Configuration options for Gridster
+TODO: make these available to other components somehow</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l92"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:92</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_intervalPromise promise returned by $interval (keep track of it
+so it can be canceled)" class="property item">
+    <h3 class="name"><code>intervalPromise promise returned by $interval (keep track of it
+so it can be canceled)</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardView_grid_grid.js.html#l86"><code>src&#x2F;app&#x2F;dashboardView&#x2F;grid&#x2F;grid.js:86</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

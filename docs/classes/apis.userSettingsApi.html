@@ -43,15 +43,33 @@
             
                 <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
             
-                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.iwcInterface.html">apis.iwcInterface</a></li>
             
-                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.localStorageInterface.html">apis.localStorageInterface</a></li>
             
                 <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
             
                 <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
             
+                <li><a href="../classes/appLauncher.AppLauncherCtrl.html">appLauncher.AppLauncherCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+            
+                <li><a href="../classes/common.windowSizeWatcher.html">common.windowSizeWatcher</a></li>
+            
+                <li><a href="../classes/components.ChromeCtrl.html">components.ChromeCtrl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpChrome.html">components.ozpChrome</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.dashboardToolbar.html">dashboardToolbar.dashboardToolbar</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.DashboardToolbarCtrl.html">dashboardToolbar.DashboardToolbarCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
@@ -61,11 +79,23 @@
             
                 <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
+                <li><a href="../classes/general.compareUrl.html">general.compareUrl</a></li>
+            
+                <li><a href="../classes/general.constants.html">general.constants</a></li>
+            
                 <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
             
-                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
+                <li><a href="../classes/general.LocalStorage.html">general.LocalStorage</a></li>
+            
+                <li><a href="../classes/general.Utilities.html">general.Utilities</a></li>
+            
+                <li><a href="../classes/ozpIwcClient.iwcConnectedClient.html">ozpIwcClient.iwcConnectedClient</a></li>
+            
+                <li><a href="../classes/userSettings.ModalInstanceCtrl.html">userSettings.ModalInstanceCtrl</a></li>
+            
+                <li><a href="../classes/userSettings.userSettings.html">userSettings.userSettings</a></li>
             
             </ul>
 
@@ -138,7 +168,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_general_services_userSettingsApi.js.html#l78"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:78</code></a>
+            Defined in: <a href="../files/src_app_general_services_userSettingsApi.js.html#l108"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:108</code></a>
         </div>
     
 
@@ -154,21 +184,92 @@
 
 
 <div class="box intro">
-    <p>Angular service which provides an abstraction of the implementations used to
-store and retrieve user settings information.</p>
+    <p>Service used to store and retrieve user settings</p>
+<p>May be configured with different persistence mechanisms including IWC
+and Local Storage</p>
+<p>ngtype: factory</p>
 
 </div>
 
 
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_apis.userSettingsApi" class="method item">
-    <h3 class="name"><code>apis.userSettingsApi</code></h3>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_createExampleUserSettings">createExampleUserSettings</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getUserSettings">getUserSettings</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateAllUserSettings">updateAllUserSettings</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateUserSettingsByKey">updateUserSettingsByKey</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_createExampleUserSettings" class="method item">
+    <h3 class="name"><code>createExampleUserSettings</code></h3>
 
     
         <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
     
 
     
@@ -194,7 +295,7 @@ store and retrieve user settings information.</p>
             
         
         
-        <a href="../files/src_app_general_services_userSettingsApi.js.html#l78"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:78</code></a>
+        <a href="../files/src_app_general_services_userSettingsApi.js.html#l56"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:56</code></a>
         
         </p>
 
@@ -205,42 +306,340 @@ store and retrieve user settings information.</p>
     </div>
 
     <div class="description">
-        
+        <p>Create default settings for the current user - for testing only</p>
+
     </div>
 
     
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"></span>:
+                    
+                
+            </div>
+        </div>
     
 
     
 </div>
 
+                
+                    <div id="method_getUserSettings" class="method item">
+    <h3 class="name"><code>getUserSettings</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_general_services_userSettingsApi.js.html#l8"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:8</code></a>
+        
+        </p>
+
+
+        
+
+        
     </div>
 
+    <div class="description">
+        <p>Get all user settings for the current user</p>
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+    </div>
 
-        
-        
-        
-        
-    </ul>
+    
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+    
+        <div class="returns">
+            <h4>Returns:</h4>
 
-            
+            <div class="returns-description">
+                
+                    
+                        <span class="type"></span>:
+                    
+                    <p>All user settings for the current user</p>
 
-            
-
-            
-
-            
+                
+            </div>
         </div>
+    
 
+    
+</div>
+
+                
+                    <div id="method_updateAllUserSettings" class="method item">
+    <h3 class="name"><code>updateAllUserSettings</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>userSettings</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_general_services_userSettingsApi.js.html#l21"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:21</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update all settings for the current user</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">userSettings</code>
+                        <span class="type">Obj</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>All user settings for current user</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>True if updated successfully, false on error</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_updateUserSettingsByKey" class="method item">
+    <h3 class="name"><code>updateUserSettingsByKey</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>key</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_general_services_userSettingsApi.js.html#l35"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;userSettingsApi.js:35</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update a specific setting for the current user</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">key</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Name of user setting to update</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Value of setting</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>True if updated successfully, false on error</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

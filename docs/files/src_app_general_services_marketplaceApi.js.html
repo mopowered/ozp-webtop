@@ -43,15 +43,33 @@
             
                 <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
             
-                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.iwcInterface.html">apis.iwcInterface</a></li>
             
-                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.localStorageInterface.html">apis.localStorageInterface</a></li>
             
                 <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
             
                 <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
             
+                <li><a href="../classes/appLauncher.AppLauncherCtrl.html">appLauncher.AppLauncherCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+            
+                <li><a href="../classes/common.windowSizeWatcher.html">common.windowSizeWatcher</a></li>
+            
+                <li><a href="../classes/components.ChromeCtrl.html">components.ChromeCtrl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpChrome.html">components.ozpChrome</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.dashboardToolbar.html">dashboardToolbar.dashboardToolbar</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.DashboardToolbarCtrl.html">dashboardToolbar.DashboardToolbarCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
@@ -61,11 +79,23 @@
             
                 <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
+                <li><a href="../classes/general.compareUrl.html">general.compareUrl</a></li>
+            
+                <li><a href="../classes/general.constants.html">general.constants</a></li>
+            
                 <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
             
-                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
+                <li><a href="../classes/general.LocalStorage.html">general.LocalStorage</a></li>
+            
+                <li><a href="../classes/general.Utilities.html">general.Utilities</a></li>
+            
+                <li><a href="../classes/ozpIwcClient.iwcConnectedClient.html">ozpIwcClient.iwcConnectedClient</a></li>
+            
+                <li><a href="../classes/userSettings.ModalInstanceCtrl.html">userSettings.ModalInstanceCtrl</a></li>
+            
+                <li><a href="../classes/userSettings.userSettings.html">userSettings.userSettings</a></li>
             
             </ul>
 
@@ -141,6 +171,12 @@ var apis = angular.module(&#x27;ozpWebtopApp.apis&#x27;);
 function generalMarketplacedModel(persistStrategy) {
 
   return {
+    /**
+     * Get all application listings
+     *
+     * @method getAllApps
+     * @returns {*}
+     */
     getAllApps: function() {
       return persistStrategy.getApps().then(function(response) {
         return response.apps;
@@ -148,6 +184,11 @@ function generalMarketplacedModel(persistStrategy) {
         console.log(&#x27;should not have happened: &#x27; + error);
       });
     },
+    /**
+     * Create example marketplace listings (test purposes only)
+     *
+     * @method createExampleMarketplace
+     */
     createExampleMarketplace: function() {
       // TODO: Originally this object was placed in a separate json file and fetched
       // via http, but that led to all sorts of issues with testing.
@@ -670,7 +711,7 @@ function generalMarketplacedModel(persistStrategy) {
  * Angular service which provides a local storage interface to the marketplace
  * api
  *
- * @namespace apis
+ * @private
  * @constructor
  */
 apis.service(&#x27;marketplaceModelLocalStorage&#x27;, function(localStorageInterface) {
@@ -686,6 +727,7 @@ apis.service(&#x27;marketplaceModelLocalStorage&#x27;, function(localStorageInte
  * Angular service which uses the Inter-Widget Communication (IWC) API to store
  * and retrieve marketplace data
  *
+ * @private
  * @constructor
  */
 apis.service(&#x27;marketplaceModelIwc&#x27;, function(iwcInterface) {
@@ -698,11 +740,16 @@ apis.service(&#x27;marketplaceModelIwc&#x27;, function(iwcInterface) {
 });
 
 /**
- * Angular service which provides an abstraction of the implementations used to
- * store and retrieve marketplace data
+ * Service used to store and retrieve marketplace data (app listings)
+ *
+ * May be configured with different persistence mechanisms including IWC
+ * and Local Storage
+ *
+ * ngtype: factory
  *
  * @class marketplaceApi
- * @constructor
+ * @static
+ * @namespace apis
  */
 apis.factory(&#x27;marketplaceApi&#x27;, function($injector, useIwc) {
   if (useIwc) {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>apis.localStorageDashboardApiImpl - ozpwebtop</title>
+    <title>ozpIwcClient.iwcConnectedClient - ozpwebtop</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,15 +43,33 @@
             
                 <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
             
-                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.iwcInterface.html">apis.iwcInterface</a></li>
             
-                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.localStorageInterface.html">apis.localStorageInterface</a></li>
             
                 <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
             
                 <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
             
+                <li><a href="../classes/appLauncher.AppLauncherCtrl.html">appLauncher.AppLauncherCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+            
+                <li><a href="../classes/common.windowSizeWatcher.html">common.windowSizeWatcher</a></li>
+            
+                <li><a href="../classes/components.ChromeCtrl.html">components.ChromeCtrl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpChrome.html">components.ozpChrome</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.dashboardToolbar.html">dashboardToolbar.dashboardToolbar</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.DashboardToolbarCtrl.html">dashboardToolbar.DashboardToolbarCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
@@ -61,11 +79,23 @@
             
                 <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
+                <li><a href="../classes/general.compareUrl.html">general.compareUrl</a></li>
+            
+                <li><a href="../classes/general.constants.html">general.constants</a></li>
+            
                 <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
             
-                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
+                <li><a href="../classes/general.LocalStorage.html">general.LocalStorage</a></li>
+            
+                <li><a href="../classes/general.Utilities.html">general.Utilities</a></li>
+            
+                <li><a href="../classes/ozpIwcClient.iwcConnectedClient.html">ozpIwcClient.iwcConnectedClient</a></li>
+            
+                <li><a href="../classes/userSettings.ModalInstanceCtrl.html">userSettings.ModalInstanceCtrl</a></li>
+            
+                <li><a href="../classes/userSettings.userSettings.html">userSettings.userSettings</a></li>
             
             </ul>
 
@@ -130,7 +160,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>apis.localStorageDashboardApiImpl Class</h1>
+                        <h1>ozpIwcClient.iwcConnectedClient Class</h1>
 <div class="box meta">
     
 
@@ -138,7 +168,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_general_services_dashboardapi.js.html#l871"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;dashboardapi.js:871</code></a>
+            Defined in: <a href="../files/src_app_general_services_ozpIwcClient.js.html#l5"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;ozpIwcClient.js:5</code></a>
         </div>
     
 
@@ -154,15 +184,15 @@
 
 
 <div class="box intro">
-    <p>Angular service which provides a local storage interface to the dashboard api.</p>
+    <p>Interface for working with an IWC client</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_apis.localStorageDashboardApiImpl" class="method item">
-    <h3 class="name"><code>apis.localStorageDashboardApiImpl</code></h3>
+        <div id="method_ozpIwcClient.iwcConnectedClient" class="method item">
+    <h3 class="name"><code>ozpIwcClient.iwcConnectedClient</code></h3>
 
     
         <div class="args">
@@ -170,19 +200,19 @@
             
                 <li class="arg">
                     
-                        <code>$http</code>
+                        <code>$q</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>LocalStorage</code>
+                        <code>iwcClient</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>Utilities</code>
+                        <code>iwcOzoneBus</code>
                     
                 </li>
             
@@ -215,7 +245,7 @@
             
         
         
-        <a href="../files/src_app_general_services_dashboardapi.js.html#l871"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;dashboardapi.js:871</code></a>
+        <a href="../files/src_app_general_services_ozpIwcClient.js.html#l5"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;ozpIwcClient.js:5</code></a>
         
         </p>
 
@@ -237,14 +267,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">$http</code>
+                        <code class="param-name">$q</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The AngularJS HTTP service</p>
+                        <p>ng $q service</p>
 
                     </div>
 
@@ -253,14 +283,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">LocalStorage</code>
+                        <code class="param-name">iwcClient</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the local storage service</p>
+                        <p>iwcClient service</p>
 
                     </div>
 
@@ -269,14 +299,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">Utilities</code>
+                        <code class="param-name">iwcOzoneBus</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the utilites</p>
+                        <p>OZONE bus to connect to</p>
 
                     </div>
 
@@ -300,6 +330,8 @@
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
         
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
         
         
         
@@ -310,6 +342,21 @@
             <h2 class="off-left">Item Index</h2>
 
             
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_getClient">getClient</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
 
             
 
@@ -318,6 +365,85 @@
             
         </div>
 
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_getClient" class="method item">
+    <h3 class="name"><code>getClient</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_general_services_ozpIwcClient.js.html#l26"><code>src&#x2F;app&#x2F;general&#x2F;services&#x2F;ozpIwcClient.js:26</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get a connected OZP client</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Promise</span>:
+                    
+                    <p>fulfilled value is a connected OZP client</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

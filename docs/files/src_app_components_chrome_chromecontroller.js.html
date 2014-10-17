@@ -43,15 +43,33 @@
             
                 <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
             
-                <li><a href="../classes/apis.iwcDashboardApiImpl.html">apis.iwcDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.iwcInterface.html">apis.iwcInterface</a></li>
             
-                <li><a href="../classes/apis.localStorageDashboardApiImpl.html">apis.localStorageDashboardApiImpl</a></li>
+                <li><a href="../classes/apis.localStorageInterface.html">apis.localStorageInterface</a></li>
             
                 <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
             
                 <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
             
+                <li><a href="../classes/appLauncher.AppLauncherCtrl.html">appLauncher.AppLauncherCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+            
+                <li><a href="../classes/common.windowSizeWatcher.html">common.windowSizeWatcher</a></li>
+            
+                <li><a href="../classes/components.ChromeCtrl.html">components.ChromeCtrl</a></li>
+            
                 <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpChrome.html">components.ozpChrome</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.dashboardToolbar.html">dashboardToolbar.dashboardToolbar</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.DashboardToolbarCtrl.html">dashboardToolbar.DashboardToolbarCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
             
                 <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
             
@@ -61,11 +79,23 @@
             
                 <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
             
+                <li><a href="../classes/general.compareUrl.html">general.compareUrl</a></li>
+            
+                <li><a href="../classes/general.constants.html">general.constants</a></li>
+            
                 <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
             
                 <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
             
-                <li><a href="../classes/general.Utiliites.html">general.Utiliites</a></li>
+                <li><a href="../classes/general.LocalStorage.html">general.LocalStorage</a></li>
+            
+                <li><a href="../classes/general.Utilities.html">general.Utilities</a></li>
+            
+                <li><a href="../classes/ozpIwcClient.iwcConnectedClient.html">ozpIwcClient.iwcConnectedClient</a></li>
+            
+                <li><a href="../classes/userSettings.ModalInstanceCtrl.html">userSettings.ModalInstanceCtrl</a></li>
+            
+                <li><a href="../classes/userSettings.userSettings.html">userSettings.userSettings</a></li>
             
             </ul>
 
@@ -136,50 +166,87 @@
     <pre class="code prettyprint linenums">
 &#x27;use strict&#x27;;
 
-/**
- * ChromeCtrl aids the ozpChrome directive in knowing its location (grid or desktop).
- */
 angular.module(&#x27;ozpWebtopApp.components&#x27;)
+/**
+ * ChromeCtrl aids the ozpChrome directive in knowing its location
+ * (grid or desktop).
+ *
+ * ngtype: controller
+ *
+ * @class ChromeCtrl
+ * @constructor
+ * @param $scope ng $scope
+ * @param $rootScope ng $rootScope
+ * @param dashboardApi dashboard data
+ * @param dashboardChangeMonitor notify when active dashboard changes
+ * @namespace components
+ */
 .controller(&#x27;ChromeCtrl&#x27;, function ($scope, $rootScope, dashboardApi,
-                                          dashboardChangeMonitor) {
+                                    dashboardChangeMonitor) {
 
-  // register to receive notifications if dashboard changes
-  dashboardChangeMonitor.run();
 
-  $scope.$on(&#x27;dashboardChange&#x27;, function(event, dashboardChange) {
-    // Determine if chrome is being used in the grid view
-    if (dashboardChange.layout === &#x27;grid&#x27;) {
-      $scope.isGrid = true;
-    } else {
-      $scope.isGrid = false;
+    // register to receive notifications if dashboard changes
+    dashboardChangeMonitor.run();
+
+    $scope.$on(&#x27;dashboardChange&#x27;, function(event, dashboardChange) {
+      handleDashboardChange(dashboardChange);
+    });
+
+    /**
+     * Handler invoked when active dashboard changes
+     * @method handleDashboardChange
+     * @param dashboardChange contains layout and dashboardId info
+     */
+    function handleDashboardChange(dashboardChange) {
+      // Determine if chrome is being used in the grid view
+      if (dashboardChange.layout === &#x27;grid&#x27;) {
+        $scope.isGrid = true;
+      } else {
+        $scope.isGrid = false;
+      }
     }
-  });
 
-  $scope.isDisabled = function(e){
-    dashboardApi.removeFrame(e.id).then(function() {
-      $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
-    }).catch(function(error) {
-      console.log(&#x27;should not have happened: &#x27; + error);
-    });
+    /**
+     * Remove a frame from the current dashboard and send dashboard-change
+     * event
+     * @method isDisabled
+     * @param e the frame (?) clicked containing e.id
+     */
+    $scope.isDisabled = function(e){
+      dashboardApi.removeFrame(e.id).then(function() {
+        $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
 
-  };
+    };
 
-  $scope.minimizeFrame = function(e){
-    dashboardApi.toggleFrameKey(e.id, &#x27;isMinimized&#x27;).then(function() {
-      $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
-    }).catch(function(error) {
-      console.log(&#x27;should not have happened: &#x27; + error);
-    });
+    /**
+     * Hide a frame on the dashboard
+     * @method minimizeFrame
+     * @param e The frame (?) clicked containing e.id
+     */
+    $scope.minimizeFrame = function(e){
+      dashboardApi.toggleFrameKey(e.id, &#x27;isMinimized&#x27;).then(function() {
+        $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
 
-  };
+    };
 
-  $scope.maximizeFrame = function(e){
-    dashboardApi.toggleFrameKey(e.id, &#x27;isMaximized&#x27;).then(function() {
-      $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
-    }).catch(function(error) {
-      console.log(&#x27;should not have happened: &#x27; + error);
-    });
-  };
+    /**
+     * Show a frame on the dashboard
+     * @method maximizeFrame
+     * @param e The frame (?) clicked containing e.id
+     */
+    $scope.maximizeFrame = function(e){
+      dashboardApi.toggleFrameKey(e.id, &#x27;isMaximized&#x27;).then(function() {
+        $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
+      }).catch(function(error) {
+        console.log(&#x27;should not have happened: &#x27; + error);
+      });
+    };
 
 });
 

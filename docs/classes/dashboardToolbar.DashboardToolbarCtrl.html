@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>dashboardToolbar.DashboardToolbarCtrl - ozpwebtop</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="ozpwebtop"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/apis.dashboardApi.html">apis.dashboardApi</a></li>
+            
+                <li><a href="../classes/apis.iwcInterface.html">apis.iwcInterface</a></li>
+            
+                <li><a href="../classes/apis.localStorageInterface.html">apis.localStorageInterface</a></li>
+            
+                <li><a href="../classes/apis.marketplaceApi.html">apis.marketplaceApi</a></li>
+            
+                <li><a href="../classes/apis.userSettingsApi.html">apis.userSettingsApi</a></li>
+            
+                <li><a href="../classes/appLauncher.AppLauncherCtrl.html">appLauncher.AppLauncherCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+            
+                <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+            
+                <li><a href="../classes/common.windowSizeWatcher.html">common.windowSizeWatcher</a></li>
+            
+                <li><a href="../classes/components.ChromeCtrl.html">components.ChromeCtrl</a></li>
+            
+                <li><a href="../classes/components.ozpButton.html">components.ozpButton</a></li>
+            
+                <li><a href="../classes/components.ozpChrome.html">components.ozpChrome</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.dashboardToolbar.html">dashboardToolbar.dashboardToolbar</a></li>
+            
+                <li><a href="../classes/dashboardToolbar.DashboardToolbarCtrl.html">dashboardToolbar.DashboardToolbarCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.IframeCtrl.html">dashboardView.IframeCtrl</a></li>
+            
+                <li><a href="../classes/dashboardView.ozpGridsterItem.html">dashboardView.ozpGridsterItem</a></li>
+            
+                <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
+            
+                <li><a href="../classes/general.compareUrl.html">general.compareUrl</a></li>
+            
+                <li><a href="../classes/general.constants.html">general.constants</a></li>
+            
+                <li><a href="../classes/general.dashboardChangeMonitor.html">general.dashboardChangeMonitor</a></li>
+            
+                <li><a href="../classes/general.elliptical.html">general.elliptical</a></li>
+            
+                <li><a href="../classes/general.LocalStorage.html">general.LocalStorage</a></li>
+            
+                <li><a href="../classes/general.Utilities.html">general.Utilities</a></li>
+            
+                <li><a href="../classes/ozpIwcClient.iwcConnectedClient.html">ozpIwcClient.iwcConnectedClient</a></li>
+            
+                <li><a href="../classes/userSettings.ModalInstanceCtrl.html">userSettings.ModalInstanceCtrl</a></li>
+            
+                <li><a href="../classes/userSettings.userSettings.html">userSettings.userSettings</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/ozp.common.html">ozp.common</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.apis.html">ozpWebtopApp.apis</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.appLauncher.html">ozpWebtopApp.appLauncher</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.appToolbar.html">ozpWebtopApp.appToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.components.html">ozpWebtopApp.components</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.constants.html">ozpWebtopApp.constants</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardToolbar.html">ozpWebtopApp.dashboardToolbar</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.dashboardView.html">ozpWebtopApp.dashboardView</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.general.html">ozpWebtopApp.general</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.ozpIwcClient.html">ozpWebtopApp.ozpIwcClient</a></li>
+            
+                <li><a href="../modules/ozpWebtopApp.userSettings.html">ozpWebtopApp.userSettings</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>dashboardToolbar.DashboardToolbarCtrl Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l4"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:4</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/ozpWebtopApp.html">ozpWebtopApp</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Controller for dashboard toolbar located at the top of Webtop</p>
+<p>Includes:</p>
+<ul>
+<li>menu with links to other OZP resources</li>
+<li>dashboard selector</li>
+<li>buttons to switch between grid and desktop layouts</li>
+<li>notifications (TODO)</li>
+<li>zulu clock</li>
+<li>username button with dropdown to access user preferences, help, and logout</li>
+</ul>
+<p>The toolbar can also be hidden by clicking on a button</p>
+<p>ngtype: controller</p>
+
+</div>
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_dashboardToolbar.DashboardToolbarCtrl" class="method item">
+    <h3 class="name"><code>dashboardToolbar.DashboardToolbarCtrl</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>$scope</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$rootScope</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$interval</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dashboardApi</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dashboardChangeMonitor</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>userSettingsApi</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>windowSizeWatcher</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l4"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:4</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">$scope</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>ng $scope</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$rootScope</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>ng $rootScope</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$interval</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>ng $interval</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardApi</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>dashboard data</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardChangeMonitor</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>notify when dashboard changes</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">userSettingsApi</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>user preferences data</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">windowSizeWatcher</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>notify when window size changes</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_dashboardhider">dashboardhider</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getZuluTime">getZuluTime</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleDashboardChange">handleDashboardChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleDeviceSizeChange">handleDeviceSizeChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_handleUserSettingsChange">handleUserSettingsChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_launchSettingsModal">launchSettingsModal</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setCurrentDashboard">setCurrentDashboard</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_useDesktopLayout">useDesktopLayout</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_useGridLayout">useGridLayout</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_currentDashboard Current active dashboard">currentDashboard Current active dashboard</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashbaordhide Flag indicating if dashboard toolbar is hidden">dashbaordhide Flag indicating if dashboard toolbar is hidden</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Dashboard layout (grid or desktop)">Dashboard layout (grid or desktop)</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashboardId Current dashboard id">dashboardId Current dashboard id</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashboardNameLength Max length of dashboard name, based on
+current screen size">dashboardNameLength Max length of dashboard name, based on
+current screen size</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_dashboards Dashboards for current user">dashboards Dashboards for current user</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_messages Messages for current user TBD">messages Messages for current user TBD</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_user Current user&#x27;s username">user Current user&#x27;s username</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_usernameLength Max length of username, based on
+current screen size">usernameLength Max length of username, based on
+current screen size</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_zuluTime Current time (zulu)">zuluTime Current time (zulu)</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_dashboardhider" class="method item">
+    <h3 class="name"><code>dashboardhider</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l295"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:295</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Toggle the state of the toolbar (shown vs hidden)</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getZuluTime" class="method item">
+    <h3 class="name"><code>getZuluTime</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l118"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:118</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update the zulu clock</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">String</span>:
+                    
+                    <p>Zulu time formatted as 03:08</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleDashboardChange" class="method item">
+    <h3 class="name"><code>handleDashboardChange</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>dashboardChange</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l209"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:209</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handler invoked when dashboard change event occurs</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardChange</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>contains dashboardId and layout of dashboard</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleDeviceSizeChange" class="method item">
+    <h3 class="name"><code>handleDeviceSizeChange</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l189"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:189</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handler invoked when window size changes across device size boundaries
+as defined by Bootstrap</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>value.deviceSize is one of &#39;xs&#39;, &#39;sm&#39;, &#39;md&#39;, or &#39;lg&#39;</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_handleUserSettingsChange" class="method item">
+    <h3 class="name"><code>handleUserSettingsChange</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l235"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:235</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handler invoked when user settings event is fired</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_launchSettingsModal" class="method item">
+    <h3 class="name"><code>launchSettingsModal</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l282"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:282</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Launch the user preferences modal dialog</p>
+<p>Sends launchSettingsModal event</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setCurrentDashboard" class="method item">
+    <h3 class="name"><code>setCurrentDashboard</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>board</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l257"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:257</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Set the current dashboard</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">board</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Current dashboard</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_useDesktopLayout" class="method item">
+    <h3 class="name"><code>useDesktopLayout</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l274"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:274</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Use a desktop layout</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_useGridLayout" class="method item">
+    <h3 class="name"><code>useGridLayout</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l266"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:266</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Use a grid layout</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_currentDashboard Current active dashboard" class="property item">
+    <h3 class="name"><code>currentDashboard Current active dashboard</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l63"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:63</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashbaordhide Flag indicating if dashboard toolbar is hidden" class="property item">
+    <h3 class="name"><code>dashbaordhide Flag indicating if dashboard toolbar is hidden</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l57"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:57</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Dashboard layout (grid or desktop)" class="property item">
+    <h3 class="name"><code>Dashboard layout (grid or desktop)</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l69"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:69</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashboardId Current dashboard id" class="property item">
+    <h3 class="name"><code>dashboardId Current dashboard id</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l81"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:81</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashboardNameLength Max length of dashboard name, based on
+current screen size" class="property item">
+    <h3 class="name"><code>dashboardNameLength Max length of dashboard name, based on
+current screen size</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l38"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:38</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dashboards Dashboards for current user" class="property item">
+    <h3 class="name"><code>dashboards Dashboards for current user</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l51"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:51</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_messages Messages for current user TBD" class="property item">
+    <h3 class="name"><code>messages Messages for current user TBD</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l87"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:87</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_user Current user&#x27;s username" class="property item">
+    <h3 class="name"><code>user Current user&#x27;s username</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l75"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:75</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_usernameLength Max length of username, based on
+current screen size" class="property item">
+    <h3 class="name"><code>usernameLength Max length of username, based on
+current screen size</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l44"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:44</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_zuluTime Current time (zulu)" class="property item">
+    <h3 class="name"><code>zuluTime Current time (zulu)</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_dashboardToolbar_dashboardToolbar.js.html#l107"><code>src&#x2F;app&#x2F;dashboardToolbar&#x2F;dashboardToolbar.js:107</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
