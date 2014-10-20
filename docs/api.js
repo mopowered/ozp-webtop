@@ -1,47 +1,45 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "apis.dashboardApi",
-        "apis.iwcInterface",
-        "apis.localStorageInterface",
-        "apis.marketplaceApi",
-        "apis.userSettingsApi",
         "appLauncher.AppLauncherCtrl",
         "appToolbar.ApplicationToolbarCtrl",
         "appToolbar.appToolbar",
         "common.windowSizeWatcher",
-        "components.ChromeCtrl",
-        "components.ozpButton",
-        "components.ozpChrome",
+        "constants",
         "dashboardToolbar.DashboardToolbarCtrl",
         "dashboardToolbar.dashboardToolbar",
+        "dashboardView.ChromeCtrl",
         "dashboardView.DesktopCtrl",
         "dashboardView.GridCtrl",
         "dashboardView.IframeCtrl",
+        "dashboardView.ozpButton",
+        "dashboardView.ozpChrome",
         "dashboardView.ozpGridsterItem",
         "dashboardView.ozpManagedFrame",
-        "general.LocalStorage",
-        "general.Utilities",
-        "general.compareUrl",
-        "general.constants",
         "general.dashboardChangeMonitor",
-        "general.elliptical",
-        "ozpIwcClient.iwcConnectedClient",
+        "general.iwcInterface",
+        "general.localStorageInterface",
+        "models.dashboardApi",
+        "models.marketplaceApi",
+        "models.userSettingsApi",
+        "ozp.common.LocalStorage",
+        "ozp.common.Utilities",
+        "ozp.common.compareUrl",
+        "ozp.common.elliptical",
+        "ozp.common.iwcConnectedClient",
         "userSettings.ModalInstanceCtrl",
         "userSettings.userSettings"
     ],
     "modules": [
         "ozp.common",
         "ozpWebtopApp",
-        "ozpWebtopApp.apis",
         "ozpWebtopApp.appLauncher",
         "ozpWebtopApp.appToolbar",
-        "ozpWebtopApp.components",
         "ozpWebtopApp.constants",
         "ozpWebtopApp.dashboardToolbar",
         "ozpWebtopApp.dashboardView",
         "ozpWebtopApp.general",
-        "ozpWebtopApp.ozpIwcClient",
+        "ozpWebtopApp.models",
         "ozpWebtopApp.userSettings"
     ],
     "allModules": [
@@ -56,11 +54,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps\nthe Webtop."
         },
         {
-            "displayName": "ozpWebtopApp.apis",
-            "name": "ozpWebtopApp.apis",
-            "description": "APIs retrieve and send data to places external to the Webtop."
-        },
-        {
             "displayName": "ozpWebtopApp.appLauncher",
             "name": "ozpWebtopApp.appLauncher",
             "description": "Launches apps from other sources"
@@ -69,11 +62,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtopApp.appToolbar",
             "name": "ozpWebtopApp.appToolbar",
             "description": "The application toolbar in the Webtop."
-        },
-        {
-            "displayName": "ozpWebtopApp.components",
-            "name": "ozpWebtopApp.components",
-            "description": "Reusable components for the Webtop."
         },
         {
             "displayName": "ozpWebtopApp.constants",
@@ -88,7 +76,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "ozpWebtopApp.dashboardView",
             "name": "ozpWebtopApp.dashboardView",
-            "description": "The dashboard view in the Webtop. Contains the area where a user uses their applications/widgets."
+            "description": "The dashboard view in the Webtop. Contains the area where a user uses their\napplications/widgets."
         },
         {
             "displayName": "ozpWebtopApp.general",
@@ -96,9 +84,9 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "General utilities for use in Webtop. Includes some services and other fairly\ngeneric capabilities."
         },
         {
-            "displayName": "ozpWebtopApp.ozpIwcClient",
-            "name": "ozpWebtopApp.ozpIwcClient",
-            "description": "Provides an OZP IWC client using a Promises to indicate valid connection"
+            "displayName": "ozpWebtopApp.models",
+            "name": "ozpWebtopApp.models",
+            "description": "Models and APIs to retrieve and send data to places external to the Webtop."
         },
         {
             "displayName": "ozpWebtopApp.userSettings",
