@@ -251,6 +251,30 @@ view (in desktop layout)</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>deviceSizeChangedEvent</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dashboardStateChangedEvent</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dashboardSwitchedEvent</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>toolbarVisibilityChangedEvent</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -422,6 +446,70 @@ view (in desktop layout)</p>
 
                     <div class="param-description">
                         <p>Notify when window size changes</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">deviceSizeChangedEvent</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>event name</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardStateChangedEvent</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>event name</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dashboardSwitchedEvent</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>event name</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">toolbarVisibilityChangedEvent</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>event name</p>
 
                     </div>
 
@@ -671,7 +759,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l260"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:260</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l269"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:269</code></a>
         
         </p>
 
@@ -683,7 +771,7 @@ displayed on the toolbar (based on screen width)</a>
 
     <div class="description">
         <p>Show or hide the application toolbar</p>
-<p>If successful, broadcasts a userSettings-change event</p>
+<p>If successful, broadcasts a toolbarVisibilityChangedEvent</p>
 
     </div>
 
@@ -737,7 +825,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l229"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:229</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l238"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:238</code></a>
         
         </p>
 
@@ -749,7 +837,7 @@ displayed on the toolbar (based on screen width)</a>
 
     <div class="description">
         <p>Attempt to add an application to the dashboard</p>
-<p>If successful, broadcasts a dashboard-change event</p>
+<p>If successful, broadcasts a dashboardStateChangedEvent</p>
 
     </div>
 
@@ -827,7 +915,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l158"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:158</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l167"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:167</code></a>
         
         </p>
 
@@ -838,7 +926,7 @@ displayed on the toolbar (based on screen width)</a>
     </div>
 
     <div class="description">
-        <p>Handle the dashboardChange event</p>
+        <p>Handle the dashboardSwitchedEvent</p>
 <p>Set $scope.currentDashboardId and invoke updateApps()</p>
 
     </div>
@@ -916,7 +1004,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l137"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:137</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l146"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:146</code></a>
         
         </p>
 
@@ -927,7 +1015,7 @@ displayed on the toolbar (based on screen width)</a>
     </div>
 
     <div class="description">
-        <p>Handle the window-size-change event</p>
+        <p>Handle the deviceSizeChangedEvent</p>
 <p>Update $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()</p>
 
     </div>
@@ -947,7 +1035,7 @@ displayed on the toolbar (based on screen width)</a>
                     
 
                     <div class="param-description">
-                        <p>Data from window-size-change event</p>
+                        <p>Data from deviceSizeChangedEvent</p>
 
                     </div>
 
@@ -1006,7 +1094,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l216"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:216</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l225"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:225</code></a>
         
         </p>
 
@@ -1085,7 +1173,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l305"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:305</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l314"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:314</code></a>
         
         </p>
 
@@ -1142,7 +1230,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l285"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:285</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l294"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:294</code></a>
         
         </p>
 
@@ -1199,7 +1287,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l172"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:172</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l181"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:181</code></a>
         
         </p>
 
@@ -1255,7 +1343,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l196"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:196</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l205"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:205</code></a>
         
         </p>
 
@@ -1311,7 +1399,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l45"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:45</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l54"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:54</code></a>
         
         </p>
 
@@ -1357,7 +1445,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l51"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:51</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l60"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:60</code></a>
         
         </p>
 
@@ -1401,7 +1489,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l40"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:40</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l49"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:49</code></a>
         
         </p>
 
@@ -1447,7 +1535,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l57"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:57</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l66"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:66</code></a>
         
         </p>
 
@@ -1491,7 +1579,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l88"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:88</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l97"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:97</code></a>
         
         </p>
 
@@ -1537,7 +1625,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l34"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:34</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l43"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:43</code></a>
         
         </p>
 
@@ -1583,7 +1671,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l63"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:63</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l72"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:72</code></a>
         
         </p>
 
@@ -1631,7 +1719,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l69"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:69</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l78"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:78</code></a>
         
         </p>
 
@@ -1677,7 +1765,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l76"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:76</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l85"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:85</code></a>
         
         </p>
 
@@ -1723,7 +1811,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l82"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:82</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l91"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:91</code></a>
         
         </p>
 

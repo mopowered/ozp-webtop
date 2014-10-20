@@ -186,12 +186,21 @@
  * @param dashboardChangeMonitor Notify when dashboard changes
  * @param userSettingsApi User settings data model
  * @param windowSizeWatcher Notify when window size changes
+ * @param deviceSizeChangedEvent event name
+ * @param dashboardStateChangedEvent event name
+ * @param dashboardSwitchedEvent event name
+ * @param toolbarVisibilityChangedEvent event name
  */
 angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
   .controller(&#x27;ApplicationToolbarCtrl&#x27;, function($scope, $rootScope, $state,
-                                       marketplaceApi, dashboardApi,
-                                       dashboardChangeMonitor, userSettingsApi,
-                                       windowSizeWatcher) {
+                                                 marketplaceApi, dashboardApi,
+                                                 dashboardChangeMonitor,
+                                                 userSettingsApi,
+                                                 windowSizeWatcher,
+                                                 deviceSizeChangedEvent,
+                                                 dashboardStateChangedEvent,
+                                                 dashboardSwitchedEvent,
+                                                 toolbarVisibilityChangedEvent) {
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -284,15 +293,15 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
       console.log(&#x27;should not have happened: &#x27; + error);
     });
 
-    $scope.$on(&#x27;window-size-change&#x27;, function(event, value) {
+    $scope.$on(deviceSizeChangedEvent, function(event, value) {
       $scope.handleWindowSizeChange(value);
     });
 
-    $scope.$on(&#x27;dashboard-change&#x27;, function() {
+    $scope.$on(dashboardStateChangedEvent, function() {
       $scope.updateApps();
     });
 
-    $scope.$on(&#x27;dashboardChange&#x27;, function(event, dashboardChange) {
+    $scope.$on(dashboardSwitchedEvent, function(event, dashboardChange) {
       $scope.handleDashboardChange(dashboardChange);
     });
 
@@ -301,11 +310,11 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     /**
-     * Handle the window-size-change event
+     * Handle the deviceSizeChangedEvent
      *
      * Update $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()
      * @method handleWindowSizeChange
-     * @param value Data from window-size-change event
+     * @param value Data from deviceSizeChangedEvent
      */
     $scope.handleWindowSizeChange = function(value) {
       // TODO: need further testing to validate these numbers
@@ -322,7 +331,7 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
     };
 
     /**
-     * Handle the dashboardChange event
+     * Handle the dashboardSwitchedEvent
      *
      * Set $scope.currentDashboardId and invoke updateApps()
      * @method handleDashboardChange
@@ -386,7 +395,7 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
      */
      $scope.maximizeFrame = function(e) {
       dashboardApi.toggleFrameKey(e.id, &#x27;isMinimized&#x27;).then(function() {
-        $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
+        $rootScope.$broadcast(dashboardStateChangedEvent);
       }).catch(function(error) {
         console.log(&#x27;should not have happened: &#x27; + error);
       });
@@ -395,7 +404,7 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
     /**
      * Attempt to add an application to the dashboard
      *
-     * If successful, broadcasts a dashboard-change event
+     * If successful, broadcasts a dashboardStateChangedEvent
      * @method appClicked
      * @param {Object} app The application to add
      */
@@ -412,7 +421,7 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
             // reload this dashboard
             if (response) {
               // $state.go($state.$current, null, { reload: true });
-              $rootScope.$broadcast(&#x27;dashboard-change&#x27;);
+              $rootScope.$broadcast(dashboardStateChangedEvent);
             }
           }).catch(function(error) {
             console.log(&#x27;should not have happened: &#x27; + error);
@@ -426,7 +435,7 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
     /**
      * Show or hide the application toolbar
      *
-     * If successful, broadcasts a userSettings-change event
+     * If successful, broadcasts a toolbarVisibilityChangedEvent
      *
      * @method appboardhider
      */
@@ -438,7 +447,7 @@ angular.module( &#x27;ozpWebtopApp.appToolbar&#x27;)
       $scope.appboardhide = appboardHideVal;
       userSettingsApi.updateUserSettingByKey(&#x27;isAppboardHidden&#x27;, appboardHideVal).then(function(resp) {
         if (resp) {
-          $rootScope.$broadcast(&#x27;userSettings-change&#x27;);
+          $rootScope.$broadcast(toolbarVisibilityChangedEvent);
         } else {
           console.log(&#x27;ERROR failed to update isAppboardHidden in user &#x27; +
             &#x27;settings&#x27;);

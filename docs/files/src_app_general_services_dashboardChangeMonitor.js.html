@@ -170,7 +170,7 @@
  * Broadcast messages down $rootScope when the current dashboard or dashboard
  * layout changes
  *
- * Event name: **dashboardChange**
+ * Event name: **dashboardSwitched**
  *
  * Event data:
  *
@@ -183,7 +183,7 @@
  * @static
  */
 angular.module(&#x27;ozpWebtopApp.general&#x27;).factory(&#x27;dashboardChangeMonitor&#x27;,
-  function($rootScope, $location) {
+  function($rootScope, $location, dashboardSwitchedEvent) {
     // detect a change in dashboard layout
     var service = {};
     service.layout = &#x27;&#x27;;
@@ -222,7 +222,7 @@ angular.module(&#x27;ozpWebtopApp.general&#x27;).factory(&#x27;dashboardChangeMo
         dashboardChange.layout = service.layout;
         dashboardChange.dashboardId = service.dashboardId;
         // console.log(&#x27;broadcasting dashboard change msg: &#x27; + JSON.stringify(dashboardChange));
-        $rootScope.$broadcast(&#x27;dashboardChange&#x27;, dashboardChange);
+        $rootScope.$broadcast(dashboardSwitchedEvent, dashboardChange);
       });
     };
 

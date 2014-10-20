@@ -191,12 +191,19 @@ var dashboardApp = angular.module( &#x27;ozpWebtopApp.dashboardToolbar&#x27;)
  * @param dashboardChangeMonitor notify when dashboard changes
  * @param userSettingsApi user preferences data
  * @param windowSizeWatcher notify when window size changes
+ * @param deviceSizeChangedEvent event name
+ * @param dashboardSwitchedEvent event name
+ * @param toolbarVisibilityChangedEvent event name
+ * @param userPreferencesUpdatedEvent event name
+ * @param launchUserPreferencesModalEvent event name
  * @namespace dashboardToolbar
  *
  */
 .controller(&#x27;DashboardToolbarCtrl&#x27;,
   function($scope, $rootScope, $interval, dashboardApi, dashboardChangeMonitor,
-           userSettingsApi, windowSizeWatcher) {
+           userSettingsApi, windowSizeWatcher, deviceSizeChangedEvent,
+           dashboardSwitchedEvent, toolbarVisibilityChangedEvent,
+           userPreferencesUpdatedEvent, launchUserPreferencesModalEvent) {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                            $scope properties
@@ -336,15 +343,15 @@ var dashboardApp = angular.module( &#x27;ozpWebtopApp.dashboardToolbar&#x27;)
       $scope.zuluTime = $scope.getZuluTime();
     }, 1000);
 
-    $scope.$on(&#x27;window-size-change&#x27;, function(event, value) {
+    $scope.$on(deviceSizeChangedEvent, function(event, value) {
       handleDeviceSizeChange(value);
     });
 
-    $scope.$on(&#x27;dashboardChange&#x27;, function(event, dashboardChange) {
+    $scope.$on(dashboardSwitchedEvent, function(event, dashboardChange) {
       handleDashboardChange(dashboardChange);
     });
 
-    $scope.$on(&#x27;UserSettingsChanged&#x27;, function() {
+    $scope.$on(userPreferencesUpdatedEvent, function() {
       handleUserSettingsChange();
     });
 
@@ -448,12 +455,12 @@ var dashboardApp = angular.module( &#x27;ozpWebtopApp.dashboardToolbar&#x27;)
     /**
      * Launch the user preferences modal dialog
      *
-     * Sends launchSettingsModal event
+     * Sends launchUserPreferencesModalEvent
      *
      * @method launchSettingsModal
      */
     $scope.launchSettingsModal = function() {
-      $rootScope.$broadcast(&#x27;launchSettingsModal&#x27;, {
+      $rootScope.$broadcast(launchUserPreferencesModalEvent, {
         launch: &#x27;true&#x27;
       });
     };
@@ -471,7 +478,7 @@ var dashboardApp = angular.module( &#x27;ozpWebtopApp.dashboardToolbar&#x27;)
       $scope.dashboardhide = hideToolbar;
       userSettingsApi.updateUserSettingByKey(&#x27;isDashboardHidden&#x27;, hideToolbar).then(function(resp) {
         if (resp) {
-          $rootScope.$broadcast(&#x27;userSettings-change&#x27;);
+          $rootScope.$broadcast(toolbarVisibilityChangedEvent);
         } else {
           console.log(&#x27;ERROR failed to update isDashboardHidden in user settings&#x27;);
         }

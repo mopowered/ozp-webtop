@@ -254,18 +254,18 @@ angular.module( &#x27;ozpWebtopApp&#x27;, [
 });
 
 /**
- * Common services that are not specific to Webtop
- *
- * @module ozp.common
- */
-angular.module(&#x27;ozp.common&#x27;, []);
-
-/**
  * Constants used throughout the application
  *
  * @module ozpWebtopApp.constants
  */
 angular.module(&#x27;ozpWebtopApp.constants&#x27;, []);
+
+/**
+ * Common services that are not specific to Webtop
+ *
+ * @module ozp.common
+ */
+angular.module(&#x27;ozp.common&#x27;, [&#x27;ozpWebtopApp.constants&#x27;]);
 
 /**
  * Provides an OZP IWC client using a Promises to indicate valid connection
@@ -351,23 +351,6 @@ angular.module(&#x27;ozpWebtopApp.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x2
  */
 angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;, [&#x27;ozp.common&#x27;, &#x27;ozpIwcClient&#x27;, &#x27;ozpWebtopApp.apis&#x27;]);
 
-
-// TODO: cleanup and document these messages used throughout the application
-/*
-  Messages defined throughout the application:
-
-   dashboardChange:
-
-   dashboard-change:
-
-   userSettings-change:
-
-   userSettingsChanged:
-
-   launchSettingsModal:
-
-   gridSizeChanged:
- */
     </pre>
 </div>
 
