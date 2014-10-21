@@ -202,14 +202,12 @@ angular.module(&#x27;ozp.common&#x27;)
   return function (text, ellipOption, maxLength) {
     maxLength = maxLength || LENGTH_DEFAULT;
 
-    // If text is shorter than maxLength, or if we don&#x27;t want an ellisis...
-    if (text.length &lt; maxLength || !ellipOption) {
-      // Do nothing.
-      return text;
-    } else {
-      // Note: If we want to use &#x27;&amp;hellip;&#x27; we will need use ngBindHtml
-      return text.slice(0, maxLength) + &#x27; ...&#x27;;
+    var shortenedText = text.slice(0, maxLength);
+    if (ellipOption &amp;&amp; shortenedText !== text) {
+      shortenedText += &#x27; ...&#x27;;
     }
+    // Note: If we want to use &#x27;&amp;hellip;&#x27; we will need use ngBindHtml
+    return shortenedText;
   };
 });
 
