@@ -1237,7 +1237,7 @@
             "namespace": "ozp.common",
             "file": "src/common/iwcConnectedClient/iwcConnectedClient.js",
             "line": 5,
-            "description": "Provides an OZP IWC client using a Promises to indicate valid connection",
+            "description": "Provides a single connected IWC client",
             "is_constructor": 1,
             "params": [
                 {
@@ -1246,7 +1246,7 @@
                 },
                 {
                     "name": "iwcClient",
-                    "description": "iwcClient service"
+                    "description": "iwcClient service from ozp-iwc-angular library"
                 },
                 {
                     "name": "iwcOzoneBus",
