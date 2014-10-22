@@ -3677,7 +3677,7 @@
         },
         {
             "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "line": 29,
+            "line": 50,
             "description": "Activate the windowSizeWatcher",
             "itemtype": "method",
             "name": "run",
@@ -3687,7 +3687,7 @@
         },
         {
             "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "line": 60,
+            "line": 63,
             "description": "Get the current device size",
             "itemtype": "method",
             "name": "getCurrentSize",
@@ -3963,7 +3963,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/windowSizeWatcher/windowSizeWatcher.js:60"
+            "line": " src/common/windowSizeWatcher/windowSizeWatcher.js:63"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
