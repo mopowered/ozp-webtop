@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.1.0</b>
+                    API Docs for Version: <b>0.2.0</b>
                 </p>
             </li>
         </div>
@@ -210,14 +210,10 @@ angular.module(&#x27;ozp.common&#x27;)
       inferPort(loc);
     }
 
-    // TODO DEBUG FOR DEMO PURPOSES ONLY CHANGE THIS!!!
-    return false;
-
-    // TODO: PUT THIS BACK IN AFTER DEMO
     // If all comparisons are true, the url represents the same origin
-//    return a.hostname === loc.hostname &amp;&amp;
-//      a.port === loc.port &amp;&amp;
-//      a.protocol === loc.protocol;
+    return a.hostname === loc.hostname &amp;&amp;
+      a.port === loc.port &amp;&amp;
+      a.protocol === loc.protocol;
   };
 
   /**

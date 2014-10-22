@@ -2,7 +2,7 @@
     "project": {
         "name": "ozpwebtop",
         "description": "",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "url": "https://github.com/ozone-development/ozp-webtop"
     },
     "files": {
@@ -3623,7 +3623,7 @@
         },
         {
             "file": "src/common/urlOriginComparer/compareurl.js",
-            "line": 47,
+            "line": 43,
             "description": "An internal method to infer the port based on other information provided",
             "itemtype": "method",
             "name": "inferPort",

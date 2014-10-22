@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.1.0</b>
+                    API Docs for Version: <b>0.2.0</b>
                 </p>
             </li>
         </div>
@@ -311,7 +311,10 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
       element.on(&#x27;mousedown resizestart&#x27;, start);
       element.on(&#x27;mouseup mouseleave resizestop&#x27;, stop);
       // Is the origin the same as the webtop?
-      var origin = compareUrl(scope.frame.url);
+      // TODO: put this back
+      // var origin = compareUrl(scope.frame.url);
+      // For now, assume different origins
+      var origin = false;
 
       // configure dynamic template without using $http for ease of testing
       scope.getContentUrl = function() {

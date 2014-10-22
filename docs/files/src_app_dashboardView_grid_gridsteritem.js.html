@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.1.0</b>
+                    API Docs for Version: <b>0.2.0</b>
                 </p>
             </li>
         </div>
@@ -231,7 +231,10 @@ angular.module(&#x27;ozpWebtopApp.dashboardView&#x27;)
     link: function (scope, element) {
 
       // Is the origin the same as the webtop?
-      var origin = compareUrl(scope.frame.url);
+      // TODO: put this back
+      // var origin = compareUrl(scope.frame.url);
+      // For now, assume different origins
+      var origin = false;
       var template;
 
       // Instead of templateUrl, use $http to load one of two templates
