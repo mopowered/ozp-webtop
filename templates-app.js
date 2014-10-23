@@ -1,4 +1,26 @@
-angular.module('templates-app', ['appToolbar/appToolbar.tpl.html', 'dashboardToolbar/dashboardToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
+angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardToolbar/dashboardToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
+
+angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
+    "<div class=\"modal-fmt\">\n" +
+    "  <div class=\"modal-header\">\n" +
+    "    <h3 class=\"modal-title\">Add Applications</h3>\n" +
+    "  </div>\n" +
+    "  <div class=\"modal-body\">\n" +
+    "    <div class=\"container-fluid\">\n" +
+    "      <div class=\"row\">\n" +
+    "        <div class=\"col-md-12\">\n" +
+    "          Applications go here\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"modal-footer\">\n" +
+    "    <button class=\"btn btn-primary\">Open in new dashboard</button>\n" +
+    "    <button class=\"btn btn-primary\">Open</button>\n" +
+    "  </div>\n" +
+    "</div>");
+}]);
 
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",

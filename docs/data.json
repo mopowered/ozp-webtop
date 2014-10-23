@@ -6,9 +6,20 @@
         "url": "https://github.com/ozone-development/ozp-webtop"
     },
     "files": {
+        "src/app/addApplicationsModal/addApplications.js": {
+            "name": "src/app/addApplicationsModal/addApplications.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "userSettings": 1
+            }
+        },
         "src/app/appLauncher/appLauncher.js": {
             "name": "src/app/appLauncher/appLauncher.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.appLauncher": 1
+            },
             "classes": {
                 "appLauncher.AppLauncherCtrl": 1
             },
@@ -19,7 +30,9 @@
         },
         "src/app/appToolbar/appToolbar.js": {
             "name": "src/app/appToolbar/appToolbar.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.appToolbar": 1
+            },
             "classes": {
                 "appToolbar.ApplicationToolbarCtrl": 1,
                 "appToolbar.appToolbar": 1
@@ -31,7 +44,9 @@
         },
         "src/app/dashboardToolbar/dashboardToolbar.js": {
             "name": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.dashboardToolbar": 1
+            },
             "classes": {
                 "dashboardToolbar.DashboardToolbarCtrl": 1,
                 "dashboardToolbar.dashboardToolbar": 1
@@ -43,7 +58,9 @@
         },
         "src/app/dashboardView/button/ozpbutton.js": {
             "name": "src/app/dashboardView/button/ozpbutton.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.dashboardView.button": 1
+            },
             "classes": {
                 "dashboardView.ozpButton": 1
             },
@@ -52,21 +69,13 @@
                 "dashboardView": 1
             }
         },
-        "src/app/dashboardView/chrome/chromecontroller.js": {
-            "name": "src/app/dashboardView/chrome/chromecontroller.js",
-            "modules": {},
-            "classes": {
-                "dashboardView.ChromeCtrl": 1
+        "src/app/dashboardView/chrome/chrome.js": {
+            "name": "src/app/dashboardView/chrome/chrome.js",
+            "modules": {
+                "ozpWebtop.dashboardView.chrome": 1
             },
-            "fors": {},
-            "namespaces": {
-                "dashboardView": 1
-            }
-        },
-        "src/app/dashboardView/chrome/ozpchrome.js": {
-            "name": "src/app/dashboardView/chrome/ozpchrome.js",
-            "modules": {},
             "classes": {
+                "dashboardView.ChromeCtrl": 1,
                 "dashboardView.ozpChrome": 1
             },
             "fors": {},
@@ -76,7 +85,9 @@
         },
         "src/app/dashboardView/desktop/frames/ozpmanagedframe.js": {
             "name": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.dashboardView.desktop.managedFrame": 1
+            },
             "classes": {
                 "dashboardView.ozpManagedFrame": 1
             },
@@ -87,7 +98,9 @@
         },
         "src/app/dashboardView/desktop/desktop.js": {
             "name": "src/app/dashboardView/desktop/desktop.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.dashboardView.desktop": 1
+            },
             "classes": {
                 "dashboardView.DesktopCtrl": 1
             },
@@ -96,20 +109,11 @@
                 "dashboardView": 1
             }
         },
-        "src/app/dashboardView/grid/grid.js": {
-            "name": "src/app/dashboardView/grid/grid.js",
-            "modules": {},
-            "classes": {
-                "dashboardView.GridCtrl": 1
+        "src/app/dashboardView/grid/frames/gridsteritem.js": {
+            "name": "src/app/dashboardView/grid/frames/gridsteritem.js",
+            "modules": {
+                "ozpWebtop.dashboardView.grid.gridsterFrame": 1
             },
-            "fors": {},
-            "namespaces": {
-                "dashboardView": 1
-            }
-        },
-        "src/app/dashboardView/grid/gridsteritem.js": {
-            "name": "src/app/dashboardView/grid/gridsteritem.js",
-            "modules": {},
             "classes": {
                 "dashboardView.ozpGridsterItem": 1
             },
@@ -118,9 +122,24 @@
                 "dashboardView": 1
             }
         },
+        "src/app/dashboardView/grid/grid.js": {
+            "name": "src/app/dashboardView/grid/grid.js",
+            "modules": {
+                "ozpWebtop.dashboardView.grid": 1
+            },
+            "classes": {
+                "dashboardView.GridCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            }
+        },
         "src/app/dashboardView/iframe.js": {
             "name": "src/app/dashboardView/iframe.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.dashboardView.iframe": 1
+            },
             "classes": {
                 "dashboardView.IframeCtrl": 1
             },
@@ -129,9 +148,11 @@
                 "dashboardView": 1
             }
         },
-        "src/app/models/dashboardapi.js": {
-            "name": "src/app/models/dashboardapi.js",
-            "modules": {},
+        "src/app/models/dashboardApi.js": {
+            "name": "src/app/models/dashboardApi.js",
+            "modules": {
+                "ozpWebtop.models.dashboard": 1
+            },
             "classes": {
                 "models.dashboardApi": 1
             },
@@ -142,7 +163,9 @@
         },
         "src/app/models/marketplaceApi.js": {
             "name": "src/app/models/marketplaceApi.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.models.marketplace": 1
+            },
             "classes": {
                 "models.marketplaceApi": 1
             },
@@ -153,7 +176,9 @@
         },
         "src/app/models/userSettingsApi.js": {
             "name": "src/app/models/userSettingsApi.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.models.userSettings": 1
+            },
             "classes": {
                 "models.userSettingsApi": 1
             },
@@ -164,7 +189,9 @@
         },
         "src/app/services/dashboardChangeMonitor.js": {
             "name": "src/app/services/dashboardChangeMonitor.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.services.dashboardChangeMonitor": 1
+            },
             "classes": {
                 "general.dashboardChangeMonitor": 1
             },
@@ -175,29 +202,35 @@
         },
         "src/app/services/iwcInterface.js": {
             "name": "src/app/services/iwcInterface.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.services.iwcInterface": 1
+            },
             "classes": {
-                "general.iwcInterface": 1
+                "services.iwcInterface": 1
             },
             "fors": {},
             "namespaces": {
-                "general": 1
+                "services": 1
             }
         },
         "src/app/services/localStorageInterface.js": {
             "name": "src/app/services/localStorageInterface.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.services.localStorageInterface": 1
+            },
             "classes": {
-                "general.localStorageInterface": 1
+                "services.localStorageInterface": 1
             },
             "fors": {},
             "namespaces": {
-                "general": 1
+                "services": 1
             }
         },
         "src/app/userPreferencesModal/userSettings.js": {
             "name": "src/app/userPreferencesModal/userSettings.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.userSettings": 1
+            },
             "classes": {
                 "userSettings.ModalInstanceCtrl": 1,
                 "userSettings.userSettings": 1
@@ -210,16 +243,7 @@
         "src/app/app.js": {
             "name": "src/app/app.js",
             "modules": {
-                "ozpWebtopApp": 1,
-                "ozpWebtopApp.constants": 1,
-                "ozp.common": 1,
-                "ozpWebtopApp.general": 1,
-                "ozpWebtopApp.models": 1,
-                "ozpWebtopApp.userSettings": 1,
-                "ozpWebtopApp.appLauncher": 1,
-                "ozpWebtopApp.dashboardToolbar": 1,
-                "ozpWebtopApp.appToolbar": 1,
-                "ozpWebtopApp.dashboardView": 1
+                "ozpWebtop": 1
             },
             "classes": {},
             "fors": {},
@@ -227,7 +251,9 @@
         },
         "src/app/constants.js": {
             "name": "src/app/constants.js",
-            "modules": {},
+            "modules": {
+                "ozpWebtop.constants": 1
+            },
             "classes": {
                 "constants": 1
             },
@@ -236,7 +262,9 @@
         },
         "src/common/ellipticalFilter/elliptical.js": {
             "name": "src/common/ellipticalFilter/elliptical.js",
-            "modules": {},
+            "modules": {
+                "ozp.common.ellipticalFilter": 1
+            },
             "classes": {
                 "ozp.common.elliptical": 1
             },
@@ -247,18 +275,22 @@
         },
         "src/common/iwcConnectedClient/iwcConnectedClient.js": {
             "name": "src/common/iwcConnectedClient/iwcConnectedClient.js",
-            "modules": {},
+            "modules": {
+                "ozp.common.iwc.client": 1
+            },
             "classes": {
-                "ozp.common.iwcConnectedClient": 1
+                "ozp.common.iwc.iwcConnectedClient": 1
             },
             "fors": {},
             "namespaces": {
-                "ozp.common": 1
+                "ozp.common.iwc": 1
             }
         },
         "src/common/localStorage/localstorage.js": {
             "name": "src/common/localStorage/localstorage.js",
-            "modules": {},
+            "modules": {
+                "ozp.common.localStorage": 1
+            },
             "classes": {
                 "ozp.common.LocalStorage": 1
             },
@@ -269,7 +301,9 @@
         },
         "src/common/urlOriginComparer/compareurl.js": {
             "name": "src/common/urlOriginComparer/compareurl.js",
-            "modules": {},
+            "modules": {
+                "ozp.common.urlOriginComparer": 1
+            },
             "classes": {
                 "ozp.common.compareUrl": 1
             },
@@ -280,7 +314,9 @@
         },
         "src/common/utilities/utilities.js": {
             "name": "src/common/utilities/utilities.js",
-            "modules": {},
+            "modules": {
+                "ozp.common.utilities": 1
+            },
             "classes": {
                 "ozp.common.Utilities": 1
             },
@@ -291,208 +327,556 @@
         },
         "src/common/windowSizeWatcher/windowSizeWatcher.js": {
             "name": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "modules": {},
+            "modules": {
+                "ozp.common.windowSizeWatcher": 1
+            },
             "classes": {
-                "common.windowSizeWatcher": 1
+                "ozp.common.windowSizeWatcher": 1
             },
             "fors": {},
             "namespaces": {
-                "common": 1
+                "ozp.common": 1
             }
         }
     },
     "modules": {
-        "ozpWebtopApp": {
-            "name": "ozpWebtopApp",
+        "ozpWebtop.appLauncher": {
+            "name": "ozpWebtop.appLauncher",
             "submodules": {},
             "classes": {
-                "appLauncher.AppLauncherCtrl": 1,
-                "appToolbar.ApplicationToolbarCtrl": 1,
-                "appToolbar.appToolbar": 1,
-                "dashboardToolbar.DashboardToolbarCtrl": 1,
-                "dashboardToolbar.dashboardToolbar": 1,
-                "dashboardView.ozpButton": 1,
-                "dashboardView.ChromeCtrl": 1,
-                "dashboardView.ozpChrome": 1,
-                "dashboardView.ozpManagedFrame": 1,
-                "dashboardView.DesktopCtrl": 1,
-                "dashboardView.GridCtrl": 1,
-                "dashboardView.ozpGridsterItem": 1,
-                "dashboardView.IframeCtrl": 1,
-                "models.dashboardApi": 1,
-                "models.marketplaceApi": 1,
-                "models.userSettingsApi": 1,
-                "general.dashboardChangeMonitor": 1,
-                "general.iwcInterface": 1,
-                "general.localStorageInterface": 1,
-                "userSettings.ModalInstanceCtrl": 1,
-                "userSettings.userSettings": 1
+                "appLauncher.AppLauncherCtrl": 1
             },
             "fors": {},
-            "namespaces": {},
+            "namespaces": {
+                "appLauncher": 1
+            },
             "tag": "module",
-            "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 260,
-            "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps\nthe Webtop.",
-            "example": [
-                " \n    <body ng-app=\"ozpWebtopApp\"> ... </body>"
-            ],
-            "requires": [
-                "ozp.common",
-                "ozpWebtopApp.constants",
-                "ozpWebtopApp.general",
-                "ozpWebtopApp.models",
-                "ozpWebtopApp.appLauncher",
-                "ozpWebtopApp.appToolbar",
-                "ozpWebtopApp.dashboardToolbar",
-                "ozpWebtopApp.dashboardView",
-                "ozpWebtopApp.userSettings",
-                "ui.router",
-                "ui.bootstrap",
-                "gridster",
-                "ozpClassification"
-            ]
-        },
-        "ozpWebtopApp.constants": {
-            "name": "ozpWebtopApp.constants",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 85,
-            "description": "Constants used throughout the application"
-        },
-        "ozp.common": {
-            "name": "ozp.common",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 92,
-            "description": "Common services that are not specific to Webtop"
-        },
-        "ozpWebtopApp.general": {
-            "name": "ozpWebtopApp.general",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 99,
-            "description": "General utilities for use in Webtop. Includes some services and other fairly\ngeneric capabilities.",
-            "requires": [
-                "ozpWebtopApp.constants",
-                "ozp.common"
-            ]
-        },
-        "ozpWebtopApp.models": {
-            "name": "ozpWebtopApp.models",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 110,
-            "description": "Models and APIs to retrieve and send data to places external to the Webtop.",
-            "requires": [
-                "ozpWebtopApp.general"
-            ]
-        },
-        "ozpWebtopApp.userSettings": {
-            "name": "ozpWebtopApp.userSettings",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 118,
-            "description": "The modal encompassing user settings functionality.",
-            "requires": [
-                "ozpWebtopApp.models"
-            ]
-        },
-        "ozpWebtopApp.appLauncher": {
-            "name": "ozpWebtopApp.appLauncher",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 126,
+            "file": "src/app/appLauncher/appLauncher.js",
+            "line": 14,
             "description": "Launches apps from other sources",
             "requires": [
                 "ui.router",
-                "ozpWebtopApp.models"
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.models.marketplace"
             ]
         },
-        "ozpWebtopApp.dashboardToolbar": {
-            "name": "ozpWebtopApp.dashboardToolbar",
+        "ozpWebtop.appToolbar": {
+            "name": "ozpWebtop.appToolbar",
             "submodules": {},
-            "classes": {},
+            "classes": {
+                "appToolbar.ApplicationToolbarCtrl": 1,
+                "appToolbar.appToolbar": 1
+            },
             "fors": {},
-            "namespaces": {},
+            "namespaces": {
+                "appToolbar": 1
+            },
             "tag": "module",
-            "file": "src/app/app.js",
-            "line": 135,
-            "description": "The dashboard toolbar component shown in the Webtop.",
-            "requires": [
-                "ozp.common",
-                "ozpWebtopApp.models"
-            ]
-        },
-        "ozpWebtopApp.appToolbar": {
-            "name": "ozpWebtopApp.appToolbar",
-            "submodules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/app/app.js",
-            "line": 144,
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 356,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
                 "ui.bootstrap",
-                "ozp.common",
-                "ozpWebtopApp.models"
+                "ozpWebtop.models.dashboard",
+                "ozp.common.windowSizeWatcher",
+                "ozpWebtop.models.marketplace",
+                "ozpWebtop.models.userSettings",
+                "ozpWebtop.services.dashboardChangeMonitor",
+                "ozp.common.windowSizeWatcher"
             ]
         },
-        "ozpWebtopApp.dashboardView": {
-            "name": "ozpWebtopApp.dashboardView",
+        "ozpWebtop.dashboardToolbar": {
+            "name": "ozpWebtop.dashboardToolbar",
             "submodules": {},
             "classes": {
-                "constants": 1,
-                "ozp.common.elliptical": 1,
-                "ozp.common.iwcConnectedClient": 1,
-                "ozp.common.LocalStorage": 1,
-                "ozp.common.compareUrl": 1,
-                "ozp.common.Utilities": 1,
-                "common.windowSizeWatcher": 1
+                "dashboardToolbar.DashboardToolbarCtrl": 1,
+                "dashboardToolbar.dashboardToolbar": 1
             },
             "fors": {},
             "namespaces": {
-                "ozp.common": 1,
-                "common": 1
+                "dashboardToolbar": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
+            "line": 374,
+            "description": "The dashboard toolbar component shown in the Webtop.",
+            "requires": [
+                "ozp.common.windowSizeWatcher",
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.models.userSettings",
+                "ozpWebtop.services.dashboardChangeMonitor"
+            ]
+        },
+        "ozpWebtop.dashboardView.button": {
+            "name": "ozpWebtop.dashboardView.button",
+            "submodules": {},
+            "classes": {
+                "dashboardView.ozpButton": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/button/ozpbutton.js",
+            "line": 11,
+            "description": "ozpButton module"
+        },
+        "ozpWebtop.dashboardView.chrome": {
+            "name": "ozpWebtop.dashboardView.chrome",
+            "submodules": {},
+            "classes": {
+                "dashboardView.ChromeCtrl": 1,
+                "dashboardView.ozpChrome": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 105,
+            "description": "ozp Chrome module",
+            "requires": [
+                "ozpWebtop.constants",
+                "ozpWebtop.services.dashboardChangeMonitor",
+                "ozpWebtop.models.dashboard"
+            ]
+        },
+        "ozpWebtop.dashboardView.desktop.managedFrame": {
+            "name": "ozpWebtop.dashboardView.desktop.managedFrame",
+            "submodules": {},
+            "classes": {
+                "dashboardView.ozpManagedFrame": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
+            "line": 15,
+            "description": "Desktop managed frame",
+            "requires": [
+                "ozp.common.urlOriginComparer",
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.dashboardView.iframe"
+            ]
+        },
+        "ozpWebtop.dashboardView.desktop": {
+            "name": "ozpWebtop.dashboardView.desktop",
+            "submodules": {},
+            "classes": {
+                "dashboardView.DesktopCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/desktop/desktop.js",
+            "line": 19,
+            "description": "Desktop layout main controller",
+            "requires": [
+                "ozpWebtop.constants",
+                "ozpWebtop.services.dashboardChangeMonitor",
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.models.marketplace",
+                "ozpWebtop.models.userSettings"
+            ]
+        },
+        "ozpWebtop.dashboardView.grid.gridsterFrame": {
+            "name": "ozpWebtop.dashboardView.grid.gridsterFrame",
+            "submodules": {},
+            "classes": {
+                "dashboardView.ozpGridsterItem": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/grid/frames/gridsteritem.js",
+            "line": 14,
+            "description": "Gridster frames",
+            "requires": [
+                "ozp.common.urlOriginComparer",
+                "ozpWebtop.constants",
+                "ozpWebtop.models.dashboard"
+            ]
+        },
+        "ozpWebtop.dashboardView.grid": {
+            "name": "ozpWebtop.dashboardView.grid",
+            "submodules": {},
+            "classes": {
+                "dashboardView.GridCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 21,
+            "description": "Grid layout main controller",
+            "requires": [
+                "ozp.common.windowSizeWatcher",
+                "ozpWebtop.constants",
+                "ozpWebtop.services.dashboardChangeMonitor",
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.models.marketplace",
+                "ozpWebtop.models.userSettings"
+            ]
+        },
+        "ozpWebtop.dashboardView.iframe": {
+            "name": "ozpWebtop.dashboardView.iframe",
+            "submodules": {},
+            "classes": {
+                "dashboardView.IframeCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/iframe.js",
+            "line": 10,
+            "description": "iframe module for dashboard layouts"
+        },
+        "ozpWebtop.models.dashboard": {
+            "name": "ozpWebtop.models.dashboard",
+            "submodules": {},
+            "classes": {
+                "models.dashboardApi": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "models": 1
+            },
+            "tag": "module",
+            "file": "src/app/models/dashboardApi.js",
+            "line": 1055,
+            "description": "Dashboard model",
+            "requires": [
+                "ozp.common.utilities",
+                "ozpWebtop.constants",
+                "ozpWebtop.services.iwcInterface",
+                "ozpWebtop.services.localStorageInterface"
+            ]
+        },
+        "ozpWebtop.models.marketplace": {
+            "name": "ozpWebtop.models.marketplace",
+            "submodules": {},
+            "classes": {
+                "models.marketplaceApi": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "models": 1
+            },
+            "tag": "module",
+            "file": "src/app/models/marketplaceApi.js",
+            "line": 589,
+            "description": "Marketplace model",
+            "requires": [
+                "ozpWebtop.constants",
+                "ozpWebtop.services.iwcInterface",
+                "ozpWebtop.services.localStorageInterface"
+            ]
+        },
+        "ozpWebtop.models.userSettings": {
+            "name": "ozpWebtop.models.userSettings",
+            "submodules": {},
+            "classes": {
+                "models.userSettingsApi": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "models": 1
+            },
+            "tag": "module",
+            "file": "src/app/models/userSettingsApi.js",
+            "line": 121,
+            "description": "User Settings model",
+            "requires": [
+                "ozpWebtop.constants",
+                "ozpWebtop.services.iwcInterface",
+                "ozpWebtop.services.localStorageInterface"
+            ]
+        },
+        "ozpWebtop.services.dashboardChangeMonitor": {
+            "name": "ozpWebtop.services.dashboardChangeMonitor",
+            "submodules": {},
+            "classes": {
+                "general.dashboardChangeMonitor": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "general": 1
+            },
+            "tag": "module",
+            "file": "src/app/services/dashboardChangeMonitor.js",
+            "line": 12,
+            "description": "Dashboard change monitor",
+            "requires": [
+                "ozpWebtop.constants"
+            ]
+        },
+        "ozpWebtop.services.iwcInterface": {
+            "name": "ozpWebtop.services.iwcInterface",
+            "submodules": {},
+            "classes": {
+                "services.iwcInterface": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "services": 1
+            },
+            "tag": "module",
+            "file": "src/app/services/iwcInterface.js",
+            "line": 14,
+            "description": "Interface for working with IWC",
+            "requires": [
+                "ozp.common.iwc.client"
+            ]
+        },
+        "ozpWebtop.services.localStorageInterface": {
+            "name": "ozpWebtop.services.localStorageInterface",
+            "submodules": {},
+            "classes": {
+                "services.localStorageInterface": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "services": 1
+            },
+            "tag": "module",
+            "file": "src/app/services/localStorageInterface.js",
+            "line": 14,
+            "description": "Interface for working with Local Storage",
+            "requires": [
+                "ozp.common.localStorage"
+            ]
+        },
+        "ozpWebtop.userSettings": {
+            "name": "ozpWebtop.userSettings",
+            "submodules": {},
+            "classes": {
+                "userSettings.ModalInstanceCtrl": 1,
+                "userSettings.userSettings": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "userSettings": 1
+            },
+            "tag": "module",
+            "file": "src/app/userPreferencesModal/userSettings.js",
+            "line": 270,
+            "description": "The modal encompassing user settings functionality.",
+            "requires": [
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.models.userSettings"
+            ]
+        },
+        "ozpWebtop": {
+            "name": "ozpWebtop",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/app.js",
+            "line": 3,
+            "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps\nthe Webtop.",
+            "example": [
+                " \n    <body ng-app=\"ozpWebtop\"> ... </body>"
+            ],
+            "requires": [
+                "ozp.common.ellipticalFilter",
+                "ozp.common.iwc.client",
+                "ozp.common.localStorage",
+                "ozp.common.urlOriginComparer",
+                "ozp.common.utilities",
+                "ozp.common.windowSizeWatcher",
+                "ozpWebtop.constants",
+                "ozpWebtop.services.dashboardChangeMonitor",
+                "ozpWebtop.services.iwcInterface",
+                "ozpWebtop.services.localStorageInterface",
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.models.marketplace",
+                "ozpWebtop.models.userSettings",
+                "ozpWebtop.appLauncher",
+                "ozpWebtop.appToolbar",
+                "ozpWebtop.dashboardToolbar",
+                "ozpWebtop.dashboardView.button",
+                "ozpWebtop.dashboardView.chrome",
+                "ozpWebtop.dashboardView.desktop",
+                "ozpWebtop.dashboardView.desktop.managedFrame",
+                "ozpWebtop.dashboardView.iframe",
+                "ozpWebtop.dashboardView.grid",
+                "ozpWebtop.dashboardView.grid.gridsterFrame",
+                "ozpWebtop.userSettings",
+                "ui.router",
+                "ui.bootstrap",
+                "gridster",
+                "ozpIwcClient",
+                "ozpClassification"
+            ]
+        },
+        "ozpWebtop.constants": {
+            "name": "ozpWebtop.constants",
+            "submodules": {},
+            "classes": {
+                "constants": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/constants.js",
+            "line": 10,
+            "description": "Constants used throughout the application"
+        },
+        "ozp.common.ellipticalFilter": {
+            "name": "ozp.common.ellipticalFilter",
+            "submodules": {},
+            "classes": {
+                "ozp.common.elliptical": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozp.common": 1
+            },
+            "tag": "module",
+            "file": "src/common/ellipticalFilter/elliptical.js",
+            "line": 11,
+            "description": "elliptical filter"
+        },
+        "ozp.common.iwc.client": {
+            "name": "ozp.common.iwc.client",
+            "submodules": {},
+            "classes": {
+                "ozp.common.iwc.iwcConnectedClient": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozp.common.iwc": 1
+            },
+            "tag": "module",
+            "file": "src/common/iwcConnectedClient/iwcConnectedClient.js",
+            "line": 15,
+            "description": "IWC client",
+            "requires": [
+                "ozpIwcClient",
+                "ozpWebtop.constants"
+            ]
+        },
+        "ozp.common.localStorage": {
+            "name": "ozp.common.localStorage",
+            "submodules": {},
+            "classes": {
+                "ozp.common.LocalStorage": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozp.common": 1
+            },
+            "tag": "module",
+            "file": "src/common/localStorage/localstorage.js",
+            "line": 10,
+            "description": "LocalStorage interface"
+        },
+        "ozp.common.urlOriginComparer": {
+            "name": "ozp.common.urlOriginComparer",
+            "submodules": {},
+            "classes": {
+                "ozp.common.compareUrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozp.common": 1
+            },
+            "tag": "module",
+            "file": "src/common/urlOriginComparer/compareurl.js",
+            "line": 10,
+            "description": "compareUrl"
+        },
+        "ozp.common.utilities": {
+            "name": "ozp.common.utilities",
+            "submodules": {},
+            "classes": {
+                "ozp.common.Utilities": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozp.common": 1
+            },
+            "tag": "module",
+            "file": "src/common/utilities/utilities.js",
+            "line": 10,
+            "description": "Various utility functions"
+        },
+        "ozp.common.windowSizeWatcher": {
+            "name": "ozp.common.windowSizeWatcher",
+            "submodules": {},
+            "classes": {
+                "ozp.common.windowSizeWatcher": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozp.common": 1
             },
             "tag": "module",
             "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "line": 3,
-            "description": "The dashboard view in the Webtop. Contains the area where a user uses their\napplications/widgets.",
+            "line": 11,
+            "description": "Window size watcher",
             "requires": [
-                "ozp.common",
-                "ozpWebtopApp.models"
+                "ozpWebtop.constants"
             ]
         }
     },
     "classes": {
+        "userSettings.ModalInstanceCtrl": {
+            "name": "userSettings.ModalInstanceCtrl",
+            "shortname": "userSettings.ModalInstanceCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtop.userSettings",
+            "namespace": "userSettings",
+            "file": "src/app/userPreferencesModal/userSettings.js",
+            "line": 15,
+            "description": "Controller for User Settings modal dialog\n\nngtype: controller",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": "Scope used by controller"
+                },
+                {
+                    "name": "$modalInstance",
+                    "description": "Service from ui.bootstrap"
+                },
+                {
+                    "name": "currentDashboardId",
+                    "description": "Id of dashboard to use"
+                },
+                {
+                    "name": "dashboardApi",
+                    "description": "Dashboard API"
+                },
+                {
+                    "name": "userSettingsApi",
+                    "description": "User Settings API"
+                },
+                {
+                    "name": "userPreferencesUpdatedEvent",
+                    "description": "event name"
+                }
+            ]
+        },
         "appLauncher.AppLauncherCtrl": {
             "name": "appLauncher.AppLauncherCtrl",
             "shortname": "appLauncher.AppLauncherCtrl",
@@ -501,10 +885,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.appLauncher",
             "namespace": "appLauncher",
             "file": "src/app/appLauncher/appLauncher.js",
-            "line": 3,
+            "line": 14,
             "description": "Launch applications in Webtop via URL\n\nThis is really for demo purposes and will likely be removed\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -542,10 +926,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 3,
+            "line": 22,
             "description": "Application toolbar on the bottom of Webtop. Contains a menu for adding\nfavorited apps to the dashboard and shows names/icons for all apps\ncurrently on the dashboard. Clicking on the app name/icon buttons in the\ntoolbar results in the application being shown or hidden from the dashboard\nview (in desktop layout)\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -607,10 +991,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 337,
+            "line": 356,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -622,10 +1006,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 4,
+            "line": 18,
             "description": "Controller for dashboard toolbar located at the top of Webtop\n\nIncludes:\n- menu with links to other OZP resources\n- dashboard selector\n- buttons to switch between grid and desktop layouts\n- notifications (TODO)\n- zulu clock\n- username button with dropdown to access user preferences, help, and logout\n\nThe toolbar can also be hidden by clicking on a button\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -687,10 +1071,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 360,
+            "line": 374,
             "description": "Directive for the dashboard toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -702,10 +1086,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.button",
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/button/ozpbutton.js",
-            "line": 3,
+            "line": 11,
             "description": "ozpButton Renders button with an icon to the left and text to the right.\n\nngtype: directive",
             "is_constructor": 1
         },
@@ -717,10 +1101,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView",
-            "file": "src/app/dashboardView/chrome/chromecontroller.js",
-            "line": 4,
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 17,
             "description": "ChromeCtrl aids the ozpChrome directive in knowing its location\n(grid or desktop).\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -758,10 +1142,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView",
-            "file": "src/app/dashboardView/chrome/ozpchrome.js",
-            "line": 4,
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 105,
             "description": "Directive for chrome (bar appearing across the top of each widget)\n\nngtype: directive",
             "static": 1
         },
@@ -773,10 +1157,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.desktop.managedFrame",
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 3,
+            "line": 15,
             "description": "Used to include an html document in the webtop. If the html in question is from a different \norigin than the webtop, then an iframe will be used. If the html is from the same origin as\nthe webtop, a \"frame\" (div) will be used.\n\nngtype: directive",
             "is_constructor": 1,
             "params": [
@@ -815,10 +1199,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 4,
+            "line": 19,
             "description": "Controller for managing apps/widgets in desktop layout on a dashboard\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -860,6 +1244,63 @@
                 }
             ]
         },
+        "dashboardView.ozpGridsterItem": {
+            "name": "dashboardView.ozpGridsterItem",
+            "shortname": "dashboardView.ozpGridsterItem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtop.dashboardView.grid.gridsterFrame",
+            "namespace": "dashboardView",
+            "file": "src/app/dashboardView/grid/frames/gridsteritem.js",
+            "line": 14,
+            "description": "ozpGridsterItem is a wrapper around a tile in the grid\n\nngtype: directive",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$compile",
+                    "description": "the Angular compile service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$http",
+                    "description": "the Angular HTTP service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$templateCache",
+                    "description": "the Angular template cache",
+                    "type": "Object"
+                },
+                {
+                    "name": "$timeout",
+                    "description": "the Angular timeout service",
+                    "type": "Object"
+                },
+                {
+                    "name": "compareUrl",
+                    "description": "the compareUrl service {{#crossLink \"compareUrl\"}}{{/crossLink}}",
+                    "type": "Function"
+                },
+                {
+                    "name": "dashboardApi",
+                    "description": "the dashboard API service {{#crossLink \"dashboardApi\"}}{{/crossLink}}",
+                    "type": "Object"
+                },
+                {
+                    "name": "deviceSizeChangedEvent",
+                    "description": "event name",
+                    "type": "String"
+                },
+                {
+                    "name": "gridFrameSizeChangeEvent",
+                    "description": "event name",
+                    "type": "String"
+                }
+            ]
+        },
         "dashboardView.GridCtrl": {
             "name": "dashboardView.GridCtrl",
             "shortname": "dashboardView.GridCtrl",
@@ -868,10 +1309,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 3,
+            "line": 21,
             "description": "Controller managing the frames in the grid layout\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -947,63 +1388,6 @@
                 }
             ]
         },
-        "dashboardView.ozpGridsterItem": {
-            "name": "dashboardView.ozpGridsterItem",
-            "shortname": "dashboardView.ozpGridsterItem",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtopApp",
-            "namespace": "dashboardView",
-            "file": "src/app/dashboardView/grid/gridsteritem.js",
-            "line": 3,
-            "description": "ozpGridsterItem is a wrapper around a tile in the grid\n\nngtype: directive",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "$compile",
-                    "description": "the Angular compile service",
-                    "type": "Object"
-                },
-                {
-                    "name": "$http",
-                    "description": "the Angular HTTP service",
-                    "type": "Object"
-                },
-                {
-                    "name": "$templateCache",
-                    "description": "the Angular template cache",
-                    "type": "Object"
-                },
-                {
-                    "name": "$timeout",
-                    "description": "the Angular timeout service",
-                    "type": "Object"
-                },
-                {
-                    "name": "compareUrl",
-                    "description": "the compareUrl service {{#crossLink \"compareUrl\"}}{{/crossLink}}",
-                    "type": "Function"
-                },
-                {
-                    "name": "dashboardApi",
-                    "description": "the dashboard API service {{#crossLink \"dashboardApi\"}}{{/crossLink}}",
-                    "type": "Object"
-                },
-                {
-                    "name": "deviceSizeChangedEvent",
-                    "description": "event name",
-                    "type": "String"
-                },
-                {
-                    "name": "gridFrameSizeChangeEvent",
-                    "description": "event name",
-                    "type": "String"
-                }
-            ]
-        },
         "dashboardView.IframeCtrl": {
             "name": "dashboardView.IframeCtrl",
             "shortname": "dashboardView.IframeCtrl",
@@ -1012,10 +1396,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.dashboardView.iframe",
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/iframe.js",
-            "line": 3,
+            "line": 10,
             "description": "IframeCtrl ensures that a widget can be properly displayed in an iframe.\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -1037,10 +1421,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
-            "file": "src/app/models/dashboardapi.js",
-            "line": 1041,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 1055,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -1052,10 +1436,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.models.marketplace",
             "namespace": "models",
             "file": "src/app/models/marketplaceApi.js",
-            "line": 576,
+            "line": 589,
             "description": "Service used to store and retrieve marketplace data (app listings)\n\nMay be configured with different persistence mechanisms including IWC\nand Local Storage\n\nngtype: factory",
             "static": 1
         },
@@ -1067,10 +1451,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.models.userSettings",
             "namespace": "models",
             "file": "src/app/models/userSettingsApi.js",
-            "line": 108,
+            "line": 121,
             "description": "Service used to store and retrieve user settings\n\nMay be configured with different persistence mechanisms including IWC\nand Local Storage\n\nngtype: factory",
             "static": 1
         },
@@ -1082,25 +1466,25 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.services.dashboardChangeMonitor",
             "namespace": "general",
             "file": "src/app/services/dashboardChangeMonitor.js",
-            "line": 3,
+            "line": 12,
             "description": "Broadcast messages down $rootScope when the current dashboard or dashboard\nlayout changes\n\nEvent name: **dashboardSwitched**\n\nEvent data:\n\n    {\"layout\": \"grid | desktop\", \"dashboardId\": \"someDashboardId\"}\n\nngtype: factory",
             "static": 1
         },
-        "general.iwcInterface": {
-            "name": "general.iwcInterface",
-            "shortname": "general.iwcInterface",
+        "services.iwcInterface": {
+            "name": "services.iwcInterface",
+            "shortname": "services.iwcInterface",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
-            "namespace": "general",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services",
             "file": "src/app/services/iwcInterface.js",
-            "line": 5,
+            "line": 14,
             "description": "Interface for working with IWC\n\nngtype: factory",
             "is_constructor": 1,
             "params": [
@@ -1114,18 +1498,18 @@
                 }
             ]
         },
-        "general.localStorageInterface": {
-            "name": "general.localStorageInterface",
-            "shortname": "general.localStorageInterface",
+        "services.localStorageInterface": {
+            "name": "services.localStorageInterface",
+            "shortname": "services.localStorageInterface",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
-            "namespace": "general",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services",
             "file": "src/app/services/localStorageInterface.js",
-            "line": 5,
+            "line": 14,
             "description": "Interface for working with Local Storage\n\nngtype: factory",
             "is_constructor": 1,
             "params": [
@@ -1139,47 +1523,6 @@
                 }
             ]
         },
-        "userSettings.ModalInstanceCtrl": {
-            "name": "userSettings.ModalInstanceCtrl",
-            "shortname": "userSettings.ModalInstanceCtrl",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtopApp",
-            "namespace": "userSettings",
-            "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 5,
-            "description": "Controller for User Settings modal dialog\n\nngtype: controller",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "$scope",
-                    "description": "Scope used by controller"
-                },
-                {
-                    "name": "$modalInstance",
-                    "description": "Service from ui.bootstrap"
-                },
-                {
-                    "name": "currentDashboardId",
-                    "description": "Id of dashboard to use"
-                },
-                {
-                    "name": "dashboardApi",
-                    "description": "Dashboard API"
-                },
-                {
-                    "name": "userSettingsApi",
-                    "description": "User Settings API"
-                },
-                {
-                    "name": "userPreferencesUpdatedEvent",
-                    "description": "event name"
-                }
-            ]
-        },
         "userSettings.userSettings": {
             "name": "userSettings.userSettings",
             "shortname": "userSettings.userSettings",
@@ -1188,10 +1531,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings",
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 260,
+            "line": 270,
             "description": "ng Directive for User Settings modal dialog\n\nUsage:\n\n    <user-settings></user-settings>\n\nngtype: directive",
             "static": 1
         },
@@ -1203,10 +1546,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozpWebtop.constants",
             "namespace": "",
             "file": "src/app/constants.js",
-            "line": 3,
+            "line": 10,
             "description": "Constants used throughout the application\n\nngtype: constant",
             "static": 1
         },
@@ -1218,25 +1561,25 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.ellipticalFilter",
             "namespace": "ozp.common",
             "file": "src/common/ellipticalFilter/elliptical.js",
-            "line": 4,
+            "line": 11,
             "description": "elliptical filter\n\nngtype: filter",
             "static": 1
         },
-        "ozp.common.iwcConnectedClient": {
-            "name": "ozp.common.iwcConnectedClient",
-            "shortname": "ozp.common.iwcConnectedClient",
+        "ozp.common.iwc.iwcConnectedClient": {
+            "name": "ozp.common.iwc.iwcConnectedClient",
+            "shortname": "ozp.common.iwc.iwcConnectedClient",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
-            "namespace": "ozp.common",
+            "module": "ozp.common.iwc.client",
+            "namespace": "ozp.common.iwc",
             "file": "src/common/iwcConnectedClient/iwcConnectedClient.js",
-            "line": 5,
+            "line": 15,
             "description": "Provides a single connected IWC client",
             "is_constructor": 1,
             "params": [
@@ -1262,10 +1605,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.localStorage",
             "namespace": "ozp.common",
             "file": "src/common/localStorage/localstorage.js",
-            "line": 3,
+            "line": 10,
             "description": "Provides a simpler interface to the browser's Local Storage\n\nTaken from http://www.bennadel.com/blog/2105-exploring-html5-s-localstorage-persistent-client-side-key-value-pairs.htm\nSimple interface to localStorage\n\nThe localStorage option has some limitations both in the\nway that it treats values and in the way that it checks\nfor existence. As such, this Cache object will provide\na better proxy.\n\nngtype: factory",
             "is_constructor": 1
         },
@@ -1277,10 +1620,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.urlOriginComparer",
             "namespace": "ozp.common",
             "file": "src/common/urlOriginComparer/compareurl.js",
-            "line": 3,
+            "line": 10,
             "description": "compareUrl\n\nngtype: factory",
             "static": 1
         },
@@ -1292,25 +1635,25 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.utilities",
             "namespace": "ozp.common",
             "file": "src/common/utilities/utilities.js",
-            "line": 3,
+            "line": 10,
             "description": "Various utility functions\n\nngtype: factory",
             "is_constructor": 1
         },
-        "common.windowSizeWatcher": {
-            "name": "common.windowSizeWatcher",
-            "shortname": "common.windowSizeWatcher",
+        "ozp.common.windowSizeWatcher": {
+            "name": "ozp.common.windowSizeWatcher",
+            "shortname": "ozp.common.windowSizeWatcher",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ozpWebtopApp.dashboardView",
-            "namespace": "common",
+            "module": "ozp.common.windowSizeWatcher",
+            "namespace": "ozp.common",
             "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "line": 3,
+            "line": 11,
             "description": "Send a message when the window size changes device sizes\nas defined by Bootstrap:\n\n* lt 768px  = extra-small (xs)\n* gte 768px = small (sm)\n* gte 992 = medium (md)\n* gte 1200 = large (lg)\n\nngtype: factory",
             "is_constructor": 1,
             "params": [
@@ -1336,106 +1679,117 @@
     "classitems": [
         {
             "file": "src/app/appLauncher/appLauncher.js",
-            "line": 28,
+            "line": 39,
             "itemtype": "property",
             "name": "Id of the application to launch in Webtop",
             "type": "{String}",
             "class": "appLauncher.AppLauncherCtrl",
+            "module": "ozpWebtop.appLauncher",
             "namespace": "appLauncher"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 43,
+            "line": 62,
             "itemtype": "property",
             "name": "$scope.maxAppsDisplayed The maximum number of apps that can be\ndisplayed on the toolbar (based on screen width)",
             "type": "{Number}",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 49,
+            "line": 68,
             "itemtype": "property",
             "name": "$scope.currentDashboardId The id of the current dashboard",
             "type": "{string}",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 54,
+            "line": 73,
             "itemtype": "property",
             "name": "$scope.appboardhide Flag indicating if the toolbar is hidden or\n not",
             "type": "{boolean}",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 60,
+            "line": 79,
             "itemtype": "property",
             "name": "$scope.apps All applications available in the marketplace\n TODO: shouldn't need all of the apps, only the ones for current user",
             "type": "{Array}",
             "class": "appToolbar.ApplicationToolbarCtrl",
-            "namespace": "appToolbar"
-        },
-        {
-            "file": "src/app/appToolbar/appToolbar.js",
-            "line": 66,
-            "itemtype": "property",
-            "name": "$scope.frames Frames on current dashboard (includes marketplace\n data like app name, icons, description, etc)",
-            "type": "{Array}",
-            "class": "appToolbar.ApplicationToolbarCtrl",
-            "namespace": "appToolbar"
-        },
-        {
-            "file": "src/app/appToolbar/appToolbar.js",
-            "line": 72,
-            "itemtype": "property",
-            "name": "$scope.myPinnedApps Applications in current dashboard that are\n shown in the application toolbar",
-            "type": "{Array}",
-            "class": "appToolbar.ApplicationToolbarCtrl",
-            "namespace": "appToolbar"
-        },
-        {
-            "file": "src/app/appToolbar/appToolbar.js",
-            "line": 78,
-            "itemtype": "property",
-            "name": "$scope.myPinnedAppsFirstDisplayedIndex The index (in\n $scope.myPinnedApps) of the first application shown in the application\n toolbar to display",
-            "type": "{number}",
-            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 85,
             "itemtype": "property",
-            "name": "$scope.nextAppsVisible Flag for the 'pagination' next arrow\n in the toolbar",
-            "type": "{boolean}",
+            "name": "$scope.frames Frames on current dashboard (includes marketplace\n data like app name, icons, description, etc)",
+            "type": "{Array}",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 91,
             "itemtype": "property",
-            "name": "$scope.previousAppsVisible Flag for the 'pagination' previous\n arrow in the toolbar",
-            "type": "{boolean}",
+            "name": "$scope.myPinnedApps Applications in current dashboard that are\n shown in the application toolbar",
+            "type": "{Array}",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 97,
             "itemtype": "property",
-            "name": "$scope.layout The current dashboard layout (grid or desktop)",
-            "type": "{string}",
+            "name": "$scope.myPinnedAppsFirstDisplayedIndex The index (in\n $scope.myPinnedApps) of the first application shown in the application\n toolbar to display",
+            "type": "{number}",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 146,
+            "line": 104,
+            "itemtype": "property",
+            "name": "$scope.nextAppsVisible Flag for the 'pagination' next arrow\n in the toolbar",
+            "type": "{boolean}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 110,
+            "itemtype": "property",
+            "name": "$scope.previousAppsVisible Flag for the 'pagination' previous\n arrow in the toolbar",
+            "type": "{boolean}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 116,
+            "itemtype": "property",
+            "name": "$scope.layout The current dashboard layout (grid or desktop)",
+            "type": "{string}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 165,
             "description": "Handle the deviceSizeChangedEvent\n\nUpdate $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -1446,11 +1800,12 @@
                 }
             ],
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 167,
+            "line": 186,
             "description": "Handle the dashboardSwitchedEvent\n\nSet $scope.currentDashboardId and invoke updateApps()",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -1461,29 +1816,32 @@
                 }
             ],
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 181,
+            "line": 200,
             "description": "Set $scope.myPinnedApps\n\nRequires that $scope.frames is set first",
             "itemtype": "method",
             "name": "setPinnedApps",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 205,
+            "line": 224,
             "description": "Update application data in the toolbar (invoked on a dashboard change)",
             "itemtype": "method",
             "name": "updateApps",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 225,
+            "line": 244,
             "description": "Maximize (or show) a frame that was previously minimized (hidden)",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -1495,11 +1853,12 @@
                 }
             ],
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 238,
+            "line": 257,
             "description": "Attempt to add an application to the dashboard\n\nIf successful, broadcasts a dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "appClicked",
@@ -1511,128 +1870,142 @@
                 }
             ],
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 269,
+            "line": 288,
             "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a toolbarVisibilityChangedEvent",
             "itemtype": "method",
             "name": "appboardhider",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 294,
+            "line": 313,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 314,
+            "line": 333,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
             "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 45,
+            "line": 59,
             "itemtype": "property",
             "name": "dashboardNameLength Max length of dashboard name, based on\ncurrent screen size",
             "type": "{String}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 51,
+            "line": 65,
             "itemtype": "property",
             "name": "usernameLength Max length of username, based on\ncurrent screen size",
             "type": "{Number}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 58,
+            "line": 72,
             "itemtype": "property",
             "name": "dashboards Dashboards for current user",
             "type": "{Array}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 64,
+            "line": 78,
             "itemtype": "property",
             "name": "dashbaordhide Flag indicating if dashboard toolbar is hidden",
             "type": "{boolean}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 70,
+            "line": 84,
             "itemtype": "property",
             "name": "currentDashboard Current active dashboard",
             "type": "{string}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 76,
+            "line": 90,
             "itemtype": "property",
             "name": "Dashboard layout (grid or desktop)",
             "type": "{string}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 82,
+            "line": 96,
             "itemtype": "property",
             "name": "user Current user's username",
             "type": "{string}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 88,
+            "line": 102,
             "itemtype": "property",
             "name": "dashboardId Current dashboard id",
             "type": "{string}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 94,
+            "line": 108,
             "itemtype": "property",
             "name": "messages Messages for current user TBD",
             "type": "{Array}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 114,
+            "line": 128,
             "itemtype": "property",
             "name": "zuluTime Current time (zulu)",
             "type": "{string}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 125,
+            "line": 139,
             "description": "Update the zulu clock",
             "itemtype": "method",
             "name": "getZuluTime",
@@ -1641,11 +2014,12 @@
                 "type": "String"
             },
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 196,
+            "line": 210,
             "description": "Handler invoked when window size changes across device size boundaries\nas defined by Bootstrap",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -1656,11 +2030,12 @@
                 }
             ],
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 216,
+            "line": 230,
             "description": "Handler invoked when dashboard change event occurs",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -1671,20 +2046,22 @@
                 }
             ],
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 242,
+            "line": 256,
             "description": "Handler invoked when user settings event is fired",
             "itemtype": "method",
             "name": "handleUserSettingsChange",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 264,
+            "line": 278,
             "description": "Set the current dashboard",
             "itemtype": "method",
             "name": "setCurrentDashboard",
@@ -1695,47 +2072,52 @@
                 }
             ],
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 273,
+            "line": 287,
             "description": "Use a grid layout",
             "itemtype": "method",
             "name": "useGridLayout",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 281,
+            "line": 295,
             "description": "Use a desktop layout",
             "itemtype": "method",
             "name": "useDesktopLayout",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 289,
+            "line": 303,
             "description": "Launch the user preferences modal dialog\n\nSends launchUserPreferencesModalEvent",
             "itemtype": "method",
             "name": "launchSettingsModal",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 302,
+            "line": 316,
             "description": "Toggle the state of the toolbar (shown vs hidden)",
             "itemtype": "method",
             "name": "dashboardhider",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
+            "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
         },
         {
-            "file": "src/app/dashboardView/chrome/chromecontroller.js",
-            "line": 33,
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 46,
             "description": "Handler invoked when active dashboard changes",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -1746,11 +2128,12 @@
                 }
             ],
             "class": "dashboardView.ChromeCtrl",
+            "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView"
         },
         {
-            "file": "src/app/dashboardView/chrome/chromecontroller.js",
-            "line": 47,
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 60,
             "description": "Remove a frame from the current dashboard and send\ndashboardStateChangedEvent",
             "itemtype": "method",
             "name": "isDisabled",
@@ -1761,11 +2144,12 @@
                 }
             ],
             "class": "dashboardView.ChromeCtrl",
+            "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView"
         },
         {
-            "file": "src/app/dashboardView/chrome/chromecontroller.js",
-            "line": 63,
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 76,
             "description": "Hide a frame on the dashboard",
             "itemtype": "method",
             "name": "minimizeFrame",
@@ -1776,11 +2160,12 @@
                 }
             ],
             "class": "dashboardView.ChromeCtrl",
+            "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView"
         },
         {
-            "file": "src/app/dashboardView/chrome/chromecontroller.js",
-            "line": 77,
+            "file": "src/app/dashboardView/chrome/chrome.js",
+            "line": 90,
             "description": "Show a frame on the dashboard",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -1791,11 +2176,12 @@
                 }
             ],
             "class": "dashboardView.ChromeCtrl",
+            "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 47,
+            "line": 59,
             "description": "Decides which template to use.",
             "itemtype": "method",
             "name": "getTemplate",
@@ -1809,110 +2195,122 @@
                 }
             ],
             "class": "dashboardView.ozpManagedFrame",
+            "module": "ozpWebtop.dashboardView.desktop.managedFrame",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 33,
+            "line": 48,
             "itemtype": "property",
             "name": "dashboards User's dashboards",
             "type": "{Array}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 39,
+            "line": 54,
             "itemtype": "property",
             "name": "frames Frames on the dashboard (widget instances)",
             "type": "{Array}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 45,
+            "line": 60,
             "itemtype": "property",
             "name": "dashBarHidden Flag indicating whether the dashboard toolbar\nis hidden",
             "type": "{boolean}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 52,
+            "line": 67,
             "itemtype": "property",
             "name": "appBarHidden Flag indicating whether the application toolbar\nis hidden",
             "type": "{boolean}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 59,
+            "line": 74,
             "itemtype": "property",
             "name": "apps Applications in the marketplace\nTODO: only need the data for apps user has favorited",
             "type": "{Array}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 66,
+            "line": 81,
             "itemtype": "property",
             "name": "currentDashboard Active dashboard",
             "type": "{string}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 72,
+            "line": 87,
             "itemtype": "property",
             "name": "currentDashboardId Active dashboard id",
             "type": "{string}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 78,
+            "line": 93,
             "itemtype": "property",
             "name": "max TODO define this",
             "type": "{{}}",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 137,
+            "line": 152,
             "description": "Handler invoked when a toolbarVisibilityChangedEvent is received",
             "itemtype": "method",
             "name": "handleToolbarVisibilityChange",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 160,
+            "line": 175,
             "description": "Handler invoked when a dashboardStateChangedEvent is received",
             "itemtype": "method",
             "name": "dashboardChangeHandler",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 249,
+            "line": 264,
             "description": "Update the active dashboard and broadcast dashboardStateChangedEvent on\ncompletion",
             "itemtype": "method",
             "name": "updateDashboard",
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 286,
+            "line": 301,
             "description": "Getter for frame.isMinimized",
             "itemtype": "method",
             "name": "isFrameMinimized",
@@ -1927,11 +2325,12 @@
                 "type": "Boolean"
             },
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 301,
+            "line": 316,
             "description": "Getter for frame.isMaximized",
             "itemtype": "method",
             "name": "isFrameMaximized",
@@ -1946,109 +2345,121 @@
                 "type": "Boolean"
             },
             "class": "dashboardView.DesktopCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 316,
+            "line": 331,
             "description": "Sort the zIndex of all frames",
             "itemtype": "method",
             "name": "sortFrames",
             "class": "dashboardView.DesktopCtrl",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 44,
-            "itemtype": "property",
-            "name": "deviceSize Current screen size (xs, sm, md, lg)",
-            "type": "{string}",
-            "class": "dashboardView.GridCtrl",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 50,
-            "itemtype": "property",
-            "name": "dashboards User's dashboards",
-            "type": "{Array}",
-            "class": "dashboardView.GridCtrl",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 56,
-            "itemtype": "property",
-            "name": "frames Frames (widgets/apps) on the current dashboard",
-            "type": "{Array}",
-            "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.desktop",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
             "line": 62,
             "itemtype": "property",
-            "name": "apps Applications in the marketplace\nTODO: only need the apps the user has favorited",
-            "type": "{Array}",
+            "name": "deviceSize Current screen size (xs, sm, md, lg)",
+            "type": "{string}",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 69,
+            "line": 68,
+            "itemtype": "property",
+            "name": "dashboards User's dashboards",
+            "type": "{Array}",
+            "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 74,
+            "itemtype": "property",
+            "name": "frames Frames (widgets/apps) on the current dashboard",
+            "type": "{Array}",
+            "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 80,
+            "itemtype": "property",
+            "name": "apps Applications in the marketplace\nTODO: only need the apps the user has favorited",
+            "type": "{Array}",
+            "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
+            "namespace": "dashboardView"
+        },
+        {
+            "file": "src/app/dashboardView/grid/grid.js",
+            "line": 87,
             "itemtype": "property",
             "name": "appBarHidden Flag indicating whether the application toolbar\nis hidden",
             "type": "{boolean}",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 76,
+            "line": 94,
             "itemtype": "property",
             "name": "activeFrames TODO clean this up",
             "type": "{Array}",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 82,
+            "line": 100,
             "itemtype": "property",
             "name": "dashboard Current dashboard",
             "type": "{{}}",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 88,
+            "line": 106,
             "itemtype": "property",
             "name": "dashboardId Current dashboardId\nTODO: duplicate info?",
             "type": "{string}",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 95,
+            "line": 113,
             "itemtype": "property",
             "name": "intervalPromise promise returned by $interval (keep track of it\nso it can be canceled)",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 101,
+            "line": 119,
             "itemtype": "property",
             "name": "gridOptions Configuration options for Gridster\nTODO: make these available to other components somehow",
             "type": "{Object}",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 243,
+            "line": 261,
             "description": "Handle start event resizing a widget on Gridster",
             "itemtype": "method",
             "name": "handleGridsterResizeStart",
@@ -2059,11 +2470,12 @@
                 }
             ],
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 272,
+            "line": 290,
             "description": "Handle stop event when resizing Gridster widget",
             "itemtype": "method",
             "name": "handleGridsterResizeStop",
@@ -2074,20 +2486,22 @@
                 }
             ],
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 284,
+            "line": 302,
             "description": "Handler for windowSizeChangedEvent (each time the window size\nchanges, even by a single pixel)\n\nCancels the existing $interval promise and creates a new one to update\nall frames in 200ms",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 298,
+            "line": 316,
             "description": "Handles the deviceSizeChangedEvent, which occurs whenever the\nscreen size changes device sizes (as defined by Bootstrap)",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2099,29 +2513,32 @@
                 }
             ],
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 322,
+            "line": 340,
             "description": "Handle the dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "handleDashboardChange",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 394,
+            "line": 412,
             "description": "Handle the toolbarVisibilityChangedEvent",
             "itemtype": "method",
             "name": "handleToolbarVisibilityChange",
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 411,
+            "line": 429,
             "description": "Calculates the size of a frame, saves it, and sends a\n gridFrameSizeChangeEvent event",
             "itemtype": "method",
             "name": "updateDashboardFramePx",
@@ -2137,11 +2554,12 @@
                 "type": "Promise"
             },
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 452,
+            "line": 470,
             "description": "Reloads the current dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2150,11 +2568,12 @@
                 "type": "Promise"
             },
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 491,
+            "line": 509,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "itemtype": "method",
             "name": "updateFrameAfterChange",
@@ -2170,11 +2589,12 @@
                 "type": "Promise"
             },
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 511,
+            "line": 529,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "itemtype": "method",
             "name": "updateAllFramesAfterChange",
@@ -2183,11 +2603,12 @@
                 "type": "Promise"
             },
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 529,
+            "line": 547,
             "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n- hard-coded value of gridster container padding\n- accesses $scope.gridOptions",
             "itemtype": "method",
             "name": "calculateGridFrameSize",
@@ -2203,11 +2624,12 @@
                 "type": "Object"
             },
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 569,
+            "line": 587,
             "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
             "itemtype": "method",
             "name": "updateLocalGridFrameSize",
@@ -2223,20 +2645,22 @@
                 "type": "Object"
             },
             "class": "dashboardView.GridCtrl",
+            "module": "ozpWebtop.dashboardView.grid",
             "namespace": "dashboardView"
         },
         {
             "file": "src/app/dashboardView/iframe.js",
-            "line": 16,
+            "line": 23,
             "itemtype": "property",
             "name": "frame.trustedUrl URL",
             "type": "{String}",
             "class": "dashboardView.IframeCtrl",
+            "module": "ozpWebtop.dashboardView.iframe",
             "namespace": "dashboardView"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 16,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 30,
             "description": "Test method - delete this later",
             "itemtype": "method",
             "name": "sayHello",
@@ -2245,11 +2669,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 30,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 44,
             "description": "Get all dashboard data",
             "itemtype": "method",
             "name": "getDashboardData",
@@ -2258,11 +2682,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 40,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 54,
             "description": "Get all dashboards",
             "itemtype": "method",
             "name": "getDashboards",
@@ -2271,11 +2695,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 58,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 72,
             "description": "Set all dashboard data",
             "itemtype": "method",
             "name": "_setDashboardData",
@@ -2292,11 +2716,11 @@
             "access": "private",
             "tagname": "",
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 70,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 84,
             "description": "Set all dashboards",
             "itemtype": "method",
             "name": "setAllDashboards",
@@ -2311,11 +2735,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 89,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 103,
             "description": "Update dashboard layout",
             "itemtype": "method",
             "name": "updateLayoutType",
@@ -2334,11 +2758,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 109,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 123,
             "description": "Toggle the value of a key in a frame",
             "itemtype": "method",
             "name": "toggleFrameKey",
@@ -2357,11 +2781,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 143,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 157,
             "description": "Update the grid layout of a frame in a dashboard",
             "itemtype": "method",
             "name": "updateGridFrame",
@@ -2380,11 +2804,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 178,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 192,
             "description": "Update the desktop layout of a frame in a dashboard\nTODO: what about width and height?",
             "itemtype": "method",
             "name": "updateDesktopFrame",
@@ -2419,11 +2843,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 210,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 224,
             "description": "Check to see if an application is already on a given dashboard",
             "itemtype": "method",
             "name": "isAppOnDashboard",
@@ -2442,11 +2866,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 227,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 241,
             "description": "Create a new frame in a dashboard for a given application\nCreates a frame with with both grid and desktop layout data",
             "itemtype": "method",
             "name": "createFrame",
@@ -2469,11 +2893,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 308,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 322,
             "description": "Remove a frame from a dashboard",
             "itemtype": "method",
             "name": "removeFrame",
@@ -2488,11 +2912,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 339,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 353,
             "description": "Change the user's current dashboard",
             "itemtype": "method",
             "name": "updateCurrentDashboardName",
@@ -2507,11 +2931,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 369,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 383,
             "description": "Return the name of the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboardName",
@@ -2520,11 +2944,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 387,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 401,
             "description": "Augment the dashboard.frames data with application-specific data\nNote: data is not persisted, but rather the 'frames' object is modified\nby reference",
             "itemtype": "method",
             "name": "mergeApplicationData",
@@ -2539,11 +2963,11 @@
                 }
             ],
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 410,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 424,
             "description": "Updates the dynamically generated fields for grid frame size in px",
             "itemtype": "method",
             "name": "updateFrameSizeOnGrid",
@@ -2570,11 +2994,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 437,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 451,
             "description": "Return the frame size (in px) for a given frame in the grid layout\nNote that these values are dynamically generated",
             "itemtype": "method",
             "name": "getFrameSizeOnGrid",
@@ -2589,11 +3013,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 456,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 470,
             "description": "Save a dashboard\nTODO: make sure input is a valid dashboard:\n- dashboard.id should be unique\n- all frame.id's should be",
             "itemtype": "method",
             "name": "saveDashboard",
@@ -2608,11 +3032,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 488,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 502,
             "description": "Save a frame in a dashboard\nTODO: make sure input is a valid frame",
             "itemtype": "method",
             "name": "saveFrame",
@@ -2627,11 +3051,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 522,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 536,
             "description": "Retrieve a frame by id",
             "itemtype": "method",
             "name": "getFrameById",
@@ -2646,11 +3070,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 543,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 557,
             "description": "Retrieve a dashboard by id",
             "itemtype": "method",
             "name": "getDashboardById",
@@ -2665,11 +3089,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 562,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 576,
             "description": "Delete a dashboard",
             "itemtype": "method",
             "name": "removeDashboard",
@@ -2684,11 +3108,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 592,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 606,
             "description": "Create a new dashboard",
             "itemtype": "method",
             "name": "createDashboard",
@@ -2703,11 +3127,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 628,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 642,
             "description": "Get the next available id for a new dashboard\nTODO: this assumes ids are integers and not uuids",
             "itemtype": "method",
             "name": "getNewDashboardId",
@@ -2716,11 +3140,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 645,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 659,
             "description": "Get the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboard",
@@ -2729,11 +3153,11 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 658,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 672,
             "description": "Create example dashboards (test purposes only)",
             "itemtype": "method",
             "name": "createExampleDashboards",
@@ -2742,25 +3166,25 @@
                 "type": "Promise"
             },
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 1009,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 1023,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
-            "file": "src/app/models/dashboardapi.js",
-            "line": 1025,
+            "file": "src/app/models/dashboardApi.js",
+            "line": 1039,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
-            "namespace": "dashboardView"
+            "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/marketplaceApi.js",
-            "line": 8,
+            "line": 21,
             "description": "Get all application listings",
             "itemtype": "method",
             "name": "getAllApps",
@@ -2769,40 +3193,40 @@
                 "type": "*"
             },
             "class": "models.marketplaceApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.marketplace"
         },
         {
             "file": "src/app/models/marketplaceApi.js",
-            "line": 21,
+            "line": 34,
             "description": "Create example marketplace listings (test purposes only)",
             "itemtype": "method",
             "name": "createExampleMarketplace",
             "class": "models.marketplaceApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.marketplace"
         },
         {
             "file": "src/app/models/marketplaceApi.js",
-            "line": 544,
+            "line": 557,
             "description": "Angular service which provides a local storage interface to the marketplace\napi",
             "access": "private",
             "tagname": "",
             "is_constructor": 1,
             "class": "models.marketplaceApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.marketplace"
         },
         {
             "file": "src/app/models/marketplaceApi.js",
-            "line": 560,
+            "line": 573,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
             "access": "private",
             "tagname": "",
             "is_constructor": 1,
             "class": "models.marketplaceApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.marketplace"
         },
         {
             "file": "src/app/models/userSettingsApi.js",
-            "line": 8,
+            "line": 21,
             "description": "Get all user settings for the current user",
             "itemtype": "method",
             "name": "getUserSettings",
@@ -2811,11 +3235,11 @@
                 "type": "*"
             },
             "class": "models.userSettingsApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.userSettings"
         },
         {
             "file": "src/app/models/userSettingsApi.js",
-            "line": 21,
+            "line": 34,
             "description": "Update all settings for the current user",
             "itemtype": "method",
             "name": "updateAllUserSettings",
@@ -2831,11 +3255,11 @@
                 "type": "Boolean"
             },
             "class": "models.userSettingsApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.userSettings"
         },
         {
             "file": "src/app/models/userSettingsApi.js",
-            "line": 35,
+            "line": 48,
             "description": "Update a specific setting for the current user",
             "itemtype": "method",
             "name": "updateUserSettingsByKey",
@@ -2856,11 +3280,11 @@
                 "type": "Boolean"
             },
             "class": "models.userSettingsApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.userSettings"
         },
         {
             "file": "src/app/models/userSettingsApi.js",
-            "line": 56,
+            "line": 69,
             "description": "Create default settings for the current user - for testing only",
             "itemtype": "method",
             "name": "createExampleUserSettings",
@@ -2869,40 +3293,41 @@
                 "type": "*"
             },
             "class": "models.userSettingsApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.userSettings"
         },
         {
             "file": "src/app/models/userSettingsApi.js",
-            "line": 75,
+            "line": 88,
             "description": "Angular service which provides a local storage interface to the userSettings api.",
             "access": "private",
             "tagname": "",
             "is_constructor": 1,
             "class": "models.userSettingsApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.userSettings"
         },
         {
             "file": "src/app/models/userSettingsApi.js",
-            "line": 90,
+            "line": 103,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve user settings.\n\nngtype: service",
             "access": "private",
             "tagname": "",
             "is_constructor": 1,
             "class": "models.userSettingsApi",
-            "namespace": "models"
+            "module": "ozpWebtop.models.userSettings"
         },
         {
             "file": "src/app/services/dashboardChangeMonitor.js",
-            "line": 26,
+            "line": 36,
             "description": "Activate the dashboardChangeMonitor",
             "itemtype": "method",
             "name": "run",
             "class": "general.dashboardChangeMonitor",
+            "module": "ozpWebtop.services.dashboardChangeMonitor",
             "namespace": "general"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 19,
+            "line": 28,
             "description": "Test method",
             "itemtype": "method",
             "name": "sayHello",
@@ -2910,12 +3335,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 33,
+            "line": 42,
             "description": "Get all dashboard data",
             "itemtype": "method",
             "name": "getDashboardData",
@@ -2923,12 +3349,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 41,
+            "line": 50,
             "description": "Set all dashboard data",
             "itemtype": "method",
             "name": "setDashboardData",
@@ -2942,12 +3369,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 51,
+            "line": 60,
             "description": "Get all user settings",
             "itemtype": "method",
             "name": "getUserSettings",
@@ -2955,12 +3383,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 59,
+            "line": 68,
             "description": "Set all user settings",
             "itemtype": "method",
             "name": "setUserSettingsData",
@@ -2974,12 +3403,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 69,
+            "line": 78,
             "description": "Get all apps (listings) in marketplace",
             "itemtype": "method",
             "name": "getApps",
@@ -2987,12 +3417,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 77,
+            "line": 86,
             "description": "Set all apps (listings) in marketplace (test use only)",
             "itemtype": "method",
             "name": "setApps",
@@ -3006,12 +3437,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 87,
+            "line": 96,
             "description": "Get resource from IWC bus",
             "params": [
                 {
@@ -3029,12 +3461,13 @@
             },
             "access": "private",
             "tagname": "",
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 105,
+            "line": 114,
             "description": "Set resource on IWC bus",
             "params": [
                 {
@@ -3056,12 +3489,13 @@
             },
             "access": "private",
             "tagname": "",
-            "class": "general.iwcInterface",
-            "namespace": "general"
+            "class": "services.iwcInterface",
+            "module": "ozpWebtop.services.iwcInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 21,
+            "line": 30,
             "description": "Get all dashboard data",
             "itemtype": "method",
             "name": "getDashboardData",
@@ -3069,12 +3503,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 29,
+            "line": 38,
             "description": "Set all dashboard data",
             "itemtype": "method",
             "name": "setDashboardData",
@@ -3088,12 +3523,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 38,
+            "line": 47,
             "description": "Get all user settings",
             "itemtype": "method",
             "name": "getUserSettings",
@@ -3101,12 +3537,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 46,
+            "line": 55,
             "description": "Set all user settings",
             "itemtype": "method",
             "name": "setUserSettingsData",
@@ -3120,12 +3557,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 55,
+            "line": 64,
             "description": "Get all apps (listings)",
             "itemtype": "method",
             "name": "getApps",
@@ -3133,12 +3571,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 63,
+            "line": 72,
             "description": "Set all apps (test use only)",
             "itemtype": "method",
             "name": "setApps",
@@ -3152,12 +3591,13 @@
                 "description": "",
                 "type": "*"
             },
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 72,
+            "line": 81,
             "description": "Get data from Local Storage",
             "itemtype": "method",
             "name": "_getData",
@@ -3173,12 +3613,13 @@
             },
             "access": "private",
             "tagname": "",
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/services/localStorageInterface.js",
-            "line": 90,
+            "line": 99,
             "description": "Set data in Local Storage",
             "itemtype": "method",
             "name": "_setData",
@@ -3198,75 +3639,83 @@
             },
             "access": "private",
             "tagname": "",
-            "class": "general.localStorageInterface",
-            "namespace": "general"
+            "class": "services.localStorageInterface",
+            "module": "ozpWebtop.services.localStorageInterface",
+            "namespace": "services"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 27,
+            "line": 37,
             "itemtype": "property",
             "name": "preferences The user's preferences",
             "type": "{{}}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 32,
+            "line": 42,
             "itemtype": "property",
             "name": "dashboards The user's dashboards",
             "type": "{Array}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 38,
+            "line": 48,
             "itemtype": "property",
             "name": "themes Available themes for the application (e.g light,\ndark)",
             "type": "{Array}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 45,
+            "line": 55,
             "itemtype": "property",
             "name": "validNamePattern Regex for valid dashboard names",
             "type": "{RegExp}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 51,
+            "line": 61,
             "itemtype": "property",
             "name": "currentDashboardId User's current dashboard id",
             "type": "{String}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 57,
+            "line": 67,
             "itemtype": "property",
             "name": "newDashboardName Name of new dashboard to create. An\nobject to support ng data binding",
             "type": "{{name: string}}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 66,
+            "line": 76,
             "itemtype": "property",
             "name": "addingNewBoard Flag indicating if a new dashboard is being\nadded",
             "type": "{boolean}",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 93,
+            "line": 103,
             "description": "Makes changes to an existing dashboard\n\nInvoked after user 'submits' the modal. Checks to see if this dashboard\nwas flagged for deletion or renamed. If so, the corresponding changes\nare made",
             "itemtype": "method",
             "name": "updateExistingDashboard",
@@ -3282,29 +3731,32 @@
                 "type": "*"
             },
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 132,
+            "line": 142,
             "description": "Handler invoked when dialog is closed via OK button\n\n- Makes changes to any existing dashboards (deletions or renames)\n- Adds a new dashboard (if indicated by user)\n- Updates user preferences\n- Broadcasts userPreferencesUpdatedEvent event",
             "itemtype": "method",
             "name": "ok",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 180,
+            "line": 190,
             "description": "Handler invoked when modal is dismissed via the cancel button",
             "itemtype": "method",
             "name": "cancel",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 189,
+            "line": 199,
             "description": "Handler invoked when the delete button is clicked for a given dashboard\n\nEnsures user is not going to delete their last dashboard, then flags\nthe given dashboard for deletion",
             "itemtype": "method",
             "name": "deleteClicked",
@@ -3315,11 +3767,12 @@
                 }
             ],
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 219,
+            "line": 229,
             "description": "Handler invoked when the undo delete button is clicked for a given\ndashboard\n\nResets the deletion flag for the dashboard",
             "itemtype": "method",
             "name": "undoDeleteClicked",
@@ -3331,129 +3784,132 @@
                 }
             ],
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 236,
+            "line": 246,
             "description": "Handler invoked when the add dashboard button is clicked",
             "itemtype": "method",
             "name": "addDashboardClicked",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 245,
+            "line": 255,
             "description": "Handler invoked when the undo add dashboard button is clicked",
             "itemtype": "method",
             "name": "undoAddDashboardClicked",
             "class": "userSettings.ModalInstanceCtrl",
+            "module": "ozpWebtop.userSettings",
             "namespace": "userSettings"
         },
         {
             "file": "src/app/constants.js",
-            "line": 12,
+            "line": 19,
             "description": "URL of OZONE bus used by the application",
             "itemtype": "property",
             "name": "iwcOzoneBus",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 20,
+            "line": 27,
             "description": "Flag to use IWC",
             "itemtype": "property",
             "name": "useIwc",
             "type": "Boolean",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 31,
+            "line": 38,
             "description": "Event fired when the window size changes across device size boundaries as\ndefined by Bootstrap (xs, sm, md, lg)",
             "itemtype": "property",
             "name": "deviceSizeChangedEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 40,
+            "line": 47,
             "description": "Event fired when the window size changes by 1px or more",
             "itemtype": "property",
             "name": "windowSizeChangedEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 48,
+            "line": 55,
             "description": "Event fired when the state of the active dashboard changes (frames are\nadded or removed, shown or hidden, etc)",
             "itemtype": "property",
             "name": "dashboardStateChangedEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 57,
+            "line": 64,
             "description": "Event fired when the active dashboard is switched",
             "itemtype": "property",
             "name": "dashboardSwitchedEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 65,
+            "line": 72,
             "description": "Event fired when one of the toolbars' visibility state is changed",
             "itemtype": "property",
             "name": "toolbarVisibilityChangedEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 73,
+            "line": 80,
             "description": "Event fired when the user updates their preferences (add/remove/rename\ndashboards, change theme, etc)",
             "itemtype": "property",
             "name": "userPreferencesUpdatedEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 82,
+            "line": 89,
             "description": "Event fired when a frame on the grid layout changes size",
             "itemtype": "property",
             "name": "gridFrameSizeChangeEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/app/constants.js",
-            "line": 90,
+            "line": 97,
             "description": "Event fired to indicate that the user preferences modal dialog should be\ndisplayed",
             "itemtype": "property",
             "name": "launchUserPreferencesModalEvent",
             "type": "String",
             "class": "constants",
-            "module": "ozpWebtopApp.dashboardView"
+            "module": "ozpWebtop.constants"
         },
         {
             "file": "src/common/ellipticalFilter/elliptical.js",
-            "line": 17,
+            "line": 24,
             "description": "Truncate a string of text and add an ellipsis",
             "itemtype": "method",
             "name": "elliptical",
@@ -3480,12 +3936,12 @@
                 "type": "String"
             },
             "class": "ozp.common.elliptical",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.ellipticalFilter",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/iwcConnectedClient/iwcConnectedClient.js",
-            "line": 26,
+            "line": 36,
             "description": "Get a connected OZP client",
             "itemtype": "method",
             "name": "getClient",
@@ -3493,13 +3949,13 @@
                 "description": "fulfilled value is a connected OZP client",
                 "type": "Promise"
             },
-            "class": "ozp.common.iwcConnectedClient",
-            "module": "ozpWebtopApp.dashboardView",
-            "namespace": "ozp.common"
+            "class": "ozp.common.iwc.iwcConnectedClient",
+            "module": "ozp.common.iwc.client",
+            "namespace": "ozp.common.iwc"
         },
         {
             "file": "src/common/localStorage/localstorage.js",
-            "line": 40,
+            "line": 47,
             "description": "I clear the cache",
             "itemtype": "method",
             "name": "clear",
@@ -3508,12 +3964,12 @@
                 "type": "LocalCache"
             },
             "class": "ozp.common.LocalStorage",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.localStorage",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/localStorage/localstorage.js",
-            "line": 52,
+            "line": 59,
             "description": "I get an item from the cache. If the item cannot be\n found, I can pass back an optional default value",
             "itemtype": "method",
             "name": "getItem",
@@ -3532,12 +3988,12 @@
                 "type": "*"
             },
             "class": "ozp.common.LocalStorage",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.localStorage",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/localStorage/localstorage.js",
-            "line": 88,
+            "line": 95,
             "description": "I check to see if the given key exists in the storage container",
             "itemtype": "method",
             "name": "hasItem",
@@ -3552,12 +4008,12 @@
                 "type": "Boolean"
             },
             "class": "ozp.common.LocalStorage",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.localStorage",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/localStorage/localstorage.js",
-            "line": 101,
+            "line": 108,
             "description": "I remove the given item from the cache",
             "itemtype": "method",
             "name": "removeItem",
@@ -3572,12 +4028,12 @@
                 "type": "LocalCache"
             },
             "class": "ozp.common.LocalStorage",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.localStorage",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/localStorage/localstorage.js",
-            "line": 114,
+            "line": 121,
             "description": "I store the item in the cache. When doing this, I automatically\nserialize the value.\n\nNOTE: Not all value (ex. functions and private variables) will\nserialize.",
             "itemtype": "method",
             "name": "setItem",
@@ -3596,12 +4052,12 @@
                 "type": "LocalCache"
             },
             "class": "ozp.common.LocalStorage",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.localStorage",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/urlOriginComparer/compareurl.js",
-            "line": 14,
+            "line": 21,
             "description": "Determine if the given URL represents the same origin as the application",
             "itemtype": "method",
             "name": "compareUrl",
@@ -3618,12 +4074,12 @@
                 "type": "Boolean"
             },
             "class": "ozp.common.compareUrl",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.urlOriginComparer",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/urlOriginComparer/compareurl.js",
-            "line": 43,
+            "line": 50,
             "description": "An internal method to infer the port based on other information provided",
             "itemtype": "method",
             "name": "inferPort",
@@ -3637,12 +4093,12 @@
                 }
             ],
             "class": "ozp.common.compareUrl",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.urlOriginComparer",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/utilities/utilities.js",
-            "line": 18,
+            "line": 25,
             "description": "Generate a uuid as per http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript",
             "itemtype": "method",
             "name": "generateUuid",
@@ -3651,12 +4107,12 @@
                 "type": "String"
             },
             "class": "ozp.common.Utilities",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.utilities",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/utilities/utilities.js",
-            "line": 33,
+            "line": 40,
             "description": "Eliminate duplicate values from an array",
             "itemtype": "method",
             "name": "eliminateDuplicates",
@@ -3672,22 +4128,22 @@
                 "type": "Array"
             },
             "class": "ozp.common.Utilities",
-            "module": "ozpWebtopApp.dashboardView",
+            "module": "ozp.common.utilities",
             "namespace": "ozp.common"
         },
         {
             "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "line": 50,
+            "line": 58,
             "description": "Activate the windowSizeWatcher",
             "itemtype": "method",
             "name": "run",
-            "class": "common.windowSizeWatcher",
-            "module": "ozpWebtopApp.dashboardView",
-            "namespace": "common"
+            "class": "ozp.common.windowSizeWatcher",
+            "module": "ozp.common.windowSizeWatcher",
+            "namespace": "ozp.common"
         },
         {
             "file": "src/common/windowSizeWatcher/windowSizeWatcher.js",
-            "line": 63,
+            "line": 71,
             "description": "Get the current device size",
             "itemtype": "method",
             "name": "getCurrentSize",
@@ -3695,19 +4151,15 @@
                 "description": "device size, one of xs, sm, md, or lg",
                 "type": "String"
             },
-            "class": "common.windowSizeWatcher",
-            "module": "ozpWebtopApp.dashboardView",
-            "namespace": "common"
+            "class": "ozp.common.windowSizeWatcher",
+            "module": "ozp.common.windowSizeWatcher",
+            "namespace": "ozp.common"
         }
     ],
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardToolbar/dashboardToolbar.js:125"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/desktop/desktop.js:286"
+            "line": " src/app/dashboardToolbar/dashboardToolbar.js:139"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3715,19 +4167,19 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:411"
+            "line": " src/app/dashboardView/desktop/desktop.js:316"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:452"
+            "line": " src/app/dashboardView/grid/grid.js:429"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:491"
+            "line": " src/app/dashboardView/grid/grid.js:470"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:511"
+            "line": " src/app/dashboardView/grid/grid.js:509"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3735,115 +4187,115 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:569"
+            "line": " src/app/dashboardView/grid/grid.js:547"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:16"
+            "line": " src/app/dashboardView/grid/grid.js:587"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:30"
+            "line": " src/app/models/dashboardApi.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:40"
+            "line": " src/app/models/dashboardApi.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:58"
+            "line": " src/app/models/dashboardApi.js:54"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:70"
+            "line": " src/app/models/dashboardApi.js:72"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:89"
+            "line": " src/app/models/dashboardApi.js:84"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:109"
+            "line": " src/app/models/dashboardApi.js:103"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:143"
+            "line": " src/app/models/dashboardApi.js:123"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:178"
+            "line": " src/app/models/dashboardApi.js:157"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:210"
+            "line": " src/app/models/dashboardApi.js:192"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:227"
+            "line": " src/app/models/dashboardApi.js:224"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:308"
+            "line": " src/app/models/dashboardApi.js:241"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:339"
+            "line": " src/app/models/dashboardApi.js:322"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:369"
+            "line": " src/app/models/dashboardApi.js:353"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:410"
+            "line": " src/app/models/dashboardApi.js:383"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:437"
+            "line": " src/app/models/dashboardApi.js:424"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:456"
+            "line": " src/app/models/dashboardApi.js:451"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:488"
+            "line": " src/app/models/dashboardApi.js:470"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:522"
+            "line": " src/app/models/dashboardApi.js:502"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:543"
+            "line": " src/app/models/dashboardApi.js:536"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:562"
+            "line": " src/app/models/dashboardApi.js:557"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:592"
+            "line": " src/app/models/dashboardApi.js:576"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:628"
+            "line": " src/app/models/dashboardApi.js:606"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:645"
+            "line": " src/app/models/dashboardApi.js:642"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardapi.js:658"
+            "line": " src/app/models/dashboardApi.js:659"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/marketplaceApi.js:8"
+            "line": " src/app/models/dashboardApi.js:672"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/userSettingsApi.js:8"
+            "line": " src/app/models/marketplaceApi.js:21"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3851,55 +4303,55 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/userSettingsApi.js:35"
+            "line": " src/app/models/userSettingsApi.js:34"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/userSettingsApi.js:56"
+            "line": " src/app/models/userSettingsApi.js:48"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:19"
+            "line": " src/app/models/userSettingsApi.js:69"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:33"
+            "line": " src/app/services/iwcInterface.js:28"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:41"
+            "line": " src/app/services/iwcInterface.js:42"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:51"
+            "line": " src/app/services/iwcInterface.js:50"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:59"
+            "line": " src/app/services/iwcInterface.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:69"
+            "line": " src/app/services/iwcInterface.js:68"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:77"
+            "line": " src/app/services/iwcInterface.js:78"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:87"
+            "line": " src/app/services/iwcInterface.js:86"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:105"
+            "line": " src/app/services/iwcInterface.js:96"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/localStorageInterface.js:21"
+            "line": " src/app/services/iwcInterface.js:114"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/localStorageInterface.js:29"
+            "line": " src/app/services/localStorageInterface.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3907,7 +4359,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/localStorageInterface.js:46"
+            "line": " src/app/services/localStorageInterface.js:47"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3915,7 +4367,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/localStorageInterface.js:63"
+            "line": " src/app/services/localStorageInterface.js:64"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3923,79 +4375,83 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/localStorageInterface.js:90"
+            "line": " src/app/services/localStorageInterface.js:81"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/userPreferencesModal/userSettings.js:93"
+            "line": " src/app/services/localStorageInterface.js:99"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/iwcConnectedClient/iwcConnectedClient.js:26"
+            "line": " src/app/userPreferencesModal/userSettings.js:103"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/localStorage/localstorage.js:40"
+            "line": " src/common/iwcConnectedClient/iwcConnectedClient.js:36"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/localStorage/localstorage.js:52"
+            "line": " src/common/localStorage/localstorage.js:47"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/localStorage/localstorage.js:88"
+            "line": " src/common/localStorage/localstorage.js:59"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/localStorage/localstorage.js:101"
+            "line": " src/common/localStorage/localstorage.js:95"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/localStorage/localstorage.js:114"
+            "line": " src/common/localStorage/localstorage.js:108"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/utilities/utilities.js:18"
+            "line": " src/common/localStorage/localstorage.js:121"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/utilities/utilities.js:33"
+            "line": " src/common/utilities/utilities.js:25"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/windowSizeWatcher/windowSizeWatcher.js:63"
+            "line": " src/common/utilities/utilities.js:40"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/common/windowSizeWatcher/windowSizeWatcher.js:71"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardapi.js:1009"
+            "line": " src/app/models/dashboardApi.js:1023"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardapi.js:1025"
+            "line": " src/app/models/dashboardApi.js:1039"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
-            "line": " src/app/models/marketplaceApi.js:544"
+            "line": " src/app/models/marketplaceApi.js:557"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
-            "line": " src/app/models/marketplaceApi.js:560"
+            "line": " src/app/models/marketplaceApi.js:573"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the userSettings api.",
-            "line": " src/app/models/userSettingsApi.js:75"
+            "line": " src/app/models/userSettingsApi.js:88"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve user settings.\n\nngtype: service",
-            "line": " src/app/models/userSettingsApi.js:90"
+            "line": " src/app/models/userSettingsApi.js:103"
         },
         {
             "message": "Missing item type\nGet resource from IWC bus",
-            "line": " src/app/services/iwcInterface.js:87"
+            "line": " src/app/services/iwcInterface.js:96"
         },
         {
             "message": "Missing item type\nSet resource on IWC bus",
-            "line": " src/app/services/iwcInterface.js:105"
+            "line": " src/app/services/iwcInterface.js:114"
         }
     ]
 }
