@@ -8107,6 +8107,46 @@ body {
 .app-modal-window .modal-dialog {
   width: 900px;
 }
+.close-icon {
+  color: #ffffff;
+}
+.add-apps-style {
+  background-color: #3b4246;
+  color: #b5b6b8;
+}
+.add-apps-header {
+  background-color: #4c5457;
+}
+.add-apps-body {
+  background-color: #3b4246;
+}
+.add-apps-footer {
+  background-color: #8f9194;
+}
+.add-apps-style ul {
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.add-apps-style ul > li {
+  line-height: 1.75em;
+  float: left;
+  display: inline;
+}
+#triple li {
+  width: 33.333%;
+}
+.addappselected {
+  background-color: #191f25;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.add-apps-dark-text {
+  color: #2b3036;
+}
 .navbar-right li {
   margin-left: 20px;
 }

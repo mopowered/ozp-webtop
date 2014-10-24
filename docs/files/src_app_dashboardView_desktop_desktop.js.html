@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardToolbar.dashboardToolbar", "classes/dashboardToolbar.DashboardToolbarCtrl", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpGridsterItem", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardToolbar", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.dashboardView.grid.gridsterFrame", "modules/ozpWebtop.dashboardView.iframe", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardToolbar.dashboardToolbar", "classes/dashboardToolbar.DashboardToolbarCtrl", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpGridsterItem", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardToolbar", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.dashboardView.grid.gridsterFrame", "modules/ozpWebtop.dashboardView.iframe", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
         </form>
     </div>
 </div>
@@ -126,6 +126,8 @@
                         <li><a href="../modules/ozp.common.windowSizeWatcher.html">ozp.common.windowSizeWatcher</a></li>
                     
                         <li><a href="../modules/ozpWebtop.html">ozpWebtop</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.addApplicationsModal.html">ozpWebtop.addApplicationsModal</a></li>
                     
                         <li><a href="../modules/ozpWebtop.appLauncher.html">ozpWebtop.appLauncher</a></li>
                     
@@ -384,84 +386,54 @@ angular.module(&#x27;ozpWebtop.dashboardView.desktop&#x27;)
      * @method dashboardChangeHandler
      */
     function dashboardChangeHandler() {
-      /* isminimized */
-      dashboardApi.getDashboards().then(function(dashboards) {
-        var apiDash = {};
-        for (var ii=0; ii &lt; dashboards.length; ii++) {
-          if (dashboards[ii].id === dashboardChangeMonitor.dashboardId) {
-            apiDash = dashboards[ii];
-          }
-        }
-        for (var z in apiDash.frames){
-          for (var y in $scope.frames){
-            if ((apiDash.frames[z].id === $scope.frames[y].id) &amp;&amp; (apiDash.frames[z].isMinimized !== $scope.frames[y].isMinimized)) {
-              $scope.frames[y].isMinimized = apiDash.frames[z].isMinimized;
-              //
-            }
-            if((apiDash.frames[z].id === $scope.frames[y].id) &amp;&amp; (apiDash.frames[z].isMaximized !== $scope.frames[y].isMaximized)) {
-              $scope.frames[y].isMaximized = apiDash.frames[z].isMaximized;
-              //
+
+      dashboardApi.getDashboardById(dashboardChangeMonitor.dashboardId).then(function(updatedDashboard) {
+
+        // update the isMinimized and isMaximized state
+        for (var ii=0; ii &lt; updatedDashboard.frames.length; ii++) {
+          for (var jj=0; jj &lt; $scope.frames.length; jj++) {
+            if (updatedDashboard.frames[ii].id === $scope.frames[jj].id) {
+              $scope.frames[jj].isMinimized = updatedDashboard.frames[ii].isMinimized;
+              $scope.frames[jj].isMaximized = updatedDashboard.frames[ii].isMaximized;
             }
           }
         }
 
-        /* end isminimized */
-        if ($scope.frames.length !== apiDash.frames.length){
+        if ($scope.frames.length === updatedDashboard.frames.length) {
+          return;
+        }
 
-          /* Make an array of old frames and new frames */
-          var oldFrames = [],
-              newFrames = [];
-          for(var i in $scope.frames){
-            oldFrames.push($scope.frames[i].id);
-          }
+        // save the original frames for use later on
+        var originalFrames = $scope.frames.slice();
 
-          for (var j in apiDash.frames){
-            newFrames.push(apiDash.frames[j].id);
-          }
-
-          /* return just the differences between oldFrames and new Frames */
-          Array.prototype.diff = function(a) {
-            return this.filter(function(i) {return a.indexOf(i) &lt; 0;});
-          };
-          // add or remove new frames without reloading the entire scope
-          // if there are items in the currentScope that are not in the updated
-          // scope from the service, remove theme here
-          if (oldFrames.diff(newFrames).length &gt; 0){
-            for (var a = 0; a &lt; $scope.frames.length; a++){
-              // if the removed frame is present, splice it out of the local
-              // scope
-              if ($scope.frames[a].id === oldFrames.diff(newFrames)[0]){
-                $scope.frames.splice(a, 1);
-              }
+        // remove old frames from the view
+        var originalFramesCopy = originalFrames.slice();
+        for (var i=0; i &lt; originalFramesCopy.length; i++) {
+          var removeFrame = true;
+          for (var j=0; j &lt; updatedDashboard.frames.length; j++) {
+            if (originalFramesCopy[i].id === updatedDashboard.frames[j].id) {
+              removeFrame = false;
             }
           }
-          // if there are new frames for this dashboard on the services that are
-          // not in the local scope
-          if (newFrames.diff(oldFrames).length &gt; 0){
-
-            // for item in the dashboardApi on the current Dashboard
-            for (var b = 0; b &lt; apiDash.frames.length; b++){
-
-              // if the item from the dashboard api matches the new frame we
-              // found in this view
-              if (apiDash.frames[b].id === newFrames.diff(oldFrames)[0]){
-
-                // push that frame to the local scope. since the changes are
-                // automatically binded with the view, no refresh
-                $scope.frames.push(
-                  apiDash.frames[b]
-                );
-                // update the frame size so it fits inside its little widget
-                // boundary
-                // $scope.updateGridFrameSize(apiDash.frames[b].id);
-                // now quickly merge my local scope for frames with the
-                // marketplace api to get important stuff on local scope like
-                // url, image, name, etc
-                dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
-              }
-            }
+          if (removeFrame) {
+            $scope.frames.splice(i,1);
           }
         }
+
+        // Add new frames to the view
+        for (var k=0; k &lt; updatedDashboard.frames.length; k++) {
+          var addFrame = true;
+          for (var l=0; l &lt; originalFrames.length; l++) {
+            if (updatedDashboard.frames[k].id === originalFrames[l].id) {
+              addFrame = false;
+            }
+          }
+          if (addFrame) {
+            $scope.frames.push(updatedDashboard.frames[k]);
+          }
+        }
+        dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
+
       }).catch(function(error) {
         console.log(&#x27;should not have happened: &#x27; + error);
       });

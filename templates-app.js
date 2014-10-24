@@ -2,22 +2,39 @@ angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
-    "<div class=\"modal-fmt\">\n" +
-    "  <div class=\"modal-header\">\n" +
-    "    <h3 class=\"modal-title\">Add Applications</h3>\n" +
+    "<div class=\"add-apps-style\">\n" +
+    "  <div class=\"modal-header add-apps-header\">\n" +
+    "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
+    "      <span aria-hidden=\"true\"><i class=\"fa fa-close close-icon\"></i> </span>\n" +
+    "      <span class=\"sr-only\">Close</span>\n" +
+    "    </button>\n" +
+    "    <h3 class=\"modal-title\">Open bookmarked apps</h3>\n" +
+    "    <p> These are apps you have already bookmarked from the Center. To edit your\n" +
+    "      bookmarks, visit the HUD\n" +
+    "    </p>\n" +
     "  </div>\n" +
-    "  <div class=\"modal-body\">\n" +
+    "  <div class=\"modal-body add-apps-body\">\n" +
     "    <div class=\"container-fluid\">\n" +
     "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-12\">\n" +
-    "          Applications go here\n" +
+    "        <div class=\"col-md-12 add-apps-list\">\n" +
+    "          <ul id=\"triple\">\n" +
+    "            <li ng-repeat=\"app in applications\">\n" +
+    "              <span ng-click=\"appSelected(app)\" class=\"link-pointer\"\n" +
+    "                  ng-class=\"{addappselected: isAppSelected(app)}\"\n" +
+    "                  tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
+    "                <img ng-src=\"{{app.icons.small}}\" height=\"20\" width=\"20\" />\n" +
+    "                {{app.name}}</span>\n" +
+    "            </li>\n" +
+    "          </ul>\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"modal-footer\">\n" +
-    "    <button class=\"btn btn-primary\">Open in new dashboard</button>\n" +
-    "    <button class=\"btn btn-primary\">Open</button>\n" +
+    "  <div class=\"modal-footer add-apps-footer\">\n" +
+    "    <button class=\"btn add-apps-dark-text\" ng-click=\"openAppsInNewDashboard()\">\n" +
+    "      Open apps in new dashboard\n" +
+    "    </button>\n" +
+    "    <button class=\"btn btn-primary\" ng-click=\"openApps()\">Open</button>\n" +
     "  </div>\n" +
     "</div>");
 }]);
@@ -36,17 +53,14 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          <span class=\"icon-bar\"></span>\n" +
     "          <span class=\"icon-bar\"></span>\n" +
     "        </button>\n" +
-    "        <div class=\"dropdown dropup\">\n" +
-    "          <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></a>\n" +
-    "          <ul class=\"dropdown-menu\">\n" +
-    "            <li ng-repeat=\"app in apps\">\n" +
-    "              <a ng-click=\"appClicked(app)\" class=\"link-pointer\"\n" +
-    "                  tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
-    "                <img ng-src=\"{{app.icons.small}}\" height=\"20\" width=\"20\" />\n" +
-    "                {{app.name}}</a>\n" +
-    "            </li>\n" +
+    "        <ul class=\"nav navbar-nav\">\n" +
+    "          <!-- stuff on the left side of the nav bar -->\n" +
+    "          <li>\n" +
+    "            <a class=\"navbar-brand\" href=\"\" ng-click=\"openApplicationsModal()\">\n" +
+    "              <i class=\"fa fa-plus\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
     "          </ul>\n" +
-    "        </div>\n" +
     "      </div>\n" +
     "\n" +
     "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +

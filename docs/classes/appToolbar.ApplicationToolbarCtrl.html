@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardToolbar.dashboardToolbar", "classes/dashboardToolbar.DashboardToolbarCtrl", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpGridsterItem", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardToolbar", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.dashboardView.grid.gridsterFrame", "modules/ozpWebtop.dashboardView.iframe", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardToolbar.dashboardToolbar", "classes/dashboardToolbar.DashboardToolbarCtrl", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpGridsterItem", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardToolbar", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.dashboardView.grid.gridsterFrame", "modules/ozpWebtop.dashboardView.iframe", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
         </form>
     </div>
 </div>
@@ -127,6 +127,8 @@
                     
                         <li><a href="../modules/ozpWebtop.html">ozpWebtop</a></li>
                     
+                        <li><a href="../modules/ozpWebtop.addApplicationsModal.html">ozpWebtop.addApplicationsModal</a></li>
+                    
                         <li><a href="../modules/ozpWebtop.appLauncher.html">ozpWebtop.appLauncher</a></li>
                     
                         <li><a href="../modules/ozpWebtop.appToolbar.html">ozpWebtop.appToolbar</a></li>
@@ -209,7 +211,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_app_appToolbar_appToolbar.js.html#l22"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:22</code></a>
+            Defined in: <a href="../files/src_app_appToolbar_appToolbar.js.html#l24"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:24</code></a>
         </div>
     
 
@@ -259,6 +261,12 @@ view (in desktop layout)</p>
                 <li class="arg">
                     
                         <code>$state</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>$modal</code>
                     
                 </li>
             
@@ -345,7 +353,7 @@ view (in desktop layout)</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l22"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:22</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l24"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:24</code></a>
         
         </p>
 
@@ -407,6 +415,22 @@ view (in desktop layout)</p>
 
                     <div class="param-description">
                         <p>$state service</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">$modal</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>$modal service from ui.bootstrap</p>
 
                     </div>
 
@@ -595,13 +619,6 @@ view (in desktop layout)</p>
                         
                             <li class="index-item method">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_appboardhider" data-tablink="appboardhider">appboardhider</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#methods" data-anchor="#method_appClicked" data-tablink="appClicked">appClicked</a>
 
                                 
                                 
@@ -809,7 +826,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l288"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:288</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l261"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:261</code></a>
         
         </p>
 
@@ -825,96 +842,6 @@ displayed on the toolbar (based on screen width)</a>
 
     </div>
 
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_appClicked" class="method item">
-    <h3 class="name"><code>appClicked</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>app</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l257"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:257</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Attempt to add an application to the dashboard</p>
-<p>If successful, broadcasts a dashboardStateChangedEvent</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">app</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The application to add</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -965,7 +892,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l186"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:186</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l190"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:190</code></a>
         
         </p>
 
@@ -1054,7 +981,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l165"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:165</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l169"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:169</code></a>
         
         </p>
 
@@ -1144,7 +1071,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l244"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:244</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l248"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:248</code></a>
         
         </p>
 
@@ -1223,7 +1150,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l333"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:333</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l306"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:306</code></a>
         
         </p>
 
@@ -1280,7 +1207,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l313"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:313</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l286"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:286</code></a>
         
         </p>
 
@@ -1337,7 +1264,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l200"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:200</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l204"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:204</code></a>
         
         </p>
 
@@ -1393,7 +1320,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l224"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:224</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l228"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:228</code></a>
         
         </p>
 
@@ -1449,7 +1376,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l73"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:73</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l77"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:77</code></a>
         
         </p>
 
@@ -1495,7 +1422,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l79"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:79</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l83"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:83</code></a>
         
         </p>
 
@@ -1539,7 +1466,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l68"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:68</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l72"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:72</code></a>
         
         </p>
 
@@ -1585,7 +1512,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l85"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:85</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l89"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:89</code></a>
         
         </p>
 
@@ -1629,7 +1556,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l116"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:116</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l120"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:120</code></a>
         
         </p>
 
@@ -1675,7 +1602,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l62"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:62</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l66"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:66</code></a>
         
         </p>
 
@@ -1721,7 +1648,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l91"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:91</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l95"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:95</code></a>
         
         </p>
 
@@ -1769,7 +1696,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l97"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:97</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l101"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:101</code></a>
         
         </p>
 
@@ -1815,7 +1742,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l104"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:104</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l108"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:108</code></a>
         
         </p>
 
@@ -1861,7 +1788,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l110"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:110</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l114"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:114</code></a>
         
         </p>
 

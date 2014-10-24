@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardToolbar.dashboardToolbar", "classes/dashboardToolbar.DashboardToolbarCtrl", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpGridsterItem", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardToolbar", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.dashboardView.grid.gridsterFrame", "modules/ozpWebtop.dashboardView.iframe", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardToolbar.dashboardToolbar", "classes/dashboardToolbar.DashboardToolbarCtrl", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpGridsterItem", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardToolbar", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.dashboardView.grid.gridsterFrame", "modules/ozpWebtop.dashboardView.iframe", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
         </form>
     </div>
 </div>
@@ -127,6 +127,8 @@
                     
                         <li><a href="../modules/ozpWebtop.html">ozpWebtop</a></li>
                     
+                        <li><a href="../modules/ozpWebtop.addApplicationsModal.html">ozpWebtop.addApplicationsModal</a></li>
+                    
                         <li><a href="../modules/ozpWebtop.appLauncher.html">ozpWebtop.appLauncher</a></li>
                     
                         <li><a href="../modules/ozpWebtop.appToolbar.html">ozpWebtop.appToolbar</a></li>
@@ -216,12 +218,14 @@
  * @requires ozp.common.windowSizeWatcher
  * @requires ozpWebtop.models.marketplace
  * @requires ozpWebtop.models.userSettings
+ * @requires ozpWebtop.addApplicationsModal
  * @requires ozpWebtop.services.dashboardChangeMonitor
  * @requires ozp.common.windowSizeWatcher
  */
 angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;ui.bootstrap&#x27;,
   &#x27;ozpWebtop.models.dashboard&#x27;, &#x27;ozpWebtop.models.marketplace&#x27;,
   &#x27;ozpWebtop.models.userSettings&#x27;,
+  &#x27;ozpWebtop.addApplicationsModal&#x27;,
   &#x27;ozpWebtop.services.dashboardChangeMonitor&#x27;,
   &#x27;ozp.common.windowSizeWatcher&#x27;]);
 
@@ -240,6 +244,7 @@ angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;u
  * @param $scope $scope service
  * @param $rootScope $rootScope service
  * @param $state $state service
+ * @param $modal $modal service from ui.bootstrap
  * @param marketplaceApi Application data model
  * @param dashbaordApi Dashboard data model
  * @param dashboardChangeMonitor Notify when dashboard changes
@@ -252,6 +257,7 @@ angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;u
  */
 angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
   .controller(&#x27;ApplicationToolbarCtrl&#x27;, function($scope, $rootScope, $state,
+                                                 $modal,
                                                  marketplaceApi, dashboardApi,
                                                  dashboardChangeMonitor,
                                                  userSettingsApi,
@@ -461,37 +467,6 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
      };
 
     /**
-     * Attempt to add an application to the dashboard
-     *
-     * If successful, broadcasts a dashboardStateChangedEvent
-     * @method appClicked
-     * @param {Object} app The application to add
-     */
-    $scope.appClicked = function(app) {
-      // check if the app is already on the current dashboard
-      dashboardApi.isAppOnDashboard($scope.currentDashboardId, app.id).then(function(isOnDashboard) {
-        if (isOnDashboard &amp;&amp; app.uiHints.singleton) {
-          alert(&#x27;Only one instance of this application may be on your &#x27; +
-            &#x27;dashboard&#x27;);
-        } else {
-          // add this app to the dashboard
-          // TODO: use message broadcast to get grid max rows and grid max cols
-          dashboardApi.createFrame($scope.currentDashboardId, app.id, 10).then(function(response) {
-            // reload this dashboard
-            if (response) {
-              // $state.go($state.$current, null, { reload: true });
-              $rootScope.$broadcast(dashboardStateChangedEvent);
-            }
-          }).catch(function(error) {
-            console.log(&#x27;should not have happened: &#x27; + error);
-          });
-        }
-      }).catch(function(error) {
-        console.log(&#x27;should not have happened: &#x27; + error);
-      });
-    };
-
-    /**
      * Show or hide the application toolbar
      *
      * If successful, broadcasts a toolbarVisibilityChangedEvent
@@ -555,6 +530,58 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
         $scope.nextAppsVisible = false;
       }
       $scope.previousAppsVisible = true;
+    };
+
+    $scope.openApplicationsModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: &#x27;addApplicationsModal/addApplicationsModal.tpl.html&#x27;,
+        controller: &#x27;AddApplicationsModalInstanceCtrl&#x27;,
+        windowClass: &#x27;app-modal-window&#x27;,
+        scope: $rootScope,
+        resolve: {
+          apps: function() {
+            return $scope.apps;
+          }
+        }
+      });
+
+      function addAppToExistingDashboard(app) {
+        // check if the app is already on the current dashboard
+        return dashboardApi.isAppOnDashboard($scope.currentDashboardId, app.id).then(function (isOnDashboard) {
+          if (isOnDashboard &amp;&amp; app.uiHints.singleton) {
+            console.log(&#x27;WARNING: Only one instance of &#x27; + app.name + &#x27; may be on your dashboard&#x27;);
+          } else {
+            // TODO: use message broadcast to get grid max rows and grid max cols
+            return dashboardApi.createFrame($scope.currentDashboardId, app.id, 10).then(function (response) {
+              return response;
+            }).catch(function (error) {
+              console.log(&#x27;should not have happened: &#x27; + error);
+            });
+          }
+        }).catch(function (error) {
+          console.log(&#x27;should not have happened: &#x27; + error);
+        });
+      }
+
+      modalInstance.result.then(function (response) {
+        if (response.useNewDashboard) {
+          alert(&#x27;Adding apps to a new dashboard is not yet supported&#x27;);
+          return;
+        }
+
+        response.appsToOpen.reduce(function (previous, current) {
+          return previous.then(function () {
+            var promise = addAppToExistingDashboard(current);
+            return promise;
+          }).catch(function (error) {
+            console.log(&#x27;should not have happened: &#x27; + error);
+          });
+        }, Promise.resolve()).then(function () {
+            // all apps added to dashboard
+          $rootScope.$broadcast(dashboardStateChangedEvent);
+        });
+
+      });
     };
 
   });

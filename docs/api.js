@@ -38,6 +38,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozp.common.utilities",
         "ozp.common.windowSizeWatcher",
         "ozpWebtop",
+        "ozpWebtop.addApplicationsModal",
         "ozpWebtop.appLauncher",
         "ozpWebtop.appToolbar",
         "ozpWebtop.constants",
@@ -92,6 +93,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop",
             "name": "ozpWebtop",
             "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps\nthe Webtop."
+        },
+        {
+            "displayName": "ozpWebtop.addApplicationsModal",
+            "name": "ozpWebtop.addApplicationsModal",
+            "description": "Add Applications modal dialog"
         },
         {
             "displayName": "ozpWebtop.appLauncher",
