@@ -1,0 +1,54 @@
+[
+  {
+    "descriptionShort": "A green bouncing ball that can communicate with other bouncing balls.",
+    "requirements": "https://www",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum lectus faucibus ante dapibus commodo. Quisque egestas, eros sit amet dignissim sagittis, justo enim facilisis ante, et elementum ligula elit id nunc. Ut mollis enim nec arcu porta pulvinar. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae nisl turpis. Sed congue at arcu eget feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis est sapien, posuere et lobortis ac, sodales et sapien.Sed auctor molestie velit, nec sollicitudin ipsum bibendum ut. Quisque ut congue lectus. Nunc commodo non arcu sit amet vestibulum. Sed et ligula vitae justo hendrerit cursus et eget augue. Sed ullamcorper magna at euismod cursus. Vivamus id ligula purus. Nulla dapibus rhoncus tristique. Duis efficitur eleifend justo at ullamcorper. Ut condimentum velit sit amet posuere facilisis. Vestibulum at nisi elit. Aliquam eget enim accumsan, dapibus magna quis, ultricies nunc. Donec imperdiet est lacus, nec blandit felis venenatis id.",
+    "docUrls": [
+        {
+            "name": "User Manual",
+            "url": "https://www"
+        },
+        {
+            "name": "API Documentation",
+            "url": "https://www"
+        }
+    ],
+    "isFeatured": true,
+    "imageLargeUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail.png",
+    "imageMediumUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail.png",
+    "imageSmallUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail32.png",
+    "imageXlargeUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMailFeatured.png",
+    "launchUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail.png",
+    "owners": [
+        {
+            "id": 1
+        }
+    ],
+    "screenshots": [
+        {
+            "smallImageUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMailFeatured.png",
+            "largeImageUrl": "https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMailFeatured.png"
+        }
+    ],
+    "tags": [
+        "blue"
+    ],
+    "categories": [
+        {
+            "id": 1
+        }
+    ],
+    "title": "Air Mail",
+    "type": {
+        "id": 1
+    },
+    "agency": {
+        "id": 1
+    },
+    "versionName": "1",
+    "whatIsNew": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum lectus faucibus ante dapibus commodo.",
+    "intents": [
+        "application/ozp-demo-ball+json/edit"
+    ]
+  }
+]
