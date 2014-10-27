@@ -320,6 +320,10 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
   $templateCache.put("userPreferencesModal/settingsModal.tpl.html",
     "<div class=\"wt-modal\">\n" +
     "  <div class=\"modal-header wt-modal-header\">\n" +
+    "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
+    "      <span aria-hidden=\"true\"><i class=\"fa fa-close close-icon\"></i> </span>\n" +
+    "      <span class=\"sr-only\">Close</span>\n" +
+    "    </button>\n" +
     "    <h3 class=\"modal-title\">User Preferences</h3>\n" +
     "  </div>\n" +
     "  <div class=\"modal-body\">\n" +

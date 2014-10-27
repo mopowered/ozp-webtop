@@ -492,7 +492,7 @@ angular.module( &#x27;ozpWebtop.userSettings&#x27;).directive(&#x27;userSettings
     return {
         restrict: &#x27;E&#x27;,
         templateUrl: &#x27;userPreferencesModal/settingsModal.tpl.html&#x27;,
-        controller: function($scope, $rootScope, $modal, $log,
+        controller: function($scope, $rootScope, $modal,
                              $state, dashboardApi, dashboardSwitchedEvent,
                              launchUserPreferencesModalEvent) {
             $scope.validNamePattern = /^[a-z_]+[a-z0-9_ ]*\w$/i;
@@ -534,7 +534,7 @@ angular.module( &#x27;ozpWebtop.userSettings&#x27;).directive(&#x27;userSettings
                     });
 
                 }, function () {
-                    $log.info(&#x27;Modal dismissed&#x27;);
+                  // modal dismissed
                 });
             };
         },
