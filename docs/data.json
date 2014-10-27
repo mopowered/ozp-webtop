@@ -1748,6 +1748,19 @@
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
             "line": 55,
+            "description": "Returns true if one or more apps are selected",
+            "itemtype": "method",
+            "name": "areAnyAppsSelected",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "appLauncher.AppLauncherCtrl",
+            "module": "ozpWebtop.addApplicationsModal"
+        },
+        {
+            "file": "src/app/addApplicationsModal/addApplications.js",
+            "line": 65,
             "description": "Adds or removes an application from the list of apps to open\n\nIf the application was in the list previoulsy, it is removed. Otherwise,\nit is added",
             "itemtype": "method",
             "name": "updateSelectedApps",
@@ -1762,7 +1775,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 76,
+            "line": 86,
             "description": "Returns true if the given app is in the list to be added, false\notherwise",
             "itemtype": "method",
             "name": "isAppSelected",
@@ -1781,7 +1794,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 93,
+            "line": 103,
             "description": "Handler invoked when dialog is closed via Open button",
             "itemtype": "method",
             "name": "openApps",
@@ -1790,7 +1803,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 105,
+            "line": 115,
             "description": "Handler invoked when dialog is closed via Open apps in new dashboard\nbutton",
             "itemtype": "method",
             "name": "openAppsInNewDashboard",
@@ -1799,7 +1812,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 118,
+            "line": 128,
             "description": "Handler invoked when modal is dismissed via the cancel button",
             "itemtype": "method",
             "name": "cancel",
@@ -4237,7 +4250,11 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/addApplicationsModal/addApplications.js:76"
+            "line": " src/app/addApplicationsModal/addApplications.js:55"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/addApplicationsModal/addApplications.js:86"
         },
         {
             "message": "replacing incorrect tag: returns with return",

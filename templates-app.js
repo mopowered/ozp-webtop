@@ -31,10 +31,25 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"modal-footer wt-modal-footer\">\n" +
-    "    <button class=\"btn add-apps-dark-text\" ng-click=\"openAppsInNewDashboard()\">\n" +
-    "      Open apps in new dashboard\n" +
-    "    </button>\n" +
-    "    <button class=\"btn btn-primary\" ng-click=\"openApps()\">Open</button>\n" +
+    "    <div ng-switch on=\"areAnyAppsSelected()\">\n" +
+    "      <div ng-switch-when=\"true\">\n" +
+    "        <button class=\"btn add-apps-dark-text\"\n" +
+    "                ng-click=\"openAppsInNewDashboard()\">\n" +
+    "        Open apps in new dashboard\n" +
+    "        </button>\n" +
+    "        <button class=\"btn btn-primary\" ng-click=\"openApps()\">Open</button>\n" +
+    "      </div>\n" +
+    "      <div ng-switch-default>\n" +
+    "        <button class=\"btn add-apps-dark-text\" disabled=\"disabled\"\n" +
+    "                ng-click=\"openAppsInNewDashboard()\">\n" +
+    "        Open apps in new dashboard\n" +
+    "        </button>\n" +
+    "        <button class=\"btn btn-primary\"\n" +
+    "                ng-click=\"openApps()\" disabled=\"disabled\">Open\n" +
+    "        </button>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
     "  </div>\n" +
     "</div>");
 }]);
