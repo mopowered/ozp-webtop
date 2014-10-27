@@ -231,7 +231,6 @@ var dashboardApp = angular.module( &#x27;ozpWebtop.dashboardToolbar&#x27;)
  * - dashboard selector
  * - buttons to switch between grid and desktop layouts
  * - notifications (TODO)
- * - zulu clock
  * - username button with dropdown to access user preferences, help, and logout
  *
  * The toolbar can also be hidden by clicking on a button
@@ -242,7 +241,6 @@ var dashboardApp = angular.module( &#x27;ozpWebtop.dashboardToolbar&#x27;)
  * @constructor
  * @param $scope ng $scope
  * @param $rootScope ng $rootScope
- * @param $interval ng $interval
  * @param dashboardApi dashboard data
  * @param dashboardChangeMonitor notify when dashboard changes
  * @param userSettingsApi user preferences data
@@ -256,7 +254,7 @@ var dashboardApp = angular.module( &#x27;ozpWebtop.dashboardToolbar&#x27;)
  *
  */
 .controller(&#x27;DashboardToolbarCtrl&#x27;,
-  function($scope, $rootScope, $interval, dashboardApi, dashboardChangeMonitor,
+  function($scope, $rootScope, dashboardApi, dashboardChangeMonitor,
            userSettingsApi, windowSizeWatcher, deviceSizeChangedEvent,
            dashboardSwitchedEvent, toolbarVisibilityChangedEvent,
            userPreferencesUpdatedEvent, launchUserPreferencesModalEvent) {
@@ -333,34 +331,9 @@ var dashboardApp = angular.module( &#x27;ozpWebtop.dashboardToolbar&#x27;)
       ]
     };
 
-    /**
-     * @property zuluTime Current time (zulu)
-     * @type {string}
-     */
-    $scope.zuluTime = &#x27;&#x27;;
-
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                           initialization
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    // invoked in initialization so the method must be declared first
-    /**
-     * Update the zulu clock
-     * @method getZuluTime
-     * @returns {string} Zulu time formatted as 03:08
-     */
-    $scope.getZuluTime = function() {
-      var d = new Date();
-      var hours = d.getUTCHours().toString();
-      if (hours.length === 1) {
-        hours = &#x27;0&#x27; + hours;
-      }
-      var minutes = d.getUTCMinutes().toString();
-      if (minutes.length === 1) {
-        minutes = &#x27;0&#x27; + minutes;
-      }
-      return hours + &#x27;:&#x27; + minutes;
-    };
 
     // register for notifications when window size changes
     windowSizeWatcher.run();
@@ -390,14 +363,6 @@ var dashboardApp = angular.module( &#x27;ozpWebtop.dashboardToolbar&#x27;)
     }).catch(function(error) {
       console.log(&#x27;should not have happened: &#x27; + error);
     });
-
-    // initialize zulu time
-    $scope.zuluTime = $scope.getZuluTime();
-
-    // update the clock every minute
-    $interval(function() {
-      $scope.zuluTime = $scope.getZuluTime();
-    }, 1000);
 
     $scope.$on(deviceSizeChangedEvent, function(event, value) {
       handleDeviceSizeChange(value);

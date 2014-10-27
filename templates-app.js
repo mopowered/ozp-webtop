@@ -206,10 +206,6 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
-    "            <div id=\"dashboard-clock\">{{zuluTime}} Z</div>\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li>\n" +
     "            <li class=\"dropdown\">\n" +
     "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
     "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user | limitTo : usernameLength}} <span class=\"caret\"></span></a>\n" +
