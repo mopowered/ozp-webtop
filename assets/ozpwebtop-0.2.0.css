@@ -8104,24 +8104,24 @@ body {
   -moz-border-radius: 0 !important;
   border-radius: 0 !important;
 }
-.app-modal-window .modal-dialog {
-  width: 900px;
+.wt-modal {
+  background-color: #3b4246;
+  color: #dbdcdd;
+}
+.wt-modal-header {
+  background-color: #4c5457;
+}
+.wt-modal-body {
+  background-color: #3b4246;
+}
+.wt-modal-footer {
+  background-color: #8f9194;
 }
 .close-icon {
   color: #ffffff;
 }
-.add-apps-style {
-  background-color: #3b4246;
-  color: #b5b6b8;
-}
-.add-apps-header {
-  background-color: #4c5457;
-}
-.add-apps-body {
-  background-color: #3b4246;
-}
-.add-apps-footer {
-  background-color: #8f9194;
+.app-modal-window .modal-dialog {
+  width: 900px;
 }
 .add-apps-style ul {
   list-style: none;
@@ -8286,9 +8286,6 @@ body > div.classBanner:last-of-type {
 .ozp-chrome > .chrome-controls > .btn:hover,
 .ozp-chrome > .chrome-controls > .btn:active {
   color: #2b3036;
-}
-.modal-fmt {
-  color: #dbdcdd;
 }
 /**
  * Now that all app-wide styles have been applied, we can load the styles for

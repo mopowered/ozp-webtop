@@ -2,8 +2,8 @@ angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
-    "<div class=\"add-apps-style\">\n" +
-    "  <div class=\"modal-header add-apps-header\">\n" +
+    "<div class=\"wt-modal add-apps-style\">\n" +
+    "  <div class=\"modal-header wt-modal-header\">\n" +
     "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
     "      <span aria-hidden=\"true\"><i class=\"fa fa-close close-icon\"></i> </span>\n" +
     "      <span class=\"sr-only\">Close</span>\n" +
@@ -13,7 +13,7 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "      bookmarks, visit the HUD\n" +
     "    </p>\n" +
     "  </div>\n" +
-    "  <div class=\"modal-body add-apps-body\">\n" +
+    "  <div class=\"modal-body wt-modal-body\">\n" +
     "    <div class=\"container-fluid\">\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-md-12 add-apps-list\">\n" +
@@ -30,7 +30,7 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"modal-footer add-apps-footer\">\n" +
+    "  <div class=\"modal-footer wt-modal-footer\">\n" +
     "    <button class=\"btn add-apps-dark-text\" ng-click=\"openAppsInNewDashboard()\">\n" +
     "      Open apps in new dashboard\n" +
     "    </button>\n" +
@@ -318,9 +318,9 @@ angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$temp
 
 angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("userPreferencesModal/settingsModal.tpl.html",
-    "<div class=\"modal-fmt\">\n" +
-    "  <div class=\"modal-header\">\n" +
-    "    <h3 class=\"modal-title\">Settings</h3>\n" +
+    "<div class=\"wt-modal\">\n" +
+    "  <div class=\"modal-header wt-modal-header\">\n" +
+    "    <h3 class=\"modal-title\">User Preferences</h3>\n" +
     "  </div>\n" +
     "  <div class=\"modal-body\">\n" +
     "    <div class=\"container-fluid\">\n" +
@@ -406,7 +406,7 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"modal-footer\">\n" +
+    "  <div class=\"modal-footer wt-modal-footer\">\n" +
     "    <button ng-show=\"editDashboardsForm.$error.pattern || editDashboardsForm.$error.required\"\n" +
     "            class=\"btn btn-primary\" disabled=\"disabled\">Ok</button>\n" +
     "    <button ng-show=\"!editDashboardsForm.$error.pattern && !editDashboardsForm.$error.required\"\n" +
