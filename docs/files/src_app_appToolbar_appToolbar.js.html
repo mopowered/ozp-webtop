@@ -265,7 +265,8 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
                                                  deviceSizeChangedEvent,
                                                  dashboardStateChangedEvent,
                                                  dashboardSwitchedEvent,
-                                                 toolbarVisibilityChangedEvent) {
+                                                 toolbarVisibilityChangedEvent,
+                                                 userPreferencesUpdatedEvent) {
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -532,6 +533,11 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
       $scope.previousAppsVisible = true;
     };
 
+    /**
+     * Opens the Add Application modal dialog
+     *
+     * @method openApplicationsModal
+     */
     $scope.openApplicationsModal = function() {
       var modalInstance = $modal.open({
         templateUrl: &#x27;addApplicationsModal/addApplicationsModal.tpl.html&#x27;,
@@ -545,14 +551,22 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
         }
       });
 
-      function addAppToExistingDashboard(app) {
+      /**
+       * Add an application to a dashboard
+       *
+       * @method addAppToDashboard
+       * @param app The application to add
+       * @param dashboardId The dashboard to add the application to
+       * @returns {*}
+       */
+      function addAppToDashboard(app, dashboardId) {
         // check if the app is already on the current dashboard
-        return dashboardApi.isAppOnDashboard($scope.currentDashboardId, app.id).then(function (isOnDashboard) {
+        return dashboardApi.isAppOnDashboard(dashboardId, app.id).then(function (isOnDashboard) {
           if (isOnDashboard &amp;&amp; app.uiHints.singleton) {
             console.log(&#x27;WARNING: Only one instance of &#x27; + app.name + &#x27; may be on your dashboard&#x27;);
           } else {
             // TODO: use message broadcast to get grid max rows and grid max cols
-            return dashboardApi.createFrame($scope.currentDashboardId, app.id, 10).then(function (response) {
+            return dashboardApi.createFrame(dashboardId, app.id, 10).then(function (response) {
               return response;
             }).catch(function (error) {
               console.log(&#x27;should not have happened: &#x27; + error);
@@ -564,22 +578,51 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
       }
 
       modalInstance.result.then(function (response) {
+        var dashboardId;
         if (response.useNewDashboard) {
-          alert(&#x27;Adding apps to a new dashboard is not yet supported&#x27;);
-          return;
-        }
+          // create a new dashboard
+          // TODO: is this randomly generated name ok?
+          var random_integer = Math.floor((Math.random()+0.10)*101);
+          var name = &#x27;Dashboard &#x27; + random_integer.toString();
+          dashboardApi.createDashboard(name).then(function() {
+            // now get this dashboard id
+            dashboardApi.getDashboards().then(function(dashboards) {
+              for (var i=0; i &lt; dashboards.length; i++) {
+                if (dashboards[i].name === name) {
+                  dashboardId = dashboards[i].id;
+                }
+              }
 
-        response.appsToOpen.reduce(function (previous, current) {
-          return previous.then(function () {
-            var promise = addAppToExistingDashboard(current);
-            return promise;
-          }).catch(function (error) {
-            console.log(&#x27;should not have happened: &#x27; + error);
+              // add the apps to the newly minted dashboard
+              response.appsToOpen.reduce(function (previous, current) {
+                return previous.then(function () {
+                  var promise = addAppToDashboard(current, dashboardId);
+                  return promise;
+                }).catch(function (error) {
+                  console.log(&#x27;should not have happened: &#x27; + error);
+                });
+              }, Promise.resolve()).then(function () {
+                // all apps added to dashboard
+                $rootScope.$broadcast(userPreferencesUpdatedEvent);
+                // redirect user to new dashboard (grid view by default)
+                $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboardId});
+              });
+            });
           });
-        }, Promise.resolve()).then(function () {
-            // all apps added to dashboard
-          $rootScope.$broadcast(dashboardStateChangedEvent);
-        });
+        } else {
+          dashboardId = $scope.currentDashboardId;
+          response.appsToOpen.reduce(function (previous, current) {
+            return previous.then(function () {
+              var promise = addAppToDashboard(current, dashboardId);
+              return promise;
+            }).catch(function (error) {
+              console.log(&#x27;should not have happened: &#x27; + error);
+            });
+          }, Promise.resolve()).then(function () {
+              // all apps added to dashboard
+            $rootScope.$broadcast(dashboardStateChangedEvent);
+          });
+        }
 
       });
     };
