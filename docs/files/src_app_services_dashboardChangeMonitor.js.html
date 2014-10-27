@@ -247,6 +247,8 @@ angular.module(&#x27;ozpWebtop.services.dashboardChangeMonitor&#x27;).factory(
      * @method run
      */
     service.run = function() {
+      var newLayout = &#x27;&#x27;;
+      var newDashboardId = &#x27;&#x27;;
       $rootScope.$watch(function() {
         return $location.path();
       }, function() {
@@ -257,7 +259,7 @@ angular.module(&#x27;ozpWebtop.services.dashboardChangeMonitor&#x27;).factory(
         var pattern = new RegExp(&#x27;/(?:grid|desktop)/([0-9]+)&#x27;);
         var res = pattern.exec(urlPath);
         if (res) {
-          service.dashboardId = res[1];
+          newDashboardId = res[1];
         } else {
           // if the url regex doesn&#x27;t match, this page must be something else
           return;
@@ -266,15 +268,19 @@ angular.module(&#x27;ozpWebtop.services.dashboardChangeMonitor&#x27;).factory(
         // get the dashboard layout
         var n = $location.path().indexOf(&#x27;grid&#x27;);
         if (n !== -1) {
-          service.layout = &#x27;grid&#x27;;
+          newLayout = &#x27;grid&#x27;;
         } else {
-          service.layout = &#x27;desktop&#x27;;
+          newLayout = &#x27;desktop&#x27;;
         }
 
-        dashboardChange.layout = service.layout;
-        dashboardChange.dashboardId = service.dashboardId;
-        // console.log(&#x27;broadcasting dashboard change msg: &#x27; + JSON.stringify(dashboardChange));
-        $rootScope.$broadcast(dashboardSwitchedEvent, dashboardChange);
+        if (newLayout !== service.layout || newDashboardId !== service.dashboardId) {
+          service.layout = newLayout;
+          service.dashboardId = newDashboardId;
+          dashboardChange.layout = service.layout;
+          dashboardChange.dashboardId = service.dashboardId;
+          // console.log(&#x27;broadcasting dashboard change msg: &#x27; + JSON.stringify(dashboardChange));
+          $rootScope.$broadcast(dashboardSwitchedEvent, dashboardChange);
+        }
       });
     };
 
