@@ -349,7 +349,11 @@
             "tag": "module",
             "file": "src/app/addApplicationsModal/addApplications.js",
             "line": 3,
-            "description": "Add Applications modal dialog"
+            "description": "Add Applications modal dialog",
+            "requires": [
+                "ui.bootstrap",
+                "ozpWebtop.models.marketplace"
+            ]
         },
         "ozpWebtop.appLauncher": {
             "name": "ozpWebtop.appLauncher",
@@ -1692,7 +1696,7 @@
     "classitems": [
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 12,
+            "line": 16,
             "description": "Controller for Add Applications modal",
             "params": [
                 {
@@ -1714,16 +1718,35 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 26,
+            "line": 31,
+            "description": "Return a list of apps sorted in alphabetical order",
+            "itemtype": "method",
+            "name": "sortApps",
+            "params": [
+                {
+                    "name": "apps",
+                    "description": "Array of applications to sort"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "[]"
+            },
+            "class": "appLauncher.AppLauncherCtrl",
+            "module": "ozpWebtop.addApplicationsModal"
+        },
+        {
+            "file": "src/app/addApplicationsModal/addApplications.js",
+            "line": 50,
             "itemtype": "property",
-            "name": "applications The user's applications",
+            "name": "applications The user's applications, sorted alphabetically",
             "type": "{[]}",
             "class": "appLauncher.AppLauncherCtrl",
             "module": "ozpWebtop.addApplicationsModal"
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 32,
+            "line": 56,
             "itemtype": "property",
             "name": "selectedApps The applications selected to add",
             "type": "{Array}",
@@ -1732,7 +1755,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 45,
+            "line": 69,
             "description": "Handler invoked when an application is clicked",
             "itemtype": "method",
             "name": "appSelected",
@@ -1747,7 +1770,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 55,
+            "line": 79,
             "description": "Returns true if one or more apps are selected",
             "itemtype": "method",
             "name": "areAnyAppsSelected",
@@ -1760,7 +1783,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 65,
+            "line": 89,
             "description": "Adds or removes an application from the list of apps to open\n\nIf the application was in the list previoulsy, it is removed. Otherwise,\nit is added",
             "itemtype": "method",
             "name": "updateSelectedApps",
@@ -1775,7 +1798,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 86,
+            "line": 110,
             "description": "Returns true if the given app is in the list to be added, false\notherwise",
             "itemtype": "method",
             "name": "isAppSelected",
@@ -1794,7 +1817,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 103,
+            "line": 127,
             "description": "Handler invoked when dialog is closed via Open button",
             "itemtype": "method",
             "name": "openApps",
@@ -1803,7 +1826,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 115,
+            "line": 139,
             "description": "Handler invoked when dialog is closed via Open apps in new dashboard\nbutton",
             "itemtype": "method",
             "name": "openAppsInNewDashboard",
@@ -1812,7 +1835,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 128,
+            "line": 152,
             "description": "Handler invoked when modal is dismissed via the cancel button",
             "itemtype": "method",
             "name": "cancel",
@@ -4284,11 +4307,15 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/addApplicationsModal/addApplications.js:55"
+            "line": " src/app/addApplicationsModal/addApplications.js:31"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/addApplicationsModal/addApplications.js:86"
+            "line": " src/app/addApplicationsModal/addApplications.js:79"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/addApplicationsModal/addApplications.js:110"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4556,7 +4583,7 @@
         },
         {
             "message": "Missing item type\nController for Add Applications modal",
-            "line": " src/app/addApplicationsModal/addApplications.js:12"
+            "line": " src/app/addApplicationsModal/addApplications.js:16"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
