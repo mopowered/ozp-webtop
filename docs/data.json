@@ -568,7 +568,7 @@
             },
             "tag": "module",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1055,
+            "line": 1105,
             "description": "Dashboard model",
             "requires": [
                 "ozp.common.utilities",
@@ -589,7 +589,7 @@
             },
             "tag": "module",
             "file": "src/app/models/marketplaceApi.js",
-            "line": 589,
+            "line": 1354,
             "description": "Marketplace model",
             "requires": [
                 "ozpWebtop.constants",
@@ -1396,7 +1396,7 @@
             "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1055,
+            "line": 1105,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -1411,7 +1411,7 @@
             "module": "ozpWebtop.models.marketplace",
             "namespace": "models",
             "file": "src/app/models/marketplaceApi.js",
-            "line": 589,
+            "line": 1354,
             "description": "Service used to store and retrieve marketplace data (app listings)\n\nMay be configured with different persistence mechanisms including IWC\nand Local Storage\n\nngtype: factory",
             "static": 1
         },
@@ -3295,14 +3295,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1023,
+            "line": 1073,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1039,
+            "line": 1089,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
@@ -3331,7 +3331,7 @@
         },
         {
             "file": "src/app/models/marketplaceApi.js",
-            "line": 557,
+            "line": 1322,
             "description": "Angular service which provides a local storage interface to the marketplace\napi",
             "access": "private",
             "tagname": "",
@@ -3341,7 +3341,7 @@
         },
         {
             "file": "src/app/models/marketplaceApi.js",
-            "line": 573,
+            "line": 1338,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
             "access": "private",
             "tagname": "",
@@ -4560,19 +4560,19 @@
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1023"
+            "line": " src/app/models/dashboardApi.js:1073"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1039"
+            "line": " src/app/models/dashboardApi.js:1089"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
-            "line": " src/app/models/marketplaceApi.js:557"
+            "line": " src/app/models/marketplaceApi.js:1322"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve marketplace data",
-            "line": " src/app/models/marketplaceApi.js:573"
+            "line": " src/app/models/marketplaceApi.js:1338"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the userSettings api.",
