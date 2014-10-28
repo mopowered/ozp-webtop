@@ -273,7 +273,7 @@ angular.module( &#x27;ozpWebtop.appLauncher&#x27;)
             $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
           } else {
             console.log(&#x27;this app is not on our current board - will add&#x27;);
-            dashboardApi.createFrame(dashboard.id, $scope.appId, 10).then(function(resp) {
+            dashboardApi.createFrame(dashboard.id, $scope.appId, 25).then(function(resp) {
               if (resp) {
                 $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
               } else {

@@ -568,7 +568,7 @@
             },
             "tag": "module",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1105,
+            "line": 1221,
             "description": "Dashboard model",
             "requires": [
                 "ozp.common.utilities",
@@ -1396,7 +1396,7 @@
             "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1105,
+            "line": 1221,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -3022,7 +3022,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 322,
+            "line": 338,
             "description": "Remove a frame from a dashboard",
             "itemtype": "method",
             "name": "removeFrame",
@@ -3041,7 +3041,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 353,
+            "line": 369,
             "description": "Change the user's current dashboard",
             "itemtype": "method",
             "name": "updateCurrentDashboardName",
@@ -3060,7 +3060,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 383,
+            "line": 399,
             "description": "Return the name of the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboardName",
@@ -3073,7 +3073,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 401,
+            "line": 417,
             "description": "Augment the dashboard.frames data with application-specific data\nNote: data is not persisted, but rather the 'frames' object is modified\nby reference",
             "itemtype": "method",
             "name": "mergeApplicationData",
@@ -3092,7 +3092,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 424,
+            "line": 440,
             "description": "Updates the dynamically generated fields for grid frame size in px",
             "itemtype": "method",
             "name": "updateFrameSizeOnGrid",
@@ -3123,7 +3123,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 451,
+            "line": 467,
             "description": "Return the frame size (in px) for a given frame in the grid layout\nNote that these values are dynamically generated",
             "itemtype": "method",
             "name": "getFrameSizeOnGrid",
@@ -3142,7 +3142,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 470,
+            "line": 486,
             "description": "Save a dashboard\nTODO: make sure input is a valid dashboard:\n- dashboard.id should be unique\n- all frame.id's should be",
             "itemtype": "method",
             "name": "saveDashboard",
@@ -3161,7 +3161,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 502,
+            "line": 518,
             "description": "Save a frame in a dashboard\nTODO: make sure input is a valid frame",
             "itemtype": "method",
             "name": "saveFrame",
@@ -3180,7 +3180,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 536,
+            "line": 552,
             "description": "Retrieve a frame by id",
             "itemtype": "method",
             "name": "getFrameById",
@@ -3199,7 +3199,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 557,
+            "line": 573,
             "description": "Retrieve a dashboard by id",
             "itemtype": "method",
             "name": "getDashboardById",
@@ -3218,7 +3218,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 576,
+            "line": 592,
             "description": "Delete a dashboard",
             "itemtype": "method",
             "name": "removeDashboard",
@@ -3237,7 +3237,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 606,
+            "line": 622,
             "description": "Create a new dashboard",
             "itemtype": "method",
             "name": "createDashboard",
@@ -3256,7 +3256,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 642,
+            "line": 658,
             "description": "Get the next available id for a new dashboard\nTODO: this assumes ids are integers and not uuids",
             "itemtype": "method",
             "name": "getNewDashboardId",
@@ -3269,7 +3269,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 659,
+            "line": 675,
             "description": "Get the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboard",
@@ -3282,7 +3282,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 672,
+            "line": 688,
             "description": "Create example dashboards (test purposes only)",
             "itemtype": "method",
             "name": "createExampleDashboards",
@@ -3295,14 +3295,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1073,
+            "line": 1189,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1089,
+            "line": 1205,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
@@ -4372,59 +4372,59 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:322"
+            "line": " src/app/models/dashboardApi.js:338"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:353"
+            "line": " src/app/models/dashboardApi.js:369"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:383"
+            "line": " src/app/models/dashboardApi.js:399"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:424"
+            "line": " src/app/models/dashboardApi.js:440"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:451"
+            "line": " src/app/models/dashboardApi.js:467"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:470"
+            "line": " src/app/models/dashboardApi.js:486"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:502"
+            "line": " src/app/models/dashboardApi.js:518"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:536"
+            "line": " src/app/models/dashboardApi.js:552"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:557"
+            "line": " src/app/models/dashboardApi.js:573"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:576"
+            "line": " src/app/models/dashboardApi.js:592"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:606"
+            "line": " src/app/models/dashboardApi.js:622"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:642"
+            "line": " src/app/models/dashboardApi.js:658"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:659"
+            "line": " src/app/models/dashboardApi.js:675"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:672"
+            "line": " src/app/models/dashboardApi.js:688"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4560,11 +4560,11 @@
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1073"
+            "line": " src/app/models/dashboardApi.js:1189"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1089"
+            "line": " src/app/models/dashboardApi.js:1205"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",

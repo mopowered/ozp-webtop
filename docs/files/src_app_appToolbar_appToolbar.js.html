@@ -566,7 +566,7 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
             console.log(&#x27;WARNING: Only one instance of &#x27; + app.name + &#x27; may be on your dashboard&#x27;);
           } else {
             // TODO: use message broadcast to get grid max rows and grid max cols
-            return dashboardApi.createFrame(dashboardId, app.id, 10).then(function (response) {
+            return dashboardApi.createFrame(dashboardId, app.id, 25).then(function (response) {
               return response;
             }).catch(function (error) {
               console.log(&#x27;should not have happened: &#x27; + error);
