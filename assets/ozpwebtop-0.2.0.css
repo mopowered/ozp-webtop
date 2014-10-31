@@ -458,8 +458,8 @@
  * the Grunt configuration that is automatically processed.
  */
 /**
- * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
- * project should be imported as the rest are just wasting space.
+ * Import ozp-style, which also includes Bootstrap, Font-Awesome, and Ubuntu
+ * fonts
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
@@ -6776,9 +6776,6 @@ button.close {
     display: none !important;
   }
 }
-/**
- * Include font-awesome and override the font path (in variables.less)
- */
 /*!
  *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -8451,29 +8448,6 @@ button.close {
 .fa-meanpath:before {
   content: "\f20c";
 }
-/*
- * Original CSS (provided by designer(s)) - may want to bring this back
- * eventually
- */
-/**
- * This is our main variables file. We must include it last so we can overwrite
- * any variable definitions in our imported stylesheets.
- */
-/**
- * All colors used throughout the site are defined here
- */
-/*
- * Colors from the official OZONE style cheat sheet. All colors used throughout
- * the site should be from this list (and referenced via the LESS variable)
-*/
-/**
- * These are the variables used throughout the application. This is where 
- * overwrites that are not specific to components should be maintained.
- */
-/**
- * Typography
- *
- */
 /* Ubuntu (complete package) @font-face kit */
 /* Ubuntu @font-face kit */
 /* BEGIN Ubuntu Light */
@@ -8613,6 +8587,28 @@ button.close {
   font-style: italic;
 }
 /* END Ubuntu Regular Italic */
+/*
+ * Colors from the official OZONE style cheat sheet.
+*/
+/**
+Overrides for Bootstrap variables go here. These overrides should consist
+strictly of LESS variables already defined in Bootstrap:
+http://getbootstrap.com/customize/#less-variables
+*/
+/**
+ * This is our main variables file. We must include it last so we can overwrite
+ * any variable definitions in our imported stylesheets.
+ */
+/**
+ * All colors used throughout the site are defined here
+ */
+/**
+ * Variable overrides in ozp-style.less
+ */
+/**
+ * These are the variables used throughout the application. This is where 
+ * overwrites that are not specific to components should be maintained.
+ */
 html {
   position: relative;
   min-height: 100%;
