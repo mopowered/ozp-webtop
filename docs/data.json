@@ -388,7 +388,7 @@
             },
             "tag": "module",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 424,
+            "line": 425,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -415,7 +415,7 @@
             },
             "tag": "module",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 339,
+            "line": 321,
             "description": "The dashboard toolbar component shown in the Webtop.",
             "requires": [
                 "ozp.common.windowSizeWatcher",
@@ -958,7 +958,7 @@
                     "description": "event name"
                 },
                 {
-                    "name": "toolbarVisibilityChangedEvent",
+                    "name": "fullScreenModeToggleEvent",
                     "description": "event name"
                 }
             ]
@@ -974,7 +974,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 424,
+            "line": 425,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1026,7 +1026,7 @@
                     "description": "event name"
                 },
                 {
-                    "name": "toolbarVisibilityChangedEvent",
+                    "name": "fullScreenModeToggleEvent",
                     "description": "event name"
                 },
                 {
@@ -1050,7 +1050,7 @@
             "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 339,
+            "line": 321,
             "description": "Directive for the dashboard toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1215,7 +1215,7 @@
                     "description": "event name"
                 },
                 {
-                    "name": "toolbarVisibilityChangedEvent",
+                    "name": "fullScreenModeToggleEvent",
                     "description": "event name"
                 }
             ]
@@ -1353,7 +1353,7 @@
                     "type": "String"
                 },
                 {
-                    "name": "toolbarVisibilityChangedEvent",
+                    "name": "fullScreenModeToggleEvent",
                     "description": "event name",
                     "type": "String"
                 },
@@ -1876,7 +1876,7 @@
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 78,
             "itemtype": "property",
-            "name": "$scope.appboardhide Flag indicating if the toolbar is hidden or\n not",
+            "name": "$scope.fullScreenMode Flag indicating if the toolbar is hidden or\n not",
             "type": "{boolean}",
             "class": "appToolbar.ApplicationToolbarCtrl",
             "module": "ozpWebtop.appToolbar",
@@ -2024,16 +2024,16 @@
         {
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 262,
-            "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a toolbarVisibilityChangedEvent",
+            "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a fullScreenModeToggleEvent",
             "itemtype": "method",
-            "name": "appboardhider",
+            "name": "toggleFullScreenMode",
             "class": "appToolbar.ApplicationToolbarCtrl",
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 287,
+            "line": 288,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
@@ -2043,7 +2043,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 307,
+            "line": 308,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
@@ -2053,7 +2053,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 328,
+            "line": 329,
             "description": "Opens the Add Application modal dialog",
             "itemtype": "method",
             "name": "openApplicationsModal",
@@ -2063,7 +2063,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 346,
+            "line": 347,
             "description": "Add an application to a dashboard",
             "itemtype": "method",
             "name": "addAppToDashboard",
@@ -2119,7 +2119,7 @@
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
             "line": 76,
             "itemtype": "property",
-            "name": "dashbaordhide Flag indicating if dashboard toolbar is hidden",
+            "name": "fullScreenMode Flag indicating if toolbar should be hidden",
             "type": "{boolean}",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
             "module": "ozpWebtop.dashboardToolbar",
@@ -2177,7 +2177,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 175,
+            "line": 179,
             "description": "Handler invoked when window size changes across device size boundaries\nas defined by Bootstrap",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2193,7 +2193,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 195,
+            "line": 199,
             "description": "Handler invoked when dashboard change event occurs",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -2209,7 +2209,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 221,
+            "line": 225,
             "description": "Handler invoked when user settings event is fired",
             "itemtype": "method",
             "name": "handleUserSettingsChange",
@@ -2219,7 +2219,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 243,
+            "line": 247,
             "description": "Set the current dashboard",
             "itemtype": "method",
             "name": "setCurrentDashboard",
@@ -2235,7 +2235,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 252,
+            "line": 256,
             "description": "Use a grid layout",
             "itemtype": "method",
             "name": "useGridLayout",
@@ -2245,7 +2245,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 260,
+            "line": 264,
             "description": "Use a desktop layout",
             "itemtype": "method",
             "name": "useDesktopLayout",
@@ -2255,20 +2255,10 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 268,
+            "line": 272,
             "description": "Launch the user preferences modal dialog\n\nSends launchUserPreferencesModalEvent",
             "itemtype": "method",
             "name": "launchSettingsModal",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 281,
-            "description": "Toggle the state of the toolbar (shown vs hidden)",
-            "itemtype": "method",
-            "name": "dashboardhider",
             "class": "dashboardToolbar.DashboardToolbarCtrl",
             "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar"
@@ -2380,7 +2370,7 @@
             "file": "src/app/dashboardView/desktop/desktop.js",
             "line": 60,
             "itemtype": "property",
-            "name": "dashBarHidden Flag indicating whether the dashboard toolbar\nis hidden",
+            "name": "fullScreenMode Flag indicating whether the toolbars are hidden",
             "type": "{boolean}",
             "class": "dashboardView.DesktopCtrl",
             "module": "ozpWebtop.dashboardView.desktop",
@@ -2388,17 +2378,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 67,
-            "itemtype": "property",
-            "name": "appBarHidden Flag indicating whether the application toolbar\nis hidden",
-            "type": "{boolean}",
-            "class": "dashboardView.DesktopCtrl",
-            "module": "ozpWebtop.dashboardView.desktop",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 74,
+            "line": 66,
             "itemtype": "property",
             "name": "apps Applications in the marketplace\nTODO: only need the data for apps user has favorited",
             "type": "{Array}",
@@ -2408,7 +2388,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 81,
+            "line": 73,
             "itemtype": "property",
             "name": "currentDashboard Active dashboard",
             "type": "{string}",
@@ -2418,7 +2398,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 87,
+            "line": 79,
             "itemtype": "property",
             "name": "currentDashboardId Active dashboard id",
             "type": "{string}",
@@ -2428,7 +2408,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 93,
+            "line": 85,
             "itemtype": "property",
             "name": "max TODO define this",
             "type": "{{}}",
@@ -2438,17 +2418,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 152,
-            "description": "Handler invoked when a toolbarVisibilityChangedEvent is received",
-            "itemtype": "method",
-            "name": "handleToolbarVisibilityChange",
-            "class": "dashboardView.DesktopCtrl",
-            "module": "ozpWebtop.dashboardView.desktop",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 175,
+            "line": 144,
             "description": "Handler invoked when a dashboardStateChangedEvent is received",
             "itemtype": "method",
             "name": "dashboardChangeHandler",
@@ -2458,7 +2428,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 234,
+            "line": 203,
             "description": "Update the active dashboard and broadcast dashboardStateChangedEvent on\ncompletion",
             "itemtype": "method",
             "name": "updateDashboard",
@@ -2468,7 +2438,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 271,
+            "line": 240,
             "description": "Getter for frame.isMinimized",
             "itemtype": "method",
             "name": "isFrameMinimized",
@@ -2488,7 +2458,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 286,
+            "line": 255,
             "description": "Getter for frame.isMaximized",
             "itemtype": "method",
             "name": "isFrameMaximized",
@@ -2508,7 +2478,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 301,
+            "line": 270,
             "description": "Sort the zIndex of all frames",
             "itemtype": "method",
             "name": "sortFrames",
@@ -2550,7 +2520,7 @@
             "file": "src/app/dashboardView/grid/grid.js",
             "line": 81,
             "itemtype": "property",
-            "name": "appBarHidden Flag indicating whether the application toolbar\nis hidden",
+            "name": "fullScreenMode Flag for full screen mode",
             "type": "{boolean}",
             "class": "dashboardView.GridCtrl",
             "module": "ozpWebtop.dashboardView.grid",
@@ -2558,7 +2528,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 88,
+            "line": 87,
             "itemtype": "property",
             "name": "activeFrames TODO clean this up",
             "type": "{Array}",
@@ -2568,7 +2538,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 94,
+            "line": 93,
             "itemtype": "property",
             "name": "dashboard Current dashboard",
             "type": "{{}}",
@@ -2578,7 +2548,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 100,
+            "line": 99,
             "itemtype": "property",
             "name": "dashboardId Current dashboardId\nTODO: duplicate info?",
             "type": "{string}",
@@ -2588,7 +2558,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 107,
+            "line": 106,
             "itemtype": "property",
             "name": "intervalPromise promise returned by $interval (keep track of it\nso it can be canceled)",
             "class": "dashboardView.GridCtrl",
@@ -2597,7 +2567,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 113,
+            "line": 112,
             "itemtype": "property",
             "name": "gridOptions Configuration options for Gridster\nTODO: make these available to other components somehow",
             "type": "{Object}",
@@ -2607,7 +2577,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 246,
+            "line": 245,
             "description": "Handle start event resizing a widget on Gridster",
             "itemtype": "method",
             "name": "handleGridsterResizeStart",
@@ -2623,7 +2593,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 275,
+            "line": 274,
             "description": "Handle stop event when resizing Gridster widget",
             "itemtype": "method",
             "name": "handleGridsterResizeStop",
@@ -2639,7 +2609,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 287,
+            "line": 286,
             "description": "Handler for windowSizeChangedEvent (each time the window size\nchanges, even by a single pixel)\n\nCancels the existing $interval promise and creates a new one to update\nall frames in 200ms",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -2649,7 +2619,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 301,
+            "line": 300,
             "description": "Handles the deviceSizeChangedEvent, which occurs whenever the\nscreen size changes device sizes (as defined by Bootstrap)",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2666,7 +2636,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 325,
+            "line": 324,
             "description": "Handle the dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -2676,17 +2646,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 401,
-            "description": "Handle the toolbarVisibilityChangedEvent",
-            "itemtype": "method",
-            "name": "handleToolbarVisibilityChange",
-            "class": "dashboardView.GridCtrl",
-            "module": "ozpWebtop.dashboardView.grid",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 418,
+            "line": 400,
             "description": "Calculates the size of a frame, saves it, and sends a\n gridFrameSizeChangeEvent event",
             "itemtype": "method",
             "name": "updateDashboardFramePx",
@@ -2707,7 +2667,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 459,
+            "line": 441,
             "description": "Reloads the current dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2721,7 +2681,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 498,
+            "line": 480,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "itemtype": "method",
             "name": "updateFrameAfterChange",
@@ -2742,7 +2702,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 518,
+            "line": 500,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "itemtype": "method",
             "name": "updateAllFramesAfterChange",
@@ -2756,7 +2716,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 536,
+            "line": 518,
             "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n- hard-coded value of gridster container padding\n- accesses $scope.gridOptions",
             "itemtype": "method",
             "name": "calculateGridFrameSize",
@@ -2777,7 +2737,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 576,
+            "line": 558,
             "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
             "itemtype": "method",
             "name": "updateLocalGridFrameSize",
@@ -4018,16 +3978,6 @@
         {
             "file": "src/app/constants.js",
             "line": 72,
-            "description": "Event fired when one of the toolbars' visibility state is changed",
-            "itemtype": "property",
-            "name": "toolbarVisibilityChangedEvent",
-            "type": "String",
-            "class": "constants",
-            "module": "ozpWebtop.constants"
-        },
-        {
-            "file": "src/app/constants.js",
-            "line": 80,
             "description": "Event fired when the user updates their preferences (add/remove/rename\ndashboards, change theme, etc)",
             "itemtype": "property",
             "name": "userPreferencesUpdatedEvent",
@@ -4037,7 +3987,7 @@
         },
         {
             "file": "src/app/constants.js",
-            "line": 89,
+            "line": 81,
             "description": "Event fired when a frame on the grid layout changes size",
             "itemtype": "property",
             "name": "gridFrameSizeChangeEvent",
@@ -4047,10 +3997,20 @@
         },
         {
             "file": "src/app/constants.js",
-            "line": 97,
+            "line": 89,
             "description": "Event fired to indicate that the user preferences modal dialog should be\ndisplayed",
             "itemtype": "property",
             "name": "launchUserPreferencesModalEvent",
+            "type": "String",
+            "class": "constants",
+            "module": "ozpWebtop.constants"
+        },
+        {
+            "file": "src/app/constants.js",
+            "line": 98,
+            "description": "Event fired when full-screen mode is changed",
+            "itemtype": "property",
+            "name": "fullScreenChangeEvent",
             "type": "String",
             "class": "constants",
             "module": "ozpWebtop.constants"
@@ -4319,27 +4279,31 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/appToolbar/appToolbar.js:346"
+            "line": " src/app/appToolbar/appToolbar.js:347"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/desktop/desktop.js:271"
+            "line": " src/app/dashboardView/desktop/desktop.js:240"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/desktop/desktop.js:286"
+            "line": " src/app/dashboardView/desktop/desktop.js:255"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:418"
+            "line": " src/app/dashboardView/grid/grid.js:400"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:459"
+            "line": " src/app/dashboardView/grid/grid.js:441"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:498"
+            "line": " src/app/dashboardView/grid/grid.js:480"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/dashboardView/grid/grid.js:500"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4347,11 +4311,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:536"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:576"
+            "line": " src/app/dashboardView/grid/grid.js:558"
         },
         {
             "message": "replacing incorrect tag: returns with return",

@@ -320,7 +320,7 @@ view (in desktop layout)</p>
             
                 <li class="arg">
                     
-                        <code>toolbarVisibilityChangedEvent</code>
+                        <code>fullScreenModeToggleEvent</code>
                     
                 </li>
             
@@ -567,7 +567,7 @@ view (in desktop layout)</p>
             
                 <li class="param">
                     
-                        <code class="param-name">toolbarVisibilityChangedEvent</code>
+                        <code class="param-name">fullScreenModeToggleEvent</code>
                         <span class="type">Object</span>
                     
 
@@ -625,13 +625,6 @@ view (in desktop layout)</p>
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#" data-tabid="#methods" data-anchor="#method_appboardhider" data-tablink="appboardhider">appboardhider</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_handleDashboardChange" data-tablink="handleDashboardChange">handleDashboardChange</a>
 
                                 
@@ -681,6 +674,13 @@ view (in desktop layout)</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_toggleFullScreenMode" data-tablink="toggleFullScreenMode">toggleFullScreenMode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_updateApps" data-tablink="updateApps">updateApps</a>
 
                                 
@@ -696,16 +696,6 @@ view (in desktop layout)</p>
                     <h3>Properties</h3>
 
                     <ul class="index-list properties">
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#properties" data-anchor="#property_$scope.appboardhide Flag indicating if the toolbar is hidden or
- not" data-tablink="$scope.appboardhide Flag indicating if the toolbar is hidden or
- not">$scope.appboardhide Flag indicating if the toolbar is hidden or
- not</a>
-
-                                
-                                
-                            </li>
                         
                             <li class="index-item property">
                                 <a href="#" data-tabid="#properties" data-anchor="#property_$scope.apps All applications available in the marketplace
@@ -729,6 +719,16 @@ view (in desktop layout)</p>
  data like app name, icons, description, etc)" data-tablink="$scope.frames Frames on current dashboard (includes marketplace
  data like app name, icons, description, etc)">$scope.frames Frames on current dashboard (includes marketplace
  data like app name, icons, description, etc)</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#properties" data-anchor="#property_$scope.fullScreenMode Flag indicating if the toolbar is hidden or
+ not" data-tablink="$scope.fullScreenMode Flag indicating if the toolbar is hidden or
+ not">$scope.fullScreenMode Flag indicating if the toolbar is hidden or
+ not</a>
 
                                 
                                 
@@ -860,7 +860,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l346"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:346</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l347"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:347</code></a>
         
         </p>
 
@@ -929,62 +929,6 @@ displayed on the toolbar (based on screen width)</a>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_appboardhider" class="method item">
-    <h3 class="name"><code>appboardhider</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l262"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:262</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Show or hide the application toolbar</p>
-<p>If successful, broadcasts a toolbarVisibilityChangedEvent</p>
-
-    </div>
-
-    
-
     
 
     
@@ -1291,7 +1235,7 @@ displayed on the toolbar (based on screen width)</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l307"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:307</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l308"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:308</code></a>
         
         </p>
 
@@ -1348,7 +1292,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l328"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:328</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l329"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:329</code></a>
         
         </p>
 
@@ -1403,7 +1347,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l287"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:287</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l288"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:288</code></a>
         
         </p>
 
@@ -1484,6 +1428,62 @@ display them all</p>
 </div>
 
                 
+                    <div id="method_toggleFullScreenMode" class="method item">
+    <h3 class="name"><code>toggleFullScreenMode</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l262"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:262</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Show or hide the application toolbar</p>
+<p>If successful, broadcasts a fullScreenModeToggleEvent</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_updateApps" class="method item">
     <h3 class="name"><code>updateApps</code></h3>
 
@@ -1545,52 +1545,6 @@ display them all</p>
         
             <div id="properties" class="tab-pane">
                 <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_$scope.appboardhide Flag indicating if the toolbar is hidden or
- not" class="property item">
-    <h3 class="name"><code>$scope.appboardhide Flag indicating if the toolbar is hidden or
- not</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l78"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:78</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
 
                 
                     <div id="property_$scope.apps All applications available in the marketplace
@@ -1709,6 +1663,52 @@ display them all</p>
         
         
         <a href="../files/src_app_appToolbar_appToolbar.js.html#l90"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:90</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_$scope.fullScreenMode Flag indicating if the toolbar is hidden or
+ not" class="property item">
+    <h3 class="name"><code>$scope.fullScreenMode Flag indicating if the toolbar is hidden or
+ not</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l78"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:78</code></a>
         
         </p>
 

@@ -58,7 +58,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
   $templateCache.put("appToolbar/appToolbar.tpl.html",
     "<div ng-controller=\"ApplicationToolbarCtrl\">\n" +
     "  <nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners\"\n" +
-    "       role=\"navigation\" ng-class=\"{true: 'hide', false: ''}[appboardhide]\">\n" +
+    "       role=\"navigation\" ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
     "    <div class=\"container-fluid\">\n" +
     "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
     "      <div class=\"navbar-header\">\n" +
@@ -95,21 +95,21 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                 ng-click=\"nextApps()\" style=\"margin-top: 12px;\"></i></li>\n" +
     "\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\"\n" +
+    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Enter Full Screen\"\n" +
     "              tooltip-placement=\"top\"\n" +
     "              style=\"width: 25px; float: right; margin-right: 5px;\">\n" +
-    "            <a ng-click=\"appboardhider();\">\n" +
-    "              <i class=\"fa fa-toggle-down fa-lg\"></i>\n" +
+    "            <a ng-click=\"toggleFullScreenMode();\">\n" +
+    "              <i class=\"fa fa-expand fa-lg\"></i>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
     "      </div><!-- /.navbar-collapse -->\n" +
     "    </div><!-- /.container-fluid -->\n" +
     "  </nav>\n" +
-    "<button class=\"hiddenToggle appHiddenToggle\" ng-click=\"appboardhider();\"\n" +
-    "        ng-class=\"{false: 'hide'}[appboardhide]\"\n" +
-    "        tooltip=\"Show toolbar\" tooltip-placement=\"left\">\n" +
-    "  <i class=\"fa fa-toggle-up\"></i>\n" +
+    "<button class=\"hiddenToggle appHiddenToggle\" ng-click=\"toggleFullScreenMode();\"\n" +
+    "        ng-class=\"{false: 'hide'}[fullScreenMode]\"\n" +
+    "        tooltip=\"Exit Full Screen\" tooltip-placement=\"left\">\n" +
+    "  <i class=\"fa fa-compress fa-lg\"></i>\n" +
     "</button>\n" +
     "</div>");
 }]);
@@ -119,7 +119,7 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "\n" +
     "  <nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
     "    no-rounded-corners navbar-fixed-top\" role=\"navigation\"\n" +
-    "       ng-class=\"{true: 'hide', false: ''}[dashboardhide]\">\n" +
+    "       ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
     "    <div class=\"container-fluid\" >\n" +
     "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
     "      <div class=\"navbar-header\">\n" +
@@ -243,24 +243,10 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "              </ul>\n" +
     "            </li>\n" +
     "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Hide toolbar\"\n" +
-    "              tooltip-placement=\"bottom\"\n" +
-    "              style=\"width: 15px; float: right; margin-right: 20px;\n" +
-    "              margin-left: 0px; padding-left: 0px;\">\n" +
-    "            <a ng-click=\"dashboardhider();\">\n" +
-    "              <i class=\"fa fa-toggle-up fa-lg\"></i>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
     "        </ul>\n" +
     "      </div><!-- /.navbar-collapse -->\n" +
     "    </div><!-- /.container-fluid -->\n" +
     "  </nav>\n" +
-    "  <button class=\"hiddenToggle dashToggle\" ng-click=\"dashboardhider();\"\n" +
-    "          ng-class=\"{false: 'hide'}[dashboardhide]\"\n" +
-    "          tooltip=\"Show toolbar\" tooltip-placement=\"left\">\n" +
-    "    <i class=\"fa fa-toggle-down\"></i>\n" +
-    "  </button>\n" +
     "");
 }]);
 
@@ -299,12 +285,12 @@ angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCac
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
-    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized, 'appToggle' : frame.isMaximized && appBarHidden, 'dashToggle' : frame.isMaximized && dashBarHidden}\"></ozp-managed-frame>");
+    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized}\"></ozp-managed-frame>");
 }]);
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/grid/grid.tpl.html",
-    "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !appBarHidden}\">\n" +
+    "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !fullScreenMode}\">\n" +
     "  <div gridster=\"gridOptions\">\n" +
     "    <ul>\n" +
     "      <li gridster-item row=\"item.gridLayout[deviceSize].row\" col=\"item.gridLayout[deviceSize].col\"\n" +
