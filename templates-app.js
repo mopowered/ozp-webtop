@@ -123,10 +123,15 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          <li ng-show=\"nextAppsVisible\"><i class=\"fa fa-angle-double-right fa-inverse fa-lg link-pointer\"\n" +
     "                 ng-click=\"nextApps()\" style=\"margin-top: 15px;\"></i></li>\n" +
     "\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li class=\"divider-vertical\" style=\"margin-right: 0px; padding-right: 0px\"></li>\n" +
+    "          <li style=\"margin-right: 0px; padding-right: 0px; margin-left: 0px; padding-left: 0px;\">\n" +
+    "            <a ng-click=\"launchSettingsModal()\">\n" +
+    "              <i class=\"fa fa-cog fa-lg link-pointer\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
     "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Enter Full Screen\"\n" +
     "              tooltip-placement=\"top\"\n" +
-    "              style=\"width: 25px; float: right; margin-right: 5px; margin-top: 2px;\">\n" +
+    "              style=\"width: 25px; float: right; margin-right: 5px; margin-left: 10px; padding-left: 0px; \">\n" +
     "            <a ng-click=\"toggleFullScreenMode();\">\n" +
     "              <i class=\"fa fa-expand fa-lg\"></i>\n" +
     "            </a>\n" +
@@ -296,7 +301,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user | limitTo : usernameLength}} <span class=\"caret\"></span></a>\n" +
     "              <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                <li>\n" +
-    "                  <a ng-click=\"launchSettingsModal()\" class=\"link-pointer\">\n" +
+    "                  <a ng-click=\"launchPreferences()\" class=\"link-pointer\">\n" +
     "                    <i class=\"fa fa-cogs fa-fw menu-icon\"></i>Preferences\n" +
     "                  </a>\n" +
     "                </li>\n" +
