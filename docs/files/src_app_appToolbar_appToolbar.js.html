@@ -383,15 +383,16 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
      * @param value Data from deviceSizeChangedEvent
      */
     $scope.handleWindowSizeChange = function(value) {
-      // TODO: need further testing to validate these numbers
+      // TODO: these will change when the dashboard dropdown and layout icons
+      //  move down into this toolbar
       if (value.deviceSize === &#x27;sm&#x27;) {
-        $scope.maxAppsDisplayed = 3;
+        $scope.maxAppsDisplayed = 10;
         $scope.setPinnedApps();
       } else if (value.deviceSize === &#x27;md&#x27;) {
-        $scope.maxAppsDisplayed = 5;
+        $scope.maxAppsDisplayed = 15;
         $scope.setPinnedApps();
       } else if (value.deviceSize === &#x27;lg&#x27;) {
-        $scope.maxAppsDisplayed = 8;
+        $scope.maxAppsDisplayed = 20;
         $scope.setPinnedApps();
       }
     };

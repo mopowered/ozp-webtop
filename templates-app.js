@@ -72,7 +72,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          <!-- stuff on the left side of the nav bar -->\n" +
     "          <li>\n" +
     "            <a class=\"navbar-brand\" href=\"\" ng-click=\"openApplicationsModal()\">\n" +
-    "              <i class=\"fa fa-plus\"></i>\n" +
+    "              <i class=\"fa fa-plus\" style=\"margin-top: 4px;\"></i>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "          </ul>\n" +
@@ -83,21 +83,24 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "        <ul class=\"nav navbar-nav\">\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
     "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\"\n" +
-    "              ng-class=\"app.isMinimized && layout === 'desktop'? 'inactive-app' : 'active-app'\"\n" +
     "              >\n" +
-    "            <a><img class=\"chrome-icon app-toolbar-img\" ng-src=\"{{app.icon}}\"/>{{app.name | limitTo : 15}}</i></a>\n" +
+    "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; padding-left: 15px; padding-bottom: 0px;\">\n" +
+    "              <img class=\"chrome-icon app-toolbar-img\"\n" +
+    "                   ng-src=\"{{app.icon.large}}\"/>\n" +
+    "              <div ng-class=\"app.isMinimized && layout === 'desktop'? 'app-toolbar-inactive-app' : 'app-toolbar-active-app'\">&nbsp</div>\n" +
+    "            </a>\n" +
     "          </li>\n" +
     "        </ul>\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
-    "          <li ng-show=\"previousAppsVisible\"><i class=\"fa fa-arrow-circle-left fa-inverse fa-lg link-pointer\"\n" +
-    "                 ng-click=\"previousApps()\" style=\"margin-top: 12px;\"></i></li>\n" +
-    "          <li ng-show=\"nextAppsVisible\"><i class=\"fa fa-arrow-circle-right fa-inverse fa-lg link-pointer\"\n" +
-    "                 ng-click=\"nextApps()\" style=\"margin-top: 12px;\"></i></li>\n" +
+    "          <li ng-show=\"previousAppsVisible\"><i class=\"fa fa-angle-double-left fa-inverse fa-lg link-pointer\"\n" +
+    "                 ng-click=\"previousApps()\" style=\"margin-top: 15px;\"></i></li>\n" +
+    "          <li ng-show=\"nextAppsVisible\"><i class=\"fa fa-angle-double-right fa-inverse fa-lg link-pointer\"\n" +
+    "                 ng-click=\"nextApps()\" style=\"margin-top: 15px;\"></i></li>\n" +
     "\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Enter Full Screen\"\n" +
     "              tooltip-placement=\"top\"\n" +
-    "              style=\"width: 25px; float: right; margin-right: 5px;\">\n" +
+    "              style=\"width: 25px; float: right; margin-right: 5px; margin-top: 2px;\">\n" +
     "            <a ng-click=\"toggleFullScreenMode();\">\n" +
     "              <i class=\"fa fa-expand fa-lg\"></i>\n" +
     "            </a>\n" +
@@ -265,7 +268,7 @@ angular.module("dashboardView/button/ozpbutton.tpl.html", []).run(["$templateCac
 angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/chrome/ozpchrome.tpl.html",
     "<div class=\"ozp-chrome\">\n" +
-    "  <img class=\"chrome-icon\" ng-src=\"{{frame.icon}}\">\n" +
+    "  <img class=\"chrome-icon\" ng-src=\"{{frame.icon.small}}\">\n" +
     "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
     "  <span class=\"chrome-controls\" >\n" +
     "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"isGrid\" ng-click=\"minimizeFrame(frame)\">\n" +

@@ -388,7 +388,7 @@
             },
             "tag": "module",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 425,
+            "line": 426,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -572,7 +572,7 @@
             },
             "tag": "module",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1221,
+            "line": 1223,
             "description": "Dashboard model",
             "requires": [
                 "ozp.common.utilities",
@@ -974,7 +974,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 425,
+            "line": 426,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1400,7 +1400,7 @@
             "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1221,
+            "line": 1223,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -1970,7 +1970,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 191,
+            "line": 192,
             "description": "Handle the dashboardSwitchedEvent\n\nSet $scope.currentDashboardId and invoke updateApps()",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -1986,7 +1986,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 205,
+            "line": 206,
             "description": "Set $scope.myPinnedApps\n\nRequires that $scope.frames is set first",
             "itemtype": "method",
             "name": "setPinnedApps",
@@ -1996,7 +1996,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 229,
+            "line": 230,
             "description": "Update application data in the toolbar (invoked on a dashboard change)",
             "itemtype": "method",
             "name": "updateApps",
@@ -2006,7 +2006,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 249,
+            "line": 250,
             "description": "Maximize (or show) a frame that was previously minimized (hidden)",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -2023,7 +2023,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 262,
+            "line": 263,
             "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a fullScreenModeToggleEvent",
             "itemtype": "method",
             "name": "toggleFullScreenMode",
@@ -2033,7 +2033,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 288,
+            "line": 289,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
@@ -2043,7 +2043,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 308,
+            "line": 309,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
@@ -2053,7 +2053,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 329,
+            "line": 330,
             "description": "Opens the Add Application modal dialog",
             "itemtype": "method",
             "name": "openApplicationsModal",
@@ -2063,7 +2063,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 347,
+            "line": 348,
             "description": "Add an application to a dashboard",
             "itemtype": "method",
             "name": "addAppToDashboard",
@@ -3075,7 +3075,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 440,
+            "line": 442,
             "description": "Updates the dynamically generated fields for grid frame size in px",
             "itemtype": "method",
             "name": "updateFrameSizeOnGrid",
@@ -3106,7 +3106,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 467,
+            "line": 469,
             "description": "Return the frame size (in px) for a given frame in the grid layout\nNote that these values are dynamically generated",
             "itemtype": "method",
             "name": "getFrameSizeOnGrid",
@@ -3125,7 +3125,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 486,
+            "line": 488,
             "description": "Save a dashboard\nTODO: make sure input is a valid dashboard:\n- dashboard.id should be unique\n- all frame.id's should be",
             "itemtype": "method",
             "name": "saveDashboard",
@@ -3144,7 +3144,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 518,
+            "line": 520,
             "description": "Save a frame in a dashboard\nTODO: make sure input is a valid frame",
             "itemtype": "method",
             "name": "saveFrame",
@@ -3163,7 +3163,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 552,
+            "line": 554,
             "description": "Retrieve a frame by id",
             "itemtype": "method",
             "name": "getFrameById",
@@ -3182,7 +3182,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 573,
+            "line": 575,
             "description": "Retrieve a dashboard by id",
             "itemtype": "method",
             "name": "getDashboardById",
@@ -3201,7 +3201,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 592,
+            "line": 594,
             "description": "Delete a dashboard",
             "itemtype": "method",
             "name": "removeDashboard",
@@ -3220,7 +3220,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 622,
+            "line": 624,
             "description": "Create a new dashboard",
             "itemtype": "method",
             "name": "createDashboard",
@@ -3239,7 +3239,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 658,
+            "line": 660,
             "description": "Get the next available id for a new dashboard\nTODO: this assumes ids are integers and not uuids",
             "itemtype": "method",
             "name": "getNewDashboardId",
@@ -3252,7 +3252,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 675,
+            "line": 677,
             "description": "Get the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboard",
@@ -3265,7 +3265,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 688,
+            "line": 690,
             "description": "Create example dashboards (test purposes only)",
             "itemtype": "method",
             "name": "createExampleDashboards",
@@ -3278,14 +3278,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1189,
+            "line": 1191,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1205,
+            "line": 1207,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
@@ -4279,7 +4279,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/appToolbar/appToolbar.js:347"
+            "line": " src/app/appToolbar/appToolbar.js:348"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4371,47 +4371,47 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:440"
+            "line": " src/app/models/dashboardApi.js:442"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:467"
+            "line": " src/app/models/dashboardApi.js:469"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:486"
+            "line": " src/app/models/dashboardApi.js:488"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:518"
+            "line": " src/app/models/dashboardApi.js:520"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:552"
+            "line": " src/app/models/dashboardApi.js:554"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:573"
+            "line": " src/app/models/dashboardApi.js:575"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:592"
+            "line": " src/app/models/dashboardApi.js:594"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:622"
+            "line": " src/app/models/dashboardApi.js:624"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:658"
+            "line": " src/app/models/dashboardApi.js:660"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:675"
+            "line": " src/app/models/dashboardApi.js:677"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:688"
+            "line": " src/app/models/dashboardApi.js:690"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4547,11 +4547,11 @@
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1189"
+            "line": " src/app/models/dashboardApi.js:1191"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1205"
+            "line": " src/app/models/dashboardApi.js:1207"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
