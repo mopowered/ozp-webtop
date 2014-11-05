@@ -81,6 +81,32 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +
     "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
     "        <ul class=\"nav navbar-nav\">\n" +
+    "          <li class=\"dropup\">\n" +
+    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name | limitTo : dashboardNameLength}} <span class=\"caret\"></span></a>\n" +
+    "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
+    "              <li ng-repeat=\"board in dashboards\">\n" +
+    "                <a ng-click=\"setCurrentDashboard(board)\"\n" +
+    "                   href=\"#/{{board.layout}}/{{board.id}}\"><i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}}</a>\n" +
+    "              </li>\n" +
+    "            </ul>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li>\n" +
+    "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\"\n" +
+    "               ng-class=\"{navLinkSelected: layout == 'grid'}\"\n" +
+    "                tooltip=\"Grid layout\" tooltip-placement=\"top\">\n" +
+    "              <i ng-class=\"{iconWhite: layout == 'grid'}\" class=\"fa fa-th fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
+    "          <li>\n" +
+    "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\"\n" +
+    "               ng-class=\"{navLinkSelected: layout == 'desktop'}\" tooltip=\"Desktop layout\"\n" +
+    "                tooltip-placement=\"top\">\n" +
+    "              <i ng-class=\"{iconWhite: layout == 'desktop'}\" class=\"fa fa-clipboard fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\"></li>\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
     "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\"\n" +
     "              >\n" +
@@ -182,32 +208,6 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "          </ul>\n" +
     "\n" +
     "        <ul class=\"nav navbar-nav navbar-right\">\n" +
-    "          <li class=\"dropdown\">\n" +
-    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name | limitTo : dashboardNameLength}} <span class=\"caret\"></span></a>\n" +
-    "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
-    "              <li ng-repeat=\"board in dashboards\">\n" +
-    "                <a ng-click=\"setCurrentDashboard(board)\"\n" +
-    "                   href=\"#/{{board.layout}}/{{board.id}}\"><i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}}</a>\n" +
-    "              </li>\n" +
-    "            </ul>\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li>\n" +
-    "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\"\n" +
-    "               ng-class=\"{navLinkSelected: layout == 'grid'}\"\n" +
-    "                tooltip=\"Grid layout\" tooltip-placement=\"bottom\">\n" +
-    "              <i ng-class=\"{iconWhite: layout == 'grid'}\" class=\"fa fa-th fa-lg\"></i>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li>\n" +
-    "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\"\n" +
-    "               ng-class=\"{navLinkSelected: layout == 'desktop'}\" tooltip=\"Desktop layout\"\n" +
-    "                tooltip-placement=\"bottom\">\n" +
-    "              <i ng-class=\"{iconWhite: layout == 'desktop'}\" class=\"fa fa-clipboard fa-lg\"></i>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
     "            <span ng-show=\"!messages.unread\" class=\"fa-stack fa-1x no-notifications-icon\"\n" +
     "                  tooltip=\"No new messages\" tooltip-placement=\"bottom\">\n" +

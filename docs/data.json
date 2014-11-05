@@ -388,7 +388,7 @@
             },
             "tag": "module",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 426,
+            "line": 544,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -415,13 +415,11 @@
             },
             "tag": "module",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 321,
+            "line": 172,
             "description": "The dashboard toolbar component shown in the Webtop.",
             "requires": [
                 "ozp.common.windowSizeWatcher",
-                "ozpWebtop.models.dashboard",
-                "ozpWebtop.models.userSettings",
-                "ozpWebtop.services.dashboardChangeMonitor"
+                "ozpWebtop.models.userSettings"
             ]
         },
         "ozpWebtop.dashboardView.button": {
@@ -906,7 +904,7 @@
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 24,
-            "description": "Application toolbar on the bottom of Webtop. Contains a menu for adding\nfavorited apps to the dashboard and shows names/icons for all apps\ncurrently on the dashboard. Clicking on the app name/icon buttons in the\ntoolbar results in the application being shown or hidden from the dashboard\nview (in desktop layout)\n\nngtype: controller",
+            "description": "Application toolbar on the bottom of Webtop. Contains a menu for adding\nfavorited apps to the dashboard and shows names/icons for all apps\ncurrently on the dashboard. Clicking on the app name/icon buttons in the\ntoolbar results in the application being shown or hidden from the dashboard\nview (in desktop layout)\n\ndashboard selector\nbuttons to switch between grid and desktop layouts\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
                 {
@@ -974,7 +972,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 426,
+            "line": 544,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -989,8 +987,8 @@
             "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 18,
-            "description": "Controller for dashboard toolbar located at the top of Webtop\n\nIncludes:\n- menu with links to other OZP resources\n- dashboard selector\n- buttons to switch between grid and desktop layouts\n- notifications (TODO)\n- username button with dropdown to access user preferences, help, and logout\n\nThe toolbar can also be hidden by clicking on a button\n\nngtype: controller",
+            "line": 14,
+            "description": "Controller for dashboard toolbar located at the top of Webtop\n\nIncludes:\n- menu with links to other OZP resources\n- notifications (TODO)\n- username button with dropdown to access user preferences, help, and logout\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
                 {
@@ -1000,14 +998,6 @@
                 {
                     "name": "$rootScope",
                     "description": "ng $rootScope"
-                },
-                {
-                    "name": "dashboardApi",
-                    "description": "dashboard data"
-                },
-                {
-                    "name": "dashboardChangeMonitor",
-                    "description": "notify when dashboard changes"
                 },
                 {
                     "name": "userSettingsApi",
@@ -1022,15 +1012,7 @@
                     "description": "event name"
                 },
                 {
-                    "name": "dashboardSwitchedEvent",
-                    "description": "event name"
-                },
-                {
                     "name": "fullScreenModeToggleEvent",
-                    "description": "event name"
-                },
-                {
-                    "name": "userPreferencesUpdatedEvent",
                     "description": "event name"
                 },
                 {
@@ -1050,7 +1032,7 @@
             "module": "ozpWebtop.dashboardToolbar",
             "namespace": "dashboardToolbar",
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 321,
+            "line": 172,
             "description": "Directive for the dashboard toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1854,7 +1836,57 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 67,
+            "line": 70,
+            "itemtype": "property",
+            "name": "dashboardNameLength Max length of dashboard name, based on\ncurrent screen size",
+            "type": "{String}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 77,
+            "itemtype": "property",
+            "name": "dashboards Dashboards for current user",
+            "type": "{Array}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 83,
+            "itemtype": "property",
+            "name": "Dashboard layout (grid or desktop)",
+            "type": "{string}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 89,
+            "itemtype": "property",
+            "name": "currentDashboard Current active dashboard",
+            "type": "{string}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 95,
+            "itemtype": "property",
+            "name": "dashboardId Current dashboard id",
+            "type": "{string}",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 101,
             "itemtype": "property",
             "name": "$scope.maxAppsDisplayed The maximum number of apps that can be\ndisplayed on the toolbar (based on screen width)",
             "type": "{Number}",
@@ -1864,7 +1896,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 73,
+            "line": 107,
             "itemtype": "property",
             "name": "$scope.currentDashboardId The id of the current dashboard",
             "type": "{string}",
@@ -1874,7 +1906,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 78,
+            "line": 112,
             "itemtype": "property",
             "name": "$scope.fullScreenMode Flag indicating if the toolbar is hidden or\n not",
             "type": "{boolean}",
@@ -1884,7 +1916,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 84,
+            "line": 118,
             "itemtype": "property",
             "name": "$scope.apps All applications available in the marketplace\n TODO: shouldn't need all of the apps, only the ones for current user",
             "type": "{Array}",
@@ -1894,7 +1926,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 90,
+            "line": 124,
             "itemtype": "property",
             "name": "$scope.frames Frames on current dashboard (includes marketplace\n data like app name, icons, description, etc)",
             "type": "{Array}",
@@ -1904,7 +1936,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 96,
+            "line": 130,
             "itemtype": "property",
             "name": "$scope.myPinnedApps Applications in current dashboard that are\n shown in the application toolbar",
             "type": "{Array}",
@@ -1914,7 +1946,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 102,
+            "line": 136,
             "itemtype": "property",
             "name": "$scope.myPinnedAppsFirstDisplayedIndex The index (in\n $scope.myPinnedApps) of the first application shown in the application\n toolbar to display",
             "type": "{number}",
@@ -1924,7 +1956,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 109,
+            "line": 143,
             "itemtype": "property",
             "name": "$scope.nextAppsVisible Flag for the 'pagination' next arrow\n in the toolbar",
             "type": "{boolean}",
@@ -1934,7 +1966,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 115,
+            "line": 149,
             "itemtype": "property",
             "name": "$scope.previousAppsVisible Flag for the 'pagination' previous\n arrow in the toolbar",
             "type": "{boolean}",
@@ -1944,7 +1976,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 121,
+            "line": 155,
             "itemtype": "property",
             "name": "$scope.layout The current dashboard layout (grid or desktop)",
             "type": "{string}",
@@ -1954,7 +1986,17 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 170,
+            "line": 224,
+            "description": "Handler invoked when user settings event is fired",
+            "itemtype": "method",
+            "name": "handleUserSettingsChange",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 246,
             "description": "Handle the deviceSizeChangedEvent\n\nUpdate $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -1970,8 +2012,8 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 192,
-            "description": "Handle the dashboardSwitchedEvent\n\nSet $scope.currentDashboardId and invoke updateApps()",
+            "line": 274,
+            "description": "Handle the dashboardSwitchedEvent\n\nSet $scope.currentDashboardId and invoke updateApps()\nUpdate current dashboard and layout",
             "itemtype": "method",
             "name": "handleDashboardChange",
             "params": [
@@ -1986,7 +2028,43 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 206,
+            "line": 299,
+            "description": "Set the current dashboard",
+            "itemtype": "method",
+            "name": "setCurrentDashboard",
+            "params": [
+                {
+                    "name": "board",
+                    "description": "Current dashboard"
+                }
+            ],
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 308,
+            "description": "Use a grid layout",
+            "itemtype": "method",
+            "name": "useGridLayout",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 316,
+            "description": "Use a desktop layout",
+            "itemtype": "method",
+            "name": "useDesktopLayout",
+            "class": "appToolbar.ApplicationToolbarCtrl",
+            "module": "ozpWebtop.appToolbar",
+            "namespace": "appToolbar"
+        },
+        {
+            "file": "src/app/appToolbar/appToolbar.js",
+            "line": 324,
             "description": "Set $scope.myPinnedApps\n\nRequires that $scope.frames is set first",
             "itemtype": "method",
             "name": "setPinnedApps",
@@ -1996,7 +2074,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 230,
+            "line": 348,
             "description": "Update application data in the toolbar (invoked on a dashboard change)",
             "itemtype": "method",
             "name": "updateApps",
@@ -2006,7 +2084,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 250,
+            "line": 368,
             "description": "Maximize (or show) a frame that was previously minimized (hidden)",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -2023,7 +2101,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 263,
+            "line": 381,
             "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a fullScreenModeToggleEvent",
             "itemtype": "method",
             "name": "toggleFullScreenMode",
@@ -2033,7 +2111,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 289,
+            "line": 407,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
@@ -2043,7 +2121,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 309,
+            "line": 427,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
@@ -2053,7 +2131,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 330,
+            "line": 448,
             "description": "Opens the Add Application modal dialog",
             "itemtype": "method",
             "name": "openApplicationsModal",
@@ -2063,7 +2141,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 348,
+            "line": 466,
             "description": "Add an application to a dashboard",
             "itemtype": "method",
             "name": "addAppToDashboard",
@@ -2087,17 +2165,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 57,
-            "itemtype": "property",
-            "name": "dashboardNameLength Max length of dashboard name, based on\ncurrent screen size",
-            "type": "{String}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 63,
+            "line": 46,
             "itemtype": "property",
             "name": "usernameLength Max length of username, based on\ncurrent screen size",
             "type": "{Number}",
@@ -2107,17 +2175,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 70,
-            "itemtype": "property",
-            "name": "dashboards Dashboards for current user",
-            "type": "{Array}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 76,
+            "line": 53,
             "itemtype": "property",
             "name": "fullScreenMode Flag indicating if toolbar should be hidden",
             "type": "{boolean}",
@@ -2127,27 +2185,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 82,
-            "itemtype": "property",
-            "name": "currentDashboard Current active dashboard",
-            "type": "{string}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 88,
-            "itemtype": "property",
-            "name": "Dashboard layout (grid or desktop)",
-            "type": "{string}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 94,
+            "line": 59,
             "itemtype": "property",
             "name": "user Current user's username",
             "type": "{string}",
@@ -2157,17 +2195,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 100,
-            "itemtype": "property",
-            "name": "dashboardId Current dashboard id",
-            "type": "{string}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 106,
+            "line": 65,
             "itemtype": "property",
             "name": "messages Messages for current user TBD",
             "type": "{Array}",
@@ -2177,7 +2205,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 179,
+            "line": 106,
             "description": "Handler invoked when window size changes across device size boundaries\nas defined by Bootstrap",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2193,69 +2221,7 @@
         },
         {
             "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 199,
-            "description": "Handler invoked when dashboard change event occurs",
-            "itemtype": "method",
-            "name": "handleDashboardChange",
-            "params": [
-                {
-                    "name": "dashboardChange",
-                    "description": "contains dashboardId and layout of dashboard"
-                }
-            ],
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 225,
-            "description": "Handler invoked when user settings event is fired",
-            "itemtype": "method",
-            "name": "handleUserSettingsChange",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 247,
-            "description": "Set the current dashboard",
-            "itemtype": "method",
-            "name": "setCurrentDashboard",
-            "params": [
-                {
-                    "name": "board",
-                    "description": "Current dashboard"
-                }
-            ],
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 256,
-            "description": "Use a grid layout",
-            "itemtype": "method",
-            "name": "useGridLayout",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 264,
-            "description": "Use a desktop layout",
-            "itemtype": "method",
-            "name": "useDesktopLayout",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 272,
+            "line": 123,
             "description": "Launch the user preferences modal dialog\n\nSends launchUserPreferencesModalEvent",
             "itemtype": "method",
             "name": "launchSettingsModal",
@@ -4279,7 +4245,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/appToolbar/appToolbar.js:348"
+            "line": " src/app/appToolbar/appToolbar.js:466"
         },
         {
             "message": "replacing incorrect tag: returns with return",
