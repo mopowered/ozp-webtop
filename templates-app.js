@@ -1,4 +1,4 @@
-angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardToolbar/dashboardToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
+angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
@@ -143,10 +143,77 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "</div>");
 }]);
 
-angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardToolbar/dashboardToolbar.tpl.html",
+angular.module("dashboardView/button/ozpbutton.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/button/ozpbutton.tpl.html",
+    "<a class=\"btn\" ng-href=\"{{button.url}}\">\n" +
+    "    <!-- Bootstrap icon\n" +
+    "    <span class=\"glyphicon {{button.icon}}\"></span>\n" +
+    "    -->\n" +
+    "    <img ng-src=\"{{button.icon}}\">\n" +
+    "    <span>{{button.text | elliptical:button.elliptical}}</span>\n" +
+    "</a>\n" +
+    "");
+}]);
+
+angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/chrome/ozpchrome.tpl.html",
+    "<div class=\"ozp-chrome\">\n" +
+    "  <img class=\"chrome-icon\" ng-src=\"{{frame.icon.small}}\">\n" +
+    "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
+    "  <span class=\"chrome-controls\" >\n" +
+    "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"isGrid\" ng-click=\"minimizeFrame(frame)\">\n" +
+    "      <span class=\"glyphicon glyphicon-minus\"></span>\n" +
+    "    </button>\n" +
+    "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"isGrid\" ng-click=\"maximizeFrame(frame)\">\n" +
+    "      <span class=\"glyphicon glyphicon-plus\"></span>\n" +
+    "    </button>\n" +
+    "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"isDisabled(frame)\">\n" +
+    "      <span class=\"glyphicon glyphicon-remove\"></span>\n" +
+    "    </button>\n" +
+    "  </span>\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/desktop/desktop.tpl.html",
+    "<!-- Frames are positioned by absolute positioning based on state -->\n" +
+    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized}\"></ozp-managed-frame>");
+}]);
+
+angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/grid/grid.tpl.html",
+    "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !fullScreenMode}\">\n" +
+    "  <div gridster=\"gridOptions\">\n" +
+    "    <ul>\n" +
+    "      <li gridster-item row=\"item.gridLayout[deviceSize].row\" col=\"item.gridLayout[deviceSize].col\"\n" +
+    "          size-x=\"item.gridLayout[deviceSize].sizeX\" size-y=\"item.gridLayout[deviceSize].sizeY\"\n" +
+    "          ng-repeat=\"item in frames\" id=\"{{item.id}}\"\n" +
+    "          ozp-gridster-item=\"\" frame=\"item\" ng-hide=\"isDisabled\">\n" +
+    "      </li>\n" +
+    "    </ul>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("dashboardView/templates/managedframe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/templates/managedframe.tpl.html",
+    "<ozp-chrome></ozp-chrome>\n" +
+    "<div class=\"managed-frame\" ng-include=\"frame.url\" height=\"style.height\" width=\"style.width\"></div>\n" +
+    "");
+}]);
+
+angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/templates/managediframe.tpl.html",
+    "<ozp-chrome ></ozp-chrome>\n" +
+    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\" height=\"style.height\" width=\"style.width\"></iframe>");
+}]);
+
+angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("ozpToolbar/ozpToolbar.tpl.html",
     "\n" +
-    "  <nav class=\"navbar navbar-default navbar-inverse dashboard-toolbar\n" +
+    "  <nav class=\"navbar navbar-default navbar-inverse ozp-toolbar\n" +
     "    no-rounded-corners navbar-fixed-top\" role=\"navigation\"\n" +
     "       ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
     "    <div class=\"container-fluid\" >\n" +
@@ -251,73 +318,6 @@ angular.module("dashboardToolbar/dashboardToolbar.tpl.html", []).run(["$template
     "    </div><!-- /.container-fluid -->\n" +
     "  </nav>\n" +
     "");
-}]);
-
-angular.module("dashboardView/button/ozpbutton.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/button/ozpbutton.tpl.html",
-    "<a class=\"btn\" ng-href=\"{{button.url}}\">\n" +
-    "    <!-- Bootstrap icon\n" +
-    "    <span class=\"glyphicon {{button.icon}}\"></span>\n" +
-    "    -->\n" +
-    "    <img ng-src=\"{{button.icon}}\">\n" +
-    "    <span>{{button.text | elliptical:button.elliptical}}</span>\n" +
-    "</a>\n" +
-    "");
-}]);
-
-angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/chrome/ozpchrome.tpl.html",
-    "<div class=\"ozp-chrome\">\n" +
-    "  <img class=\"chrome-icon\" ng-src=\"{{frame.icon.small}}\">\n" +
-    "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
-    "  <span class=\"chrome-controls\" >\n" +
-    "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"isGrid\" ng-click=\"minimizeFrame(frame)\">\n" +
-    "      <span class=\"glyphicon glyphicon-minus\"></span>\n" +
-    "    </button>\n" +
-    "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"isGrid\" ng-click=\"maximizeFrame(frame)\">\n" +
-    "      <span class=\"glyphicon glyphicon-plus\"></span>\n" +
-    "    </button>\n" +
-    "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"isDisabled(frame)\">\n" +
-    "      <span class=\"glyphicon glyphicon-remove\"></span>\n" +
-    "    </button>\n" +
-    "  </span>\n" +
-    "</div>\n" +
-    "");
-}]);
-
-angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/desktop/desktop.tpl.html",
-    "<!-- Frames are positioned by absolute positioning based on state -->\n" +
-    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized}\"></ozp-managed-frame>");
-}]);
-
-angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/grid/grid.tpl.html",
-    "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !fullScreenMode}\">\n" +
-    "  <div gridster=\"gridOptions\">\n" +
-    "    <ul>\n" +
-    "      <li gridster-item row=\"item.gridLayout[deviceSize].row\" col=\"item.gridLayout[deviceSize].col\"\n" +
-    "          size-x=\"item.gridLayout[deviceSize].sizeX\" size-y=\"item.gridLayout[deviceSize].sizeY\"\n" +
-    "          ng-repeat=\"item in frames\" id=\"{{item.id}}\"\n" +
-    "          ozp-gridster-item=\"\" frame=\"item\" ng-hide=\"isDisabled\">\n" +
-    "      </li>\n" +
-    "    </ul>\n" +
-    "  </div>\n" +
-    "</div>\n" +
-    "");
-}]);
-
-angular.module("dashboardView/templates/managedframe.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/templates/managedframe.tpl.html",
-    "<ozp-chrome></ozp-chrome>\n" +
-    "<div class=\"managed-frame\" ng-include=\"frame.url\" height=\"style.height\" width=\"style.width\"></div>\n" +
-    "");
-}]);
-
-angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/templates/managediframe.tpl.html",
-    "<ozp-chrome ></ozp-chrome>\n" +
-    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\" height=\"style.height\" width=\"style.width\"></iframe>");
 }]);
 
 angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templateCache", function($templateCache) {

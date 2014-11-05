@@ -5,8 +5,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "appToolbar.ApplicationToolbarCtrl",
         "appToolbar.appToolbar",
         "constants",
-        "dashboardToolbar.DashboardToolbarCtrl",
-        "dashboardToolbar.dashboardToolbar",
         "dashboardView.ChromeCtrl",
         "dashboardView.DesktopCtrl",
         "dashboardView.GridCtrl",
@@ -25,6 +23,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozp.common.elliptical",
         "ozp.common.iwc.iwcConnectedClient",
         "ozp.common.windowSizeWatcher",
+        "ozpToolbar.OzpToolbarCtrl",
+        "ozpToolbar.ozpToolbar",
         "services.iwcInterface",
         "services.localStorageInterface",
         "userSettings.ModalInstanceCtrl",
@@ -42,7 +42,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.appLauncher",
         "ozpWebtop.appToolbar",
         "ozpWebtop.constants",
-        "ozpWebtop.dashboardToolbar",
         "ozpWebtop.dashboardView.button",
         "ozpWebtop.dashboardView.chrome",
         "ozpWebtop.dashboardView.desktop",
@@ -53,6 +52,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.models.dashboard",
         "ozpWebtop.models.marketplace",
         "ozpWebtop.models.userSettings",
+        "ozpWebtop.ozpToolbar",
         "ozpWebtop.services.dashboardChangeMonitor",
         "ozpWebtop.services.iwcInterface",
         "ozpWebtop.services.localStorageInterface",
@@ -115,11 +115,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Constants used throughout the application"
         },
         {
-            "displayName": "ozpWebtop.dashboardToolbar",
-            "name": "ozpWebtop.dashboardToolbar",
-            "description": "The dashboard toolbar component shown in the Webtop."
-        },
-        {
             "displayName": "ozpWebtop.dashboardView.button",
             "name": "ozpWebtop.dashboardView.button",
             "description": "ozpButton module"
@@ -168,6 +163,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.models.userSettings",
             "name": "ozpWebtop.models.userSettings",
             "description": "User Settings model"
+        },
+        {
+            "displayName": "ozpWebtop.ozpToolbar",
+            "name": "ozpWebtop.ozpToolbar",
+            "description": "The ozp toolbar component shown in the Webtop."
         },
         {
             "displayName": "ozpWebtop.services.dashboardChangeMonitor",

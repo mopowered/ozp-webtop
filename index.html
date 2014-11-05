@@ -44,7 +44,6 @@
     <script type="text/javascript" src="src/app/appLauncher/appLauncher.js"></script>
     <script type="text/javascript" src="src/app/appToolbar/appToolbar.js"></script>
     <script type="text/javascript" src="src/app/constants.js"></script>
-    <script type="text/javascript" src="src/app/dashboardToolbar/dashboardToolbar.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/button/ozpbutton.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/chrome/chrome.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/desktop/desktop.js"></script>
@@ -55,6 +54,7 @@
     <script type="text/javascript" src="src/app/models/dashboardApi.js"></script>
     <script type="text/javascript" src="src/app/models/marketplaceApi.js"></script>
     <script type="text/javascript" src="src/app/models/userSettingsApi.js"></script>
+    <script type="text/javascript" src="src/app/ozpToolbar/ozpToolbar.js"></script>
     <script type="text/javascript" src="src/app/services/dashboardChangeMonitor.js"></script>
     <script type="text/javascript" src="src/app/services/iwcInterface.js"></script>
     <script type="text/javascript" src="src/app/services/localStorageInterface.js"></script>
@@ -72,8 +72,8 @@
   <body ng-app="ozpWebtop" ozp-classification="U">
 
     <!-- dashboard panel -->
-    <div ng-controller="DashboardToolbarCtrl">
-      <dashboard-toolbar hide-bar="fullScreenMode"></dashboard-toolbar>
+    <div ng-controller="OzpToolbarCtrl">
+      <ozp-toolbar hide-bar="fullScreenMode"></ozp-toolbar>
     </div>
 
     <!--[if lt IE 7]>

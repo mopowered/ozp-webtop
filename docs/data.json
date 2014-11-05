@@ -42,20 +42,6 @@
                 "appToolbar": 1
             }
         },
-        "src/app/dashboardToolbar/dashboardToolbar.js": {
-            "name": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "modules": {
-                "ozpWebtop.dashboardToolbar": 1
-            },
-            "classes": {
-                "dashboardToolbar.DashboardToolbarCtrl": 1,
-                "dashboardToolbar.dashboardToolbar": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "dashboardToolbar": 1
-            }
-        },
         "src/app/dashboardView/button/ozpbutton.js": {
             "name": "src/app/dashboardView/button/ozpbutton.js",
             "modules": {
@@ -185,6 +171,20 @@
             "fors": {},
             "namespaces": {
                 "models": 1
+            }
+        },
+        "src/app/ozpToolbar/ozpToolbar.js": {
+            "name": "src/app/ozpToolbar/ozpToolbar.js",
+            "modules": {
+                "ozpWebtop.ozpToolbar": 1
+            },
+            "classes": {
+                "ozpToolbar.OzpToolbarCtrl": 1,
+                "ozpToolbar.ozpToolbar": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozpToolbar": 1
             }
         },
         "src/app/services/dashboardChangeMonitor.js": {
@@ -402,26 +402,6 @@
                 "ozp.common.windowSizeWatcher"
             ]
         },
-        "ozpWebtop.dashboardToolbar": {
-            "name": "ozpWebtop.dashboardToolbar",
-            "submodules": {},
-            "classes": {
-                "dashboardToolbar.DashboardToolbarCtrl": 1,
-                "dashboardToolbar.dashboardToolbar": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "dashboardToolbar": 1
-            },
-            "tag": "module",
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 172,
-            "description": "The dashboard toolbar component shown in the Webtop.",
-            "requires": [
-                "ozp.common.windowSizeWatcher",
-                "ozpWebtop.models.userSettings"
-            ]
-        },
         "ozpWebtop.dashboardView.button": {
             "name": "ozpWebtop.dashboardView.button",
             "submodules": {},
@@ -619,6 +599,26 @@
                 "ozpWebtop.services.localStorageInterface"
             ]
         },
+        "ozpWebtop.ozpToolbar": {
+            "name": "ozpWebtop.ozpToolbar",
+            "submodules": {},
+            "classes": {
+                "ozpToolbar.OzpToolbarCtrl": 1,
+                "ozpToolbar.ozpToolbar": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "ozpToolbar": 1
+            },
+            "tag": "module",
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 172,
+            "description": "The ozp toolbar component shown in the Webtop.",
+            "requires": [
+                "ozp.common.windowSizeWatcher",
+                "ozpWebtop.models.userSettings"
+            ]
+        },
         "ozpWebtop.services.dashboardChangeMonitor": {
             "name": "ozpWebtop.services.dashboardChangeMonitor",
             "submodules": {},
@@ -722,7 +722,7 @@
                 "ozpWebtop.models.userSettings",
                 "ozpWebtop.appLauncher",
                 "ozpWebtop.appToolbar",
-                "ozpWebtop.dashboardToolbar",
+                "ozpWebtop.ozpToolbar",
                 "ozpWebtop.dashboardView.button",
                 "ozpWebtop.dashboardView.chrome",
                 "ozpWebtop.dashboardView.desktop",
@@ -974,66 +974,6 @@
             "file": "src/app/appToolbar/appToolbar.js",
             "line": 544,
             "description": "Directive for the application toolbar\n\nngtype: directive",
-            "static": 1
-        },
-        "dashboardToolbar.DashboardToolbarCtrl": {
-            "name": "dashboardToolbar.DashboardToolbarCtrl",
-            "shortname": "dashboardToolbar.DashboardToolbarCtrl",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar",
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 14,
-            "description": "Controller for dashboard toolbar located at the top of Webtop\n\nIncludes:\n- menu with links to other OZP resources\n- notifications (TODO)\n- username button with dropdown to access user preferences, help, and logout\n\nngtype: controller",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "$scope",
-                    "description": "ng $scope"
-                },
-                {
-                    "name": "$rootScope",
-                    "description": "ng $rootScope"
-                },
-                {
-                    "name": "userSettingsApi",
-                    "description": "user preferences data"
-                },
-                {
-                    "name": "windowSizeWatcher",
-                    "description": "notify when window size changes"
-                },
-                {
-                    "name": "deviceSizeChangedEvent",
-                    "description": "event name"
-                },
-                {
-                    "name": "fullScreenModeToggleEvent",
-                    "description": "event name"
-                },
-                {
-                    "name": "launchUserPreferencesModalEvent",
-                    "description": "event name"
-                }
-            ]
-        },
-        "dashboardToolbar.dashboardToolbar": {
-            "name": "dashboardToolbar.dashboardToolbar",
-            "shortname": "dashboardToolbar.dashboardToolbar",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar",
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 172,
-            "description": "Directive for the dashboard toolbar\n\nngtype: directive",
             "static": 1
         },
         "dashboardView.ozpButton": {
@@ -1414,6 +1354,66 @@
             "file": "src/app/models/userSettingsApi.js",
             "line": 121,
             "description": "Service used to store and retrieve user settings\n\nMay be configured with different persistence mechanisms including IWC\nand Local Storage\n\nngtype: factory",
+            "static": 1
+        },
+        "ozpToolbar.OzpToolbarCtrl": {
+            "name": "ozpToolbar.OzpToolbarCtrl",
+            "shortname": "ozpToolbar.OzpToolbarCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar",
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 14,
+            "description": "Controller for ozp toolbar located at the top of Webtop\n\nIncludes:\n- menu with links to other OZP resources\n- notifications (TODO)\n- username button with dropdown to access user preferences, help, and logout\n\nngtype: controller",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": "ng $scope"
+                },
+                {
+                    "name": "$rootScope",
+                    "description": "ng $rootScope"
+                },
+                {
+                    "name": "userSettingsApi",
+                    "description": "user preferences data"
+                },
+                {
+                    "name": "windowSizeWatcher",
+                    "description": "notify when window size changes"
+                },
+                {
+                    "name": "deviceSizeChangedEvent",
+                    "description": "event name"
+                },
+                {
+                    "name": "fullScreenModeToggleEvent",
+                    "description": "event name"
+                },
+                {
+                    "name": "launchUserPreferencesModalEvent",
+                    "description": "event name"
+                }
+            ]
+        },
+        "ozpToolbar.ozpToolbar": {
+            "name": "ozpToolbar.ozpToolbar",
+            "shortname": "ozpToolbar.ozpToolbar",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar",
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 172,
+            "description": "Directive for the ozp toolbar\n\nngtype: directive",
             "static": 1
         },
         "general.dashboardChangeMonitor": {
@@ -2162,72 +2162,6 @@
             "class": "appToolbar.ApplicationToolbarCtrl",
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 46,
-            "itemtype": "property",
-            "name": "usernameLength Max length of username, based on\ncurrent screen size",
-            "type": "{Number}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 53,
-            "itemtype": "property",
-            "name": "fullScreenMode Flag indicating if toolbar should be hidden",
-            "type": "{boolean}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 59,
-            "itemtype": "property",
-            "name": "user Current user's username",
-            "type": "{string}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 65,
-            "itemtype": "property",
-            "name": "messages Messages for current user TBD",
-            "type": "{Array}",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 106,
-            "description": "Handler invoked when window size changes across device size boundaries\nas defined by Bootstrap",
-            "itemtype": "method",
-            "name": "handleDeviceSizeChange",
-            "params": [
-                {
-                    "name": "value",
-                    "description": "value.deviceSize is one of 'xs', 'sm', 'md', or 'lg'"
-                }
-            ],
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
-        },
-        {
-            "file": "src/app/dashboardToolbar/dashboardToolbar.js",
-            "line": 123,
-            "description": "Launch the user preferences modal dialog\n\nSends launchUserPreferencesModalEvent",
-            "itemtype": "method",
-            "name": "launchSettingsModal",
-            "class": "dashboardToolbar.DashboardToolbarCtrl",
-            "module": "ozpWebtop.dashboardToolbar",
-            "namespace": "dashboardToolbar"
         },
         {
             "file": "src/app/dashboardView/chrome/chrome.js",
@@ -3388,6 +3322,72 @@
             "is_constructor": 1,
             "class": "models.userSettingsApi",
             "module": "ozpWebtop.models.userSettings"
+        },
+        {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 46,
+            "itemtype": "property",
+            "name": "usernameLength Max length of username, based on\ncurrent screen size",
+            "type": "{Number}",
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
+        },
+        {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 53,
+            "itemtype": "property",
+            "name": "fullScreenMode Flag indicating if toolbar should be hidden",
+            "type": "{boolean}",
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
+        },
+        {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 59,
+            "itemtype": "property",
+            "name": "user Current user's username",
+            "type": "{string}",
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
+        },
+        {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 65,
+            "itemtype": "property",
+            "name": "messages Messages for current user TBD",
+            "type": "{Array}",
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
+        },
+        {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 106,
+            "description": "Handler invoked when window size changes across device size boundaries\nas defined by Bootstrap",
+            "itemtype": "method",
+            "name": "handleDeviceSizeChange",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "value.deviceSize is one of 'xs', 'sm', 'md', or 'lg'"
+                }
+            ],
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
+        },
+        {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 123,
+            "description": "Launch the user preferences modal dialog\n\nSends launchUserPreferencesModalEvent",
+            "itemtype": "method",
+            "name": "launchSettingsModal",
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
         },
         {
             "file": "src/app/services/dashboardChangeMonitor.js",
