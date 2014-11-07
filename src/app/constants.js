@@ -30,7 +30,7 @@ angular.module('ozpWebtop.constants')
  * @property useIwc
  * @type Boolean
  */
-.constant('useIwc', true)
+.constant('useIwc', false)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //                              Events

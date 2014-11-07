@@ -1233,8 +1233,6 @@ models.service('dashboardModelIwc', function($sce, iwcInterface, Utilities) {
  * @namespace models
  */
 models.factory('dashboardApi', function($injector, useIwc) {
-  // TODO: manual override
-  // useIwc = false;
   if (useIwc) {
     return $injector.get('dashboardModelIwc');
   } else if (useIwc === false){
