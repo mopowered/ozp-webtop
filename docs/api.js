@@ -11,7 +11,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "dashboardView.IframeCtrl",
         "dashboardView.ozpButton",
         "dashboardView.ozpChrome",
-        "dashboardView.ozpGridsterItem",
         "dashboardView.ozpManagedFrame",
         "general.dashboardChangeMonitor",
         "models.dashboardApi",
@@ -45,10 +44,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.dashboardView.button",
         "ozpWebtop.dashboardView.chrome",
         "ozpWebtop.dashboardView.desktop",
+        "ozpWebtop.dashboardView.desktop.iframe",
         "ozpWebtop.dashboardView.desktop.managedFrame",
         "ozpWebtop.dashboardView.grid",
-        "ozpWebtop.dashboardView.grid.gridsterFrame",
-        "ozpWebtop.dashboardView.iframe",
         "ozpWebtop.models.dashboard",
         "ozpWebtop.models.marketplace",
         "ozpWebtop.models.userSettings",
@@ -130,6 +128,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Desktop layout main controller"
         },
         {
+            "displayName": "ozpWebtop.dashboardView.desktop.iframe",
+            "name": "ozpWebtop.dashboardView.desktop.iframe",
+            "description": "iframe module for dashboard layouts"
+        },
+        {
             "displayName": "ozpWebtop.dashboardView.desktop.managedFrame",
             "name": "ozpWebtop.dashboardView.desktop.managedFrame",
             "description": "Desktop managed frame"
@@ -138,16 +141,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.dashboardView.grid",
             "name": "ozpWebtop.dashboardView.grid",
             "description": "Grid layout main controller"
-        },
-        {
-            "displayName": "ozpWebtop.dashboardView.grid.gridsterFrame",
-            "name": "ozpWebtop.dashboardView.grid.gridsterFrame",
-            "description": "Gridster frames"
-        },
-        {
-            "displayName": "ozpWebtop.dashboardView.iframe",
-            "name": "ozpWebtop.dashboardView.iframe",
-            "description": "iframe module for dashboard layouts"
         },
         {
             "displayName": "ozpWebtop.models.dashboard",

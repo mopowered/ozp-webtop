@@ -8596,6 +8596,10 @@ strictly of LESS variables already defined in Bootstrap:
 http://getbootstrap.com/customize/#less-variables
 */
 /**
+Modifications to the Bootstrap source go here. Depending on the amount of
+alteration, we may want to use multiple files
+*/
+/**
  * This is our main variables file. We must include it last so we can overwrite
  * any variable definitions in our imported stylesheets.
  */

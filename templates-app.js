@@ -1,4 +1,4 @@
-angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/grid/grid.tpl.html', 'dashboardView/templates/managedframe.tpl.html', 'dashboardView/templates/managediframe.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
+angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/genericFrames/managedframe.tpl.html', 'dashboardView/desktop/genericFrames/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
@@ -21,7 +21,7 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "            <li ng-repeat=\"app in applications\">\n" +
     "              <span ng-click=\"appSelected(app)\" class=\"link-pointer\"\n" +
     "                  ng-class=\"{addappselected: isAppSelected(app)}\"\n" +
-    "                  tooltip-placement=\"right\" tooltip=\"{{app.shortDescription}}\">\n" +
+    "                  tooltip-placement=\"right\" tooltip=\"{{app.descriptionShort}}\">\n" +
     "                <img ng-src=\"{{app.icons.small}}\" height=\"20\" width=\"20\" />\n" +
     "                {{app.name}}</span>\n" +
     "            </li>\n" +
@@ -183,7 +183,23 @@ angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCac
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
-    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\" ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\" ng-class=\"{'fullWidth' : frame.isMaximized}\"></ozp-managed-frame>");
+    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\"\n" +
+    "                   ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\"\n" +
+    "                   ng-class=\"{'fullWidth' : frame.isMaximized}\">\n" +
+    "</ozp-managed-frame>");
+}]);
+
+angular.module("dashboardView/desktop/genericFrames/managedframe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/desktop/genericFrames/managedframe.tpl.html",
+    "<ozp-chrome></ozp-chrome>\n" +
+    "<div class=\"managed-frame\" ng-include=\"frame.url\" height=\"style.height\" width=\"style.width\"></div>\n" +
+    "");
+}]);
+
+angular.module("dashboardView/desktop/genericFrames/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/desktop/genericFrames/managediframe.tpl.html",
+    "<ozp-chrome ></ozp-chrome>\n" +
+    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\" height=\"style.height\" width=\"style.width\"></iframe>");
 }]);
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -191,28 +207,20 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
     "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !fullScreenMode}\">\n" +
     "  <div gridster=\"gridOptions\">\n" +
     "    <ul>\n" +
-    "      <li gridster-item row=\"item.gridLayout[deviceSize].row\" col=\"item.gridLayout[deviceSize].col\"\n" +
-    "          size-x=\"item.gridLayout[deviceSize].sizeX\" size-y=\"item.gridLayout[deviceSize].sizeY\"\n" +
-    "          ng-repeat=\"item in frames\" id=\"{{item.id}}\"\n" +
-    "          ozp-gridster-item=\"\" frame=\"item\" ng-hide=\"isDisabled\">\n" +
+    "      <li gridster-item row=\"frame.gridLayout[deviceSize].row\" col=\"frame.gridLayout[deviceSize].col\"\n" +
+    "          size-x=\"frame.gridLayout[deviceSize].sizeX\" size-y=\"frame.gridLayout[deviceSize].sizeY\"\n" +
+    "          ng-repeat=\"frame in frames\" id=\"{{frame.id}}\"\n" +
+    "          class=\"ozp-managed-frame\">\n" +
+    "        <ozp-chrome ></ozp-chrome>\n" +
+    "        <iframe class=\"managed-iframe\"\n" +
+    "                ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\"\n" +
+    "                height=\"frame.gridLayout.height\" width=\"frame.gridLayout.width\">\n" +
+    "        </iframe>\n" +
     "      </li>\n" +
     "    </ul>\n" +
     "  </div>\n" +
     "</div>\n" +
     "");
-}]);
-
-angular.module("dashboardView/templates/managedframe.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/templates/managedframe.tpl.html",
-    "<ozp-chrome></ozp-chrome>\n" +
-    "<div class=\"managed-frame\" ng-include=\"frame.url\" height=\"style.height\" width=\"style.width\"></div>\n" +
-    "");
-}]);
-
-angular.module("dashboardView/templates/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/templates/managediframe.tpl.html",
-    "<ozp-chrome ></ozp-chrome>\n" +
-    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\" height=\"style.height\" width=\"style.width\"></iframe>");
 }]);
 
 angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
