@@ -44,7 +44,7 @@ function generalMarketplacedModel(persistStrategy) {
         'apps': [
           {
             'name': 'AirMail',
-            'id': 'f2355f7c-bd8f-440c-b6f4-fe6bea787ecb',
+            'id': 'b0700c81-65cd-45f5-b599-07d9b3764511',
             'description': 'This app delivers your mail super fast!',
             'descriptionShort': 'Air mail delivery service',
             'type': 'application',
@@ -116,7 +116,7 @@ function generalMarketplacedModel(persistStrategy) {
           },
           {
             'name': 'ChartCourse',
-            'id': 'c3ae4b4f-0d60-42f6-9005-c87d852e4812',
+            'id': 'fe79bd04-aa78-4c55-89bc-cedb88eeae38',
             'description': 'Never get lost again with this utility to chart your course',
             'descriptionShort': 'An easy to use course charting application',
             'type': 'application',
@@ -153,7 +153,7 @@ function generalMarketplacedModel(persistStrategy) {
           },
           {
             'name': 'Chatterbox',
-            'id': '34643c12-c600-4188-ab44-993681751f6c',
+            'id': '773c2bf4-069d-4b9d-9f7d-e767613388b0',
             'description': 'Keep in touch with all of your friends using this chatting application',
             'descriptionShort': 'Chat application',
             'type': 'application',
@@ -190,7 +190,7 @@ function generalMarketplacedModel(persistStrategy) {
           },
           {
             'name': 'Clipboard',
-            'id': '4bfd3e29-af51-4f0a-ae5f-2609d52f1e58',
+            'id': '26e289fa-fb36-4825-9448-e8760db9e362',
             'description': 'Clipboard long description',
             'descriptionShort': 'Clipboard application',
             'type': 'application',
