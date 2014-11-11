@@ -417,7 +417,7 @@
             },
             "tag": "module",
             "file": "src/app/dashboardView/chrome/chrome.js",
-            "line": 105,
+            "line": 91,
             "description": "ozp Chrome module",
             "requires": [
                 "ozpWebtop.constants",
@@ -995,10 +995,6 @@
                 {
                     "name": "dashboardStateChangedEvent",
                     "description": "event name"
-                },
-                {
-                    "name": "dashboardSwitchedEvent",
-                    "description": "event name"
                 }
             ]
         },
@@ -1013,7 +1009,7 @@
             "module": "ozpWebtop.dashboardView.chrome",
             "namespace": "dashboardView",
             "file": "src/app/dashboardView/chrome/chrome.js",
-            "line": 105,
+            "line": 91,
             "description": "Directive for chrome (bar appearing across the top of each widget)\n\nngtype: directive",
             "static": 1
         },
@@ -2094,22 +2090,6 @@
         {
             "file": "src/app/dashboardView/chrome/chrome.js",
             "line": 46,
-            "description": "Handler invoked when active dashboard changes",
-            "itemtype": "method",
-            "name": "handleDashboardChange",
-            "params": [
-                {
-                    "name": "dashboardChange",
-                    "description": "contains layout and dashboardId info"
-                }
-            ],
-            "class": "dashboardView.ChromeCtrl",
-            "module": "ozpWebtop.dashboardView.chrome",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/chrome/chrome.js",
-            "line": 60,
             "description": "Remove a frame from the current dashboard and send\ndashboardStateChangedEvent",
             "itemtype": "method",
             "name": "isDisabled",
@@ -2125,7 +2105,7 @@
         },
         {
             "file": "src/app/dashboardView/chrome/chrome.js",
-            "line": 76,
+            "line": 62,
             "description": "Hide a frame on the dashboard",
             "itemtype": "method",
             "name": "minimizeFrame",
@@ -2141,7 +2121,7 @@
         },
         {
             "file": "src/app/dashboardView/chrome/chrome.js",
-            "line": 90,
+            "line": 76,
             "description": "Show a frame on the dashboard",
             "itemtype": "method",
             "name": "maximizeFrame",
