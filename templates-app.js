@@ -346,10 +346,10 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "  <div class=\"modal-body\">\n" +
     "    <div class=\"container-fluid\">\n" +
     "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-4\">\n" +
+    "        <div class=\"col-sm-3 col-md-4\">\n" +
     "          <h4>Preferences </h4>\n" +
     "        </div>\n" +
-    "        <div class=\"col-md-8\">\n" +
+    "        <div class=\"col-sm-7 col-md-8\">\n" +
     "          <form class=\"form-horizontal\" role=\"form\">\n" +
     "            <div class=\"form-group\">\n" +
     "              <label for=\"themeSelect\" class=\"col-sm-6 control-label\"> Theme </label>\n" +
@@ -364,10 +364,10 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "      </div>\n" +
     "      <hr />\n" +
     "      <div class=\"row\">\n" +
-    "        <div class=\"col-md-4\">\n" +
+    "        <div class=\"col-sm-3 col-md-4\">\n" +
     "          <h4> Dashboards </h4>\n" +
     "        </div>\n" +
-    "        <div class=\"col-md-8\">\n" +
+    "        <div class=\"col-sm-7 col-md-8\">\n" +
     "          <form class=\"form-horizontal\" role=\"form\" name=\"editDashboardsForm\">\n" +
     "\n" +
     "            <div class=\"form-group\"\n" +
@@ -434,5 +434,6 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "            class=\"btn btn-primary\" ng-click=\"ok()\">OK</button>\n" +
     "    <button class=\"btn btn-primary\" ng-click=\"cancel()\">Cancel</button>\n" +
     "  </div>\n" +
+    "\n" +
     "</div>");
 }]);

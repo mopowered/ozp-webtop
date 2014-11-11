@@ -6036,7 +6036,7 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
+    width: 720px;
     margin: 30px auto;
   }
   .modal-content {
@@ -8642,6 +8642,16 @@ body {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   border-radius: 0 !important;
+}
+@media (min-width: 768px) {
+  .app-modal-window .modal-dialog {
+    width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .app-modal-window .modal-dialog {
+    width: 900px;
+  }
 }
 .wt-modal {
   background-color: #3b4246;
