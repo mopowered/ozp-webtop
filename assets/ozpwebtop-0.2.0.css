@@ -8669,9 +8669,6 @@ body {
 .close-icon {
   color: #ffffff;
 }
-.app-modal-window .modal-dialog {
-  width: 900px;
-}
 .add-apps-style ul {
   list-style: none;
   overflow: hidden;
