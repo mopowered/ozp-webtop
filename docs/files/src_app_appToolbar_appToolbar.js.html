@@ -254,6 +254,7 @@ angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;u
  * @param dashboardSwitchedEvent event name
  * @param fullScreenModeToggleEvent event name
  * @param launchUserPreferencesModalEvent event name
+ * @param highlightFrameOnGridLayoutEvent event name
  */
 angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
   .controller(&#x27;ApplicationToolbarCtrl&#x27;, function($scope, $rootScope, $state,
@@ -267,7 +268,8 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
                                                  dashboardSwitchedEvent,
                                                  fullScreenModeToggleEvent,
                                                  userPreferencesUpdatedEvent,
-                                                 launchUserPreferencesModalEvent) {
+                                                 launchUserPreferencesModalEvent,
+                                                 highlightFrameOnGridLayoutEvent) {
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -594,11 +596,16 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
      * @param {Object} e The application to maximize/show
      */
      $scope.maximizeFrame = function(e) {
-      dashboardApi.toggleFrameKey(e.id, &#x27;isMinimized&#x27;).then(function() {
-        $rootScope.$broadcast(dashboardStateChangedEvent);
-      }).catch(function(error) {
-        console.log(&#x27;should not have happened: &#x27; + error);
-      });
+       if ($scope.layout === &#x27;grid&#x27;) {
+         $rootScope.$broadcast(highlightFrameOnGridLayoutEvent, {&#x27;frameId&#x27;: e.id});
+       }
+       else {
+         dashboardApi.toggleFrameKey(e.id, &#x27;isMinimized&#x27;).then(function () {
+           $rootScope.$broadcast(dashboardStateChangedEvent);
+         }).catch(function (error) {
+           console.log(&#x27;should not have happened: &#x27; + error);
+         });
+       }
      };
 
     /**

@@ -375,7 +375,7 @@
             },
             "tag": "module",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 563,
+            "line": 570,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -928,6 +928,10 @@
                 {
                     "name": "launchUserPreferencesModalEvent",
                     "description": "event name"
+                },
+                {
+                    "name": "highlightFrameOnGridLayoutEvent",
+                    "description": "event name"
                 }
             ]
         },
@@ -942,7 +946,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 563,
+            "line": 570,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1178,6 +1182,11 @@
                     "type": "Object"
                 },
                 {
+                    "name": "$timeout",
+                    "description": "the Angular timeout service",
+                    "type": "Object"
+                },
+                {
                     "name": "dashboardApi",
                     "description": "the API for dashboard information",
                     "type": "Object"
@@ -1224,6 +1233,11 @@
                 },
                 {
                     "name": "gridFrameSizeChangeEvent",
+                    "description": "event name",
+                    "type": "String"
+                },
+                {
+                    "name": "highlightFrameOnGridLayoutEvent",
                     "description": "event name",
                     "type": "String"
                 }
@@ -1750,7 +1764,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 72,
+            "line": 74,
             "itemtype": "property",
             "name": "dashboardNameLength Max length of dashboard name, based on\ncurrent screen size",
             "type": "{String}",
@@ -1760,7 +1774,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 79,
+            "line": 81,
             "itemtype": "property",
             "name": "dashboards Dashboards for current user",
             "type": "{Array}",
@@ -1770,7 +1784,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 85,
+            "line": 87,
             "itemtype": "property",
             "name": "Dashboard layout (grid or desktop)",
             "type": "{string}",
@@ -1780,7 +1794,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 91,
+            "line": 93,
             "itemtype": "property",
             "name": "currentDashboard Current active dashboard",
             "type": "{string}",
@@ -1790,7 +1804,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 97,
+            "line": 99,
             "itemtype": "property",
             "name": "dashboardId Current dashboard id",
             "type": "{string}",
@@ -1800,7 +1814,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 103,
+            "line": 105,
             "itemtype": "property",
             "name": "$scope.maxAppsDisplayed The maximum number of apps that can be\ndisplayed on the toolbar (based on screen width)",
             "type": "{Number}",
@@ -1810,7 +1824,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 109,
+            "line": 111,
             "itemtype": "property",
             "name": "$scope.currentDashboardId The id of the current dashboard",
             "type": "{string}",
@@ -1820,7 +1834,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 114,
+            "line": 116,
             "itemtype": "property",
             "name": "$scope.fullScreenMode Flag indicating if the toolbar is hidden or\n not",
             "type": "{boolean}",
@@ -1830,7 +1844,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 120,
+            "line": 122,
             "itemtype": "property",
             "name": "$scope.apps All applications available in the marketplace",
             "type": "{Array}",
@@ -1840,7 +1854,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 125,
+            "line": 127,
             "itemtype": "property",
             "name": "$scope.frames Frames on current dashboard (includes marketplace\n data like app name, icons, description, etc)",
             "type": "{Array}",
@@ -1850,7 +1864,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 131,
+            "line": 133,
             "itemtype": "property",
             "name": "$scope.myPinnedApps Applications in current dashboard that are\n shown in the application toolbar",
             "type": "{Array}",
@@ -1860,7 +1874,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 137,
+            "line": 139,
             "itemtype": "property",
             "name": "$scope.myPinnedAppsFirstDisplayedIndex The index (in\n $scope.myPinnedApps) of the first application shown in the application\n toolbar to display",
             "type": "{number}",
@@ -1870,7 +1884,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 144,
+            "line": 146,
             "itemtype": "property",
             "name": "$scope.nextAppsVisible Flag for the 'pagination' next arrow\n in the toolbar",
             "type": "{boolean}",
@@ -1880,7 +1894,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 150,
+            "line": 152,
             "itemtype": "property",
             "name": "$scope.previousAppsVisible Flag for the 'pagination' previous\n arrow in the toolbar",
             "type": "{boolean}",
@@ -1890,7 +1904,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 156,
+            "line": 158,
             "itemtype": "property",
             "name": "$scope.layout The current dashboard layout (grid or desktop)",
             "type": "{string}",
@@ -1900,7 +1914,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 224,
+            "line": 226,
             "description": "Launch the user preferences modal dialog\n\nSends launchUserPreferencesModalEvent",
             "itemtype": "method",
             "name": "launchSettingsModal",
@@ -1910,7 +1924,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 237,
+            "line": 239,
             "description": "Handler invoked when user settings event is fired",
             "itemtype": "method",
             "name": "handleUserSettingsChange",
@@ -1920,7 +1934,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 259,
+            "line": 261,
             "description": "Handle the deviceSizeChangedEvent\n\nUpdate $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -1936,7 +1950,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 287,
+            "line": 289,
             "description": "Handle the dashboardSwitchedEvent\n\nSet $scope.currentDashboardId and invoke updateApps()\nUpdate current dashboard and layout",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -1952,7 +1966,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 312,
+            "line": 314,
             "description": "Set the current dashboard",
             "itemtype": "method",
             "name": "setCurrentDashboard",
@@ -1968,7 +1982,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 321,
+            "line": 323,
             "description": "Use a grid layout",
             "itemtype": "method",
             "name": "useGridLayout",
@@ -1978,7 +1992,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 329,
+            "line": 331,
             "description": "Use a desktop layout",
             "itemtype": "method",
             "name": "useDesktopLayout",
@@ -1988,7 +2002,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 337,
+            "line": 339,
             "description": "Set $scope.myPinnedApps\n\nRequires that $scope.frames is set first",
             "itemtype": "method",
             "name": "setPinnedApps",
@@ -1998,7 +2012,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 361,
+            "line": 363,
             "description": "Update application data in the toolbar (invoked on a dashboard change)",
             "itemtype": "method",
             "name": "updateApps",
@@ -2008,7 +2022,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 387,
+            "line": 389,
             "description": "Maximize (or show) a frame that was previously minimized (hidden)",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -2025,7 +2039,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 400,
+            "line": 407,
             "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a fullScreenModeToggleEvent",
             "itemtype": "method",
             "name": "toggleFullScreenMode",
@@ -2035,7 +2049,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 426,
+            "line": 433,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
@@ -2045,7 +2059,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 446,
+            "line": 453,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
@@ -2055,7 +2069,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 467,
+            "line": 474,
             "description": "Opens the Add Application modal dialog",
             "itemtype": "method",
             "name": "openApplicationsModal",
@@ -2065,7 +2079,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 485,
+            "line": 492,
             "description": "Add an application to a dashboard",
             "itemtype": "method",
             "name": "addAppToDashboard",
@@ -2306,7 +2320,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 63,
+            "line": 66,
             "itemtype": "property",
             "name": "deviceSize Current screen size (xs, sm, md, lg)",
             "type": "{string}",
@@ -2316,7 +2330,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 69,
+            "line": 72,
             "itemtype": "property",
             "name": "frames Frames (widgets/apps) on the current dashboard",
             "type": "{Array}",
@@ -2326,7 +2340,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 75,
+            "line": 78,
             "itemtype": "property",
             "name": "apps Applications in the marketplace",
             "type": "{Array}",
@@ -2336,7 +2350,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 81,
+            "line": 84,
             "itemtype": "property",
             "name": "fullScreenMode Flag for full screen mode",
             "type": "{boolean}",
@@ -2346,7 +2360,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 87,
+            "line": 90,
             "itemtype": "property",
             "name": "activeFrames TODO clean this up",
             "type": "{Array}",
@@ -2356,7 +2370,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 93,
+            "line": 96,
             "itemtype": "property",
             "name": "dashboard Current dashboard",
             "type": "{{}}",
@@ -2366,7 +2380,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 99,
+            "line": 102,
             "itemtype": "property",
             "name": "dashboardId Current dashboardId\nTODO: duplicate info?",
             "type": "{string}",
@@ -2376,7 +2390,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 106,
+            "line": 109,
             "itemtype": "property",
             "name": "intervalPromise promise returned by $interval (keep track of it\nso it can be canceled)",
             "class": "dashboardView.GridCtrl",
@@ -2385,7 +2399,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 112,
+            "line": 115,
             "itemtype": "property",
             "name": "gridOptions Configuration options for Gridster\nTODO: make these available to other components somehow",
             "type": "{Object}",
@@ -2395,7 +2409,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 245,
+            "line": 273,
             "description": "Handle start event resizing a widget on Gridster",
             "itemtype": "method",
             "name": "handleGridsterResizeStart",
@@ -2411,7 +2425,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 274,
+            "line": 302,
             "description": "Handle stop event when resizing Gridster widget",
             "itemtype": "method",
             "name": "handleGridsterResizeStop",
@@ -2427,7 +2441,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 286,
+            "line": 314,
             "description": "Handler for windowSizeChangedEvent (each time the window size\nchanges, even by a single pixel)\n\nCancels the existing $interval promise and creates a new one to update\nall frames in 200ms",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -2437,7 +2451,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 300,
+            "line": 328,
             "description": "Handles the deviceSizeChangedEvent, which occurs whenever the\nscreen size changes device sizes (as defined by Bootstrap)",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2454,7 +2468,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 324,
+            "line": 352,
             "description": "Handle the dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -2464,7 +2478,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 406,
+            "line": 434,
             "description": "Calculates the size of a frame, saves it, and sends a\n gridFrameSizeChangeEvent event",
             "itemtype": "method",
             "name": "updateDashboardFramePx",
@@ -2485,7 +2499,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 447,
+            "line": 475,
             "description": "Reloads the current dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2499,7 +2513,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 495,
+            "line": 523,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "itemtype": "method",
             "name": "updateFrameAfterChange",
@@ -2520,7 +2534,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 515,
+            "line": 543,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "itemtype": "method",
             "name": "updateAllFramesAfterChange",
@@ -2534,7 +2548,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 533,
+            "line": 561,
             "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n- hard-coded value of gridster container padding\n- accesses $scope.gridOptions",
             "itemtype": "method",
             "name": "calculateGridFrameSize",
@@ -2555,7 +2569,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 573,
+            "line": 601,
             "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
             "itemtype": "method",
             "name": "updateLocalGridFrameSize",
@@ -3880,6 +3894,16 @@
             "module": "ozpWebtop.constants"
         },
         {
+            "file": "src/app/constants.js",
+            "line": 106,
+            "description": "Event fired when app icon is clicked in the app toolbar in grid layout",
+            "itemtype": "property",
+            "name": "highlightFrameOnGridLayoutEvent",
+            "type": "String",
+            "class": "constants",
+            "module": "ozpWebtop.constants"
+        },
+        {
             "file": "src/common/ellipticalFilter/elliptical.js",
             "line": 24,
             "description": "Truncate a string of text and add an ellipsis",
@@ -4143,7 +4167,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/appToolbar/appToolbar.js:485"
+            "line": " src/app/appToolbar/appToolbar.js:492"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4155,27 +4179,27 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:406"
+            "line": " src/app/dashboardView/grid/grid.js:434"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:447"
+            "line": " src/app/dashboardView/grid/grid.js:475"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:495"
+            "line": " src/app/dashboardView/grid/grid.js:523"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:515"
+            "line": " src/app/dashboardView/grid/grid.js:543"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:533"
+            "line": " src/app/dashboardView/grid/grid.js:561"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:573"
+            "line": " src/app/dashboardView/grid/grid.js:601"
         },
         {
             "message": "replacing incorrect tag: returns with return",

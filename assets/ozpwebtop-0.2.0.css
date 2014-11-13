@@ -8699,6 +8699,12 @@ body {
   background-color: #191f25;
   width: 100%;
 }
+.frameHighlighted {
+  border-style: solid;
+  border-width: 10px;
+  border-color: #f59d4c;
+  list-style-position: inside;
+}
 .app-toolbar {
   position: fixed;
   margin-top: 0;

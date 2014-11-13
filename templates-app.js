@@ -211,8 +211,9 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
     "          size-x=\"frame.gridLayout[deviceSize].sizeX\" size-y=\"frame.gridLayout[deviceSize].sizeY\"\n" +
     "          ng-repeat=\"frame in frames\" id=\"{{frame.id}}\"\n" +
     "          class=\"ozp-managed-frame\">\n" +
-    "        <ozp-chrome ></ozp-chrome>\n" +
+    "        <ozp-chrome></ozp-chrome>\n" +
     "        <iframe class=\"managed-iframe\"\n" +
+    "                ng-class=\"{frameHighlighted: frame.highlighted}\"\n" +
     "                ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\"\n" +
     "                height=\"frame.gridLayout.height\" width=\"frame.gridLayout.width\">\n" +
     "        </iframe>\n" +
