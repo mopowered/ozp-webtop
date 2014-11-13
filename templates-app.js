@@ -348,24 +348,6 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "    <div class=\"container-fluid\">\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-sm-3 col-md-4\">\n" +
-    "          <h4>Preferences </h4>\n" +
-    "        </div>\n" +
-    "        <div class=\"col-sm-7 col-md-8\">\n" +
-    "          <form class=\"form-horizontal\" role=\"form\">\n" +
-    "            <div class=\"form-group\">\n" +
-    "              <label for=\"themeSelect\" class=\"col-sm-6 control-label\"> Theme </label>\n" +
-    "              <div class=\"col-sm-6\">\n" +
-    "                <select class=\"form-control\" id=\"themeSelect\"\n" +
-    "                    ng-model=\"preferences.theme\" ng-options=\"theme for theme in themes\">\n" +
-    "                </select>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
-    "          </form>\n" +
-    "        </div>\n" +
-    "      </div>\n" +
-    "      <hr />\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-sm-3 col-md-4\">\n" +
     "          <h4> Dashboards </h4>\n" +
     "        </div>\n" +
     "        <div class=\"col-sm-7 col-md-8\">\n" +

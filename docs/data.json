@@ -653,7 +653,7 @@
             },
             "tag": "module",
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 270,
+            "line": 263,
             "description": "The modal encompassing user settings functionality.",
             "requires": [
                 "ozpWebtop.models.dashboard",
@@ -1461,7 +1461,7 @@
             "module": "ozpWebtop.userSettings",
             "namespace": "userSettings",
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 270,
+            "line": 263,
             "description": "ng Directive for User Settings modal dialog\n\nUsage:\n\n    <user-settings></user-settings>\n\nngtype: directive",
             "static": 1
         },
@@ -3653,16 +3653,6 @@
             "file": "src/app/userPreferencesModal/userSettings.js",
             "line": 48,
             "itemtype": "property",
-            "name": "themes Available themes for the application (e.g light,\ndark)",
-            "type": "{Array}",
-            "class": "userSettings.ModalInstanceCtrl",
-            "module": "ozpWebtop.userSettings",
-            "namespace": "userSettings"
-        },
-        {
-            "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 55,
-            "itemtype": "property",
             "name": "validNamePattern Regex for valid dashboard names",
             "type": "{RegExp}",
             "class": "userSettings.ModalInstanceCtrl",
@@ -3671,7 +3661,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 61,
+            "line": 54,
             "itemtype": "property",
             "name": "currentDashboardId User's current dashboard id",
             "type": "{String}",
@@ -3681,7 +3671,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 67,
+            "line": 60,
             "itemtype": "property",
             "name": "newDashboardName Name of new dashboard to create. An\nobject to support ng data binding",
             "type": "{{name: string}}",
@@ -3691,7 +3681,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 76,
+            "line": 69,
             "itemtype": "property",
             "name": "addingNewBoard Flag indicating if a new dashboard is being\nadded",
             "type": "{boolean}",
@@ -3701,7 +3691,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 103,
+            "line": 96,
             "description": "Makes changes to an existing dashboard\n\nInvoked after user 'submits' the modal. Checks to see if this dashboard\nwas flagged for deletion or renamed. If so, the corresponding changes\nare made",
             "itemtype": "method",
             "name": "updateExistingDashboard",
@@ -3722,7 +3712,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 142,
+            "line": 135,
             "description": "Handler invoked when dialog is closed via OK button\n\n- Makes changes to any existing dashboards (deletions or renames)\n- Adds a new dashboard (if indicated by user)\n- Updates user preferences\n- Broadcasts userPreferencesUpdatedEvent event",
             "itemtype": "method",
             "name": "ok",
@@ -3732,7 +3722,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 190,
+            "line": 183,
             "description": "Handler invoked when modal is dismissed via the cancel button",
             "itemtype": "method",
             "name": "cancel",
@@ -3742,7 +3732,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 199,
+            "line": 192,
             "description": "Handler invoked when the delete button is clicked for a given dashboard\n\nEnsures user is not going to delete their last dashboard, then flags\nthe given dashboard for deletion",
             "itemtype": "method",
             "name": "deleteClicked",
@@ -3758,7 +3748,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 229,
+            "line": 222,
             "description": "Handler invoked when the undo delete button is clicked for a given\ndashboard\n\nResets the deletion flag for the dashboard",
             "itemtype": "method",
             "name": "undoDeleteClicked",
@@ -3775,7 +3765,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 246,
+            "line": 239,
             "description": "Handler invoked when the add dashboard button is clicked",
             "itemtype": "method",
             "name": "addDashboardClicked",
@@ -3785,7 +3775,7 @@
         },
         {
             "file": "src/app/userPreferencesModal/userSettings.js",
-            "line": 255,
+            "line": 248,
             "description": "Handler invoked when the undo add dashboard button is clicked",
             "itemtype": "method",
             "name": "undoAddDashboardClicked",
@@ -4391,7 +4381,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/userPreferencesModal/userSettings.js:103"
+            "line": " src/app/userPreferencesModal/userSettings.js:96"
         },
         {
             "message": "replacing incorrect tag: returns with return",
