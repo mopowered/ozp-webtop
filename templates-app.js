@@ -95,7 +95,8 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\"\n" +
     "               ng-class=\"{navLinkSelected: layout == 'grid'}\"\n" +
     "                tooltip=\"Grid layout\" tooltip-placement=\"top\">\n" +
-    "              <i ng-class=\"{iconWhite: layout == 'grid'}\" class=\"fa fa-th fa-lg\"></i>\n" +
+    "              <i class=\"fa fa-th fa-lg\"></i>\n" +
+    "              <div ng-class=\"layout === 'desktop'? 'layout-icon-inactive' : 'layout-icon-active'\">&nbsp</div>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
@@ -103,14 +104,15 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\"\n" +
     "               ng-class=\"{navLinkSelected: layout == 'desktop'}\" tooltip=\"Desktop layout\"\n" +
     "                tooltip-placement=\"top\">\n" +
-    "              <i ng-class=\"{iconWhite: layout == 'desktop'}\" class=\"fa fa-clipboard fa-lg\"></i>\n" +
+    "              <i class=\"fa fa-clipboard fa-lg\"></i>\n" +
+    "              <div ng-class=\"layout === 'grid'? 'layout-icon-inactive' : 'layout-icon-active'\">&nbsp</div>\n" +
     "            </a>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
     "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\"\n" +
     "              >\n" +
-    "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; padding-left: 15px; padding-bottom: 0px;\">\n" +
+    "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; margin-left: 15px; padding-left: 0px; padding-bottom: 0px;\">\n" +
     "              <img class=\"chrome-icon app-toolbar-img\"\n" +
     "                   ng-src=\"{{app.icon.large}}\"/>\n" +
     "              <div ng-class=\"app.isMinimized && layout === 'desktop'? 'app-toolbar-inactive-app' : 'app-toolbar-active-app'\">&nbsp</div>\n" +
@@ -130,8 +132,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            </a>\n" +
     "          </li>\n" +
     "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Enter Full Screen\"\n" +
-    "              tooltip-placement=\"top\"\n" +
-    "              style=\"width: 25px; float: right; margin-right: 5px; margin-left: 10px; padding-left: 0px; \">\n" +
+    "              tooltip-placement=\"top\">\n" +
     "            <a ng-click=\"toggleFullScreenMode();\">\n" +
     "              <i class=\"fa fa-expand fa-lg\"></i>\n" +
     "            </a>\n" +

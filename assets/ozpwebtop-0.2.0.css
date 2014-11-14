@@ -8906,6 +8906,19 @@ body {
   background-color: #558dc3;
   background-color: #191f25;
 }
+.layout-icon-active {
+  position: relative;
+  height: 2px;
+  top: 10px;
+  background-color: #558dc3;
+}
+.layout-icon-inactive {
+  position: relative;
+  height: 2px;
+  top: 10px;
+  background-color: #558dc3;
+  background-color: #191f25;
+}
 .classBanner {
   position: fixed !important;
   z-index: 200;
