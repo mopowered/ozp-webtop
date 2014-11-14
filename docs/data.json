@@ -579,7 +579,7 @@
             },
             "tag": "module",
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 161,
+            "line": 127,
             "description": "The ozp toolbar component shown in the Webtop.",
             "requires": [
                 "ozp.common.windowSizeWatcher",
@@ -1340,7 +1340,7 @@
             "module": "ozpWebtop.ozpToolbar",
             "namespace": "ozpToolbar",
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 161,
+            "line": 127,
             "description": "Directive for the ozp toolbar\n\nngtype: directive",
             "static": 1
         },

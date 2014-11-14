@@ -227,111 +227,73 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
 
 angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("ozpToolbar/ozpToolbar.tpl.html",
+    "<nav class=\"navbar navbar-default navbar-fixed-top navbar-inverse\">\n" +
+    "  <div class=\"container-fluid\">\n" +
+    "    <div class=\"navbar-left\">\n" +
+    "      <ul class=\"nav navbar-nav\">\n" +
+    "        <li><a class=\"lrg\" href=\"http://ozone-development.github.io/hud-ui\"><i class=\"icon-home\"></i></a></li>\n" +
+    "        <li><a class=\"lrg\" href=\"http://ozone-development.github.io/center-ui\"><i class=\"icon-shopping\"></i></a></li>\n" +
+    "        <li class=\"active\"><a class=\"lrg\" href=\"http://ozone-development.github.io/ozp-webtop/#/grid\"><i class=\"icon-layout\"></i></a></li>\n" +
+    "      </ul>\n" +
+    "    </div>\n" +
     "\n" +
-    "  <nav class=\"navbar navbar-default navbar-inverse ozp-toolbar\n" +
-    "    no-rounded-corners navbar-fixed-top\" role=\"navigation\"\n" +
-    "       ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
-    "    <div class=\"container-fluid\" >\n" +
-    "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
-    "      <div class=\"navbar-header\">\n" +
-    "        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n" +
-    "          <span class=\"sr-only\">Toggle navigation</span>\n" +
-    "          <span class=\"icon-bar\"></span>\n" +
-    "          <span class=\"icon-bar\"></span>\n" +
-    "          <span class=\"icon-bar\"></span>\n" +
-    "        </button>\n" +
-    "\n" +
-    "      </div>\n" +
-    "\n" +
-    "\n" +
-    "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +
-    "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\"\n" +
-    "           style=\"padding-left: 15px;\">\n" +
-    "        <ul class=\"nav navbar-nav\">\n" +
-    "          <!-- stuff on the left side of the nav bar -->\n" +
-    "          <li class=\"dropdown\">\n" +
-    "              <a class=\"navbar-brand dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\"\n" +
-    "                  id=\"main-menu-dropdown\">\n" +
-    "                <i class=\"fa fa-list fa-lg\"></i>\n" +
+    "    <div class=\"navbar-right\">\n" +
+    "      <ul class=\"nav navbar-nav\">\n" +
+    "        <li class=\"dropdown\">\n" +
+    "          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-bell-filled\"></i></a>\n" +
+    "          <ul class=\"dropdown-menu\">\n" +
+    "            <li>\n" +
+    "              <a href=\"#\">\n" +
+    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\">�</span></button>\n" +
+    "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/JotSpot32.png\" />\n" +
+    "                <span>Writing down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
-    "              <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"main-menu-dropdown\">\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"gotToAppLibrary()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-th\">&nbsp&nbsp</i>App Library</a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"goToAppBuilder()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-wrench\">&nbsp&nbsp</i>App Builder\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a href=\"http://ozone-development.github.io/hud-ui/index.html\"\n" +
-    "                     class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-home\">&nbsp&nbsp</i>HUD\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"submitListing()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-envelope-o\">&nbsp&nbsp</i>Submit a Listing\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"goToMetrics()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-bar-chart\">&nbsp&nbsp</i>Metrics\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"goToDeveloperResources()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-terminal\">&nbsp&nbsp</i>Developer Resources\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "              </ul>\n" +
+    "            </li>\n" +
+    "            <li class=\"divider\"></li>\n" +
+    "            <li>\n" +
+    "              <a href=\"#\">\n" +
+    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">�</span></button>\n" +
+    "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail32.png\" />\n" +
+    "                <span>Airplanes down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
+    "              </a>\n" +
+    "            </li>\n" +
+    "            <li class=\"divider\"></li>\n" +
+    "            <li>\n" +
+    "              <a href=\"#\">\n" +
+    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">�</span></button>\n" +
+    "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/ChatterBox32.png\" />\n" +
+    "                <span>Chat down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
+    "              </a>\n" +
     "            </li>\n" +
     "          </ul>\n" +
-    "\n" +
-    "        <ul class=\"nav navbar-nav navbar-right\">\n" +
-    "          <li>\n" +
-    "            <span ng-show=\"!messages.unread\" class=\"fa-stack fa-1x no-notifications-icon\"\n" +
-    "                  tooltip=\"No new messages\" tooltip-placement=\"bottom\">\n" +
-    "                <i class=\"fa fa-bell-slash fa-lg\"></i>\n" +
-    "              </span>\n" +
-    "            <div class=\"stacked-icons notification-icon\">\n" +
-    "              <span ng-show=\"messages.unread\" class=\"fa-stack fa-lg\">\n" +
-    "                <i class=\"fa fa-bell fa-lg fa-inverse\"></i>\n" +
-    "                <strong class=\"fa-stack-1x notification-text\">{{messages.unread}}</strong>\n" +
-    "              </span>\n" +
-    "            </div>\n" +
-    "            <!--<a href=\"#\"><i class=\"fa fa-bell-o fa-lg\"></i></a>-->\n" +
-    "            <!--<a href=\"#\"><span class=\"badge\">{{messages.unread}}</span></a>-->\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li>\n" +
-    "            <li class=\"dropdown\">\n" +
-    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
-    "              <i class=\"fa fa-user fa-lg\">&nbsp</i>{{user | limitTo : usernameLength}} <span class=\"caret\"></span></a>\n" +
-    "              <ul class=\"dropdown-menu\" role=\"menu\">\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"launchPreferences()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-cogs fa-fw menu-icon\"></i>Preferences\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a ng-click=\"helpUser()\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-question-circle fa-fw menu-icon\"></i>Help\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "                <li>\n" +
-    "                  <a href=\"http://ozone-development.github.io/hud-ui/logout.html\" class=\"link-pointer\">\n" +
-    "                    <i class=\"fa fa-sign-out fa-fw menu-icon\"></i>Logout\n" +
-    "                  </a>\n" +
-    "                </li>\n" +
-    "              </ul>\n" +
-    "            </li>\n" +
-    "          </li>\n" +
-    "        </ul>\n" +
-    "      </div><!-- /.navbar-collapse -->\n" +
-    "    </div><!-- /.container-fluid -->\n" +
-    "  </nav>\n" +
+    "        </li>\n" +
+    "        <li>\n" +
+    "          <a ng-click=\"helpUser()\" data-toggle=\"modal\" data-target=\"#modal_help\"><i class=\"icon-question\"></i></a>\n" +
+    "        </li>\n" +
+    "        <li class=\"dropdown\">\n" +
+    "          <a href=\"#\" class=\"lrg dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-menu\"></i></a>\n" +
+    "          <ul class=\"dropdown-menu\">\n" +
+    "            <li class=\"dropdown-header\">Personalize</li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-ribbon\"></i>Bookmarks</a></li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-head\"></i>Profile</a></li>\n" +
+    "            <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#modal_settings\"><i class=\"icon-cog\"></i>Settings</a></li>\n" +
+    "            <li class=\"divider\"></li>\n" +
+    "            <li class=\"dropdown-header\">Create</li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-wrench\"></i>Build a Dashboard</a></li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-square-plus\"></i>Submit a Listing</a></li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-cloud\"></i>Developer Resources</a></li>\n" +
+    "            <li class=\"divider\"></li>\n" +
+    "            <li class=\"dropdown-header\">Manage</li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-layers\"></i>Listing Management</a></li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-shopping-settings\"></i>Marketplace Settings</a></li>\n" +
+    "            <li><a href=\"#\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
+    "            <li><a class=\"caboose\" href=\"#\"><i class=\"icon-arrow-right\"></i>Logout</a></li>\n" +
+    "          </ul>\n" +
+    "        </li>\n" +
+    "      </ul>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</nav>\n" +
     "");
 }]);
 
