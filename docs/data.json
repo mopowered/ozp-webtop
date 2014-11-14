@@ -517,7 +517,7 @@
             },
             "tag": "module",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1225,
+            "line": 1179,
             "description": "Dashboard model",
             "requires": [
                 "ozp.common.utilities",
@@ -1232,11 +1232,6 @@
                     "type": "String"
                 },
                 {
-                    "name": "gridFrameSizeChangeEvent",
-                    "description": "event name",
-                    "type": "String"
-                },
-                {
                     "name": "highlightFrameOnGridLayoutEvent",
                     "description": "event name",
                     "type": "String"
@@ -1254,7 +1249,7 @@
             "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1225,
+            "line": 1179,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -2270,7 +2265,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 253,
+            "line": 252,
             "description": "Getter for frame.isMinimized",
             "itemtype": "method",
             "name": "isFrameMinimized",
@@ -2290,7 +2285,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 268,
+            "line": 267,
             "description": "Getter for frame.isMaximized",
             "itemtype": "method",
             "name": "isFrameMaximized",
@@ -2310,7 +2305,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 283,
+            "line": 282,
             "description": "Sort the zIndex of all frames",
             "itemtype": "method",
             "name": "sortFrames",
@@ -2320,7 +2315,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 66,
+            "line": 64,
             "itemtype": "property",
             "name": "deviceSize Current screen size (xs, sm, md, lg)",
             "type": "{string}",
@@ -2330,7 +2325,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 72,
+            "line": 70,
             "itemtype": "property",
             "name": "frames Frames (widgets/apps) on the current dashboard",
             "type": "{Array}",
@@ -2340,7 +2335,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 78,
+            "line": 76,
             "itemtype": "property",
             "name": "apps Applications in the marketplace",
             "type": "{Array}",
@@ -2350,7 +2345,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 84,
+            "line": 82,
             "itemtype": "property",
             "name": "fullScreenMode Flag for full screen mode",
             "type": "{boolean}",
@@ -2360,17 +2355,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 90,
-            "itemtype": "property",
-            "name": "activeFrames TODO clean this up",
-            "type": "{Array}",
-            "class": "dashboardView.GridCtrl",
-            "module": "ozpWebtop.dashboardView.grid",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 96,
+            "line": 88,
             "itemtype": "property",
             "name": "dashboard Current dashboard",
             "type": "{{}}",
@@ -2380,7 +2365,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 102,
+            "line": 94,
             "itemtype": "property",
             "name": "dashboardId Current dashboardId\nTODO: duplicate info?",
             "type": "{string}",
@@ -2390,7 +2375,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 109,
+            "line": 101,
             "itemtype": "property",
             "name": "intervalPromise promise returned by $interval (keep track of it\nso it can be canceled)",
             "class": "dashboardView.GridCtrl",
@@ -2399,7 +2384,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 115,
+            "line": 107,
             "itemtype": "property",
             "name": "gridOptions Configuration options for Gridster\nTODO: make these available to other components somehow",
             "type": "{Object}",
@@ -2409,7 +2394,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 273,
+            "line": 265,
             "description": "Handle start event resizing a widget on Gridster",
             "itemtype": "method",
             "name": "handleGridsterResizeStart",
@@ -2425,7 +2410,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 302,
+            "line": 279,
             "description": "Handle stop event when resizing Gridster widget",
             "itemtype": "method",
             "name": "handleGridsterResizeStop",
@@ -2441,7 +2426,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 314,
+            "line": 291,
             "description": "Handler for windowSizeChangedEvent (each time the window size\nchanges, even by a single pixel)\n\nCancels the existing $interval promise and creates a new one to update\nall frames in 200ms",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -2451,7 +2436,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 328,
+            "line": 305,
             "description": "Handles the deviceSizeChangedEvent, which occurs whenever the\nscreen size changes device sizes (as defined by Bootstrap)",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2468,7 +2453,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 352,
+            "line": 329,
             "description": "Handle the dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -2478,28 +2463,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 434,
-            "description": "Calculates the size of a frame, saves it, and sends a\n gridFrameSizeChangeEvent event",
-            "itemtype": "method",
-            "name": "updateDashboardFramePx",
-            "params": [
-                {
-                    "name": "frameId",
-                    "description": "Id of the frame to update",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "fulfilled with boolean true if frame was updated\n                    successfully",
-                "type": "Promise"
-            },
-            "class": "dashboardView.GridCtrl",
-            "module": "ozpWebtop.dashboardView.grid",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 475,
+            "line": 406,
             "description": "Reloads the current dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2513,7 +2477,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 523,
+            "line": 439,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "itemtype": "method",
             "name": "updateFrameAfterChange",
@@ -2534,55 +2498,13 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 543,
+            "line": 458,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "itemtype": "method",
             "name": "updateAllFramesAfterChange",
             "return": {
                 "description": "Promise fulfilled with TODO",
                 "type": "Promise"
-            },
-            "class": "dashboardView.GridCtrl",
-            "module": "ozpWebtop.dashboardView.grid",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 561,
-            "description": "Calculates the size in pixels for a given frame\nNecessary because the built-in angular-gridster method that calculates a\ngrid tile's size after resizing does not yield the correct results.\n\nNotes:\n- hard-coded value of gridster container padding\n- accesses $scope.gridOptions",
-            "itemtype": "method",
-            "name": "calculateGridFrameSize",
-            "params": [
-                {
-                    "name": "frame",
-                    "description": "The frame for which to calculate size",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "height and width",
-                "type": "Object"
-            },
-            "class": "dashboardView.GridCtrl",
-            "module": "ozpWebtop.dashboardView.grid",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/grid/grid.js",
-            "line": 601,
-            "description": "Update the widget's pixel size on the grid (this update is local, the\ndata is not persisted to the dashboard api)",
-            "itemtype": "method",
-            "name": "updateLocalGridFrameSize",
-            "params": [
-                {
-                    "name": "frameId",
-                    "description": "The id of the frame for which to update size",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "widget size (height and width) and the frame id",
-                "type": "Object"
             },
             "class": "dashboardView.GridCtrl",
             "module": "ozpWebtop.dashboardView.grid",
@@ -2898,56 +2820,6 @@
         {
             "file": "src/app/models/dashboardApi.js",
             "line": 443,
-            "description": "Updates the dynamically generated fields for grid frame size in px",
-            "itemtype": "method",
-            "name": "updateFrameSizeOnGrid",
-            "params": [
-                {
-                    "name": "frameId",
-                    "description": ""
-                },
-                {
-                    "name": "size",
-                    "description": ""
-                },
-                {
-                    "name": "width",
-                    "description": ""
-                },
-                {
-                    "name": "height",
-                    "description": ""
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Promise"
-            },
-            "class": "models.dashboardApi",
-            "module": "ozpWebtop.models.dashboard"
-        },
-        {
-            "file": "src/app/models/dashboardApi.js",
-            "line": 470,
-            "description": "Return the frame size (in px) for a given frame in the grid layout\nNote that these values are dynamically generated",
-            "itemtype": "method",
-            "name": "getFrameSizeOnGrid",
-            "params": [
-                {
-                    "name": "frameId",
-                    "description": ""
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Promise"
-            },
-            "class": "models.dashboardApi",
-            "module": "ozpWebtop.models.dashboard"
-        },
-        {
-            "file": "src/app/models/dashboardApi.js",
-            "line": 489,
             "description": "Save a dashboard\nTODO: make sure input is a valid dashboard:\n- dashboard.id should be unique\n- all frame.id's should be",
             "itemtype": "method",
             "name": "saveDashboard",
@@ -2966,7 +2838,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 521,
+            "line": 475,
             "description": "Save a frame in a dashboard\nTODO: make sure input is a valid frame",
             "itemtype": "method",
             "name": "saveFrame",
@@ -2985,7 +2857,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 556,
+            "line": 510,
             "description": "Retrieve a frame by id",
             "itemtype": "method",
             "name": "getFrameById",
@@ -3004,7 +2876,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 577,
+            "line": 531,
             "description": "Retrieve a dashboard by id",
             "itemtype": "method",
             "name": "getDashboardById",
@@ -3023,7 +2895,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 596,
+            "line": 550,
             "description": "Delete a dashboard",
             "itemtype": "method",
             "name": "removeDashboard",
@@ -3042,7 +2914,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 626,
+            "line": 580,
             "description": "Create a new dashboard",
             "itemtype": "method",
             "name": "createDashboard",
@@ -3061,7 +2933,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 662,
+            "line": 616,
             "description": "Get the next available id for a new dashboard\nTODO: this assumes ids are integers and not uuids",
             "itemtype": "method",
             "name": "getNewDashboardId",
@@ -3074,7 +2946,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 679,
+            "line": 633,
             "description": "Get the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboard",
@@ -3087,7 +2959,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 692,
+            "line": 646,
             "description": "Create example dashboards (test purposes only)",
             "itemtype": "method",
             "name": "createExampleDashboards",
@@ -3100,14 +2972,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1193,
+            "line": 1147,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1209,
+            "line": 1163,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
@@ -3856,16 +3728,6 @@
         {
             "file": "src/app/constants.js",
             "line": 81,
-            "description": "Event fired when a frame on the grid layout changes size",
-            "itemtype": "property",
-            "name": "gridFrameSizeChangeEvent",
-            "type": "String",
-            "class": "constants",
-            "module": "ozpWebtop.constants"
-        },
-        {
-            "file": "src/app/constants.js",
-            "line": 89,
             "description": "Event fired to indicate that the user preferences modal dialog should be\ndisplayed",
             "itemtype": "property",
             "name": "launchUserPreferencesModalEvent",
@@ -3875,7 +3737,7 @@
         },
         {
             "file": "src/app/constants.js",
-            "line": 98,
+            "line": 90,
             "description": "Event fired when full-screen mode is changed",
             "itemtype": "property",
             "name": "fullScreenChangeEvent",
@@ -3885,7 +3747,7 @@
         },
         {
             "file": "src/app/constants.js",
-            "line": 106,
+            "line": 98,
             "description": "Event fired when app icon is clicked in the app toolbar in grid layout",
             "itemtype": "property",
             "name": "highlightFrameOnGridLayoutEvent",
@@ -4161,35 +4023,23 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/desktop/desktop.js:253"
+            "line": " src/app/dashboardView/desktop/desktop.js:252"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/desktop/desktop.js:268"
+            "line": " src/app/dashboardView/desktop/desktop.js:267"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:434"
+            "line": " src/app/dashboardView/grid/grid.js:406"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:475"
+            "line": " src/app/dashboardView/grid/grid.js:439"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:523"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:543"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:561"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:601"
+            "line": " src/app/dashboardView/grid/grid.js:458"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4253,43 +4103,35 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:470"
+            "line": " src/app/models/dashboardApi.js:475"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:489"
+            "line": " src/app/models/dashboardApi.js:510"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:521"
+            "line": " src/app/models/dashboardApi.js:531"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:556"
+            "line": " src/app/models/dashboardApi.js:550"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:577"
+            "line": " src/app/models/dashboardApi.js:580"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:596"
+            "line": " src/app/models/dashboardApi.js:616"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:626"
+            "line": " src/app/models/dashboardApi.js:633"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:662"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:679"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:692"
+            "line": " src/app/models/dashboardApi.js:646"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4425,11 +4267,11 @@
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1193"
+            "line": " src/app/models/dashboardApi.js:1147"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1209"
+            "line": " src/app/models/dashboardApi.js:1163"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
