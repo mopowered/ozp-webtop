@@ -226,7 +226,8 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
 
 angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("ozpToolbar/ozpToolbar.tpl.html",
-    "<nav class=\"navbar navbar-default navbar-fixed-top navbar-inverse\">\n" +
+    "<nav class=\"navbar navbar-default navbar-fixed-top navbar-inverse ozp-toolbar\"\n" +
+    "    ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
     "  <div class=\"container-fluid\">\n" +
     "    <div class=\"navbar-left\">\n" +
     "      <ul class=\"nav navbar-nav\">\n" +
