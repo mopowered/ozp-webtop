@@ -213,7 +213,7 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
     "          ng-repeat=\"frame in frames\" id=\"{{frame.id}}\"\n" +
     "          class=\"ozp-managed-frame\">\n" +
     "        <ozp-chrome></ozp-chrome>\n" +
-    "        <iframe class=\"managed-iframe\"\n" +
+    "        <iframe class=\"iframe-grid\"\n" +
     "                ng-class=\"{frameHighlighted: frame.highlighted}\"\n" +
     "                ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\">\n" +
     "        </iframe>\n" +

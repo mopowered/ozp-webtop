@@ -9491,6 +9491,12 @@ managed-frame {
   width: 100%;
   height: 100%;
 }
+.iframe-grid {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: calc(93%);
+}
 .ui-draggable-iframeFix {
   width: 100%;
   height: 100%;
