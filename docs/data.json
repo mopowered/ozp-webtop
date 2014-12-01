@@ -2463,7 +2463,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 280,
+            "line": 281,
             "description": "Handle start event resizing a widget on Gridster",
             "itemtype": "method",
             "name": "handleGridsterResizeStart",
@@ -2479,7 +2479,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 294,
+            "line": 295,
             "description": "Handle stop event when resizing Gridster widget",
             "itemtype": "method",
             "name": "handleGridsterResizeStop",
@@ -2495,7 +2495,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 306,
+            "line": 307,
             "description": "Handler for windowSizeChangedEvent (each time the window size\nchanges, even by a single pixel)\n\nCancels the existing $interval promise and creates a new one to update\nall frames in 200ms",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -2505,7 +2505,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 320,
+            "line": 321,
             "description": "Handles the deviceSizeChangedEvent, which occurs whenever the\nscreen size changes device sizes (as defined by Bootstrap)",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2522,7 +2522,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 344,
+            "line": 345,
             "description": "Handle the dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -2532,7 +2532,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 421,
+            "line": 422,
             "description": "Reloads the current dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2546,7 +2546,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 454,
+            "line": 456,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "itemtype": "method",
             "name": "updateFrameAfterChange",
@@ -2567,7 +2567,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 473,
+            "line": 475,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "itemtype": "method",
             "name": "updateAllFramesAfterChange",
@@ -4110,15 +4110,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:421"
+            "line": " src/app/dashboardView/grid/grid.js:422"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:454"
+            "line": " src/app/dashboardView/grid/grid.js:456"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:473"
+            "line": " src/app/dashboardView/grid/grid.js:475"
         },
         {
             "message": "replacing incorrect tag: returns with return",

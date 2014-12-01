@@ -128,7 +128,7 @@ angular.module('ozpWebtop.dashboardView.desktop')
     });
 
     $scope.$on(dashboardStateChangedEvent, function(event, value) {
-      if (value.dashboardId === $scope.dashboardId && value.layout === 'desktop') {
+      if (value.dashboardId === $scope.currentDashboardId && value.layout === 'desktop') {
         dashboardChangeHandler();
       }
     });

@@ -474,7 +474,8 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
 
       $scope.reloadDashboard().then(function () {
         // dashboard reloaded
-        initialized = true;
+        // TODO: not guaranteed to end up here - do initialization at end of
+        // reloadDashboard function
       }).catch(function (error) {
         console.log(&#x27;should not have happened: &#x27; + error);
       });
@@ -656,6 +657,7 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
         // Merge application data (app name, icons, descriptions, url, etc)
         // with dashboard app data
         dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
+        initialized = true;
       });
     };
 

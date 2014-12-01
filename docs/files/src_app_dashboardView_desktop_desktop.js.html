@@ -336,7 +336,7 @@ angular.module(&#x27;ozpWebtop.dashboardView.desktop&#x27;)
     });
 
     $scope.$on(dashboardStateChangedEvent, function(event, value) {
-      if (value.dashboardId === $scope.dashboardId &amp;&amp; value.layout === &#x27;desktop&#x27;) {
+      if (value.dashboardId === $scope.currentDashboardId &amp;&amp; value.layout === &#x27;desktop&#x27;) {
         dashboardChangeHandler();
       }
     });
