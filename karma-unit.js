@@ -21,6 +21,7 @@ module.exports = function ( karma ) {
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
+      'vendor/ui-router-extras/release/ct-ui-router-extras.min.js',
       'vendor/angular-gridster/dist/angular-gridster.min.js',
       'vendor/javascript-detect-element-resize/detect-element-resize.js',
       'vendor/ozp-iwc-angular/dist/js/ozpIwc-client-angular.js',

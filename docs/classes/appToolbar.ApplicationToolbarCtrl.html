@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.iframe", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DashboardViewCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.iframe", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
         </form>
     </div>
 </div>
@@ -60,6 +60,8 @@
                         <li><a href="../classes/constants.html">constants</a></li>
                     
                         <li><a href="../classes/dashboardView.ChromeCtrl.html">dashboardView.ChromeCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.DashboardViewCtrl.html">dashboardView.DashboardViewCtrl</a></li>
                     
                         <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
                     
@@ -132,6 +134,8 @@
                         <li><a href="../modules/ozpWebtop.appToolbar.html">ozpWebtop.appToolbar</a></li>
                     
                         <li><a href="../modules/ozpWebtop.constants.html">ozpWebtop.constants</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.html">ozpWebtop.dashboardView</a></li>
                     
                         <li><a href="../modules/ozpWebtop.dashboardView.button.html">ozpWebtop.dashboardView.button</a></li>
                     
@@ -331,6 +335,12 @@ buttons to switch between grid and desktop layouts</p>
                 <li class="arg">
                     
                         <code>highlightFrameOnGridLayoutEvent</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>maxStickyBoards</code>
                     
                 </li>
             
@@ -623,6 +633,22 @@ buttons to switch between grid and desktop layouts</p>
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">maxStickyBoards</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>number of available sticky slots for dashboards</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -695,6 +721,13 @@ buttons to switch between grid and desktop layouts</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_loadDashboard" data-tablink="loadDashboard">loadDashboard</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_maximizeFrame" data-tablink="maximizeFrame">maximizeFrame</a>
 
                                 
@@ -717,13 +750,6 @@ buttons to switch between grid and desktop layouts</p>
                         
                             <li class="index-item method">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_previousApps" data-tablink="previousApps">previousApps</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#methods" data-anchor="#method_setCurrentDashboard" data-tablink="setCurrentDashboard">setCurrentDashboard</a>
 
                                 
                                 
@@ -972,7 +998,7 @@ current screen size</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l492"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:492</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l515"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:515</code></a>
         
         </p>
 
@@ -1089,7 +1115,7 @@ current screen size</a>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l289"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:289</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l291"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:291</code></a>
         
         </p>
 
@@ -1169,7 +1195,7 @@ Update current dashboard and layout</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l239"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:239</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l241"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:241</code></a>
         
         </p>
 
@@ -1234,7 +1260,7 @@ Update current dashboard and layout</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l261"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:261</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l263"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:263</code></a>
         
         </p>
 
@@ -1314,7 +1340,7 @@ Update current dashboard and layout</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l226"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:226</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l228"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:228</code></a>
         
         </p>
 
@@ -1330,6 +1356,95 @@ Update current dashboard and layout</p>
 
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_loadDashboard" class="method item">
+    <h3 class="name"><code>loadDashboard</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>board</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l316"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:316</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Load a dashboard</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">board</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Dashboard to load</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1380,7 +1495,7 @@ Update current dashboard and layout</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l389"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:389</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l411"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:411</code></a>
         
         </p>
 
@@ -1459,7 +1574,7 @@ Update current dashboard and layout</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l453"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:453</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l476"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:476</code></a>
         
         </p>
 
@@ -1516,7 +1631,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l474"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:474</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l497"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:497</code></a>
         
         </p>
 
@@ -1571,7 +1686,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l433"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:433</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l456"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:456</code></a>
         
         </p>
 
@@ -1588,95 +1703,6 @@ display them all</p>
 
     </div>
 
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_setCurrentDashboard" class="method item">
-    <h3 class="name"><code>setCurrentDashboard</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>board</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l314"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:314</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Set the current dashboard</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">board</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Current dashboard</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -1717,7 +1743,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l339"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:339</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l361"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:361</code></a>
         
         </p>
 
@@ -1773,7 +1799,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l407"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:407</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l430"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:430</code></a>
         
         </p>
 
@@ -1829,7 +1855,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l363"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:363</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l385"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:385</code></a>
         
         </p>
 
@@ -1884,7 +1910,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l331"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:331</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l352"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:352</code></a>
         
         </p>
 
@@ -1939,7 +1965,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l323"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:323</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l343"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:343</code></a>
         
         </p>
 
@@ -1993,7 +2019,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l122"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:122</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l124"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:124</code></a>
         
         </p>
 
@@ -2037,7 +2063,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l111"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:111</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l113"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:113</code></a>
         
         </p>
 
@@ -2083,7 +2109,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l127"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:127</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l129"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:129</code></a>
         
         </p>
 
@@ -2129,7 +2155,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l116"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:116</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l118"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:118</code></a>
         
         </p>
 
@@ -2173,7 +2199,7 @@ display them all</p>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l158"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:158</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l160"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:160</code></a>
         
         </p>
 
@@ -2219,7 +2245,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l105"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:105</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l107"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:107</code></a>
         
         </p>
 
@@ -2265,7 +2291,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l133"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:133</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l135"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:135</code></a>
         
         </p>
 
@@ -2313,7 +2339,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l139"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:139</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l141"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:141</code></a>
         
         </p>
 
@@ -2359,7 +2385,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l146"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:146</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l148"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:148</code></a>
         
         </p>
 
@@ -2405,7 +2431,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l152"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:152</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l154"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:154</code></a>
         
         </p>
 
@@ -2449,7 +2475,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l93"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:93</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l95"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:95</code></a>
         
         </p>
 
@@ -2493,7 +2519,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l87"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:87</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l89"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:89</code></a>
         
         </p>
 
@@ -2537,7 +2563,7 @@ displayed on the toolbar (based on screen width)</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l99"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:99</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l101"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:101</code></a>
         
         </p>
 
@@ -2583,7 +2609,7 @@ current screen size</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l74"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:74</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l76"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:76</code></a>
         
         </p>
 
@@ -2627,7 +2653,7 @@ current screen size</code></h3>
             
         
         
-        <a href="../files/src_app_appToolbar_appToolbar.js.html#l81"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:81</code></a>
+        <a href="../files/src_app_appToolbar_appToolbar.js.html#l83"><code>src&#x2F;app&#x2F;appToolbar&#x2F;appToolbar.js:83</code></a>
         
         </p>
 

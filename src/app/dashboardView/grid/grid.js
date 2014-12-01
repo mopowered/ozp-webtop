@@ -104,6 +104,8 @@ angular.module('ozpWebtop.dashboardView.grid')
      */
     var intervalPromise;
 
+    var initialized = false;
+
     /**
      * @property gridOptions Configuration options for Gridster
      * TODO: make these available to other components somehow
@@ -207,8 +209,10 @@ angular.module('ozpWebtop.dashboardView.grid')
     });
 
     // current dashboard changed
-    $scope.$on(dashboardStateChangedEvent, function() {
-      handleDashboardChange();
+    $scope.$on(dashboardStateChangedEvent, function(event, value) {
+      if (value.dashboardId === $scope.dashboardId && value.layout === 'grid') {
+        handleDashboardChange();
+      }
     });
 
     // user settings have changed
@@ -251,11 +255,22 @@ angular.module('ozpWebtop.dashboardView.grid')
     $scope.$watch(function() {
       return $location.path();
     }, function() {
-      $scope.reloadDashboard().then(function() {
+      var sticky = ($location.path().indexOf('sticky') !== -1) ? true : false;
+      // TODO: check for layout type??
+      if (dashboardChangeMonitor.dashboardId !== $scope.dashboardId && initialized) {
+        return;
+      }
+      if (sticky && initialized) {
+        return;
+      }
+
+      $scope.reloadDashboard().then(function () {
         // dashboard reloaded
-      }).catch(function(error) {
+        initialized = true;
+      }).catch(function (error) {
         console.log('should not have happened: ' + error);
       });
+
     });
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

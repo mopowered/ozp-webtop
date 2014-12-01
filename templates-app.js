@@ -1,4 +1,4 @@
-angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/genericFrames/managedframe.tpl.html', 'dashboardView/desktop/genericFrames/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
+angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/dashboardView.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/genericFrames/managedframe.tpl.html', 'dashboardView/desktop/genericFrames/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
@@ -85,14 +85,14 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name | limitTo : dashboardNameLength}} <span class=\"caret\"></span></a>\n" +
     "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "              <li ng-repeat=\"board in dashboards\">\n" +
-    "                <a ng-click=\"setCurrentDashboard(board)\"\n" +
-    "                   href=\"#/{{board.layout}}/{{board.id}}\"><i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}}</a>\n" +
+    "                <a ng-click=\"loadDashboard(board)\" class=\"link-pointer\">\n" +
+    "                  <i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}}</a>\n" +
     "              </li>\n" +
     "            </ul>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
-    "            <a ng-click=\"useGridLayout()\" href=\"#/grid/{{currentDashboard.id}}\"\n" +
+    "            <a ng-click=\"loadGridLayout()\" class=\"link-pointer\"\n" +
     "               ng-class=\"{navLinkSelected: layout == 'grid'}\"\n" +
     "                tooltip=\"Grid layout\" tooltip-placement=\"top\">\n" +
     "              <i class=\"fa fa-th fa-lg\"></i>\n" +
@@ -101,7 +101,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <li>\n" +
-    "            <a ng-click=\"useDesktopLayout()\" href=\"#/desktop/{{currentDashboard.id}}\"\n" +
+    "            <a ng-click=\"loadDesktopLayout()\" class=\"link-pointer\"\n" +
     "               ng-class=\"{navLinkSelected: layout == 'desktop'}\" tooltip=\"Desktop layout\"\n" +
     "                tooltip-placement=\"top\">\n" +
     "              <i class=\"fa fa-clipboard fa-lg\"></i>\n" +
@@ -179,6 +179,22 @@ angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCac
     "  </span>\n" +
     "</div>\n" +
     "");
+}]);
+
+angular.module("dashboardView/dashboardView.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/dashboardView.tpl.html",
+    "<div ui-view=\"gridviewnonstick\" ng-show=\"$state.includes('dashboardview.grid-nonstick')\"></div>\n" +
+    "<div ui-view=\"desktopviewnonstick\" ng-show=\"$state.includes('dashboardview.desktop-nonstick')\"></div>\n" +
+    "\n" +
+    "<!-- Number of sticky views must correspond with constants.maxStickyBoards -->\n" +
+    "<div ui-view=\"gridlayout-0\" ng-show=\"$state.includes('dashboardview.grid-sticky-0')\"></div>\n" +
+    "<div ui-view=\"desktoplayout-0\" ng-show=\"$state.includes('dashboardview.desktop-sticky-0')\"></div>\n" +
+    "\n" +
+    "<div ui-view=\"gridlayout-1\" ng-show=\"$state.includes('dashboardview.grid-sticky-1')\"></div>\n" +
+    "<div ui-view=\"desktoplayout-1\" ng-show=\"$state.includes('dashboardview.desktop-sticky-1')\"></div>\n" +
+    "\n" +
+    "<div ui-view=\"gridlayout-2\" ng-show=\"$state.includes('dashboardview.grid-sticky-2')\"></div>\n" +
+    "<div ui-view=\"desktoplayout-2\" ng-show=\"$state.includes('dashboardview.desktop-sticky-2')\"></div>");
 }]);
 
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -313,13 +329,13 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "        <div class=\"col-sm-3 col-md-4\">\n" +
     "          <h4> Dashboards </h4>\n" +
     "        </div>\n" +
-    "        <div class=\"col-sm-7 col-md-8\">\n" +
+    "        <div class=\"col-sm-9 col-md-8\">\n" +
     "          <form class=\"form-horizontal\" role=\"form\" name=\"editDashboardsForm\">\n" +
     "\n" +
     "            <div class=\"form-group\"\n" +
     "                 ng-class=\"{'has-error': editDashboardsForm.$error.pattern || editDashboardsForm.$error.required || dashboard.flaggedForDelete}\"\n" +
     "                 ng-repeat=\"dashboard in dashboards\">\n" +
-    "              <div class=\"col-sm-8 input-append\">\n" +
+    "              <div class=\"col-sm-6 input-append\">\n" +
     "                <ng-form name=\"dashboardNameForm\">\n" +
     "                  <label class=\"control-label\" for=\"dashboardName\"\n" +
     "                       ng-show=\"dashboard.flaggedForDelete\">\n" +
@@ -343,6 +359,16 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "                <button ng-show=\"!dashboard.flaggedForDelete\" type=\"button\"\n" +
     "                        class=\"btn btn-danger\"\n" +
     "                        ng-click=\"deleteClicked(dashboard)\">Delete</button>\n" +
+    "              </div>\n" +
+    "              <div class=\"col-sm-2\">\n" +
+    "                <button type=\"button\" class=\"btn btn-warning\"\n" +
+    "                        ng-show=\"!dashboard.sticky\" ng-click=\"makeSticky(dashboard)\">\n" +
+    "                  <i class=\"fa fa-thumb-tack\">&nbsp</i> Nonstick\n" +
+    "                </button>\n" +
+    "                <button type=\"button\" class=\"btn btn-primary\"\n" +
+    "                        ng-show=\"dashboard.sticky\" ng-click=\"makeNonstick(dashboard)\">\n" +
+    "                  <i class=\"fa fa-thumb-tack\">&nbsp</i> Sticky\n" +
+    "                </button>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "            <div class=\"form-group\"\n" +

@@ -6,6 +6,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "appToolbar.appToolbar",
         "constants",
         "dashboardView.ChromeCtrl",
+        "dashboardView.DashboardViewCtrl",
         "dashboardView.DesktopCtrl",
         "dashboardView.GridCtrl",
         "dashboardView.IframeCtrl",
@@ -41,6 +42,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.appLauncher",
         "ozpWebtop.appToolbar",
         "ozpWebtop.constants",
+        "ozpWebtop.dashboardView",
         "ozpWebtop.dashboardView.button",
         "ozpWebtop.dashboardView.chrome",
         "ozpWebtop.dashboardView.desktop",
@@ -111,6 +113,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.constants",
             "name": "ozpWebtop.constants",
             "description": "Constants used throughout the application"
+        },
+        {
+            "displayName": "ozpWebtop.dashboardView",
+            "name": "ozpWebtop.dashboardView",
+            "description": "Dashboard view controller\n\nParent controller for Sticky State (ui-router-extras)"
         },
         {
             "displayName": "ozpWebtop.dashboardView.button",

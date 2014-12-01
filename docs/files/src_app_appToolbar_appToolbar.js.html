@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.iframe", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DashboardViewCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.iframe", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
         </form>
     </div>
 </div>
@@ -60,6 +60,8 @@
                         <li><a href="../classes/constants.html">constants</a></li>
                     
                         <li><a href="../classes/dashboardView.ChromeCtrl.html">dashboardView.ChromeCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.DashboardViewCtrl.html">dashboardView.DashboardViewCtrl</a></li>
                     
                         <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
                     
@@ -132,6 +134,8 @@
                         <li><a href="../modules/ozpWebtop.appToolbar.html">ozpWebtop.appToolbar</a></li>
                     
                         <li><a href="../modules/ozpWebtop.constants.html">ozpWebtop.constants</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.html">ozpWebtop.dashboardView</a></li>
                     
                         <li><a href="../modules/ozpWebtop.dashboardView.button.html">ozpWebtop.dashboardView.button</a></li>
                     
@@ -255,6 +259,7 @@ angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;u
  * @param fullScreenModeToggleEvent event name
  * @param launchUserPreferencesModalEvent event name
  * @param highlightFrameOnGridLayoutEvent event name
+ * @param maxStickyBoards number of available sticky slots for dashboards
  */
 angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
   .controller(&#x27;ApplicationToolbarCtrl&#x27;, function($scope, $rootScope, $state,
@@ -269,7 +274,8 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
                                                  fullScreenModeToggleEvent,
                                                  userPreferencesUpdatedEvent,
                                                  launchUserPreferencesModalEvent,
-                                                 highlightFrameOnGridLayoutEvent) {
+                                                 highlightFrameOnGridLayoutEvent,
+                                                 maxStickyBoards) {
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -516,28 +522,48 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
     };
 
     /**
-     * Set the current dashboard
-     * @method setCurrentDashboard
-     * @param board Current dashboard
+     * Load a dashboard
+     * @method loadDashboard
+     * @param board Dashboard to load
      */
-    $scope.setCurrentDashboard = function(board) {
+    $scope.loadDashboard = function(board) {
       $scope.currentDashboard = board;
+      dashboardApi.getDashboardById(board.id).then(function(dashboard) {
+        var stickyIndex = dashboard.stickyIndex;
+      if (stickyIndex &gt;= 0 &amp;&amp; stickyIndex &lt; maxStickyBoards) {
+        if ($scope.layout === &#x27;grid&#x27;) {
+          $state.go(&#x27;dashboardview.grid-sticky-&#x27; + stickyIndex, {dashboardId: board.id});
+        } else if ($scope.layout === &#x27;desktop&#x27;) {
+          $state.go(&#x27;dashboardview.desktop-sticky-&#x27; + stickyIndex, {dashboardId: board.id});
+        }
+      } else {
+        if ($scope.layout === &#x27;grid&#x27;) {
+          $state.go(&#x27;dashboardview.grid-nonstick&#x27;, {dashboardId: board.id});
+        } else if ($scope.layout === &#x27;desktop&#x27;) {
+          $state.go(&#x27;dashboardview.desktop-nonstick&#x27;, {dashboardId: board.id});
+        }
+      }
+    }).catch(function(error) {
+      console.log(&#x27;should not have happened: &#x27; + error);
+    });
     };
 
     /**
      * Use a grid layout
      * @method useGridLayout
      */
-    $scope.useGridLayout = function() {
+    $scope.loadGridLayout = function() {
       $scope.layout = &#x27;grid&#x27;;
+      $scope.loadDashboard($scope.currentDashboard);
     };
 
     /**
      * Use a desktop layout
      * @method useDesktopLayout
      */
-    $scope.useDesktopLayout = function() {
+    $scope.loadDesktopLayout = function() {
       $scope.layout = &#x27;desktop&#x27;;
+      $scope.loadDashboard($scope.currentDashboard);
     };
 
     /**
@@ -601,7 +627,8 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
        }
        else {
          dashboardApi.toggleFrameKey(e.id, &#x27;isMinimized&#x27;).then(function () {
-           $rootScope.$broadcast(dashboardStateChangedEvent);
+           $rootScope.$broadcast(dashboardStateChangedEvent, {
+             &#x27;dashboardId&#x27;: $scope.currentDashboardId, &#x27;layout&#x27;: &#x27;desktop&#x27;});
          }).catch(function (error) {
            console.log(&#x27;should not have happened: &#x27; + error);
          });
@@ -747,7 +774,7 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
                 // all apps added to dashboard
                 $rootScope.$broadcast(userPreferencesUpdatedEvent);
                 // redirect user to new dashboard (grid view by default)
-                $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboardId});
+                $state.go(&#x27;dashboardview.grid-nonstick&#x27;, {&#x27;dashboardId&#x27;: dashboardId});
               });
             });
           });
@@ -762,7 +789,9 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
             });
           }, Promise.resolve()).then(function () {
               // all apps added to dashboard
-            $rootScope.$broadcast(dashboardStateChangedEvent);
+            $rootScope.$broadcast(dashboardStateChangedEvent, {
+              &#x27;dashboardId&#x27;: $scope.currentDashboardId,
+              &#x27;layout&#x27;: $scope.layout});
           });
         }
 

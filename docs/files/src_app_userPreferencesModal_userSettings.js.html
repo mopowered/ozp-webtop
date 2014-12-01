@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.iframe", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DashboardViewCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.IframeCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/general.dashboardChangeMonitor", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/userSettings.ModalInstanceCtrl", "classes/userSettings.userSettings", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.iframe", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.dashboardChangeMonitor", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.userSettings"]'>
         </form>
     </div>
 </div>
@@ -60,6 +60,8 @@
                         <li><a href="../classes/constants.html">constants</a></li>
                     
                         <li><a href="../classes/dashboardView.ChromeCtrl.html">dashboardView.ChromeCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.DashboardViewCtrl.html">dashboardView.DashboardViewCtrl</a></li>
                     
                         <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
                     
@@ -132,6 +134,8 @@
                         <li><a href="../modules/ozpWebtop.appToolbar.html">ozpWebtop.appToolbar</a></li>
                     
                         <li><a href="../modules/ozpWebtop.constants.html">ozpWebtop.constants</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.html">ozpWebtop.dashboardView</a></li>
                     
                         <li><a href="../modules/ozpWebtop.dashboardView.button.html">ozpWebtop.dashboardView.button</a></li>
                     
@@ -230,10 +234,11 @@ angular.module(&#x27;ozpWebtop.userSettings&#x27;, [&#x27;ozpWebtop.models.dashb
  * @param dashboardApi Dashboard API
  * @param userSettingsApi User Settings API
  * @param userPreferencesUpdatedEvent event name
+ * @param maxStickyBoards number of sticky slots available
  */
 var ModalInstanceCtrl = function ($scope, $modalInstance, currentDashboardId,
                                   dashboardApi, userSettingsApi,
-                                  userPreferencesUpdatedEvent) {
+                                  userPreferencesUpdatedEvent, maxStickyBoards) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //                            $scope properties
@@ -277,6 +282,11 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, currentDashboardId,
    */
   $scope.addingNewBoard = false;
 
+  // [{&#x27;dashboardId&#x27;: &#x27;0&#x27;, &#x27;stickyIndex&#x27;: 1}, ...]
+  var preferredStickyIndexes = [];
+
+  var freeStickySlots = 0;
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //                           initialization
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -289,6 +299,17 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, currentDashboardId,
 
   dashboardApi.getDashboards().then(function(dashboards) {
     $scope.dashboards = dashboards;
+    preferredStickyIndexes = [];
+    for (var i=0; i &lt; dashboards.length; i++) {
+      if (dashboards[i].stickyIndex &gt; -1) {
+        preferredStickyIndexes.push({&#x27;dashboardId&#x27;: dashboards[i].id,
+          &#x27;stickyIndex&#x27;: dashboards[i].stickyIndex});
+        dashboards[i].sticky = true;
+      } else {
+        dashboards[i].sticky = false;
+      }
+    }
+    freeStickySlots = maxStickyBoards - preferredStickyIndexes.length;
   }).catch(function(error) {
     console.log(&#x27;should not have happened: &#x27; + error);
   });
@@ -323,6 +344,7 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, currentDashboardId,
           console.log(&#x27;should not have happened: &#x27; + error);
         });
       } else {
+        dashboard.stickyIndex = scopeDashboard.stickyIndex;
         dashboard.name = scopeDashboard.name;
         return dashboardApi.saveDashboard(dashboard).then(function() {
           // dashboard saved
@@ -348,6 +370,35 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, currentDashboardId,
    */
   $scope.ok = function () {
     // First, update any existing dashboard that may have changed
+    var freeStickySlots = [];
+    for (var z=0; z &lt; maxStickyBoards; z++) {
+      freeStickySlots[z] = z;
+    }
+    // update sticky indexes for boards that were sticky before
+    var updatedBoardIds = [];
+    for (var n=0; n &lt; $scope.dashboards.length; n++) {
+      var scopeDashboard = $scope.dashboards[n];
+      if (scopeDashboard.stickyIndex &gt; -1 &amp;&amp; scopeDashboard.sticky === true) {
+        for (var i = 0; i &lt; preferredStickyIndexes.length; i++) {
+          if (preferredStickyIndexes[i].dashboardId === scopeDashboard.id) {
+            scopeDashboard.stickyIndex = preferredStickyIndexes[i].stickyIndex;
+            var idx = freeStickySlots.indexOf(preferredStickyIndexes[i].stickyIndex);
+            freeStickySlots.splice(idx, 1);
+            updatedBoardIds.push(scopeDashboard.id);
+          }
+        }
+      }
+    }
+
+    // update sticky indexes for boards that were unsticky before
+    freeStickySlots.sort();
+    var freeSlotIdx = 0;
+    for (var m=0; m &lt; $scope.dashboards.length; m++) {
+      if ($scope.dashboards[m].sticky === true &amp;&amp; updatedBoardIds.indexOf($scope.dashboards[m].id) &lt; 0) {
+        $scope.dashboards[m].stickyIndex = freeStickySlots[freeSlotIdx];
+        freeSlotIdx++;
+      }
+    }
     $scope.dashboards.reduce(function(previous, current) {
       return previous.then(function() {
         var promise = $scope.updateExistingDashboard(current.id);
@@ -458,11 +509,28 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, currentDashboardId,
     $scope.addingNewBoard = false;
     $scope.newDashboardName.name = &#x27;&#x27;;
   };
+
+  $scope.makeSticky = function(dashboard) {
+    if (freeStickySlots &gt; 0) {
+      dashboard.sticky = true;
+      freeStickySlots--;
+    } else {
+      alert(&#x27;Limit of sticky dashboards reached: &#x27; + maxStickyBoards);
+      dashboard.sticky = false;
+    }
+  };
+
+  $scope.makeNonstick = function(dashboard) {
+    dashboard.sticky = false;
+    dashboard.stickyIndex = -1;
+    freeStickySlots++;
+  };
 };
 
 // Required to make minification-safe
 ModalInstanceCtrl.$inject = [&#x27;$scope&#x27;, &#x27;$modalInstance&#x27;, &#x27;currentDashboardId&#x27;,
-  &#x27;dashboardApi&#x27;, &#x27;userSettingsApi&#x27;, &#x27;userPreferencesUpdatedEvent&#x27;];
+  &#x27;dashboardApi&#x27;, &#x27;userSettingsApi&#x27;, &#x27;userPreferencesUpdatedEvent&#x27;,
+  &#x27;maxStickyBoards&#x27;];
 
 /**
  * ng Directive for User Settings modal dialog
@@ -509,14 +577,32 @@ angular.module( &#x27;ozpWebtop.userSettings&#x27;).directive(&#x27;userSettings
 
                 modalInstance.result.then(function () {
                     dashboardApi.getDashboardById($scope.currentDashboardId).then(function(dashboard) {
+                      // if this dashboard has been deleted, redirect user
                       if (!dashboard) {
                         // arbitrarily redirect user to their first valid board using grid layout
                         dashboardApi.getDashboards().then(function(dashboard) {
+                          // TODO: this is broken now (sticky state)
                           var goToBoard = dashboard[0].id;
-                          $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: goToBoard});
+                          $state.go(&#x27;dashboardview.grid-nonstick&#x27;, {&#x27;dashboardId&#x27;: goToBoard});
                         }).catch(function(error) {
                           console.log(&#x27;should not have happened: &#x27; + error);
                         });
+                      }
+                      // it&#x27;s possible our stickySlot changed during the update
+                      // note that if this happens, existing state (internal to
+                      // widgets) will be reset
+                      if (dashboard.stickyIndex &gt; -1) {
+                        if (dashboard.layout === &#x27;grid&#x27;) {
+                          $state.go(&#x27;dashboardview.grid-sticky-&#x27; + dashboard.stickyIndex, {&#x27;dashboardId&#x27;: dashboard.id});
+                        } else if (dashboard.layout === &#x27;desktop&#x27;) {
+                          $state.go(&#x27;dashboardview.desktop-sticky-&#x27; + dashboard.stickyIndex, {&#x27;dashboardId&#x27;: dashboard.id});
+                        }
+                      } else {
+                          if (dashboard.layout === &#x27;grid&#x27;) {
+                          $state.go(&#x27;dashboardview.grid-nonstick&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
+                        } else if (dashboard.layout === &#x27;desktop&#x27;) {
+                          $state.go(&#x27;dashboardview.desktop-nonstick&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
+                        }
                       }
                     }).catch(function(error) {
                       console.log(&#x27;should not have happened: &#x27; + error);
