@@ -82,11 +82,14 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
     "        <ul class=\"nav navbar-nav\">\n" +
     "          <li class=\"dropup\">\n" +
-    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{currentDashboard.name | limitTo : dashboardNameLength}} <span class=\"caret\"></span></a>\n" +
+    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
+    "              <span ng-class=\"{nonstickboard: currentDashboard.stickyIndex < 0}\">\n" +
+    "              {{currentDashboard.name | limitTo : dashboardNameLength}}</span> <span class=\"caret\"></span></a>\n" +
     "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "              <li ng-repeat=\"board in dashboards\">\n" +
-    "                <a ng-click=\"loadDashboard(board)\" class=\"link-pointer\">\n" +
-    "                  <i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}}</a>\n" +
+    "                <a ng-click=\"loadDashboard(board)\" class=\"link-pointer\"\n" +
+    "                   >\n" +
+    "                  <i class=\"fa fa-desktop\"></i>&nbsp&nbsp <span ng-class=\"{nonstickboard: board.stickyIndex < 0}\">{{board.name}}</span></a>\n" +
     "              </li>\n" +
     "            </ul>\n" +
     "          </li>\n" +
