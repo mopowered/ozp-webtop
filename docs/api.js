@@ -9,7 +9,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "dashboardView.DashboardViewCtrl",
         "dashboardView.DesktopCtrl",
         "dashboardView.GridCtrl",
-        "dashboardView.IframeCtrl",
         "dashboardView.ozpButton",
         "dashboardView.ozpChrome",
         "dashboardView.ozpManagedFrame",
@@ -46,7 +45,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.dashboardView.button",
         "ozpWebtop.dashboardView.chrome",
         "ozpWebtop.dashboardView.desktop",
-        "ozpWebtop.dashboardView.desktop.iframe",
         "ozpWebtop.dashboardView.desktop.managedFrame",
         "ozpWebtop.dashboardView.grid",
         "ozpWebtop.models.dashboard",
@@ -133,11 +131,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.dashboardView.desktop",
             "name": "ozpWebtop.dashboardView.desktop",
             "description": "Desktop layout main controller"
-        },
-        {
-            "displayName": "ozpWebtop.dashboardView.desktop.iframe",
-            "name": "ozpWebtop.dashboardView.desktop.iframe",
-            "description": "iframe module for dashboard layouts"
         },
         {
             "displayName": "ozpWebtop.dashboardView.desktop.managedFrame",

@@ -69,32 +69,6 @@
                 "dashboardView": 1
             }
         },
-        "src/app/dashboardView/desktop/frames/ozpmanagedframe.js": {
-            "name": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "modules": {
-                "ozpWebtop.dashboardView.desktop.managedFrame": 1
-            },
-            "classes": {
-                "dashboardView.ozpManagedFrame": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "dashboardView": 1
-            }
-        },
-        "src/app/dashboardView/desktop/genericFrames/iframe.js": {
-            "name": "src/app/dashboardView/desktop/genericFrames/iframe.js",
-            "modules": {
-                "ozpWebtop.dashboardView.desktop.iframe": 1
-            },
-            "classes": {
-                "dashboardView.IframeCtrl": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "dashboardView": 1
-            }
-        },
         "src/app/dashboardView/desktop/desktop.js": {
             "name": "src/app/dashboardView/desktop/desktop.js",
             "modules": {
@@ -102,6 +76,19 @@
             },
             "classes": {
                 "dashboardView.DesktopCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            }
+        },
+        "src/app/dashboardView/desktop/ozpmanagedframe.js": {
+            "name": "src/app/dashboardView/desktop/ozpmanagedframe.js",
+            "modules": {
+                "ozpWebtop.dashboardView.desktop.managedFrame": 1
+            },
+            "classes": {
+                "dashboardView.ozpManagedFrame": 1
             },
             "fors": {},
             "namespaces": {
@@ -438,41 +425,6 @@
                 "ozpWebtop.models.dashboard"
             ]
         },
-        "ozpWebtop.dashboardView.desktop.managedFrame": {
-            "name": "ozpWebtop.dashboardView.desktop.managedFrame",
-            "submodules": {},
-            "classes": {
-                "dashboardView.ozpManagedFrame": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "dashboardView": 1
-            },
-            "tag": "module",
-            "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 15,
-            "description": "Desktop managed frame",
-            "requires": [
-                "ozp.common.urlOriginComparer",
-                "ozpWebtop.models.dashboard",
-                "ozpWebtop.dashboardView.desktop.iframe"
-            ]
-        },
-        "ozpWebtop.dashboardView.desktop.iframe": {
-            "name": "ozpWebtop.dashboardView.desktop.iframe",
-            "submodules": {},
-            "classes": {
-                "dashboardView.IframeCtrl": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "dashboardView": 1
-            },
-            "tag": "module",
-            "file": "src/app/dashboardView/desktop/genericFrames/iframe.js",
-            "line": 10,
-            "description": "iframe module for dashboard layouts"
-        },
         "ozpWebtop.dashboardView.desktop": {
             "name": "ozpWebtop.dashboardView.desktop",
             "submodules": {},
@@ -493,6 +445,26 @@
                 "ozpWebtop.models.dashboard",
                 "ozpWebtop.models.marketplace",
                 "ozpWebtop.models.userSettings"
+            ]
+        },
+        "ozpWebtop.dashboardView.desktop.managedFrame": {
+            "name": "ozpWebtop.dashboardView.desktop.managedFrame",
+            "submodules": {},
+            "classes": {
+                "dashboardView.ozpManagedFrame": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "dashboardView": 1
+            },
+            "tag": "module",
+            "file": "src/app/dashboardView/desktop/ozpmanagedframe.js",
+            "line": 14,
+            "description": "Desktop managed frame",
+            "requires": [
+                "ozp.common.urlOriginComparer",
+                "ozpWebtop.models.dashboard",
+                "ozpWebtop.dashboardView.desktop.iframe"
             ]
         },
         "ozpWebtop.dashboardView.grid": {
@@ -721,8 +693,7 @@
                 "ozpWebtop.dashboardView.button",
                 "ozpWebtop.dashboardView.chrome",
                 "ozpWebtop.dashboardView.desktop",
-                "ozpWebtop.dashboardView.desktop.managedFrame",
-                "ozpWebtop.dashboardView.desktop.iframe\n* @requires ozpWebtop.dashboardView",
+                "ozpWebtop.dashboardView.desktop.managedFrame\n* @requires ozpWebtop.dashboardView",
                 "ozpWebtop.dashboardView.grid",
                 "ozpWebtop.userSettings",
                 "ozpWebtop.addApplicationsModal",
@@ -1050,73 +1021,6 @@
             "description": "Directive for chrome (bar appearing across the top of each widget)\n\nngtype: directive",
             "static": 1
         },
-        "dashboardView.ozpManagedFrame": {
-            "name": "dashboardView.ozpManagedFrame",
-            "shortname": "dashboardView.ozpManagedFrame",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtop.dashboardView.desktop.managedFrame",
-            "namespace": "dashboardView",
-            "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 15,
-            "description": "Used to include an html document in the webtop. If the html in question is from a different \norigin than the webtop, then an iframe will be used. If the html is from the same origin as\nthe webtop, a \"frame\" (div) will be used.\n\nngtype: directive",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "compareUrl",
-                    "description": "the URL comparison service",
-                    "type": "Function"
-                },
-                {
-                    "name": "$http",
-                    "description": "the Angular HTTP service",
-                    "type": "Object"
-                },
-                {
-                    "name": "$compile",
-                    "description": "the Angular compile service",
-                    "type": "Object"
-                },
-                {
-                    "name": "$document",
-                    "description": "the Angular document service",
-                    "type": "Object"
-                },
-                {
-                    "name": "dashboardApi",
-                    "description": "the API for dashboard information {{#crossLink \"dashboardApi\"}}{{/crossLink}}",
-                    "type": "Object"
-                }
-            ]
-        },
-        "dashboardView.IframeCtrl": {
-            "name": "dashboardView.IframeCtrl",
-            "shortname": "dashboardView.IframeCtrl",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ozpWebtop.dashboardView.desktop.iframe",
-            "namespace": "dashboardView",
-            "file": "src/app/dashboardView/desktop/genericFrames/iframe.js",
-            "line": 10,
-            "description": "IframeCtrl ensures that a widget can be properly displayed in an iframe.\n\nngtype: controller",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "$scope",
-                    "description": "An Angular scope"
-                },
-                {
-                    "name": "$sce",
-                    "description": "The Angular service for Strict Contextual Escaping - [API Docs](https://docs.angularjs.org/api/ng/service/$sce)"
-                }
-            ]
-        },
         "dashboardView.DesktopCtrl": {
             "name": "dashboardView.DesktopCtrl",
             "shortname": "dashboardView.DesktopCtrl",
@@ -1171,6 +1075,43 @@
                 {
                     "name": "fullScreenModeToggleEvent",
                     "description": "event name"
+                }
+            ]
+        },
+        "dashboardView.ozpManagedFrame": {
+            "name": "dashboardView.ozpManagedFrame",
+            "shortname": "dashboardView.ozpManagedFrame",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtop.dashboardView.desktop.managedFrame",
+            "namespace": "dashboardView",
+            "file": "src/app/dashboardView/desktop/ozpmanagedframe.js",
+            "line": 14,
+            "description": "ngtype: directive",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "compareUrl",
+                    "description": "the URL comparison service",
+                    "type": "Function"
+                },
+                {
+                    "name": "$compile",
+                    "description": "the Angular compile service",
+                    "type": "Object"
+                },
+                {
+                    "name": "$document",
+                    "description": "the Angular document service",
+                    "type": "Object"
+                },
+                {
+                    "name": "dashboardApi",
+                    "description": "the API for dashboard information {{#crossLink \"dashboardApi\"}}{{/crossLink}}",
+                    "type": "Object"
                 }
             ]
         },
@@ -2201,35 +2142,6 @@
             ],
             "class": "dashboardView.ChromeCtrl",
             "module": "ozpWebtop.dashboardView.chrome",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/desktop/frames/ozpmanagedframe.js",
-            "line": 59,
-            "description": "Decides which template to use.",
-            "itemtype": "method",
-            "name": "getTemplate",
-            "access": "private",
-            "tagname": "",
-            "params": [
-                {
-                    "name": "sameOrigin",
-                    "description": "True if the frame comes from the same origin as the webtop,\n    false otherwise.",
-                    "type": "Boolean"
-                }
-            ],
-            "class": "dashboardView.ozpManagedFrame",
-            "module": "ozpWebtop.dashboardView.desktop.managedFrame",
-            "namespace": "dashboardView"
-        },
-        {
-            "file": "src/app/dashboardView/desktop/genericFrames/iframe.js",
-            "line": 23,
-            "itemtype": "property",
-            "name": "frame.trustedUrl URL",
-            "type": "{String}",
-            "class": "dashboardView.IframeCtrl",
-            "module": "ozpWebtop.dashboardView.desktop.iframe",
             "namespace": "dashboardView"
         },
         {

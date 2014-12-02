@@ -1,4 +1,4 @@
-angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/dashboardView.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/genericFrames/managedframe.tpl.html', 'dashboardView/desktop/genericFrames/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
+angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/dashboardView.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'userPreferencesModal/settingsModal.tpl.html']);
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
@@ -209,17 +209,12 @@ angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCach
     "</ozp-managed-frame>");
 }]);
 
-angular.module("dashboardView/desktop/genericFrames/managedframe.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/desktop/genericFrames/managedframe.tpl.html",
-    "<ozp-chrome></ozp-chrome>\n" +
-    "<div class=\"managed-frame\" ng-include=\"frame.url\" height=\"style.height\" width=\"style.width\"></div>\n" +
-    "");
-}]);
-
-angular.module("dashboardView/desktop/genericFrames/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("dashboardView/desktop/genericFrames/managediframe.tpl.html",
+angular.module("dashboardView/desktop/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboardView/desktop/managediframe.tpl.html",
     "<ozp-chrome ></ozp-chrome>\n" +
-    "<iframe class=\"managed-iframe\" ng-controller=\"IframeCtrl\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\" height=\"style.height\" width=\"style.width\"></iframe>");
+    "<iframe class=\"managed-iframe\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\"\n" +
+    "        height=\"style.height\" width=\"style.width\">\n" +
+    "</iframe>");
 }]);
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
