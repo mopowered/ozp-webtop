@@ -113,9 +113,9 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
-    "          <li ng-repeat=\"app in myPinnedApps\" ng-click=\"maximizeFrame(app)\"\n" +
-    "              >\n" +
-    "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; margin-left: 15px; padding-left: 0px; padding-bottom: 0px;\">\n" +
+    "          <li ng-repeat=\"app in myPinnedApps\">\n" +
+    "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; margin-left: 15px; padding-left: 0px; padding-bottom: 0px;\"\n" +
+    "                ng-click=\"maximizeFrame(app)\">\n" +
     "              <img class=\"chrome-icon app-toolbar-img\"\n" +
     "                   ng-src=\"{{app.icon.large}}\"/>\n" +
     "              <div ng-class=\"app.isMinimized && layout === 'desktop'? 'app-toolbar-inactive-app' : 'app-toolbar-active-app'\">&nbsp</div>\n" +
@@ -203,10 +203,12 @@ angular.module("dashboardView/dashboardView.tpl.html", []).run(["$templateCache"
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
-    "<ozp-managed-frame ng-repeat=\"frame in frames\" class=\"ozp-managed-frame\"\n" +
-    "                   ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\"\n" +
-    "                   ng-class=\"{'fullWidth' : frame.isMaximized}\">\n" +
-    "</ozp-managed-frame>");
+    "<div ng-repeat=\"frame in frames\">\n" +
+    "  <ozp-managed-frame class=\"ozp-managed-frame\"\n" +
+    "                     ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\"\n" +
+    "                     ng-class=\"{'fullWidth' : frame.isMaximized}\">\n" +
+    "  </ozp-managed-frame>\n" +
+    "</div>");
 }]);
 
 angular.module("dashboardView/desktop/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -222,16 +224,18 @@ angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", fu
     "<div class=\"container gridster-container-settings\" ng-class=\"{'grid-toolbar-padding' : !fullScreenMode}\">\n" +
     "  <div gridster=\"gridOptions\">\n" +
     "    <ul>\n" +
-    "      <li gridster-item row=\"frame.gridLayout[deviceSize].row\" col=\"frame.gridLayout[deviceSize].col\"\n" +
-    "          size-x=\"frame.gridLayout[deviceSize].sizeX\" size-y=\"frame.gridLayout[deviceSize].sizeY\"\n" +
-    "          ng-repeat=\"frame in frames\" id=\"{{frame.id}}\"\n" +
-    "          class=\"ozp-managed-frame\">\n" +
-    "        <ozp-chrome></ozp-chrome>\n" +
-    "        <iframe class=\"iframe-grid\"\n" +
-    "                ng-class=\"{frameHighlighted: frame.highlighted}\"\n" +
-    "                ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\">\n" +
-    "        </iframe>\n" +
-    "      </li>\n" +
+    "      <span ng-repeat=\"frame in frames\">\n" +
+    "        <li gridster-item row=\"frame.gridLayout[deviceSize].row\" col=\"frame.gridLayout[deviceSize].col\"\n" +
+    "            size-x=\"frame.gridLayout[deviceSize].sizeX\" size-y=\"frame.gridLayout[deviceSize].sizeY\"\n" +
+    "            id=\"{{frame.id}}\"\n" +
+    "            class=\"ozp-managed-frame\">\n" +
+    "          <ozp-chrome></ozp-chrome>\n" +
+    "          <iframe class=\"iframe-grid\"\n" +
+    "                  ng-class=\"{frameHighlighted: frame.highlighted}\"\n" +
+    "                  ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\">\n" +
+    "          </iframe>\n" +
+    "        </li>\n" +
+    "      </span>\n" +
     "    </ul>\n" +
     "  </div>\n" +
     "</div>\n" +
@@ -329,44 +333,45 @@ angular.module("userPreferencesModal/settingsModal.tpl.html", []).run(["$templat
     "        </div>\n" +
     "        <div class=\"col-sm-9 col-md-8\">\n" +
     "          <form class=\"form-horizontal\" role=\"form\" name=\"editDashboardsForm\">\n" +
-    "\n" +
-    "            <div class=\"form-group\"\n" +
-    "                 ng-class=\"{'has-error': editDashboardsForm.$error.pattern || editDashboardsForm.$error.required || dashboard.flaggedForDelete}\"\n" +
-    "                 ng-repeat=\"dashboard in dashboards\">\n" +
-    "              <div class=\"col-sm-6 input-append\">\n" +
-    "                <ng-form name=\"dashboardNameForm\">\n" +
-    "                  <label class=\"control-label\" for=\"dashboardName\"\n" +
-    "                       ng-show=\"dashboard.flaggedForDelete\">\n" +
-    "                  Dashboard will be deleted</label>\n" +
-    "                  <label class=\"control-label\" for=\"dashboardName\"\n" +
-    "                       ng-show=\"dashboardNameForm.dashboardName.$error.pattern\">\n" +
-    "                  Invalid name</label>\n" +
-    "                  <label class=\"control-label\" for=\"dashboardName\"\n" +
-    "                       ng-show=\"dashboardNameForm.dashboardName.$error.required\">\n" +
-    "                  Required</label>\n" +
-    "                  <input id=\"dashboardName\" type=\"text\" class=\"form-control\"\n" +
-    "                       ng-pattern=\"validNamePattern\"\n" +
-    "                       name=\"dashboardName\" ng-model=\"dashboard.name\" required\n" +
-    "                      ng-readonly=\"dashboard.flaggedForDelete\">\n" +
-    "                </ng-form>\n" +
-    "              </div>\n" +
-    "              <div class=\"col-sm-2\">\n" +
-    "                <button ng-show=\"dashboard.flaggedForDelete\" type=\"button\"\n" +
-    "                        class=\"btn btn-warning\"\n" +
-    "                        ng-click=\"undoDeleteClicked(dashboard)\">Undo</button>\n" +
-    "                <button ng-show=\"!dashboard.flaggedForDelete\" type=\"button\"\n" +
-    "                        class=\"btn btn-danger\"\n" +
-    "                        ng-click=\"deleteClicked(dashboard)\">Delete</button>\n" +
-    "              </div>\n" +
-    "              <div class=\"col-sm-2\">\n" +
-    "                <button type=\"button\" class=\"btn btn-warning\"\n" +
-    "                        ng-show=\"!dashboard.sticky\" ng-click=\"makeSticky(dashboard)\">\n" +
-    "                  <i class=\"fa fa-thumb-tack\">&nbsp</i> Nonstick\n" +
-    "                </button>\n" +
-    "                <button type=\"button\" class=\"btn btn-primary\"\n" +
-    "                        ng-show=\"dashboard.sticky\" ng-click=\"makeNonstick(dashboard)\">\n" +
-    "                  <i class=\"fa fa-thumb-tack\">&nbsp</i> Sticky\n" +
-    "                </button>\n" +
+    "            <div ng-repeat=\"dashboard in dashboards\">\n" +
+    "              <div class=\"form-group\"\n" +
+    "                   ng-class=\"{'has-error': editDashboardsForm.$error.pattern || editDashboardsForm.$error.required || dashboard.flaggedForDelete}\"\n" +
+    "                   >\n" +
+    "                <div class=\"col-sm-6 input-append\">\n" +
+    "                  <ng-form name=\"dashboardNameForm\">\n" +
+    "                    <label class=\"control-label\" for=\"dashboardName\"\n" +
+    "                         ng-show=\"dashboard.flaggedForDelete\">\n" +
+    "                    Dashboard will be deleted</label>\n" +
+    "                    <label class=\"control-label\" for=\"dashboardName\"\n" +
+    "                         ng-show=\"dashboardNameForm.dashboardName.$error.pattern\">\n" +
+    "                    Invalid name</label>\n" +
+    "                    <label class=\"control-label\" for=\"dashboardName\"\n" +
+    "                         ng-show=\"dashboardNameForm.dashboardName.$error.required\">\n" +
+    "                    Required</label>\n" +
+    "                    <input id=\"dashboardName\" type=\"text\" class=\"form-control\"\n" +
+    "                         ng-pattern=\"validNamePattern\"\n" +
+    "                         name=\"dashboardName\" ng-model=\"dashboard.name\" required\n" +
+    "                        ng-readonly=\"dashboard.flaggedForDelete\">\n" +
+    "                  </ng-form>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-sm-2\">\n" +
+    "                  <button ng-show=\"dashboard.flaggedForDelete\" type=\"button\"\n" +
+    "                          class=\"btn btn-warning\"\n" +
+    "                          ng-click=\"undoDeleteClicked(dashboard)\">Undo</button>\n" +
+    "                  <button ng-show=\"!dashboard.flaggedForDelete\" type=\"button\"\n" +
+    "                          class=\"btn btn-danger\"\n" +
+    "                          ng-click=\"deleteClicked(dashboard)\">Delete</button>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-sm-2\">\n" +
+    "                  <button type=\"button\" class=\"btn btn-warning\"\n" +
+    "                          ng-show=\"!dashboard.sticky\" ng-click=\"makeSticky(dashboard)\">\n" +
+    "                    <i class=\"fa fa-thumb-tack\">&nbsp</i> Nonstick\n" +
+    "                  </button>\n" +
+    "                  <button type=\"button\" class=\"btn btn-primary\"\n" +
+    "                          ng-show=\"dashboard.sticky\" ng-click=\"makeNonstick(dashboard)\">\n" +
+    "                    <i class=\"fa fa-thumb-tack\">&nbsp</i> Sticky\n" +
+    "                  </button>\n" +
+    "                </div>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "            <div class=\"form-group\"\n" +
