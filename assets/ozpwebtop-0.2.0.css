@@ -9214,8 +9214,6 @@ html {
   position: relative;
   min-height: 100%;
   background-color: #191f25;
-  overflow: -moz-scrollbars-vertical;
-  overflow-y: scroll;
 }
 body {
   margin-bottom: 45px;
@@ -9315,6 +9313,9 @@ body {
 .menu-icon {
   margin-right: 7px;
 }
+.ui-view-style {
+  height: 100%;
+}
 .gridster-container-settings {
   background-color: #191f25;
   width: 100%;
@@ -9399,9 +9400,13 @@ body > div.classBanner:first-of-type {
 body > div.classBanner:last-of-type {
   bottom: 0;
 }
+.ui-resizable-handle {
+  z-index: auto !important;
+}
 /* Frames must be absolute position */
 .ozp-managed-frame {
   position: absolute;
+  box-sizing: border-box;
   background-color: #ffffff;
   border: 1px solid #ddd;
   -webkit-border-radius: 5px;
@@ -9449,6 +9454,13 @@ body > div.classBanner:last-of-type {
 .ozp-chrome > .chrome-controls > .btn:hover,
 .ozp-chrome > .chrome-controls > .btn:active {
   color: #2b3036;
+}
+.desktop-view {
+  height: 100vh;
+  overflow-y: hidden;
+}
+.grid-view {
+  overflow-y: auto;
 }
 /**
  * Now that all app-wide styles have been applied, we can load the styles for

@@ -112,6 +112,16 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            </a>\n" +
     "          </li>\n" +
     "          <li class=\"divider-vertical\"></li>\n" +
+    "\n" +
+    "          <li ng-show=\"layout === 'desktop'\">\n" +
+    "            <a ng-click=\"cascadeWindows()\" class=\"link-pointer\"\n" +
+    "                tooltip=\"Cascade Windows\"\n" +
+    "                tooltip-placement=\"top\">\n" +
+    "              <i class=\"fa fa-files-o fa-lg\"></i>\n" +
+    "            </a>\n" +
+    "          </li>\n" +
+    "          <li class=\"divider-vertical\" ng-show=\"layout === 'desktop'\"></li>\n" +
+    "\n" +
     "          <!-- stuff on the left side of the nav bar -->\n" +
     "          <li ng-repeat=\"app in myPinnedApps\">\n" +
     "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; margin-left: 15px; padding-left: 0px; padding-bottom: 0px;\"\n" +
@@ -167,16 +177,16 @@ angular.module("dashboardView/button/ozpbutton.tpl.html", []).run(["$templateCac
 angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/chrome/ozpchrome.tpl.html",
     "<div class=\"ozp-chrome\">\n" +
-    "  <img class=\"chrome-icon\" ng-src=\"{{frame.icon.small}}\">\n" +
-    "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
+    "  <img class=\"chrome-icon\" ng-src=\"{{myframe.icon.small}}\">\n" +
+    "  <span class=\"chrome-name\">{{myframe.name}}</span>\n" +
     "  <span class=\"chrome-controls\" >\n" +
-    "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"isGrid\" ng-click=\"minimizeFrame(frame)\">\n" +
+    "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"isGrid\" ng-click=\"minimizeFrame(myframe)\">\n" +
     "      <span class=\"glyphicon glyphicon-minus\"></span>\n" +
     "    </button>\n" +
-    "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"isGrid\" ng-click=\"maximizeFrame(frame)\">\n" +
+    "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"isGrid\" ng-click=\"maximizeFrame(myframe)\">\n" +
     "      <span class=\"glyphicon glyphicon-plus\"></span>\n" +
     "    </button>\n" +
-    "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"isDisabled(frame)\">\n" +
+    "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"isDisabled(myframe)\">\n" +
     "      <span class=\"glyphicon glyphicon-remove\"></span>\n" +
     "    </button>\n" +
     "  </span>\n" +
@@ -186,26 +196,38 @@ angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCac
 
 angular.module("dashboardView/dashboardView.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/dashboardView.tpl.html",
+    "<div class=\"desktop-view\" ng-show=\"layout === 'desktop'\">\n" +
+    "\n" +
+    "  <div ui-view=\"desktopviewnonstick\" ng-show=\"$state.includes('dashboardview.desktop-nonstick')\"></div>\n" +
+    "\n" +
+    "  <!-- Number of sticky views must correspond with constants.maxStickyBoards -->\n" +
+    "\n" +
+    "  <div ui-view=\"desktoplayout-0\" ng-show=\"$state.includes('dashboardview.desktop-sticky-0')\"></div>\n" +
+    "\n" +
+    "\n" +
+    "  <div ui-view=\"desktoplayout-1\" ng-show=\"$state.includes('dashboardview.desktop-sticky-1')\"></div>\n" +
+    "\n" +
+    "\n" +
+    "  <div ui-view=\"desktoplayout-2\" ng-show=\"$state.includes('dashboardview.desktop-sticky-2')\"></div>\n" +
+    "</div>\n" +
+    "<div class=\"grid-view\">\n" +
     "<div ui-view=\"gridviewnonstick\" ng-show=\"$state.includes('dashboardview.grid-nonstick')\"></div>\n" +
-    "<div ui-view=\"desktopviewnonstick\" ng-show=\"$state.includes('dashboardview.desktop-nonstick')\"></div>\n" +
-    "\n" +
-    "<!-- Number of sticky views must correspond with constants.maxStickyBoards -->\n" +
-    "<div ui-view=\"gridlayout-0\" ng-show=\"$state.includes('dashboardview.grid-sticky-0')\"></div>\n" +
-    "<div ui-view=\"desktoplayout-0\" ng-show=\"$state.includes('dashboardview.desktop-sticky-0')\"></div>\n" +
-    "\n" +
-    "<div ui-view=\"gridlayout-1\" ng-show=\"$state.includes('dashboardview.grid-sticky-1')\"></div>\n" +
-    "<div ui-view=\"desktoplayout-1\" ng-show=\"$state.includes('dashboardview.desktop-sticky-1')\"></div>\n" +
-    "\n" +
-    "<div ui-view=\"gridlayout-2\" ng-show=\"$state.includes('dashboardview.grid-sticky-2')\"></div>\n" +
-    "<div ui-view=\"desktoplayout-2\" ng-show=\"$state.includes('dashboardview.desktop-sticky-2')\"></div>");
+    "  <div ui-view=\"gridlayout-0\" ng-show=\"$state.includes('dashboardview.grid-sticky-0')\"></div>\n" +
+    "  <div ui-view=\"gridlayout-1\" ng-show=\"$state.includes('dashboardview.grid-sticky-1')\"></div>\n" +
+    "  <div ui-view=\"gridlayout-2\" ng-show=\"$state.includes('dashboardview.grid-sticky-2')\"></div>\n" +
+    "</div>");
 }]);
 
 angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/desktop.tpl.html",
     "<!-- Frames are positioned by absolute positioning based on state -->\n" +
     "<div ng-repeat=\"frame in frames\">\n" +
-    "  <ozp-managed-frame class=\"ozp-managed-frame\"\n" +
-    "                     ng-hide=\"isFrameMinimized(frame)\" ng-style=\"styles\"\n" +
+    "  <ozp-managed-frame myframe=\"frame\" class=\"ozp-managed-frame\"\n" +
+    "                     ng-hide=\"isFrameMinimized(frame)\"\n" +
+    "                     style=\"width: {{frame.desktopLayout.width}}px;\n" +
+    "                     height: {{frame.desktopLayout.height}}px;\n" +
+    "                     top: {{frame.desktopLayout.top}}px;\n" +
+    "                     left: {{frame.desktopLayout.left}}px\"\n" +
     "                     ng-class=\"{'fullWidth' : frame.isMaximized}\">\n" +
     "  </ozp-managed-frame>\n" +
     "</div>");
@@ -213,10 +235,11 @@ angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCach
 
 angular.module("dashboardView/desktop/managediframe.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/desktop/managediframe.tpl.html",
+    "<span id=\"frame-{{myframe.id}}\">\n" +
     "<ozp-chrome ></ozp-chrome>\n" +
-    "<iframe class=\"managed-iframe\" ng-src=\"{{frame.trustedUrl}}\" frameBorder=\"0\"\n" +
-    "        height=\"style.height\" width=\"style.width\">\n" +
-    "</iframe>");
+    "<iframe class=\"managed-iframe\" ng-src=\"{{myframe.trustedUrl}}\" frameBorder=\"0\">\n" +
+    "</iframe>\n" +
+    "</span>");
 }]);
 
 angular.module("dashboardView/grid/grid.tpl.html", []).run(["$templateCache", function($templateCache) {
