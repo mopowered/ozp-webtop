@@ -9387,9 +9387,6 @@ body {
   background-color: #558dc3;
   background-color: #191f25;
 }
-.nonstickboard {
-  color: red;
-}
 .classBanner {
   position: fixed !important;
   z-index: 200;

@@ -12,7 +12,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "dashboardView.ozpButton",
         "dashboardView.ozpChrome",
         "dashboardView.ozpManagedFrame",
-        "general.dashboardChangeMonitor",
         "models.dashboardApi",
         "models.marketplaceApi",
         "models.userSettingsApi",
@@ -25,9 +24,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpToolbar.OzpToolbarCtrl",
         "ozpToolbar.ozpToolbar",
         "services.iwcInterface",
-        "services.localStorageInterface",
-        "userSettings.ModalInstanceCtrl",
-        "userSettings.userSettings"
+        "services.localStorageInterface"
     ],
     "modules": [
         "ozp.common.ellipticalFilter",
@@ -47,14 +44,13 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.dashboardView.desktop",
         "ozpWebtop.dashboardView.desktop.managedFrame",
         "ozpWebtop.dashboardView.grid",
+        "ozpWebtop.editDashboardModal",
         "ozpWebtop.models.dashboard",
         "ozpWebtop.models.marketplace",
         "ozpWebtop.models.userSettings",
         "ozpWebtop.ozpToolbar",
-        "ozpWebtop.services.dashboardChangeMonitor",
         "ozpWebtop.services.iwcInterface",
-        "ozpWebtop.services.localStorageInterface",
-        "ozpWebtop.userSettings"
+        "ozpWebtop.services.localStorageInterface"
     ],
     "allModules": [
         {
@@ -143,6 +139,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Grid layout main controller"
         },
         {
+            "displayName": "ozpWebtop.editDashboardModal",
+            "name": "ozpWebtop.editDashboardModal",
+            "description": "Edit Dashboard modal dialog"
+        },
+        {
             "displayName": "ozpWebtop.models.dashboard",
             "name": "ozpWebtop.models.dashboard",
             "description": "Dashboard model"
@@ -163,11 +164,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "The ozp toolbar component shown in the Webtop."
         },
         {
-            "displayName": "ozpWebtop.services.dashboardChangeMonitor",
-            "name": "ozpWebtop.services.dashboardChangeMonitor",
-            "description": "Dashboard change monitor"
-        },
-        {
             "displayName": "ozpWebtop.services.iwcInterface",
             "name": "ozpWebtop.services.iwcInterface",
             "description": "Interface for working with IWC"
@@ -176,11 +172,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.services.localStorageInterface",
             "name": "ozpWebtop.services.localStorageInterface",
             "description": "Interface for working with Local Storage"
-        },
-        {
-            "displayName": "ozpWebtop.userSettings",
-            "name": "ozpWebtop.userSettings",
-            "description": "The modal encompassing user settings functionality."
         }
     ]
 } };

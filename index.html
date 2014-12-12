@@ -51,14 +51,13 @@
     <script type="text/javascript" src="src/app/dashboardView/desktop/desktop.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/desktop/ozpmanagedframe.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/grid/grid.js"></script>
+    <script type="text/javascript" src="src/app/editDashboardModal/editDashboard.js"></script>
     <script type="text/javascript" src="src/app/models/dashboardApi.js"></script>
     <script type="text/javascript" src="src/app/models/marketplaceApi.js"></script>
     <script type="text/javascript" src="src/app/models/userSettingsApi.js"></script>
     <script type="text/javascript" src="src/app/ozpToolbar/ozpToolbar.js"></script>
-    <script type="text/javascript" src="src/app/services/dashboardChangeMonitor.js"></script>
     <script type="text/javascript" src="src/app/services/iwcInterface.js"></script>
     <script type="text/javascript" src="src/app/services/localStorageInterface.js"></script>
-    <script type="text/javascript" src="src/app/userPreferencesModal/userSettings.js"></script>
     <script type="text/javascript" src="src/common/ellipticalFilter/elliptical.js"></script>
     <script type="text/javascript" src="src/common/iwcConnectedClient/iwcConnectedClient.js"></script>
     <script type="text/javascript" src="src/common/localStorage/localstorage.js"></script>
@@ -84,9 +83,6 @@
 
     <!-- View is used as the 'workspace' -->
     <div class="ui-view-style" ui-view></div>
-
-    <!-- user settings modal -->
-    <user-settings ng-show=false></user-settings>
 
     <!-- app toolbar panel -->
     <app-toolbar></app-toolbar>
