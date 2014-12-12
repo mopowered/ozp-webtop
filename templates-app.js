@@ -88,7 +88,8 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "              <li ng-repeat=\"board in dashboards\">\n" +
     "                <div style=\"margin-left: 20px; margin-right: 20px;\">\n" +
     "                  <a ng-click=\"loadDashboard(board)\" class=\"link-pointer\"><i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}} &nbsp&nbsp&nbsp </a>\n" +
-    "                  <a ng-click=\"openEditDashboardModal()\" class=\"link-pointer pull-right\" ng-show=\"isCurrentBoard(board)\"><i class=\"fa fa-pencil\"></i></a>\n" +
+    "                  <a ng-click=\"openDeleteDashboardModal(board)\" class=\"link-pointer pull-right\" ng-show=\"isCurrentBoard(board)\"><i class=\"fa fa-close\"></i></a>\n" +
+    "                  <a ng-click=\"openEditDashboardModal()\" class=\"link-pointer pull-right\" ng-show=\"isCurrentBoard(board)\"><i class=\"fa fa-pencil\">&nbsp&nbsp</i></a>\n" +
     "                </div>\n" +
     "              </li>\n" +
     "            </ul>\n" +

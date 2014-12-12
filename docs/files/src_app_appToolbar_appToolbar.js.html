@@ -235,6 +235,8 @@ angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;u
  * @param $rootScope $rootScope service
  * @param $state $state service
  * @param $modal $modal service from ui.bootstrap
+ * @param $interval $interval service from ui.bootstrap
+ * @param $window $window service from ui.bootstrap
  * @param marketplaceApi Application data model
  * @param dashbaordApi Dashboard data model
  * @param userSettingsApi User settings data model
@@ -246,7 +248,7 @@ angular.module(&#x27;ozpWebtop.appToolbar&#x27;, [&#x27;ui.router&#x27;, &#x27;u
  */
 angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
   .controller(&#x27;ApplicationToolbarCtrl&#x27;, function($scope, $rootScope, $state,
-                                                 $modal, $interval,
+                                                 $modal, $interval, $window,
                                                  marketplaceApi, dashboardApi,
                                                  userSettingsApi,
                                                  windowSizeWatcher,
@@ -732,6 +734,28 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
           }
         });
       };
+
+    $scope.openDeleteDashboardModal = function(board) {
+      if ($scope.dashboards.length === 1) {
+        console.log(&#x27;ERROR: You may not delete your last dashboard&#x27;);
+        return;
+      } else {
+        console.log(&#x27;dashboards remaining: &#x27; + $scope.dashboards.length);
+      }
+      var msg = &#x27;Are you sure you want to delete dashboard &#x27; +
+          board.name + &#x27;? This action cannot be undone&#x27;;
+      if ($window.confirm(msg)) {
+        dashboardApi.removeDashboard(board.id).then(function() {
+          // redirect user to their first board
+          dashboardApi.getDashboards().then(function(dashboards) {
+            $state.go(&#x27;dashboardview.&#x27; +
+            dashboards[0].layout + &#x27;-sticky-&#x27; +
+            dashboards[0].stickyIndex, {
+            &#x27;dashboardId&#x27;: dashboards[0].id});
+          });
+        });
+      }
+    };
 
   });
 

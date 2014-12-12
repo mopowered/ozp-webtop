@@ -357,7 +357,7 @@
             },
             "tag": "module",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 542,
+            "line": 566,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
@@ -843,6 +843,14 @@
                     "description": "$modal service from ui.bootstrap"
                 },
                 {
+                    "name": "$interval",
+                    "description": "$interval service from ui.bootstrap"
+                },
+                {
+                    "name": "$window",
+                    "description": "$window service from ui.bootstrap"
+                },
+                {
                     "name": "marketplaceApi",
                     "description": "Application data model"
                 },
@@ -887,7 +895,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 542,
+            "line": 566,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1584,7 +1592,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 67,
+            "line": 69,
             "itemtype": "property",
             "name": "dashboards Dashboards for current user",
             "type": "{Array}",
@@ -1594,7 +1602,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 73,
+            "line": 75,
             "itemtype": "property",
             "name": "currentDashboard Current active dashboard",
             "type": "{string}",
@@ -1604,7 +1612,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 79,
+            "line": 81,
             "itemtype": "property",
             "name": "$scope.frames Frames on current dashboard (includes marketplace\n data like app name, icons, description, etc)",
             "type": "{Array}",
@@ -1614,7 +1622,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 86,
+            "line": 88,
             "itemtype": "property",
             "name": "$scope.myPinnedApps Applications in current dashboard that are\n shown in the application toolbar",
             "type": "{Array}",
@@ -1624,7 +1632,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 93,
+            "line": 95,
             "itemtype": "property",
             "name": "$scope.apps All applications available in the marketplace",
             "type": "{Array}",
@@ -1634,7 +1642,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 99,
+            "line": 101,
             "itemtype": "property",
             "name": "dashboardNameLength Max length of dashboard name, based on\ncurrent screen size",
             "type": "{String}",
@@ -1644,7 +1652,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 106,
+            "line": 108,
             "itemtype": "property",
             "name": "$scope.maxAppsDisplayed The maximum number of apps that can be\ndisplayed on the toolbar (based on screen width)",
             "type": "{Number}",
@@ -1654,7 +1662,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 113,
+            "line": 115,
             "itemtype": "property",
             "name": "$scope.fullScreenMode Flag indicating if the toolbar is hidden or\n not",
             "type": "{boolean}",
@@ -1664,7 +1672,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 120,
+            "line": 122,
             "itemtype": "property",
             "name": "$scope.myPinnedAppsFirstDisplayedIndex The index (in\n $scope.myPinnedApps) of the first application shown in the application\n toolbar to display",
             "type": "{number}",
@@ -1674,7 +1682,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 127,
+            "line": 129,
             "itemtype": "property",
             "name": "$scope.nextAppsVisible Flag for the 'pagination' next arrow\n in the toolbar",
             "type": "{boolean}",
@@ -1684,7 +1692,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 133,
+            "line": 135,
             "itemtype": "property",
             "name": "$scope.previousAppsVisible Flag for the 'pagination' previous\n arrow in the toolbar",
             "type": "{boolean}",
@@ -1694,7 +1702,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 183,
+            "line": 185,
             "description": "Handle the deviceSizeChangedEvent\n\nUpdate $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -1710,7 +1718,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 211,
+            "line": 213,
             "description": "Handle state change",
             "itemtype": "method",
             "name": "handleStateChange",
@@ -1720,7 +1728,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 243,
+            "line": 245,
             "description": "Load a dashboard",
             "itemtype": "method",
             "name": "loadDashboard",
@@ -1736,7 +1744,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 257,
+            "line": 259,
             "description": "Set $scope.myPinnedApps\n\nRequires that $scope.frames is set first",
             "itemtype": "method",
             "name": "setPinnedApps",
@@ -1746,7 +1754,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 282,
+            "line": 284,
             "description": "Update application data in the toolbar (invoked on a dashboard change)",
             "itemtype": "method",
             "name": "updateApps",
@@ -1756,7 +1764,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 310,
+            "line": 312,
             "description": "Maximize (or show) a frame that was previously minimized (hidden)",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -1773,7 +1781,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 330,
+            "line": 332,
             "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a fullScreenModeToggleEvent",
             "itemtype": "method",
             "name": "toggleFullScreenMode",
@@ -1783,7 +1791,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 356,
+            "line": 358,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
@@ -1793,7 +1801,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 376,
+            "line": 378,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
@@ -1803,7 +1811,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 410,
+            "line": 412,
             "description": "Opens the Add Application modal dialog",
             "itemtype": "method",
             "name": "openApplicationsModal",
@@ -1813,7 +1821,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 429,
+            "line": 431,
             "description": "Add an application to a dashboard",
             "itemtype": "method",
             "name": "addAppToDashboard",
@@ -3560,7 +3568,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/appToolbar/appToolbar.js:429"
+            "line": " src/app/appToolbar/appToolbar.js:431"
         },
         {
             "message": "replacing incorrect tag: returns with return",
