@@ -261,11 +261,14 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
     "    <div class=\"container-fluid\">\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"col-sm-9 col-md-8\">\n" +
-    "          <form class=\"form-horizontal\" role=\"form\" name=\"editDashboardForm\">\n" +
+    "          <form class=\"form-horizontal\" role=\"form\" name=\"editDashboardForm\" novalidate>\n" +
     "            <div class=\"form-group\">\n" +
     "              <label for=\"inputName\" class=\"col-sm-2 control-label\">Name</label>\n" +
     "              <div class=\"col-sm-10\">\n" +
-    "                <input type=\"text\" class=\"form-control\" id=\"inputName\" ng-model=\"dashboard.name\">\n" +
+    "                <small class=\"error\" ng-show=\"editDashboardForm.inputName.$error.required\">\n" +
+    "                  <strong>Dashboard name is required</strong>\n" +
+    "                </small>\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputName\" name=\"inputName\" ng-model=\"dashboard.name\" required>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "            <div class=\"form-group\">\n" +
@@ -287,9 +290,9 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"modal-footer wt-modal-footer\">\n" +
-    "    <button ng-show=\"editDashboardForm.$error.pattern || editDashboardsForm.$error.required\"\n" +
+    "    <button ng-show=\"editDashboardForm.$error.pattern || editDashboardForm.$error.required\"\n" +
     "            class=\"btn btn-primary\" disabled=\"disabled\">Ok</button>\n" +
-    "    <button ng-show=\"!editDashboardForm.$error.pattern && !editDashboardsForm.$error.required\"\n" +
+    "    <button ng-show=\"!editDashboardForm.$error.pattern && !editDashboardForm.$error.required\"\n" +
     "            class=\"btn btn-primary\" ng-click=\"ok()\">OK</button>\n" +
     "    <button class=\"btn btn-primary\" ng-click=\"cancel()\">Cancel</button>\n" +
     "  </div>\n" +

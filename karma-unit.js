@@ -25,7 +25,6 @@ module.exports = function ( karma ) {
       'vendor/angular-gridster/dist/angular-gridster.min.js',
       'vendor/javascript-detect-element-resize/detect-element-resize.js',
       'vendor/ozp-iwc-angular/dist/js/ozpIwc-client-angular.js',
-      'vendor/es6-promise/promise.min.js',
       'vendor/ozp-classification/jquery.classification.js',
       'vendor/ozp-classification/ozp-classification.js',
       'build/templates-app.js',

@@ -9264,6 +9264,12 @@ body {
 .close-icon {
   color: #ffffff;
 }
+.error {
+  color: #b32a5f;
+}
+input.ng-invalid {
+  borer: 1px solid #b32a5f;
+}
 .add-apps-style ul {
   list-style: none;
   overflow: hidden;
