@@ -200,7 +200,7 @@
  * Top level module of the Webtop. When declared in an HTML file, it bootstraps
  * the Webtop.
  *
- * @example 
+ * @example
  *     &lt;body ng-app=&quot;ozpWebtop&quot;&gt; ... &lt;/body&gt;
  *
  * @module ozpWebtop
@@ -309,7 +309,7 @@ angular.module( &#x27;ozpWebtop&#x27;, [
     }
 
     angular.forEach(states, function(state) { $stateProvider.state(state); });
-    $urlRouterProvider.otherwise(&#x27;/&#x27;);
+    $urlRouterProvider.otherwise(&#x27;/grid/sticky-0/0&#x27;);
   })
 
 .run( function run ($rootScope, $state, dashboardApi, marketplaceApi,

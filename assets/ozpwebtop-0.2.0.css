@@ -9185,7 +9185,7 @@ button.close {
 }
 /* END Ubuntu Regular Italic */
 /*
- * Colors from the official OZONE style cheat sheet.
+ * Colors from the OZONE style cheat sheet.
 */
 /**
 Overrides for Bootstrap variables go here. These overrides should consist
@@ -9370,27 +9370,27 @@ input.ng-invalid {
   top: -2px;
   width: 32px;
   height: 2px;
-  background-color: #558dc3;
+  background-color: #71c9e7;
 }
 .app-toolbar-inactive-app {
   position: relative;
   top: -2px;
   width: 32px;
   height: 2px;
-  background-color: #558dc3;
+  background-color: #71c9e7;
   background-color: #191f25;
 }
 .layout-icon-active {
   position: relative;
   height: 2px;
   top: 10px;
-  background-color: #558dc3;
+  background-color: #71c9e7;
 }
 .layout-icon-inactive {
   position: relative;
   height: 2px;
   top: 10px;
-  background-color: #558dc3;
+  background-color: #71c9e7;
   background-color: #191f25;
 }
 .classBanner {

@@ -624,7 +624,7 @@
             "line": 3,
             "description": "Top level module of the Webtop. When declared in an HTML file, it bootstraps\nthe Webtop.",
             "example": [
-                " \n    <body ng-app=\"ozpWebtop\"> ... </body>"
+                "\n    <body ng-app=\"ozpWebtop\"> ... </body>"
             ],
             "requires": [
                 "ozp.common.ellipticalFilter",
