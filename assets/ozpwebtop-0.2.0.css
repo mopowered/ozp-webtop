@@ -9211,12 +9211,9 @@ alteration, we may want to use multiple files
  * overwrites that are not specific to components should be maintained.
  */
 html {
-  position: relative;
-  min-height: 100%;
+  height: 100%;
+  width: 100%;
   background-color: #191f25;
-}
-body {
-  margin-bottom: 45px;
 }
 .navbar .divider-vertical {
   height: 45px;
@@ -9321,6 +9318,8 @@ input.ng-invalid {
 }
 .ui-view-style {
   height: 100%;
+  width: 100%;
+  overflow-y: scroll;
 }
 .gridster-container-settings {
   background-color: #191f25;
@@ -9459,10 +9458,13 @@ body > div.classBanner:last-of-type {
   color: #2b3036;
 }
 .desktop-view {
-  height: 100vh;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   overflow-y: hidden;
 }
 .grid-view {
+  position: relative;
   overflow-y: auto;
 }
 /**
@@ -9475,6 +9477,8 @@ body > div.classBanner:last-of-type {
   left: 0 !important;
   top: 61px !important;
   bottom: 61px !important;
+  position: fixed;
+  z-index: 999999;
 }
 .fullWidthTopHidden {
   top: 16px !important;

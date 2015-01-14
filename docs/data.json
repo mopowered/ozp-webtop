@@ -1350,7 +1350,7 @@
                     "description": "iwcClient service from ozp-iwc-angular library"
                 },
                 {
-                    "name": "iwcOzoneBus",
+                    "name": "defaultIwcOzoneBus",
                     "description": "OZONE bus to connect to"
                 }
             ]
@@ -3232,7 +3232,7 @@
             "line": 19,
             "description": "URL of OZONE bus used by the application",
             "itemtype": "property",
-            "name": "iwcOzoneBus",
+            "name": "defaultIwcOzoneBus",
             "type": "String",
             "class": "constants",
             "module": "ozpWebtop.constants"
@@ -3341,7 +3341,7 @@
         },
         {
             "file": "src/common/iwcConnectedClient/iwcConnectedClient.js",
-            "line": 36,
+            "line": 44,
             "description": "Get a connected OZP client",
             "itemtype": "method",
             "name": "getClient",
@@ -3771,7 +3771,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/common/iwcConnectedClient/iwcConnectedClient.js:36"
+            "line": " src/common/iwcConnectedClient/iwcConnectedClient.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",

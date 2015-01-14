@@ -153,7 +153,7 @@ angular.module("dashboardView/button/ozpbutton.tpl.html", []).run(["$templateCac
 
 angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboardView/chrome/ozpchrome.tpl.html",
-    "<div class=\"ozp-chrome\">\n" +
+    "<div class=\"ozp-chrome\" ng-dblclick=\"maximizeFrame()\">\n" +
     "  <img class=\"chrome-icon\" ng-src=\"{{frame.icon.small}}\">\n" +
     "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
     "  <span class=\"chrome-controls\" >\n" +
