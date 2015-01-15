@@ -204,7 +204,7 @@
  * @module ozpWebtop.dashboardView
  *
  */
-angular.module(&#x27;ozpWebtop.dashboardView&#x27;, []);
+angular.module(&#x27;ozpWebtop.dashboardView&#x27;, [&#x27;ozpWebtop.models.dashboard&#x27;]);
 
 /**
  * Dashboard view controller
@@ -218,7 +218,7 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;, []);
  */
 angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
 
-.controller(&#x27;DashboardViewCtrl&#x27;, function ($scope) {
+.controller(&#x27;DashboardViewCtrl&#x27;, function ($scope, $state, dashboardApi) {
 
     $scope.$on(&#x27;$stateChangeSuccess&#x27;,
       function(event, toState/*, toParams, fromState, fromParams*/){
@@ -227,6 +227,28 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
         } else if (toState.name.indexOf(&#x27;desktop-sticky&#x27;) &gt; -1) {
           $scope.layout = &#x27;desktop&#x27;;
         } else {
+          // Get user&#x27;s dashboard data - if it&#x27;s present, redirect to first
+          // board. If not present, create a default board
+          dashboardApi.getCurrentDashboard().then(function(dashboard) {
+            if (!dashboard) {
+              console.log(&#x27;No dashboards found, creating a default one&#x27;);
+              dashboardApi.createDashboard(&#x27;Default&#x27;).then(function() {
+                // now get this dashboard id
+                dashboardApi.getDashboards().then(function(dashboards) {
+                  // we know we only have one dashboard
+                  var dashboardId = dashboards[0].id;
+                  var stickyIndex = dashboards[0].stickyIndex;
+                  // redirect user to new dashboard (grid view by default)
+                  $state.go(&#x27;dashboardview.grid-sticky-&#x27; + stickyIndex, {
+                    &#x27;dashboardId&#x27;: dashboardId});
+                });
+              });
+            } else {
+              // TODO: shouldn&#x27;t arbitrarily use grid mode
+              $state.go(&#x27;dashboardview.&#x27; + dashboard.layout + &#x27;-sticky-&#x27; +
+                dashboard.stickyIndex, {dashboardId: dashboard.id});
+            }
+          });
         }
     });
 
