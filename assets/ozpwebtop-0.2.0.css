@@ -9222,8 +9222,9 @@ html {
   border-left: 1px solid #eeeeef;
 }
 .navbar-inverse .divider-vertical {
-  border-right-color: #222222;
-  border-left-color: #111111;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  width: 10px;
 }
 @media (max-width: 767px) {
   .navbar-collapse .nav > .divider-vertical {
@@ -9300,6 +9301,7 @@ input.ng-invalid {
 .ozp-toolbar {
   margin-top: 0;
   margin-bottom: 0;
+  border-bottom: 1px #191F25 solid;
 }
 .notification-text {
   margin-top: .1em;
@@ -9340,6 +9342,7 @@ input.ng-invalid {
   /* Set the fixed height of the footer here */
   height: 45px;
   z-index: 200;
+  border-top: 1px #191F25 solid;
 }
 .app-toolbar-ng-include {
   padding-top: 75px;
@@ -9364,32 +9367,17 @@ input.ng-invalid {
   border: none;
   color: #ffffff;
 }
-.app-toolbar-active-app {
-  position: relative;
-  top: -2px;
-  width: 32px;
-  height: 2px;
-  background-color: #71c9e7;
-}
-.app-toolbar-inactive-app {
-  position: relative;
-  top: -2px;
-  width: 32px;
-  height: 2px;
-  background-color: #71c9e7;
-  background-color: #191f25;
-}
 .layout-icon-active {
   position: relative;
   height: 2px;
   top: 10px;
-  background-color: #71c9e7;
+  background-color: #009dd3;
 }
 .layout-icon-inactive {
   position: relative;
   height: 2px;
   top: 10px;
-  background-color: #71c9e7;
+  background-color: #009dd3;
   background-color: #191f25;
 }
 .classBanner {
@@ -9409,8 +9397,9 @@ body > div.classBanner:last-of-type {
 .ozp-managed-frame {
   position: absolute;
   box-sizing: border-box;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  background-color: #2b3036;
+  margin: 1px;
+  border: 1px solid #191f25;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -9419,10 +9408,10 @@ body > div.classBanner:last-of-type {
   box-shadow: 2px 2px 4px 0px rgba(50, 50, 50, 0.15);
 }
 .ozp-chrome {
-  background: #eeeeef;
-  color: #4c5457;
+  background: #2b3036;
+  color: #ffffff;
   font-size: 10pt;
-  height: 25px;
+  height: 15px;
   cursor: default;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -9432,10 +9421,12 @@ body > div.classBanner:last-of-type {
   max-height: 19px;
   max-width: 19px;
   margin: 3px;
+  padding-top: 3px;
   float: left;
 }
 .ozp-chrome > .chrome-name {
   line-height: 25px;
+  padding-top: 3px;
   white-space: nowrap;
   margin-left: 3px;
   max-width: 115px;
@@ -9449,13 +9440,14 @@ body > div.classBanner:last-of-type {
 }
 .ozp-chrome > .chrome-controls > .btn {
   background: transparent;
-  padding: 0;
-  color: #dbdcdd;
+  padding-left: 3px;
+  padding-right: 3px;
+  color: #b5b6b8;
   font-size: 10px;
 }
 .ozp-chrome > .chrome-controls > .btn:hover,
 .ozp-chrome > .chrome-controls > .btn:active {
-  color: #2b3036;
+  color: #ffffff;
 }
 .desktop-view {
   position: fixed;
