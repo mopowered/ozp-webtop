@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.2.0</b>
+                    API Docs for Version: <b>0.3.0</b>
                 </p>
             </li>
         </div>
@@ -232,7 +232,7 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
           dashboardApi.getCurrentDashboard().then(function(dashboard) {
             if (!dashboard) {
               console.log(&#x27;No dashboards found, creating a default one&#x27;);
-              dashboardApi.createDashboard(&#x27;Default&#x27;).then(function() {
+              dashboardApi.createInitialDashboardData().then(function() {
                 // now get this dashboard id
                 dashboardApi.getDashboards().then(function(dashboards) {
                   // we know we only have one dashboard

@@ -2,7 +2,7 @@
     "project": {
         "name": "ozpwebtop",
         "description": "",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "url": "https://github.com/ozone-development/ozp-webtop"
     },
     "files": {
@@ -508,7 +508,7 @@
             },
             "tag": "module",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1266,
+            "line": 1276,
             "description": "Dashboard model",
             "requires": [
                 "ozp.common.utilities",
@@ -1156,7 +1156,7 @@
             "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1266,
+            "line": 1276,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -2662,7 +2662,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 625,
+            "line": 647,
             "description": "Get the next available id for a new dashboard\nTODO: this assumes ids are integers and not uuids",
             "itemtype": "method",
             "name": "getNewDashboardId",
@@ -2675,14 +2675,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 664,
+            "line": 674,
             "description": "Get the next available sticky slot for a new dashboard",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 684,
+            "line": 694,
             "description": "Get the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboard",
@@ -2695,7 +2695,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 729,
+            "line": 739,
             "description": "Create example dashboards (test purposes only)",
             "itemtype": "method",
             "name": "createExampleDashboards",
@@ -2708,14 +2708,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1234,
+            "line": 1244,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1250,
+            "line": 1260,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
@@ -3671,15 +3671,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:625"
+            "line": " src/app/models/dashboardApi.js:647"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:684"
+            "line": " src/app/models/dashboardApi.js:694"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:729"
+            "line": " src/app/models/dashboardApi.js:739"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3815,15 +3815,15 @@
         },
         {
             "message": "Missing item type\nGet the next available sticky slot for a new dashboard",
-            "line": " src/app/models/dashboardApi.js:664"
+            "line": " src/app/models/dashboardApi.js:674"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1234"
+            "line": " src/app/models/dashboardApi.js:1244"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1250"
+            "line": " src/app/models/dashboardApi.js:1260"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
