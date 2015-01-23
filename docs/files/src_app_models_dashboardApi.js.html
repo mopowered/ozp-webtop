@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.3.0</b>
+                    API Docs for Version: <b>0.3.1</b>
                 </p>
             </li>
         </div>
@@ -206,7 +206,7 @@
  * @requires ozpWebtop.services.localStorageInterface
  */
 angular.module(&#x27;ozpWebtop.models.dashboard&#x27;, [
-  &#x27;ozp.common.utilities&#x27;, &#x27;ozpWebtop.constants&#x27;,
+  &#x27;ozp.common.utilities&#x27;, &#x27;ozp.common.iwc.client&#x27;, &#x27;ozpWebtop.constants&#x27;,
   &#x27;ozpWebtop.services.iwcInterface&#x27;,
   &#x27;ozpWebtop.services.localStorageInterface&#x27;]);
 
@@ -220,7 +220,8 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
-function generalDashboardModel($sce, persistStrategy, Utilities) {
+function generalDashboardModel($sce, persistStrategy, Utilities,
+                               iwcConnectedClient) {
 
   return {
     /**
@@ -457,8 +458,10 @@ function generalDashboardModel($sce, persistStrategy, Utilities) {
         var newRowSmall = 0;
         var newRowMedium = 0;
         for (var i=0; i &lt; dashboard.frames.length; i++) {
-          var thisNewRowSmall = dashboard.frames[i].gridLayout.sm.row + dashboard.frames[i].gridLayout.sm.sizeY + 1;
-          var thisNewRowMd = dashboard.frames[i].gridLayout.md.row + dashboard.frames[i].gridLayout.md.sizeY + 1;
+          var thisNewRowSmall = dashboard.frames[i].gridLayout.sm.row +
+            dashboard.frames[i].gridLayout.sm.sizeY + 1;
+          var thisNewRowMd = dashboard.frames[i].gridLayout.md.row +
+            dashboard.frames[i].gridLayout.md.sizeY + 1;
           if ((thisNewRowSmall + 2) &gt; newRowSmall) {
             newRowSmall = thisNewRowSmall;
           }
@@ -630,7 +633,8 @@ function generalDashboardModel($sce, persistStrategy, Utilities) {
             frames[j].icon.small = marketplaceApps[i].icons.small;
             frames[j].icon.large = marketplaceApps[i].icons.large;
             frames[j].url = marketplaceApps[i].launchUrls.default;
-            frames[j].trustedUrl = $sce.trustAsResourceUrl(frames[j].url);
+            frames[j].trustedUrl = $sce.trustAsResourceUrl(frames[j].url +
+              &#x27;?ozpIwc.peer=&#x27; + iwcConnectedClient.getIwcBusUrl());
             frames[j].name = marketplaceApps[i].name;
             frames[j].descriptionShort = marketplaceApps[i].descriptionShort;
             frames[j].singleton = marketplaceApps[i].uiHints.singleton;
@@ -922,7 +926,8 @@ function generalDashboardModel($sce, persistStrategy, Utilities) {
             dashboard.frames[i].isMaximized = false;
           }
           catch (err) {
-            console.log(&#x27;Error in cascadeWindows on board &#x27; + i + &#x27;:&#x27;  + JSON.stringify(err));
+            console.log(&#x27;Error in cascadeWindows on board &#x27; + i + &#x27;:&#x27;  +
+              JSON.stringify(err));
           }
         }
         return that.saveDashboard(dashboard).then(function(response) {
@@ -1443,9 +1448,12 @@ function generalDashboardModel($sce, persistStrategy, Utilities) {
  * ngtype: service
  *
  */
-models.service(&#x27;dashboardModelLocalStorage&#x27;, function($sce, localStorageInterface,
-                                                    Utilities) {
-  var model = generalDashboardModel($sce, localStorageInterface, Utilities);
+models.service(&#x27;dashboardModelLocalStorage&#x27;, function($sce,
+                                                      localStorageInterface,
+                                                      Utilities,
+                                                      iwcConnectedClient) {
+  var model = generalDashboardModel($sce, localStorageInterface, Utilities,
+    iwcConnectedClient);
   for (var prop in model) {
     if (model.hasOwnProperty(prop)) {
       this[prop] = model[prop];
@@ -1460,8 +1468,10 @@ models.service(&#x27;dashboardModelLocalStorage&#x27;, function($sce, localStora
  * ngtype: service
  *
  */
-models.service(&#x27;dashboardModelIwc&#x27;, function($sce, iwcInterface, Utilities) {
-  var model = generalDashboardModel($sce, iwcInterface, Utilities);
+models.service(&#x27;dashboardModelIwc&#x27;, function($sce, iwcInterface, Utilities,
+                                             iwcConnectedClient) {
+  var model = generalDashboardModel($sce, iwcInterface, Utilities,
+    iwcConnectedClient);
   for (var prop in model) {
     if (model.hasOwnProperty(prop)) {
       this[prop] = model[prop];

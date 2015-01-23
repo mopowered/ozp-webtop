@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.3.0</b>
+                    API Docs for Version: <b>0.3.1</b>
                 </p>
             </li>
         </div>
@@ -259,7 +259,10 @@ app.factory(&#x27;iwcConnectedClient&#x27;, function($q, $location, iwcClient, d
       });
 
       return deferred.promise;
-      }
+      },
+    getIwcBusUrl: function() {
+      return ozpIwcPeerUrl;
+    }
   };
 });
     </pre>
