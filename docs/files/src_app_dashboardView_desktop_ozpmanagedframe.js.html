@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.3.1</b>
+                    API Docs for Version: <b>0.3.3</b>
                 </p>
             </li>
         </div>
@@ -226,10 +226,11 @@ angular.module(&#x27;ozpWebtop.dashboardView.desktop.managedFrame&#x27;)
     },
     link: function (scope, element) {
       var resizableConfig = {
-      // handles: &#x27;all&#x27;,
       handles: &#x27;nw, sw, se, ne&#x27;,
       aspectRatio: false,
       ghost: true,
+      minWidth: 210,
+      minHeight: 210,
       containment: &#x27;.desktop-view&#x27;,
       start: function(event,ui) {
         angular.element(&#x27;body&#x27;).css(&#x27;pointer-events&#x27;,&#x27;none&#x27;);//this is not smart, but works for the demo... will probably need a workaround for ie9

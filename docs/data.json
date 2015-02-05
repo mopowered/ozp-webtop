@@ -2,7 +2,7 @@
     "project": {
         "name": "ozpwebtop",
         "description": "",
-        "version": "0.3.1",
+        "version": "0.3.3",
         "url": "https://github.com/ozone-development/ozp-webtop"
     },
     "files": {
