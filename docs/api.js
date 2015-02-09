@@ -24,7 +24,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpToolbar.OzpToolbarCtrl",
         "ozpToolbar.ozpToolbar",
         "services.iwcInterface",
-        "services.localStorageInterface"
+        "services.localStorageInterface",
+        "urlWidgetLauncher.UrlWidgetLauncherCtrl"
     ],
     "modules": [
         "ozp.common.ellipticalFilter",
@@ -50,7 +51,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.models.userSettings",
         "ozpWebtop.ozpToolbar",
         "ozpWebtop.services.iwcInterface",
-        "ozpWebtop.services.localStorageInterface"
+        "ozpWebtop.services.localStorageInterface",
+        "ozpWebtop.urlWidgetLauncher"
     ],
     "allModules": [
         {
@@ -172,6 +174,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.services.localStorageInterface",
             "name": "ozpWebtop.services.localStorageInterface",
             "description": "Interface for working with Local Storage"
+        },
+        {
+            "displayName": "ozpWebtop.urlWidgetLauncher",
+            "name": "ozpWebtop.urlWidgetLauncher",
+            "description": "The url widget launcher launches a new widget in the user's current dashboard\n(a new dashboard is created containing this widget if no dashboards for the\nuser exist). This is a stop gap solution - ultimately, this functionality\nneeds to be handled via IWC Intents"
         }
     ]
 } };

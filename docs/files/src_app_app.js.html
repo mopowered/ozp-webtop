@@ -28,7 +28,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DashboardViewCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.editDashboardModal", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appLauncher.AppLauncherCtrl", "classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DashboardViewCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/models.dashboardApi", "classes/models.marketplaceApi", "classes/models.userSettingsApi", "classes/ozp.common.compareUrl", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.LocalStorage", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.localStorageInterface", "classes/urlWidgetLauncher.UrlWidgetLauncherCtrl", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.localStorage", "modules/ozp.common.urlOriginComparer", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appLauncher", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.editDashboardModal", "modules/ozpWebtop.models.dashboard", "modules/ozpWebtop.models.marketplace", "modules/ozpWebtop.models.userSettings", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.localStorageInterface", "modules/ozpWebtop.urlWidgetLauncher"]'>
         </form>
     </div>
 </div>
@@ -99,6 +99,8 @@
                     
                         <li><a href="../classes/services.localStorageInterface.html">services.localStorageInterface</a></li>
                     
+                        <li><a href="../classes/urlWidgetLauncher.UrlWidgetLauncherCtrl.html">urlWidgetLauncher.UrlWidgetLauncherCtrl</a></li>
+                    
                 </ul>
             </div>
 
@@ -152,6 +154,8 @@
                         <li><a href="../modules/ozpWebtop.services.iwcInterface.html">ozpWebtop.services.iwcInterface</a></li>
                     
                         <li><a href="../modules/ozpWebtop.services.localStorageInterface.html">ozpWebtop.services.localStorageInterface</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.urlWidgetLauncher.html">ozpWebtop.urlWidgetLauncher</a></li>
                     
                 </ul>
             </div>
@@ -227,6 +231,7 @@
  * @requires ozpWebtop.dashboardView.grid
  * @requires ozpWebtop.addApplicationsModal
  * @requires ozpWebtop.editDashboardModal
+ * @requires ozpWebtop.urlWidgetLauncher
  * @requires ui.router
  * @requires ct.ui.router.extras
  * @requires ui.bootstrap
@@ -260,6 +265,7 @@ angular.module( &#x27;ozpWebtop&#x27;, [
   &#x27;ozpWebtop.dashboardView.grid&#x27;,
   &#x27;ozpWebtop.addApplicationsModal&#x27;,
   &#x27;ozpWebtop.editDashboardModal&#x27;,
+  &#x27;ozpWebtop.urlWidgetLauncher&#x27;,
   &#x27;ui.router&#x27;,
   &#x27;ct.ui.router.extras&#x27;,
   &#x27;ui.bootstrap&#x27;,
@@ -307,6 +313,9 @@ angular.module( &#x27;ozpWebtop&#x27;, [
 
       states.push(desktopState);
     }
+
+    states.push({name: &#x27;url-launch-app&#x27;, url: &#x27;/launchApp/:appId&#x27;,
+      controller: &#x27;UrlWidgetLauncherCtrl&#x27;});
 
     angular.forEach(states, function(state) { $stateProvider.state(state); });
     $urlRouterProvider.otherwise(&#x27;/&#x27;);

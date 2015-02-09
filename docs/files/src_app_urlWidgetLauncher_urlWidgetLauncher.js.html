@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/app/constants.js - ozpwebtop</title>
+    <title>src/app/urlWidgetLauncher/urlWidgetLauncher.js - ozpwebtop</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -193,7 +193,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>src/app/constants.js <small>File</small></h1>
+    <h1>src/app/urlWidgetLauncher/urlWidgetLauncher.js <small>File</small></h1>
 </div>
 
 <div class="file">
@@ -201,89 +201,68 @@
 &#x27;use strict&#x27;;
 
 /**
- * Constants used throughout the application
+ * The url widget launcher launches a new widget in the user&#x27;s current dashboard
+ * (a new dashboard is created containing this widget if no dashboards for the
+ * user exist). This is a stop gap solution - ultimately, this functionality
+ * needs to be handled via IWC Intents
  *
- * @module ozpWebtop.constants
+ * @module ozpWebtop.urlWidgetLauncher
  */
-angular.module(&#x27;ozpWebtop.constants&#x27;, []);
+angular.module(&#x27;ozpWebtop.urlWidgetLauncher&#x27;, []);
 
+var app = angular.module( &#x27;ozpWebtop.urlWidgetLauncher&#x27;);
 /**
- * Constants used throughout the application
+ * Controller for url widget launcher
  *
- * ngtype: constant
+ * ngtype: controller
  *
- * @class constants
- * @static
- */
-angular.module(&#x27;ozpWebtop.constants&#x27;)
-/**
- * URL of OZONE bus used by the application
+ * @class UrlWidgetLauncherCtrl
+ * @constructor
+ * @param $scope ng $scope
+ * @param $rootScope ng $rootScope
+ * @namespace urlWidgetLauncher
  *
- * @property defaultIwcOzoneBus
- * @type String
  */
-.constant(&#x27;defaultIwcOzoneBus&#x27;, &#x27;http://ozone-development.github.io/iwc/&#x27;)
-//.constant(&#x27;defaultIwcOzoneBus&#x27;, &#x27;http://localhost:9044&#x27;)
-/**
- * Flag to use IWC
- *
- * @property useIwc
- * @type Boolean
- */
-.constant(&#x27;useIwc&#x27;, true)
+app.controller(&#x27;UrlWidgetLauncherCtrl&#x27;,
+  function($scope, $state, dashboardApi) {
 
-/**
- * Number of sticky dashboard slots (for each grid and desktop layouts)
- *
- * @property maxStickyBoards
- * @type Integer
- */
-.constant(&#x27;maxStickyBoards&#x27;, 10)
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//                              Events
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/**
- * Event fired when the window size changes across device size boundaries as
- * defined by Bootstrap (xs, sm, md, lg)
- *
- * @property deviceSizeChangedEvent
- * @type String
- */
-.constant(&#x27;deviceSizeChangedEvent&#x27;, &#x27;deviceSizeChange&#x27;)
-
-/**
- * Event fired when the window size changes by 1px or more
- *
- * @property windowSizeChangedEvent
- * @type String
- */
-.constant(&#x27;windowSizeChangedEvent&#x27;, &#x27;windowSizeChange&#x27;)
-
-/**
- * Event fired when the state of the active dashboard changes (frames are
- * added or removed, shown or hidden, etc)
- *
- * @property dashboardStateChangedEvent
- * @type String
- */
-.constant(&#x27;dashboardStateChangedEvent&#x27;, &#x27;dashboardStateChange&#x27;)
-
-/**
- * Event fired when full-screen mode is changed
- * @property fullScreenChangeEvent
- * @type String
- */
-.constant(&#x27;fullScreenModeToggleEvent&#x27;, &#x27;fullScreenModeToggle&#x27;)
-
-
-/**
- * Event fired when app icon is clicked in the app toolbar in grid layout
- * @property highlightFrameOnGridLayoutEvent
- * @type String
- */
-.constant(&#x27;highlightFrameOnGridLayoutEvent&#x27;, &#x27;highlightFrameOnGridLayout&#x27;);
-
+    $scope.$on(&#x27;$stateChangeSuccess&#x27;,
+      function(event, toState, toParams) {
+        if (toState.name === &#x27;url-launch-app&#x27;) {
+          console.log(&#x27;Opening app &#x27; + toParams.appId);
+          // Get user&#x27;s dashboard data - if it&#x27;s present, redirect to first
+          // board. If not present, create a default board
+          dashboardApi.getCurrentDashboard().then(function(dashboard) {
+            if (!dashboard) {
+              console.log(&#x27;No dashboards found, creating a default one&#x27;);
+              dashboardApi.createInitialDashboardData().then(function() {
+                // now get this dashboard id
+                dashboardApi.getDashboards().then(function(dashboards) {
+                  // we know we only have one dashboard
+                  var dashboardId = dashboards[0].id;
+                  var stickyIndex = dashboards[0].stickyIndex;
+                  // redirect user to new dashboard (grid view by default) after
+                  // adding this app to the board
+                  dashboardApi.createFrame(dashboardId, toParams.appId, 25).then(function() {
+                    console.log(&#x27;Adding app &#x27; + toParams.appId + &#x27; to default dashboard and redirecting ...&#x27;);
+                    $state.go(&#x27;dashboardview.grid-sticky-&#x27; + stickyIndex, {
+                      &#x27;dashboardId&#x27;: dashboardId});
+                  });
+                });
+              });
+            } else {
+              // redirect user to this dashboard after adding this app to the board
+              dashboardApi.createFrame(dashboard.id, toParams.appId, 25).then(function() {
+                console.log(&#x27;Adding app &#x27; + toParams.appId + &#x27; to existing dashboard &#x27; + dashboard.id + &#x27; and redirecting ...&#x27;);
+                $state.go(&#x27;dashboardview.&#x27; + dashboard.layout + &#x27;-sticky-&#x27; +
+                  dashboard.stickyIndex, {dashboardId: dashboard.id});
+              });
+            }
+          });
+        }
+    });
+  }
+);
     </pre>
 </div>
 

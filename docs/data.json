@@ -209,6 +209,19 @@
                 "services": 1
             }
         },
+        "src/app/urlWidgetLauncher/urlWidgetLauncher.js": {
+            "name": "src/app/urlWidgetLauncher/urlWidgetLauncher.js",
+            "modules": {
+                "ozpWebtop.urlWidgetLauncher": 1
+            },
+            "classes": {
+                "urlWidgetLauncher.UrlWidgetLauncherCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "urlWidgetLauncher": 1
+            }
+        },
         "src/app/app.js": {
             "name": "src/app/app.js",
             "modules": {
@@ -613,6 +626,21 @@
                 "ozp.common.localStorage"
             ]
         },
+        "ozpWebtop.urlWidgetLauncher": {
+            "name": "ozpWebtop.urlWidgetLauncher",
+            "submodules": {},
+            "classes": {
+                "urlWidgetLauncher.UrlWidgetLauncherCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "urlWidgetLauncher": 1
+            },
+            "tag": "module",
+            "file": "src/app/urlWidgetLauncher/urlWidgetLauncher.js",
+            "line": 14,
+            "description": "The url widget launcher launches a new widget in the user's current dashboard\n(a new dashboard is created containing this widget if no dashboards for the\nuser exist). This is a stop gap solution - ultimately, this functionality\nneeds to be handled via IWC Intents"
+        },
         "ozpWebtop": {
             "name": "ozpWebtop",
             "submodules": {},
@@ -649,6 +677,7 @@
                 "ozpWebtop.dashboardView.grid",
                 "ozpWebtop.addApplicationsModal",
                 "ozpWebtop.editDashboardModal",
+                "ozpWebtop.urlWidgetLauncher",
                 "ui.router",
                 "ct.ui.router.extras",
                 "ui.bootstrap",
@@ -1293,6 +1322,31 @@
                 {
                     "name": "LocalStorage",
                     "description": "LocalStorage service"
+                }
+            ]
+        },
+        "urlWidgetLauncher.UrlWidgetLauncherCtrl": {
+            "name": "urlWidgetLauncher.UrlWidgetLauncherCtrl",
+            "shortname": "urlWidgetLauncher.UrlWidgetLauncherCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ozpWebtop.urlWidgetLauncher",
+            "namespace": "urlWidgetLauncher",
+            "file": "src/app/urlWidgetLauncher/urlWidgetLauncher.js",
+            "line": 14,
+            "description": "Controller for url widget launcher\n\nngtype: controller",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": "ng $scope"
+                },
+                {
+                    "name": "$rootScope",
+                    "description": "ng $rootScope"
                 }
             ]
         },
