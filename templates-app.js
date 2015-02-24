@@ -2,13 +2,14 @@ angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
-    "<div class=\"wt-modal add-apps-style\">\n" +
+    "<div class=\"wt-modal add-apps-style\" id=\"modal_openApps\">\n" +
     "  <div class=\"modal-header wt-modal-header\">\n" +
     "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
     "      <span aria-hidden=\"true\"><i class=\"fa fa-close close-icon\"></i> </span>\n" +
     "      <span class=\"sr-only\">Close</span>\n" +
     "    </button>\n" +
     "    <h3 class=\"modal-title\">Open bookmarked apps</h3>\n" +
+    "    <button type=\"button\" class=\"btn btn-default pull-right\">Find more apps</button>\n" +
     "    <p> These are apps you have already bookmarked from the Center. To edit your\n" +
     "      bookmarks, visit the HUD\n" +
     "    </p>\n" +
@@ -35,14 +36,14 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "      <div ng-switch-when=\"true\">\n" +
     "        <button class=\"btn add-apps-dark-text\"\n" +
     "                ng-click=\"openAppsInNewDashboard()\">\n" +
-    "        Open apps in new dashboard\n" +
+    "        Open in new dashboard\n" +
     "        </button>\n" +
     "        <button class=\"btn btn-primary\" ng-click=\"openApps()\">Open</button>\n" +
     "      </div>\n" +
     "      <div ng-switch-default>\n" +
     "        <button class=\"btn add-apps-dark-text\" disabled=\"disabled\"\n" +
     "                ng-click=\"openAppsInNewDashboard()\">\n" +
-    "        Open apps in new dashboard\n" +
+    "        Open in new dashboard\n" +
     "        </button>\n" +
     "        <button class=\"btn btn-primary\"\n" +
     "                ng-click=\"openApps()\" disabled=\"disabled\">Open\n" +
@@ -57,85 +58,66 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",
     "<div ng-controller=\"ApplicationToolbarCtrl\">\n" +
-    "  <nav class=\"navbar navbar-default navbar-inverse app-toolbar no-rounded-corners\"\n" +
-    "       role=\"navigation\" ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
-    "    <div class=\"container-fluid\">\n" +
-    "      <!-- Brand and toggle get grouped for better mobile display -->\n" +
-    "      <div class=\"navbar-header\">\n" +
-    "        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n" +
-    "          <span class=\"sr-only\">Toggle navigation</span>\n" +
-    "          <span class=\"icon-bar\"></span>\n" +
-    "          <span class=\"icon-bar\"></span>\n" +
-    "          <span class=\"icon-bar\"></span>\n" +
-    "        </button>\n" +
-    "        <ul class=\"nav navbar-nav\">\n" +
-    "          <!-- stuff on the left side of the nav bar -->\n" +
-    "          <li>\n" +
-    "            <a class=\"navbar-brand\" href=\"\" ng-click=\"openApplicationsModal()\">\n" +
-    "              <i class=\"fa fa-plus\" style=\"margin-top: 4px;\"></i>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
-    "          </ul>\n" +
-    "      </div>\n" +
+    "    <div class=\"navbar navbar-default app-toolbar navbar-inverse\"\n" +
+    "         ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
+    "        <div class=\"container-fluid\">\n" +
+    "            <div class=\"navbar-left\">\n" +
+    "                <ul class=\"nav navbar-nav\">\n" +
+    "                    <li class=\"highlight\">\n" +
+    "                      <a class=\"lrg\" href=\"\" ng-click=\"openApplicationsModal()\">\n" +
+    "                        <i class=\"icon-plus\"></i>\n" +
+    "                      </a>\n" +
+    "                    </li>\n" +
+    "                    \n" +
+    "                    <li class=\"navbar-spacer\"></li>\n" +
+    "                    <li class=\"dropdown dropup\">\n" +
+    "                    <!-- we start -->\n" +
+    "                      <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
+    "                        {{currentDashboard.name | limitTo : dashboardNameLength}} <i class=\"icon-caret-up\"></i></a>\n" +
+    "                      <ul class=\"dropdown-menu\" role=\"menu\">\n" +
+    "                        <li class=\"dropdown-header\">Dashboards</li>\n" +
+    "                        <li ng-repeat=\"board in dashboards\">\n" +
+    "                          <a href=\"\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
+    "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
+    "                              <!-- <button type=\"button\" ng-click=\"openDeleteDashboardModal(board)\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button> -->\n" +
+    "                              <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
+    "                              <i class=\"icon-pencil pull-right\" ng-click=\"openEditDashboardModal()\"></i>\n" +
+    "                          </a>\n" +
+    "                        </li>\n" +
+    "                        <li>\n" +
+    "                          <a class=\"caboose\" href=\"#\">\n" +
+    "                            <!-- TODO create dashboard view-->\n" +
+    "                            <i class=\"icon-plus\"></i>Create a new dashboard\n" +
+    "                          </a>\n" +
+    "                        </li>\n" +
+    "                      </ul>\n" +
+    "                    </li>\n" +
+    "                    <li class=\"navbar-spacer\"></li>\n" +
+    " \n" +
+    "                    <li class=\"app\" ng-repeat=\"app in myPinnedApps\" ng-class=\"{true:'',false:'active', 'undefined':'active'}[app.isMinimized]\">\n" +
+    "                      <a tooltip=\"{{app.name | limitTo : 15}}\"\n" +
+    "                          ng-click=\"maximizeFrame(app)\">\n" +
+    "                        <img ng-src=\"{{app.icon.large}}\" />\n" +
+    "                        <!-- <div ng-class=\"app.isMinimized && currentDashboard.layout === 'desktop'? 'app-toolbar-inactive-app' : 'app-toolbar-active-app'\">&nbsp</div> -->\n" +
+    "                      </a>\n" +
+    "                    </li>                   \n" +
+    "                </ul>\n" +
+    "            </div>\n" +
     "\n" +
-    "      <!-- Collect the nav links, forms, and other content for toggling -->\n" +
-    "      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n" +
-    "        <ul class=\"nav navbar-nav\">\n" +
-    "          <li class=\"dropup\">\n" +
-    "            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
-    "              {{currentDashboard.name | limitTo : dashboardNameLength}} <span class=\"caret\"></span></a>\n" +
-    "            <ul class=\"dropdown-menu\" role=\"menu\">\n" +
-    "              <li ng-repeat=\"board in dashboards\">\n" +
-    "                <div style=\"margin-left: 20px; margin-right: 20px;\">\n" +
-    "                  <a ng-click=\"loadDashboard(board)\" class=\"link-pointer\"><i class=\"fa fa-desktop\"></i>&nbsp&nbsp {{board.name}} &nbsp&nbsp&nbsp </a>\n" +
-    "                  <a ng-click=\"openDeleteDashboardModal(board)\" class=\"link-pointer pull-right\" ng-show=\"isCurrentBoard(board)\"><i class=\"fa fa-close\"></i></a>\n" +
-    "                  <a ng-click=\"openEditDashboardModal()\" class=\"link-pointer pull-right\" ng-show=\"isCurrentBoard(board)\"><i class=\"fa fa-pencil\">&nbsp&nbsp</i></a>\n" +
-    "                </div>\n" +
-    "              </li>\n" +
-    "            </ul>\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\"></li>\n" +
-    "          <li ng-show=\"currentDashboard.layout === 'desktop'\">\n" +
-    "            <a ng-click=\"cascadeWindows()\" class=\"link-pointer\"\n" +
-    "                tooltip=\"Cascade Windows\"\n" +
-    "                tooltip-placement=\"top\">\n" +
-    "              <i class=\"fa fa-files-o fa-lg\"></i>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
-    "          <li class=\"divider-vertical\" ng-show=\"currentDashboard.layout === 'desktop'\"></li>\n" +
-    "\n" +
-    "          <!-- stuff on the left side of the nav bar -->\n" +
-    "          <li ng-repeat=\"app in myPinnedApps\">\n" +
-    "            <a tooltip=\"{{app.name | limitTo : 15}}\" style=\"padding-right: 0px; margin-left: 15px; padding-left: 0px; padding-bottom: 0px;\"\n" +
-    "                ng-click=\"maximizeFrame(app)\">\n" +
-    "              <img class=\"chrome-icon app-toolbar-img\"\n" +
-    "                   ng-src=\"{{app.icon.large}}\"/>\n" +
-    "              <div ng-class=\"app.isMinimized && currentDashboard.layout === 'desktop'? 'app-toolbar-inactive-app' : 'app-toolbar-active-app'\">&nbsp</div>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
-    "        </ul>\n" +
-    "        <ul class=\"nav navbar-nav navbar-right\">\n" +
-    "          <li ng-show=\"previousAppsVisible\"><i class=\"fa fa-angle-double-left fa-inverse fa-lg link-pointer\"\n" +
-    "                 ng-click=\"previousApps()\" style=\"margin-top: 15px;\"></i></li>\n" +
-    "          <li ng-show=\"nextAppsVisible\"><i class=\"fa fa-angle-double-right fa-inverse fa-lg link-pointer\"\n" +
-    "                 ng-click=\"nextApps()\" style=\"margin-top: 15px;\"></i></li>\n" +
-    "\n" +
-    "          <li class=\"divider-vertical\" style=\"margin-right: 0px; padding-right: 0px\"></li>\n" +
-    "          <li class=\"hideToolbarButton link-pointer\" tooltip=\"Enter Full Screen\"\n" +
-    "              tooltip-placement=\"top\">\n" +
-    "            <a ng-click=\"toggleFullScreenMode();\">\n" +
-    "              <i class=\"fa fa-expand fa-lg\"></i>\n" +
-    "            </a>\n" +
-    "          </li>\n" +
-    "        </ul>\n" +
-    "      </div><!-- /.navbar-collapse -->\n" +
-    "    </div><!-- /.container-fluid -->\n" +
-    "  </nav>\n" +
-    "<button class=\"hiddenToggle appHiddenToggle\" ng-click=\"toggleFullScreenMode();\"\n" +
-    "        ng-class=\"{false: 'hide'}[fullScreenMode]\"\n" +
+    "            <div class=\"navbar-right\">\n" +
+    "                <ul class=\"nav navbar-nav\">\n" +
+    "                    <!-- <li><a href=\"#\"><i class=\"icon-fast-forward\"></i></a></li> -->\n" +
+    "                    <li><a href=\"\"><i class=\"icon-maximize\" ng-click=\"toggleFullScreenMode();\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\"></i></a></li>\n" +
+    "                    <li><a href=\"\"><i class=\"icon-stack-2\" ng-click=\"cascadeWindows()\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\" ng-hide=\"currentDashboard.layout === 'grid'\"></i></a></li>\n" +
+    "                </ul>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <button class=\"hiddenToggle appHiddenToggle\" ng-click=\"toggleFullScreenMode();\"\n" +
+    "        ng-class=\"{false: 'hide', true:''}[fullScreenMode]\"\n" +
     "        tooltip=\"Exit Full Screen\" tooltip-placement=\"left\">\n" +
-    "  <i class=\"fa fa-compress fa-lg\"></i>\n" +
-    "</button>\n" +
+    "      <i class=\"icon-minimize\"></i>\n" +
+    "    </button>\n" +
     "</div>");
 }]);
 
@@ -362,7 +344,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"dropdown-header\">Manage</li>\n" +
     "            <li><a href=\"#\"><i class=\"icon-layers\"></i>Listing Management</a></li>\n" +
     "            <li><a href=\"#\"><i class=\"icon-shopping-settings\"></i>Marketplace Settings</a></li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
+    "            <li><a href=\"https://www.owfgoss.org:10443/dev/metrics/\" target=\"_blank\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
     "            <li><a class=\"caboose\" href=\"#\"><i class=\"icon-arrow-right\"></i>Logout</a></li>\n" +
     "          </ul>\n" +
     "        </li>\n" +

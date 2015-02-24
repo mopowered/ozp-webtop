@@ -345,9 +345,9 @@ app.directive(&#x27;ozpToolbar&#x27;, function(){
      scope.$watch(&#x27;fullScreenMode&#x27;, function() {
        if (scope.fullScreenMode) {
          // TODO: a cleaner way?
-         $(&#x27;body&#x27;).css(&#x27;padding&#x27;, &#x27;16px 0px&#x27;);
+         $(&#x27;body&#x27;).css(&#x27;margin&#x27;, &#x27;16px 0px&#x27;);
        } else {
-         $(&#x27;body&#x27;).css(&#x27;padding&#x27;, &#x27;57px 0px&#x27;);
+         $(&#x27;body&#x27;).css(&#x27;margin&#x27;, &#x27;57px 0px&#x27;);
          $(&#x27;.navbar-fixed-top&#x27;).css(&#x27;top&#x27;, &#x27;20px&#x27;);
        }
      });
