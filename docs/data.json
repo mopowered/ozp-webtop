@@ -3105,7 +3105,7 @@
         },
         {
             "file": "src/app/services/iwcInterface.js",
-            "line": 140,
+            "line": 141,
             "description": "Set resource on IWC bus",
             "params": [
                 {
@@ -3789,7 +3789,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/iwcInterface.js:140"
+            "line": " src/app/services/iwcInterface.js:141"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3901,7 +3901,7 @@
         },
         {
             "message": "Missing item type\nSet resource on IWC bus",
-            "line": " src/app/services/iwcInterface.js:140"
+            "line": " src/app/services/iwcInterface.js:141"
         }
     ]
 }
