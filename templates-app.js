@@ -58,7 +58,7 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("appToolbar/appToolbar.tpl.html",
     "<div ng-controller=\"ApplicationToolbarCtrl\">\n" +
-    "    <div class=\"navbar navbar-default app-toolbar navbar-inverse\"\n" +
+    "    <div class=\"navbar navbar-default app-toolbar\"\n" +
     "         ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
     "        <div class=\"container-fluid\">\n" +
     "            <div class=\"navbar-left\">\n" +
@@ -107,8 +107,14 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "            <div class=\"navbar-right\">\n" +
     "                <ul class=\"nav navbar-nav\">\n" +
     "                    <!-- <li><a href=\"#\"><i class=\"icon-fast-forward\"></i></a></li> -->\n" +
-    "                    <li><a href=\"\"><i class=\"icon-maximize\" ng-click=\"toggleFullScreenMode();\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\"></i></a></li>\n" +
-    "                    <li><a href=\"\"><i class=\"icon-stack-2\" ng-click=\"cascadeWindows()\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\" ng-hide=\"currentDashboard.layout === 'grid'\"></i></a></li>\n" +
+    "                    <li ng-click=\"toggleFullScreenMode();\">\n" +
+    "                      <a href=\"\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\">\n" +
+    "                        <i class=\"icon-maximize\"  ></i></a>\n" +
+    "                    </li>\n" +
+    "                    <li ng-click=\"cascadeWindows()\" ng-hide=\"currentDashboard.layout === 'grid'\">\n" +
+    "                      <a href=\"\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\">\n" +
+    "                        <i class=\"icon-stack-2\"></i></a>\n" +
+    "                    </li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -284,14 +290,14 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
 
 angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("ozpToolbar/ozpToolbar.tpl.html",
-    "<nav class=\"navbar navbar-default navbar-fixed-top navbar-inverse ozp-toolbar\"\n" +
+    "<nav class=\"navbar navbar-default navbar-fixed-top ozp-toolbar\"\n" +
     "    ng-class=\"{true: 'hide', false: ''}[fullScreenMode]\">\n" +
     "  <div class=\"container-fluid\">\n" +
     "    <div class=\"navbar-left\">\n" +
     "      <ul class=\"nav navbar-nav\">\n" +
-    "        <li><a class=\"lrg\" href=\"http://ozone-development.github.io/hud-ui\"><i class=\"icon-home\"></i></a></li>\n" +
-    "        <li><a class=\"lrg\" href=\"http://ozone-development.github.io/center-ui\"><i class=\"icon-shopping\"></i></a></li>\n" +
-    "        <li class=\"active\"><a class=\"lrg\" href=\"http://ozone-development.github.io/ozp-webtop/#/grid\"><i class=\"icon-layout\"></i></a></li>\n" +
+    "        <li><a class=\"lrg\" ng-href=\"{{hudUrl}}\"><i class=\"icon-home\"></i></a></li>\n" +
+    "        <li><a class=\"lrg\" ng-href=\"{{centerUrl}}\"><i class=\"icon-shopping\"></i></a></li>\n" +
+    "        <li class=\"active\"><a class=\"lrg\" ng-href=\"{{webtopUrl}}\"><i class=\"icon-layout\"></i></a></li>\n" +
     "      </ul>\n" +
     "    </div>\n" +
     "\n" +
@@ -344,7 +350,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"dropdown-header\">Manage</li>\n" +
     "            <li><a href=\"#\"><i class=\"icon-layers\"></i>Listing Management</a></li>\n" +
     "            <li><a href=\"#\"><i class=\"icon-shopping-settings\"></i>Marketplace Settings</a></li>\n" +
-    "            <li><a href=\"https://www.owfgoss.org:10443/dev/metrics/\" target=\"_blank\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
+    "            <li><a ng-href=\"{{metricsUrl}}\" target=\"_blank\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
     "            <li><a class=\"caboose\" href=\"#\"><i class=\"icon-arrow-right\"></i>Logout</a></li>\n" +
     "          </ul>\n" +
     "        </li>\n" +
