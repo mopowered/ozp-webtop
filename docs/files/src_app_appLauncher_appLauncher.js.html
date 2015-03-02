@@ -224,13 +224,12 @@ angular.module(&#x27;ozpWebtop.appLauncher&#x27;, [&#x27;ui.router&#x27;,
  * @param $rootScope ng $rootScope
  * @param $state ng $state
  * @param $stateParams ng $stateParams
- * @param marketplaceApi marketplace data
  * @param dashboardApi dashboard data
  * @namespace appLauncher
  */
 angular.module( &#x27;ozpWebtop.appLauncher&#x27;)
   .controller(&#x27;AppLauncherCtrl&#x27;, function($scope, $rootScope, $state,
-                                          $stateParams, marketplaceApi,
+                                          $stateParams,
                                           dashboardApi) {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -242,38 +241,34 @@ angular.module( &#x27;ozpWebtop.appLauncher&#x27;)
      */
     $scope.appId = $stateParams.appId;
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //                           initialization
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    marketplaceApi.getAllApps().then(function(apps) {
-      var validApp = false;
-      for (var i=0; i &lt; apps.length; i++) {
-        if (apps[i].id === $scope.appId) {
-          validApp = true;
-        }
+    var validApp = false;
+    var apps = dashboardApi._applicationData;
+    for (var i=0; i &lt; apps.length; i++) {
+      if (apps[i].id === $scope.appId) {
+        validApp = true;
       }
-      if (!validApp) {
-        console.log(&#x27;ERROR: App with id &#x27; + $scope.appId + &#x27; was not found&#x27;);
-        return;
-      }
+    }
+    if (!validApp) {
+      console.log(&#x27;ERROR: App with id &#x27; + $scope.appId + &#x27; was not found&#x27;);
+      return;
+    }
 
-      // is this app already on our current dashboard?
-      dashboardApi.getCurrentDashboard().then(function(dashboard) {
-        dashboardApi.isAppOnDashboard(dashboard.id, $scope.appId).then(function(resp) {
-          if (resp) {
-            console.log(&#x27;app is already on our current board - redirecting&#x27;);
-            $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
-          } else {
-            console.log(&#x27;this app is not on our current board - will add&#x27;);
-            dashboardApi.createFrame(dashboard.id, $scope.appId, 25).then(function(resp) {
-              if (resp) {
-                $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
-              } else {
-                console.log(&#x27;ERROR: creating frame on dashboard&#x27;);
-              }
-            });
-          }
-        });
+    // is this app already on our current dashboard?
+    dashboardApi.getCurrentDashboard().then(function(dashboard) {
+      dashboardApi.isAppOnDashboard(dashboard.id, $scope.appId).then(function(resp) {
+        if (resp) {
+          console.log(&#x27;app is already on our current board - redirecting&#x27;);
+          $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
+        } else {
+          console.log(&#x27;this app is not on our current board - will add&#x27;);
+          dashboardApi.createFrame(dashboard.id, $scope.appId, 25).then(function(resp) {
+            if (resp) {
+              $state.go(&#x27;grid&#x27;, {&#x27;dashboardId&#x27;: dashboard.id});
+            } else {
+              console.log(&#x27;ERROR: creating frame on dashboard&#x27;);
+            }
+          });
+        }
       });
     });
 

@@ -321,8 +321,8 @@ angular.module( &#x27;ozpWebtop&#x27;, [
     $urlRouterProvider.otherwise(&#x27;/&#x27;);
   })
 
-.run( function run ($rootScope, $state, dashboardApi, marketplaceApi,
-                    userSettingsApi, useIwc) {
+.run( function run ($rootScope, $state, $http, $window, $log, dashboardApi, marketplaceApi,
+                    userSettingsApi, useIwc, initialDataReceivedEvent) {
 
     $rootScope.$state = $state;
 
@@ -330,9 +330,9 @@ angular.module( &#x27;ozpWebtop&#x27;, [
     if (!useIwc) {
       // create example marketplace and dashboard resources
       marketplaceApi.createExampleMarketplace();
-      //console.log(&#x27;attempting to create example dashboards from app.js&#x27;);
+      $log.debug(&#x27;attempting to create example dashboards from app.js&#x27;);
       dashboardApi.createExampleDashboards().then(function() {
-        //console.log(&#x27;created example dashboards from app.js&#x27;);
+      $log.debug(&#x27;created example dashboards from app.js&#x27;);
       });
       // create example user settings
       userSettingsApi.createExampleUserSettings().then(function() {
@@ -340,6 +340,29 @@ angular.module( &#x27;ozpWebtop&#x27;, [
       });
     }
 
+    // get app data and dashboard data
+    $http.get($window.OzoneConfig.API_URL + &#x27;/profile/self/library&#x27;, {withCredentials: true, headers: {&#x27;Content-Type&#x27;: &#x27;text/plain&#x27;}}).success(function(data, status) {
+      if (status !== 200) {
+          $log.warn(&#x27;WARNING: got non 200 status from /profile/self/library: &#x27; + status);
+        }
+      dashboardApi.setApplicationData(data);
+      // now the the current dashboard data
+      $http.get($window.OzoneConfig.API_URL + &#x27;/profile/self/data/dashboard-data&#x27;, {withCredentials: true, headers: {&#x27;Content-Type&#x27;: &#x27;text/plain&#x27;}}).success(function(data, status) {
+        if (status !== 200) {
+          $log.warn(&#x27;WARNING: got non 200 status from /profile/self/data/dashboard-data: &#x27; + status);
+        }
+        var parsedData = JSON.parse(data[&#x27;entity&#x27;]); // jshint ignore:line
+        // TODO: this is abusing the IWC store on the backend!
+        // dashboardApi.setInitialDashboardData(parsedData.entity);
+        dashboardApi.setInitialDashboardData(parsedData);
+        $log.info(&#x27;application listings and dashboard data retrieved - ready to start&#x27;);
+        $rootScope.$broadcast(initialDataReceivedEvent);
+      }).error(function(data, status) {
+        $log.error(&#x27;ERROR getting dashboard data. status: &#x27; + JSON.stringify(status) + &#x27;, data: &#x27; + JSON.stringify(data));
+      });
+    }).error(function(data, status) {
+      $log.error(&#x27;ERROR getting user library. status: &#x27; + JSON.stringify(status) + &#x27;, data: &#x27; + JSON.stringify(data));
+    });
 });
 
     </pre>

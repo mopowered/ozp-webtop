@@ -8,13 +8,12 @@
  * @requires ui.bootstrap
  * @requires ozpWebtop.models.dashboard
  * @requires ozp.common.windowSizeWatcher
- * @requires ozpWebtop.models.marketplace
  * @requires ozpWebtop.addApplicationsModal
  * @requires ozpWebtop.editDashboardModal
  * @requires ozp.common.windowSizeWatcher
  */
 angular.module('ozpWebtop.appToolbar', ['ui.router', 'ui.bootstrap',
-  'ozpWebtop.models.dashboard', 'ozpWebtop.models.marketplace',
+  'ozpWebtop.models.dashboard',
   'ozpWebtop.models.userSettings',
   'ozpWebtop.addApplicationsModal',
   'ozpWebtop.editDashboardModal',
@@ -41,7 +40,6 @@ angular.module('ozpWebtop.appToolbar', ['ui.router', 'ui.bootstrap',
  * @param $modal $modal service from ui.bootstrap
  * @param $interval $interval service from ui.bootstrap
  * @param $window $window service from ui.bootstrap
- * @param marketplaceApi Application data model
  * @param dashbaordApi Dashboard data model
  * @param userSettingsApi User settings data model
  * @param windowSizeWatcher Notify when window size changes
@@ -54,14 +52,15 @@ angular.module('ozpWebtop.appToolbar', ['ui.router', 'ui.bootstrap',
 angular.module( 'ozpWebtop.appToolbar')
   .controller('ApplicationToolbarCtrl', function($scope, $rootScope, $state,
                                                  $modal, $interval, $window,
-                                                 marketplaceApi, dashboardApi,
+                                                 $log, dashboardApi,
                                                  userSettingsApi,
                                                  windowSizeWatcher,
                                                  maxStickyBoards,
                                                  deviceSizeChangedEvent,
                                                  dashboardStateChangedEvent,
                                                  fullScreenModeToggleEvent,
-                                                 highlightFrameOnGridLayoutEvent) {
+                                                 highlightFrameOnGridLayoutEvent,
+                                                 initialDataReceivedEvent) {
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -152,11 +151,10 @@ angular.module( 'ozpWebtop.appToolbar')
     // toolbar is not hidden by default
     $scope.fullScreenMode = false;
 
-    // get all apps in the marketplace
-    marketplaceApi.getAllApps().then(function(apps) {
-      $scope.apps = apps;
-    }).catch(function(error) {
-      console.log('should not have happened: ' + error);
+    $scope.$on(initialDataReceivedEvent, function() {
+      $scope.apps = dashboardApi._applicationData;
+      $scope.ready = true;
+      $log.info('ApplicationToolbarCtrl: is ready');
     });
 
     $scope.$on(deviceSizeChangedEvent, function(event, value) {
@@ -220,6 +218,17 @@ angular.module( 'ozpWebtop.appToolbar')
      */
     $scope.handleStateChange= function(dashboardId, dashboardLayout) {
       // get dashboards
+      if (!$scope.ready) {
+        $log.warn('ApplicationToolbarCtrl: delaying call to handleStateChange by 500ms - no data yet');
+        $scope.handleStateChangeInterval = $interval(function() {
+          $scope.handleStateChange(dashboardId, dashboardLayout);
+        }, 500, 1);
+        return;
+      }
+      if ($scope.handleStateChangeInterval) {
+        $interval.cancel($scope.handleStateChangeInterval);
+      }
+      $log.info('ApplicationToolbarCtrl: handleStateChange(): DashboardId: ' + dashboardId + ', layout: ' + dashboardLayout);
       dashboardApi.getDashboards().then(function(dashboards) {
         $scope.dashboards = dashboards;
         for (var i=0; i < dashboards.length; i++) {
@@ -228,7 +237,7 @@ angular.module( 'ozpWebtop.appToolbar')
           }
         }
         if (!$scope.currentDashboard) {
-          console.log('WARNING: No dashboards found');
+          $log.warn('WARNING: No dashboards found');
         }
 
         if ($scope.currentDashboard.layout !== dashboardLayout) {
@@ -289,20 +298,22 @@ angular.module( 'ozpWebtop.appToolbar')
      * @method updateApps
      */
     $scope.updateApps = function() {
-      // app information is retrieved asynchronously from IWC. If the
-      // information isn't available yet, try again later
-      if ($scope.apps.length === 0) {
-        console.log('$scope.apps is empty, retrying later');
-        $interval($scope.updateApps, 500, 1);
+      if (!$scope.ready) {
+        $log.warn('ApplicationToolbarCtrl: delaying call to updateApps by 500ms - no data yet');
+        $scope.updateAppsInterval = $interval($scope.updateApps, 500, 1);
         return;
       }
+      if ($scope.updateAppsInterval) {
+        $interval.cancel($scope.updateAppsInterval);
+      }
+      $log.info('ApplicationToolbarCtrl: updateApps()...');
       return dashboardApi.getDashboards().then(function(dashboards) {
         $scope.dashboards = dashboards;
         for (var i=0; i < dashboards.length; i++) {
           if (dashboards[i].id === $scope.currentDashboard.id) {
             $scope.currentDashboard = dashboards[i];
             $scope.frames = angular.copy(dashboards[i].frames);
-            dashboardApi.mergeApplicationData($scope.frames, $scope.apps);
+            dashboardApi.mergeApplicationData($scope.frames);
             $scope.setPinnedApps();
           }
         }
@@ -345,9 +356,12 @@ angular.module( 'ozpWebtop.appToolbar')
         fullScreenVal = true;
       }
       $scope.fullScreenMode = fullScreenVal;
+      $rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
       userSettingsApi.updateUserSettingByKey('fullScreenMode', fullScreenVal).then(function(resp) {
         if (resp) {
-          $rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
+          $log.debug('ApplicationToolbarCtrl: $broadcast fullScreenModeToggleEvent: ' + JSON.stringify(fullScreenVal));
+          // TODO: fix this
+          //$rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
         } else {
           console.log('ERROR failed to update fullScreenMode in user ' +
             'settings');
@@ -441,8 +455,8 @@ angular.module( 'ozpWebtop.appToolbar')
       function addAppToDashboard(app, dashboardId) {
         // check if the app is already on the current dashboard
         return dashboardApi.isAppOnDashboard(dashboardId, app.id).then(function (isOnDashboard) {
-          if (isOnDashboard && app.uiHints.singleton) {
-            console.log('WARNING: Only one instance of ' + app.name + ' may be on your dashboard');
+          if (isOnDashboard && app.singleton) {
+            $log.warn('WARNING: Only one instance of ' + app.name + ' may be on your dashboard');
           } else {
             // TODO: use message broadcast to get grid max rows and grid max cols
             return dashboardApi.createFrame(dashboardId, app.id, 25).then(function (response) {
@@ -471,6 +485,7 @@ angular.module( 'ozpWebtop.appToolbar')
           // TODO: is this randomly generated name ok?
           var random_integer = Math.floor((Math.random()+0.10)*101);
           var name = 'Dashboard ' + random_integer.toString();
+          $log.info('creating new dashboard: ' + name);
           dashboardApi.createDashboard(name).then(function() {
             // now get this dashboard id
             dashboardApi.getDashboards().then(function(dashboards) {
@@ -492,6 +507,7 @@ angular.module( 'ozpWebtop.appToolbar')
               }, Promise.resolve()).then(function () {
                 // all apps added to dashboard
                 // redirect user to new dashboard (grid view by default)
+                $log.debug('ApplicationToolbarCtrl: $state.go for board ' + dashboardId + ' sticky index: ' + stickyIndex);
                 $state.go('dashboardview.grid-sticky-' + stickyIndex, {
                   'dashboardId': dashboardId});
               });

@@ -77,7 +77,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                      <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                        <li class=\"dropdown-header\">Dashboards</li>\n" +
     "                        <li ng-repeat=\"board in dashboards\">\n" +
-    "                          <a href=\"\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
+    "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
     "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
     "                              <!-- <button type=\"button\" ng-click=\"openDeleteDashboardModal(board)\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button> -->\n" +
     "                              <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
@@ -85,7 +85,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                          </a>\n" +
     "                        </li>\n" +
     "                        <li>\n" +
-    "                          <a class=\"caboose\" href=\"#\">\n" +
+    "                          <a class=\"caboose\" class=\"link-pointer\">\n" +
     "                            <!-- TODO create dashboard view-->\n" +
     "                            <i class=\"icon-plus\"></i>Create a new dashboard\n" +
     "                          </a>\n" +

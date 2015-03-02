@@ -33,7 +33,7 @@ var app = angular.module( 'ozpWebtop.ozpToolbar')
  *
  */
 .controller('OzpToolbarCtrl',
-  function($scope, $rootScope, $window,
+  function($scope, $rootScope, $window, $log,
            userSettingsApi, windowSizeWatcher, deviceSizeChangedEvent,
            fullScreenModeToggleEvent) {
 
@@ -95,6 +95,7 @@ var app = angular.module( 'ozpWebtop.ozpToolbar')
 
     $scope.$on(fullScreenModeToggleEvent, function(event, data) {
       $scope.fullScreenMode = data.fullScreenMode;
+      $log.debug('OzpToolbarCtrl: got fullScreenModeToggleEvent: ' + JSON.stringify(data));
     });
 
     $scope.hudUrl = $window.OzoneConfig.HUD_URL;

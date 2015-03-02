@@ -24,10 +24,12 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
-function generalDashboardModel($sce, persistStrategy, Utilities,
+function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, Utilities,
                                iwcConnectedClient) {
 
   return {
+    _dashboardData: {},
+    _applicationData: {},
     /**
      * Test method - delete this later
      * @method sayHello
@@ -43,14 +45,54 @@ function generalDashboardModel($sce, persistStrategy, Utilities,
       });
     },
     /**
+     * Set the application data (Listing data)
+     */
+    setApplicationData: function(applicationData) {
+      if (!applicationData.length) {
+        $log.warn('WARNING: no listings found for current user!');
+      } else {
+       $log.info('found ' + applicationData.length + ' app listings for current user');
+      }
+      var apps = [];
+      for (var i=0; i < applicationData.length; i++) {
+        apps.push({'name': applicationData[i].listing.title, 'id': applicationData[i].listing.uuid,
+        'description': 'TODO', 'descriptionShort': 'TODO', 'state': 'active', 'type': 'application',
+        'uiHints': {'width': 200, 'height': 200, 'singleton': false}, 'icons': {
+            'small': applicationData[i].listing.imageSmallUrl, 'large': applicationData[i].listing.imageMediumUrl},
+          'launchUrls': {
+            'default': applicationData[i].listing.launchUrl}});
+      }
+      this._applicationData = apps;
+    },
+    /**
+     * Set the initial dashboard-data
+     */
+    setInitialDashboardData: function(dashboardData) {
+
+      this._dashboardData = dashboardData;
+      if (!dashboardData.dashboards) {
+        $log.warn('WARNING: no dashboardData found for current user!');
+        this.createInitialDashboardData();
+      } else {
+       $log.info('found ' + dashboardData.dashboards.length + ' dashboards for current user');
+      }
+    },
+    /**
      * Get all dashboard data
      * @method getDashboardData
      * @returns {Promise}
      */
     getDashboardData: function() {
-      return persistStrategy.getDashboardData().then(function(response) {
-        return response;
-      });
+      var deferred = $q.defer();
+      if (!this._dashboardData) {
+        deferred.reject('No dashboard data!');
+      } else {
+        deferred.resolve(angular.copy(this._dashboardData));
+      }
+      return deferred.promise;
+      //return persistStrategy.getDashboardData().then(function(response) {
+      //  return response;
+      //});
     },
     /**
      * Get all dashboards
@@ -78,9 +120,16 @@ function generalDashboardModel($sce, persistStrategy, Utilities,
      * @private
      */
     _setDashboardData: function(dashboardData) {
-      return persistStrategy.setDashboardData(dashboardData).then(function(response) {
-        return response;
-      });
+      var deferred = $q.defer();
+      this._dashboardData = angular.copy(dashboardData);
+      // don't wait on the async return
+      $http.put($window.OzoneConfig.API_URL + '/profile/self/data/dashboard-data', dashboardData, {withCredentials: true});
+      //persistStrategy.setDashboardData(dashboardData);
+      deferred.resolve(true);
+      return deferred.promise;
+      //return persistStrategy.setDashboardData(dashboardData).then(function(response) {
+      //  return response;
+      //});
     },
     /**
      * Set all dashboards
@@ -427,7 +476,8 @@ function generalDashboardModel($sce, persistStrategy, Utilities,
      * @param frames
      * @param marketplaceApps
      */
-    mergeApplicationData: function(frames, marketplaceApps) {
+    mergeApplicationData: function(frames) {
+      var marketplaceApps = this._applicationData;
       for (var i=0; i < marketplaceApps.length; i++) {
         // check if this app is on our dashboard
         for (var j=0; j < frames.length; j++) {
@@ -442,7 +492,8 @@ function generalDashboardModel($sce, persistStrategy, Utilities,
             frames[j].trustedUrl = $sce.trustAsResourceUrl(newUrl);
             frames[j].name = marketplaceApps[i].name;
             frames[j].descriptionShort = marketplaceApps[i].descriptionShort;
-            frames[j].singleton = marketplaceApps[i].uiHints.singleton;
+            // TODO: get this data for real
+            frames[j].singleton = false;
           }
         }
       }
@@ -628,6 +679,7 @@ function generalDashboardModel($sce, persistStrategy, Utilities,
       });
     },
     createInitialDashboardData: function() {
+      $log.warn('Creating Default dashboard for user');
       var that = this;
       //  (like createInitialDashboardData)
       // dashboard data is not structured properly (or completely missing),
@@ -1254,10 +1306,11 @@ function generalDashboardModel($sce, persistStrategy, Utilities,
  *
  */
 models.service('dashboardModelLocalStorage', function($sce,
+                                                      $q, $log, $http, $window,
                                                       localStorageInterface,
                                                       Utilities,
                                                       iwcConnectedClient) {
-  var model = generalDashboardModel($sce, localStorageInterface, Utilities,
+  var model = generalDashboardModel($sce, $q, $log, $http, $window, localStorageInterface, Utilities,
     iwcConnectedClient);
   for (var prop in model) {
     if (model.hasOwnProperty(prop)) {
@@ -1273,9 +1326,9 @@ models.service('dashboardModelLocalStorage', function($sce,
  * ngtype: service
  *
  */
-models.service('dashboardModelIwc', function($sce, iwcInterface, Utilities,
+models.service('dashboardModelIwc', function($sce, $q, $log, $http, $window, iwcInterface, Utilities,
                                              iwcConnectedClient) {
-  var model = generalDashboardModel($sce, iwcInterface, Utilities,
+  var model = generalDashboardModel($sce, $q, $log, $http, $window, iwcInterface, Utilities,
     iwcConnectedClient);
   for (var prop in model) {
     if (model.hasOwnProperty(prop)) {

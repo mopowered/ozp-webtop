@@ -222,39 +222,48 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;, [&#x27;ozpWebtop.models.dash
  */
 angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
 
-.controller(&#x27;DashboardViewCtrl&#x27;, function ($scope, $state, dashboardApi) {
+.controller(&#x27;DashboardViewCtrl&#x27;, function ($scope, $state, $interval, $log,
+                                           dashboardApi, initialDataReceivedEvent) {
+
+    $scope.$on(initialDataReceivedEvent, function() {
+      $scope.ready = true;
+    });
 
     $scope.$on(&#x27;$stateChangeSuccess&#x27;,
       function(event, toState/*, toParams, fromState, fromParams*/){
-        if (toState.name.indexOf(&#x27;grid-sticky&#x27;) &gt; -1) {
-          $scope.layout = &#x27;grid&#x27;;
-        } else if (toState.name.indexOf(&#x27;desktop-sticky&#x27;) &gt; -1) {
-          $scope.layout = &#x27;desktop&#x27;;
-        } else {
-          // Get user&#x27;s dashboard data - if it&#x27;s present, redirect to first
-          // board. If not present, create a default board
-          dashboardApi.getCurrentDashboard().then(function(dashboard) {
-            if (!dashboard) {
-              console.log(&#x27;No dashboards found, creating a default one&#x27;);
-              dashboardApi.createInitialDashboardData().then(function() {
-                // now get this dashboard id
-                dashboardApi.getDashboards().then(function(dashboards) {
-                  // we know we only have one dashboard
-                  var dashboardId = dashboards[0].id;
-                  var stickyIndex = dashboards[0].stickyIndex;
-                  // redirect user to new dashboard (grid view by default)
-                  $state.go(&#x27;dashboardview.grid-sticky-&#x27; + stickyIndex, {
-                    &#x27;dashboardId&#x27;: dashboardId});
-                });
-              });
-            } else {
-              // TODO: shouldn&#x27;t arbitrarily use grid mode
-              $state.go(&#x27;dashboardview.&#x27; + dashboard.layout + &#x27;-sticky-&#x27; +
-                dashboard.stickyIndex, {dashboardId: dashboard.id});
-            }
-          });
-        }
+        stateChangeHandler(event, toState);
     });
+
+    function stateChangeHandler (event, toState) {
+      if (!$scope.ready) {
+        $log.warn(&#x27;DashboardViewCtrl: delaying call to handleStateChange by 500ms - no data yet&#x27;);
+        $scope.readyPromise = $interval(function() {
+          stateChangeHandler(event, toState);
+        }, 500, 1);
+        return;
+      }
+
+      if ($scope.readyPromise) {
+        $interval.cancel($scope.readyPromise);
+      }
+
+      if (toState.name.indexOf(&#x27;grid-sticky&#x27;) &gt; -1) {
+          $scope.layout = &#x27;grid&#x27;;
+      } else if (toState.name.indexOf(&#x27;desktop-sticky&#x27;) &gt; -1) {
+          $scope.layout = &#x27;desktop&#x27;;
+      } else {
+        $log.warn(&#x27;DashboardViewCtrl received state change for neither grid nor desktop: loading default dashboard. toState.name: &#x27; + toState.name);
+        // Get user&#x27;s dashboard data - if it&#x27;s present, redirect to first
+        // board. If not present, create a default board
+        dashboardApi.getCurrentDashboard().then(function(dashboard) {
+          // TODO: shouldn&#x27;t arbitrarily use grid mode
+          var state = &#x27;dashboardview.&#x27; + dashboard.layout + &#x27;-sticky-&#x27; +
+            dashboard.stickyIndex;
+          $log.info(&#x27;DashboardViewCtrl: $state.go for board &#x27; + state + &#x27;, id: &#x27; + dashboard.id);
+          $state.go(state, {dashboardId: dashboard.id});
+        });
+      }
+    }
 
   });
     </pre>

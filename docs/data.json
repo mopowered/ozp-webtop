@@ -370,14 +370,13 @@
             },
             "tag": "module",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 575,
+            "line": 591,
             "description": "The application toolbar in the Webtop.",
             "requires": [
                 "ui.router",
                 "ui.bootstrap",
                 "ozpWebtop.models.dashboard",
                 "ozp.common.windowSizeWatcher",
-                "ozpWebtop.models.marketplace",
                 "ozpWebtop.addApplicationsModal",
                 "ozpWebtop.editDashboardModal",
                 "ozp.common.windowSizeWatcher"
@@ -521,7 +520,7 @@
             },
             "tag": "module",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1287,
+            "line": 1340,
             "description": "Dashboard model",
             "requires": [
                 "ozp.common.utilities",
@@ -583,7 +582,7 @@
             },
             "tag": "module",
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 132,
+            "line": 133,
             "description": "The ozp toolbar component shown in the Webtop.",
             "requires": [
                 "ozp.common.windowSizeWatcher",
@@ -830,10 +829,6 @@
                     "description": "ng $stateParams"
                 },
                 {
-                    "name": "marketplaceApi",
-                    "description": "marketplace data"
-                },
-                {
                     "name": "dashboardApi",
                     "description": "dashboard data"
                 }
@@ -850,7 +845,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 23,
+            "line": 22,
             "description": "Application toolbar on the bottom of Webtop. Contains a menu for adding\nfavorited apps to the dashboard and shows names/icons for all apps\ncurrently on the dashboard. Clicking on the app name/icon buttons in the\ntoolbar results in the application being shown or hidden from the dashboard\nview (in desktop layout)\n\ndashboard selector\nbuttons to switch between grid and desktop layouts\n\nngtype: controller",
             "is_constructor": 1,
             "params": [
@@ -877,10 +872,6 @@
                 {
                     "name": "$window",
                     "description": "$window service from ui.bootstrap"
-                },
-                {
-                    "name": "marketplaceApi",
-                    "description": "Application data model"
                 },
                 {
                     "name": "dashbaordApi",
@@ -927,7 +918,7 @@
             "module": "ozpWebtop.appToolbar",
             "namespace": "appToolbar",
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 575,
+            "line": 591,
             "description": "Directive for the application toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1026,10 +1017,6 @@
                     "description": "dashboard data"
                 },
                 {
-                    "name": "marketplaceApi",
-                    "description": "marketplace listings data"
-                },
-                {
                     "name": "userSettingsApi",
                     "description": "user preferences data"
                 },
@@ -1111,11 +1098,6 @@
                     "type": "Object"
                 },
                 {
-                    "name": "marketplaceApi",
-                    "description": "the API for marketplace application\ninformation",
-                    "type": "Object"
-                },
-                {
                     "name": "userSettingsApi",
                     "description": "the API for user settings",
                     "type": "Object"
@@ -1185,7 +1167,7 @@
             "module": "ozpWebtop.models.dashboard",
             "namespace": "models",
             "file": "src/app/models/dashboardApi.js",
-            "line": 1287,
+            "line": 1340,
             "description": "Angular service which provides an abstraction of the implementations used to\nstore and retrieve dashboard information.\n\nngtype: factory",
             "static": 1
         },
@@ -1271,7 +1253,7 @@
             "module": "ozpWebtop.ozpToolbar",
             "namespace": "ozpToolbar",
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 132,
+            "line": 133,
             "description": "Directive for the ozp toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -1546,7 +1528,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 69,
+            "line": 65,
             "description": "Handler invoked when an application is clicked",
             "itemtype": "method",
             "name": "appSelected",
@@ -1561,7 +1543,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 79,
+            "line": 75,
             "description": "Returns true if one or more apps are selected",
             "itemtype": "method",
             "name": "areAnyAppsSelected",
@@ -1574,7 +1556,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 89,
+            "line": 85,
             "description": "Adds or removes an application from the list of apps to open\n\nIf the application was in the list previoulsy, it is removed. Otherwise,\nit is added",
             "itemtype": "method",
             "name": "updateSelectedApps",
@@ -1589,7 +1571,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 110,
+            "line": 106,
             "description": "Returns true if the given app is in the list to be added, false\notherwise",
             "itemtype": "method",
             "name": "isAppSelected",
@@ -1608,7 +1590,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 127,
+            "line": 123,
             "description": "Handler invoked when dialog is closed via Open button",
             "itemtype": "method",
             "name": "openApps",
@@ -1617,7 +1599,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 139,
+            "line": 135,
             "description": "Handler invoked when dialog is closed via Open apps in new dashboard\nbutton",
             "itemtype": "method",
             "name": "openAppsInNewDashboard",
@@ -1626,7 +1608,7 @@
         },
         {
             "file": "src/app/addApplicationsModal/addApplications.js",
-            "line": 152,
+            "line": 148,
             "description": "Handler invoked when modal is dismissed via the cancel button",
             "itemtype": "method",
             "name": "cancel",
@@ -1635,7 +1617,7 @@
         },
         {
             "file": "src/app/appLauncher/appLauncher.js",
-            "line": 39,
+            "line": 38,
             "itemtype": "property",
             "name": "Id of the application to launch in Webtop",
             "type": "{String}",
@@ -1645,7 +1627,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 71,
+            "line": 70,
             "itemtype": "property",
             "name": "dashboards Dashboards for current user",
             "type": "{Array}",
@@ -1655,7 +1637,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 77,
+            "line": 76,
             "itemtype": "property",
             "name": "currentDashboard Current active dashboard",
             "type": "{string}",
@@ -1665,7 +1647,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 83,
+            "line": 82,
             "itemtype": "property",
             "name": "$scope.frames Frames on current dashboard (includes marketplace\n data like app name, icons, description, etc)",
             "type": "{Array}",
@@ -1675,7 +1657,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 90,
+            "line": 89,
             "itemtype": "property",
             "name": "$scope.myPinnedApps Applications in current dashboard that are\n shown in the application toolbar",
             "type": "{Array}",
@@ -1685,7 +1667,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 97,
+            "line": 96,
             "itemtype": "property",
             "name": "$scope.apps All applications available in the marketplace",
             "type": "{Array}",
@@ -1695,7 +1677,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 103,
+            "line": 102,
             "itemtype": "property",
             "name": "dashboardNameLength Max length of dashboard name, based on\ncurrent screen size",
             "type": "{String}",
@@ -1705,7 +1687,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 110,
+            "line": 109,
             "itemtype": "property",
             "name": "$scope.maxAppsDisplayed The maximum number of apps that can be\ndisplayed on the toolbar (based on screen width)",
             "type": "{Number}",
@@ -1715,7 +1697,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 117,
+            "line": 116,
             "itemtype": "property",
             "name": "$scope.fullScreenMode Flag indicating if the toolbar is hidden or\n not",
             "type": "{boolean}",
@@ -1725,7 +1707,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 124,
+            "line": 123,
             "itemtype": "property",
             "name": "$scope.myPinnedAppsFirstDisplayedIndex The index (in\n $scope.myPinnedApps) of the first application shown in the application\n toolbar to display",
             "type": "{number}",
@@ -1735,7 +1717,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 131,
+            "line": 130,
             "itemtype": "property",
             "name": "$scope.nextAppsVisible Flag for the 'pagination' next arrow\n in the toolbar",
             "type": "{boolean}",
@@ -1745,7 +1727,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 137,
+            "line": 136,
             "itemtype": "property",
             "name": "$scope.previousAppsVisible Flag for the 'pagination' previous\n arrow in the toolbar",
             "type": "{boolean}",
@@ -1755,7 +1737,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 187,
+            "line": 185,
             "description": "Handle the deviceSizeChangedEvent\n\nUpdate $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -1771,7 +1753,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 215,
+            "line": 213,
             "description": "Handle state change",
             "itemtype": "method",
             "name": "handleStateChange",
@@ -1781,7 +1763,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 247,
+            "line": 256,
             "description": "Load a dashboard",
             "itemtype": "method",
             "name": "loadDashboard",
@@ -1797,7 +1779,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 261,
+            "line": 270,
             "description": "Set $scope.myPinnedApps\n\nRequires that $scope.frames is set first",
             "itemtype": "method",
             "name": "setPinnedApps",
@@ -1807,7 +1789,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 286,
+            "line": 295,
             "description": "Update application data in the toolbar (invoked on a dashboard change)",
             "itemtype": "method",
             "name": "updateApps",
@@ -1817,7 +1799,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 314,
+            "line": 325,
             "description": "Maximize (or show) a frame that was previously minimized (hidden)",
             "itemtype": "method",
             "name": "maximizeFrame",
@@ -1834,7 +1816,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 334,
+            "line": 345,
             "description": "Show or hide the application toolbar\n\nIf successful, broadcasts a fullScreenModeToggleEvent",
             "itemtype": "method",
             "name": "toggleFullScreenMode",
@@ -1844,7 +1826,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 360,
+            "line": 374,
             "description": "A pagination method to show the previous set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "previousApps",
@@ -1854,7 +1836,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 380,
+            "line": 394,
             "description": "A pagination method to show the next set of apps currently on the\ndashboard in the toolbar, if the screen width isn't wide enough to\ndisplay them all",
             "itemtype": "method",
             "name": "nextApps",
@@ -1864,7 +1846,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 414,
+            "line": 428,
             "description": "Opens the Add Application modal dialog",
             "itemtype": "method",
             "name": "openApplicationsModal",
@@ -1874,7 +1856,7 @@
         },
         {
             "file": "src/app/appToolbar/appToolbar.js",
-            "line": 433,
+            "line": 447,
             "description": "Add an application to a dashboard",
             "itemtype": "method",
             "name": "addAppToDashboard",
@@ -2008,7 +1990,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 159,
+            "line": 165,
             "description": "Handler invoked when a dashboardStateChangedEvent is received",
             "itemtype": "method",
             "name": "dashboardChangeHandler",
@@ -2018,7 +2000,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 239,
+            "line": 250,
             "description": "Reload this dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2028,7 +2010,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 280,
+            "line": 296,
             "description": "Getter for frame.isMinimized",
             "itemtype": "method",
             "name": "isFrameMinimized",
@@ -2048,7 +2030,7 @@
         },
         {
             "file": "src/app/dashboardView/desktop/desktop.js",
-            "line": 295,
+            "line": 311,
             "description": "Sort the zIndex of all frames",
             "itemtype": "method",
             "name": "sortFrames",
@@ -2058,7 +2040,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 59,
+            "line": 58,
             "itemtype": "property",
             "name": "deviceSize Current screen size (xs, sm, md, lg)",
             "type": "{string}",
@@ -2068,7 +2050,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 65,
+            "line": 64,
             "itemtype": "property",
             "name": "frames Frames (widgets/apps) on the current dashboard",
             "type": "{Array}",
@@ -2078,7 +2060,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 71,
+            "line": 70,
             "itemtype": "property",
             "name": "apps Applications in the marketplace",
             "type": "{Array}",
@@ -2088,7 +2070,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 77,
+            "line": 76,
             "itemtype": "property",
             "name": "fullScreenMode Flag for full screen mode",
             "type": "{boolean}",
@@ -2098,7 +2080,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 83,
+            "line": 82,
             "itemtype": "property",
             "name": "dashboard Current dashboard",
             "type": "{{}}",
@@ -2108,7 +2090,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 89,
+            "line": 88,
             "itemtype": "property",
             "name": "dashboardId Current dashboardId\nTODO: duplicate info?",
             "type": "{string}",
@@ -2118,7 +2100,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 96,
+            "line": 95,
             "itemtype": "property",
             "name": "intervalPromise promise returned by $interval (keep track of it\nso it can be canceled)",
             "class": "dashboardView.GridCtrl",
@@ -2127,7 +2109,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 104,
+            "line": 103,
             "itemtype": "property",
             "name": "gridOptions Configuration options for Gridster\nTODO: make these available to other components somehow",
             "type": "{Object}",
@@ -2137,7 +2119,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 278,
+            "line": 291,
             "description": "Handle start event resizing a widget on Gridster",
             "itemtype": "method",
             "name": "handleGridsterResizeStart",
@@ -2153,7 +2135,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 291,
+            "line": 304,
             "description": "Handle stop event when resizing Gridster widget",
             "itemtype": "method",
             "name": "handleGridsterResizeStop",
@@ -2169,7 +2151,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 303,
+            "line": 316,
             "description": "Handler for windowSizeChangedEvent (each time the window size\nchanges, even by a single pixel)\n\nCancels the existing $interval promise and creates a new one to update\nall frames in 200ms",
             "itemtype": "method",
             "name": "handleWindowSizeChange",
@@ -2179,7 +2161,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 317,
+            "line": 330,
             "description": "Handles the deviceSizeChangedEvent, which occurs whenever the\nscreen size changes device sizes (as defined by Bootstrap)",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -2196,7 +2178,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 341,
+            "line": 354,
             "description": "Handle the dashboardStateChangedEvent",
             "itemtype": "method",
             "name": "handleDashboardChange",
@@ -2206,7 +2188,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 417,
+            "line": 436,
             "description": "Reloads the current dashboard",
             "itemtype": "method",
             "name": "reloadDashboard",
@@ -2220,7 +2202,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 450,
+            "line": 460,
             "description": "Update a single frame after a change (move or resize) has occurred",
             "itemtype": "method",
             "name": "updateFrameAfterChange",
@@ -2241,7 +2223,7 @@
         },
         {
             "file": "src/app/dashboardView/grid/grid.js",
-            "line": 469,
+            "line": 479,
             "description": "Update all frames after the user finishes moving or resizing a frame",
             "itemtype": "method",
             "name": "updateAllFramesAfterChange",
@@ -2291,7 +2273,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 31,
+            "line": 33,
             "description": "Test method - delete this later",
             "itemtype": "method",
             "name": "sayHello",
@@ -2304,7 +2286,21 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 45,
+            "line": 47,
+            "description": "Set the application data (Listing data)",
+            "class": "models.dashboardApi",
+            "module": "ozpWebtop.models.dashboard"
+        },
+        {
+            "file": "src/app/models/dashboardApi.js",
+            "line": 67,
+            "description": "Set the initial dashboard-data",
+            "class": "models.dashboardApi",
+            "module": "ozpWebtop.models.dashboard"
+        },
+        {
+            "file": "src/app/models/dashboardApi.js",
+            "line": 80,
             "description": "Get all dashboard data",
             "itemtype": "method",
             "name": "getDashboardData",
@@ -2317,7 +2313,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 55,
+            "line": 97,
             "description": "Get all dashboards",
             "itemtype": "method",
             "name": "getDashboards",
@@ -2330,7 +2326,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 73,
+            "line": 115,
             "description": "Set all dashboard data",
             "itemtype": "method",
             "name": "_setDashboardData",
@@ -2351,7 +2347,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 85,
+            "line": 134,
             "description": "Set all dashboards",
             "itemtype": "method",
             "name": "setAllDashboards",
@@ -2370,7 +2366,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 104,
+            "line": 153,
             "description": "Update dashboard layout",
             "itemtype": "method",
             "name": "updateLayoutType",
@@ -2393,7 +2389,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 124,
+            "line": 173,
             "description": "Toggle the value of a key in a frame",
             "itemtype": "method",
             "name": "toggleFrameKey",
@@ -2416,7 +2412,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 157,
+            "line": 206,
             "description": "Update the grid layout of a frame in a dashboard",
             "itemtype": "method",
             "name": "updateGridFrame",
@@ -2439,7 +2435,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 192,
+            "line": 241,
             "description": "Update the desktop layout of a frame in a dashboard\nTODO: what about width and height?",
             "itemtype": "method",
             "name": "updateDesktopFrame",
@@ -2478,7 +2474,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 227,
+            "line": 276,
             "description": "Check to see if an application is already on a given dashboard",
             "itemtype": "method",
             "name": "isAppOnDashboard",
@@ -2501,7 +2497,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 244,
+            "line": 293,
             "description": "Create a new frame in a dashboard for a given application\nCreates a frame with with both grid and desktop layout data",
             "itemtype": "method",
             "name": "createFrame",
@@ -2528,7 +2524,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 343,
+            "line": 392,
             "description": "Remove a frame from a dashboard",
             "itemtype": "method",
             "name": "removeFrame",
@@ -2547,7 +2543,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 374,
+            "line": 423,
             "description": "Change the user's current dashboard",
             "itemtype": "method",
             "name": "updateCurrentDashboardName",
@@ -2566,7 +2562,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 404,
+            "line": 453,
             "description": "Return the name of the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboardName",
@@ -2579,7 +2575,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 422,
+            "line": 471,
             "description": "Augment the dashboard.frames data with application-specific data\nNote: data is not persisted, but rather the 'frames' object is modified\nby reference",
             "itemtype": "method",
             "name": "mergeApplicationData",
@@ -2598,7 +2594,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 450,
+            "line": 501,
             "description": "Save a dashboard\nTODO: make sure input is a valid dashboard:\n- dashboard.id should be unique\n- all frame.id's should be",
             "itemtype": "method",
             "name": "saveDashboard",
@@ -2617,7 +2613,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 482,
+            "line": 533,
             "description": "Save a frame in a dashboard\nTODO: make sure input is a valid frame",
             "itemtype": "method",
             "name": "saveFrame",
@@ -2636,7 +2632,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 517,
+            "line": 568,
             "description": "Retrieve a frame by id",
             "itemtype": "method",
             "name": "getFrameById",
@@ -2655,7 +2651,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 538,
+            "line": 589,
             "description": "Retrieve a dashboard by id",
             "itemtype": "method",
             "name": "getDashboardById",
@@ -2674,7 +2670,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 557,
+            "line": 608,
             "description": "Delete a dashboard",
             "itemtype": "method",
             "name": "removeDashboard",
@@ -2693,7 +2689,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 587,
+            "line": 638,
             "description": "Create a new dashboard",
             "itemtype": "method",
             "name": "createDashboard",
@@ -2712,7 +2708,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 652,
+            "line": 704,
             "description": "Get the next available id for a new dashboard\nTODO: this assumes ids are integers and not uuids",
             "itemtype": "method",
             "name": "getNewDashboardId",
@@ -2725,14 +2721,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 679,
+            "line": 731,
             "description": "Get the next available sticky slot for a new dashboard",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 699,
+            "line": 751,
             "description": "Get the user's current dashboard",
             "itemtype": "method",
             "name": "getCurrentDashboard",
@@ -2745,7 +2741,7 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 745,
+            "line": 797,
             "description": "Create example dashboards (test purposes only)",
             "itemtype": "method",
             "name": "createExampleDashboards",
@@ -2758,14 +2754,14 @@
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1250,
+            "line": 1302,
             "description": "Angular service which provides a local storage interface to the dashboard api\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
         },
         {
             "file": "src/app/models/dashboardApi.js",
-            "line": 1269,
+            "line": 1322,
             "description": "Angular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
             "class": "models.dashboardApi",
             "module": "ozpWebtop.models.dashboard"
@@ -2945,7 +2941,7 @@
         },
         {
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 109,
+            "line": 110,
             "description": "Handler invoked when window size changes across device size boundaries\nas defined by Bootstrap",
             "itemtype": "method",
             "name": "handleDeviceSizeChange",
@@ -3348,6 +3344,16 @@
             "module": "ozpWebtop.constants"
         },
         {
+            "file": "src/app/constants.js",
+            "line": 79,
+            "description": "Event fired when app and dashboard data is initially retrieved",
+            "itemtype": "property",
+            "name": "initialDataReceived",
+            "type": "String",
+            "class": "constants",
+            "module": "ozpWebtop.constants"
+        },
+        {
             "file": "src/common/ellipticalFilter/elliptical.js",
             "line": 24,
             "description": "Truncate a string of text and add an ellipsis",
@@ -3611,123 +3617,123 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/addApplicationsModal/addApplications.js:79"
+            "line": " src/app/addApplicationsModal/addApplications.js:75"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/addApplicationsModal/addApplications.js:110"
+            "line": " src/app/addApplicationsModal/addApplications.js:106"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/appToolbar/appToolbar.js:433"
+            "line": " src/app/appToolbar/appToolbar.js:447"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/desktop/desktop.js:280"
+            "line": " src/app/dashboardView/desktop/desktop.js:296"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:417"
+            "line": " src/app/dashboardView/grid/grid.js:436"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:450"
+            "line": " src/app/dashboardView/grid/grid.js:460"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/dashboardView/grid/grid.js:469"
+            "line": " src/app/dashboardView/grid/grid.js:479"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:31"
+            "line": " src/app/models/dashboardApi.js:33"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:45"
+            "line": " src/app/models/dashboardApi.js:80"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:55"
+            "line": " src/app/models/dashboardApi.js:97"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:73"
+            "line": " src/app/models/dashboardApi.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:85"
+            "line": " src/app/models/dashboardApi.js:134"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:104"
+            "line": " src/app/models/dashboardApi.js:153"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:124"
+            "line": " src/app/models/dashboardApi.js:173"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:157"
+            "line": " src/app/models/dashboardApi.js:206"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:192"
+            "line": " src/app/models/dashboardApi.js:241"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:227"
+            "line": " src/app/models/dashboardApi.js:276"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:244"
+            "line": " src/app/models/dashboardApi.js:293"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:343"
+            "line": " src/app/models/dashboardApi.js:392"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:374"
+            "line": " src/app/models/dashboardApi.js:423"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:404"
+            "line": " src/app/models/dashboardApi.js:453"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:450"
+            "line": " src/app/models/dashboardApi.js:501"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:482"
+            "line": " src/app/models/dashboardApi.js:533"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:517"
+            "line": " src/app/models/dashboardApi.js:568"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:538"
+            "line": " src/app/models/dashboardApi.js:589"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:557"
+            "line": " src/app/models/dashboardApi.js:608"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:587"
+            "line": " src/app/models/dashboardApi.js:638"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:652"
+            "line": " src/app/models/dashboardApi.js:704"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:699"
+            "line": " src/app/models/dashboardApi.js:751"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/models/dashboardApi.js:745"
+            "line": " src/app/models/dashboardApi.js:797"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -3862,16 +3868,24 @@
             "line": " src/app/editDashboardModal/editDashboard.js:15"
         },
         {
+            "message": "Missing item type\nSet the application data (Listing data)",
+            "line": " src/app/models/dashboardApi.js:47"
+        },
+        {
+            "message": "Missing item type\nSet the initial dashboard-data",
+            "line": " src/app/models/dashboardApi.js:67"
+        },
+        {
             "message": "Missing item type\nGet the next available sticky slot for a new dashboard",
-            "line": " src/app/models/dashboardApi.js:679"
+            "line": " src/app/models/dashboardApi.js:731"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the dashboard api\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1250"
+            "line": " src/app/models/dashboardApi.js:1302"
         },
         {
             "message": "Missing item type\nAngular service which uses the Inter-Widget Communication (IWC) API to store\nand retrieve dashboards.\n\nngtype: service",
-            "line": " src/app/models/dashboardApi.js:1269"
+            "line": " src/app/models/dashboardApi.js:1322"
         },
         {
             "message": "Missing item type\nAngular service which provides a local storage interface to the marketplace\napi",
