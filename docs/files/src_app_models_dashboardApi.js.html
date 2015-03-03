@@ -230,6 +230,8 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
   return {
     _dashboardData: {},
     _applicationData: {},
+    // flag indicating that there is no ongoing PUT request
+    _readyToPut: true,
     /**
      * Test method - delete this later
      * @method sayHello
@@ -256,7 +258,7 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
       var apps = [];
       for (var i=0; i &lt; applicationData.length; i++) {
         apps.push({&#x27;name&#x27;: applicationData[i].listing.title, &#x27;id&#x27;: applicationData[i].listing.uuid,
-        &#x27;description&#x27;: &#x27;TODO&#x27;, &#x27;descriptionShort&#x27;: &#x27;TODO&#x27;, &#x27;state&#x27;: &#x27;active&#x27;, &#x27;type&#x27;: &#x27;application&#x27;,
+        &#x27;description&#x27;: &#x27;Description&#x27;, &#x27;descriptionShort&#x27;: &#x27;Short description&#x27;, &#x27;state&#x27;: &#x27;active&#x27;, &#x27;type&#x27;: &#x27;application&#x27;,
         &#x27;uiHints&#x27;: {&#x27;width&#x27;: 200, &#x27;height&#x27;: 200, &#x27;singleton&#x27;: false}, &#x27;icons&#x27;: {
             &#x27;small&#x27;: applicationData[i].listing.imageSmallUrl, &#x27;large&#x27;: applicationData[i].listing.imageMediumUrl},
           &#x27;launchUrls&#x27;: {
@@ -268,13 +270,36 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
      * Set the initial dashboard-data
      */
     setInitialDashboardData: function(dashboardData) {
-
-      this._dashboardData = dashboardData;
-      if (!dashboardData.dashboards) {
+      if (!dashboardData.dashboards || dashboardData.dashboards.length &lt; 1) {
+        // create default dashboard
         $log.warn(&#x27;WARNING: no dashboardData found for current user!&#x27;);
-        this.createInitialDashboardData();
+        var newDashboardData = {
+          &#x27;name&#x27;: &#x27;dashboards&#x27;,
+          &#x27;user&#x27;: &#x27;J Smith&#x27;,
+          &#x27;currentDashboard&#x27;: &#x27;0&#x27;,
+          &#x27;persist&#x27;: true,
+          &#x27;dashboards&#x27;: []
+        };
+        if (!this._readyToPut) {
+          $log.error(&#x27;Not ready to PUT - this will be bad!&#x27;);
+        }
+        var newBoard = {
+          &#x27;name&#x27;: &#x27;Default&#x27;,
+          &#x27;id&#x27;: &#x27;0&#x27;,
+          &#x27;stickyIndex&#x27;: &#x27;0&#x27;,
+          &#x27;layout&#x27;: &#x27;grid&#x27;,
+          &#x27;frames&#x27;: [
+          ]
+        };
+        newDashboardData.dashboards.push(newBoard);
+        $log.info(&#x27;default board created OK&#x27;);
+        return this._setDashboardData(newDashboardData);
       } else {
-       $log.info(&#x27;found &#x27; + dashboardData.dashboards.length + &#x27; dashboards for current user&#x27;);
+        var deferred = $q.defer();
+        $log.info(&#x27;found &#x27; + dashboardData.dashboards.length + &#x27; dashboards for current user&#x27;);
+        this._dashboardData = angular.copy(dashboardData);
+        deferred.resolve(true);
+        return deferred.promise;
       }
     },
     /**
@@ -322,10 +347,31 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
     _setDashboardData: function(dashboardData) {
       var deferred = $q.defer();
       this._dashboardData = angular.copy(dashboardData);
-      // don&#x27;t wait on the async return
-      $http.put($window.OzoneConfig.API_URL + &#x27;/profile/self/data/dashboard-data&#x27;, dashboardData, {withCredentials: true});
+      var that = this;
+      if (this._readyToPut) {
+        this._readyToPut = false;
+        var url = $window.OzoneConfig.API_URL + &#x27;/profile/self/data/dashboard-data&#x27;;
+        var req = {
+          method: &#x27;PUT&#x27;,
+          url: url,
+          headers: {
+            &#x27;Content-Type&#x27;: &#x27;application/vnd.ozp-iwc-data-object-v1+json&#x27;
+          },
+          data: dashboardData,
+          withCredentials: true,
+        };
+
+        return $http(req).success(function() {
+            that._readyToPut = true;
+            deferred.resolve(true);
+          }).error(function(data, status) {
+            $log.error(&#x27;DashboardApi: Error from PUT at &#x27; + url + &#x27;, status: &#x27; + status + &#x27;, msg: &#x27; + JSON.stringify(data));
+            that._readyToPut = true;
+            deferred.resolve(true);
+          });
+      }
+
       //persistStrategy.setDashboardData(dashboardData);
-      deferred.resolve(true);
       return deferred.promise;
       //return persistStrategy.setDashboardData(dashboardData).then(function(response) {
       //  return response;
@@ -849,12 +895,12 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
           return that.getNextStickyIndex().then(function(nextStickyIndex) {
             console.log(&#x27;creating new board with sticky slot &#x27; + nextStickyIndex);
             var newBoard = {
-            &#x27;name&#x27;: name,
-            &#x27;id&#x27;: dashboardId,
-            &#x27;stickyIndex&#x27;: nextStickyIndex,
-            &#x27;layout&#x27;: &#x27;grid&#x27;,
-            &#x27;frames&#x27;: [
-            ]
+              &#x27;name&#x27;: name,
+              &#x27;id&#x27;: dashboardId,
+              &#x27;stickyIndex&#x27;: nextStickyIndex,
+              &#x27;layout&#x27;: &#x27;grid&#x27;,
+              &#x27;frames&#x27;: [
+              ]
             };
             return that.getDashboards().then(function(dashboards) {
               dashboards.push(newBoard);
@@ -876,29 +922,6 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
         });
       }).catch(function(error) {
         console.log(&#x27;should not have happened: &#x27; + error);
-      });
-    },
-    createInitialDashboardData: function() {
-      $log.warn(&#x27;Creating Default dashboard for user&#x27;);
-      var that = this;
-      //  (like createInitialDashboardData)
-      // dashboard data is not structured properly (or completely missing),
-      // so create it. The new dashboard Id will be 0, since we have no
-      // dashboards
-      // TODO: get username
-      var data = {
-        &#x27;name&#x27;: &#x27;dashboards&#x27;,
-        &#x27;user&#x27;: &#x27;J Smith&#x27;,
-        &#x27;currentDashboard&#x27;: &#x27;0&#x27;,
-        &#x27;persist&#x27;: true,
-        &#x27;dashboards&#x27;: []
-      };
-      return this._setDashboardData(data).then(function() {
-        // create default dashboard
-        return that.createDashboard(&#x27;Default&#x27;).then(function() {
-          console.log(&#x27;Default dashboard created&#x27;);
-          return;
-        });
       });
     },
     /**

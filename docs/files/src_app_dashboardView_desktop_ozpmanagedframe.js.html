@@ -282,7 +282,8 @@ angular.module(&#x27;ozpWebtop.dashboardView.desktop.managedFrame&#x27;)
     // TODO: find a more maintainable way?
     // Ignore click event if we clicked a button
     function start (event) {
-      if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
+      var className = event.target.className ? event.target.className : event.srcElement.className;
+      if (className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
         console.log(&#x27;preventDefault on mousedown event and returning&#x27;);
         event.preventDefault();
         return;
@@ -300,7 +301,8 @@ angular.module(&#x27;ozpWebtop.dashboardView.desktop.managedFrame&#x27;)
       x = event.pageX - startX;
 
       // TODO: find a more maintainable way?
-      if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
+      var className = event.target.className ? event.target.className : event.srcElement.className;
+      if (className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
         console.log(&#x27;stop() prevent default on mouseup and returning&#x27;);
         event.preventDefault();
         return;
@@ -328,7 +330,8 @@ angular.module(&#x27;ozpWebtop.dashboardView.desktop.managedFrame&#x27;)
       function onMouseDown() {
         // change z-index to top
         // TODO: find a more maintainable way?
-        if (event.target.className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
+        var className = event.target.className ? event.target.className : event.srcElement.className;
+        if (className.indexOf(&#x27;glyphicon&#x27;) &gt; -1) {
           // console.log(&#x27;stop() prevent default on mouseup and returning&#x27;);
           event.preventDefault();
           return;

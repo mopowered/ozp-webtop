@@ -30,6 +30,8 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
   return {
     _dashboardData: {},
     _applicationData: {},
+    // flag indicating that there is no ongoing PUT request
+    _readyToPut: true,
     /**
      * Test method - delete this later
      * @method sayHello
@@ -56,7 +58,7 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
       var apps = [];
       for (var i=0; i < applicationData.length; i++) {
         apps.push({'name': applicationData[i].listing.title, 'id': applicationData[i].listing.uuid,
-        'description': 'TODO', 'descriptionShort': 'TODO', 'state': 'active', 'type': 'application',
+        'description': 'Description', 'descriptionShort': 'Short description', 'state': 'active', 'type': 'application',
         'uiHints': {'width': 200, 'height': 200, 'singleton': false}, 'icons': {
             'small': applicationData[i].listing.imageSmallUrl, 'large': applicationData[i].listing.imageMediumUrl},
           'launchUrls': {
@@ -68,13 +70,36 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
      * Set the initial dashboard-data
      */
     setInitialDashboardData: function(dashboardData) {
-
-      this._dashboardData = dashboardData;
-      if (!dashboardData.dashboards) {
+      if (!dashboardData.dashboards || dashboardData.dashboards.length < 1) {
+        // create default dashboard
         $log.warn('WARNING: no dashboardData found for current user!');
-        this.createInitialDashboardData();
+        var newDashboardData = {
+          'name': 'dashboards',
+          'user': 'J Smith',
+          'currentDashboard': '0',
+          'persist': true,
+          'dashboards': []
+        };
+        if (!this._readyToPut) {
+          $log.error('Not ready to PUT - this will be bad!');
+        }
+        var newBoard = {
+          'name': 'Default',
+          'id': '0',
+          'stickyIndex': '0',
+          'layout': 'grid',
+          'frames': [
+          ]
+        };
+        newDashboardData.dashboards.push(newBoard);
+        $log.info('default board created OK');
+        return this._setDashboardData(newDashboardData);
       } else {
-       $log.info('found ' + dashboardData.dashboards.length + ' dashboards for current user');
+        var deferred = $q.defer();
+        $log.info('found ' + dashboardData.dashboards.length + ' dashboards for current user');
+        this._dashboardData = angular.copy(dashboardData);
+        deferred.resolve(true);
+        return deferred.promise;
       }
     },
     /**
@@ -122,10 +147,31 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
     _setDashboardData: function(dashboardData) {
       var deferred = $q.defer();
       this._dashboardData = angular.copy(dashboardData);
-      // don't wait on the async return
-      $http.put($window.OzoneConfig.API_URL + '/profile/self/data/dashboard-data', dashboardData, {withCredentials: true});
+      var that = this;
+      if (this._readyToPut) {
+        this._readyToPut = false;
+        var url = $window.OzoneConfig.API_URL + '/profile/self/data/dashboard-data';
+        var req = {
+          method: 'PUT',
+          url: url,
+          headers: {
+            'Content-Type': 'application/vnd.ozp-iwc-data-object-v1+json'
+          },
+          data: dashboardData,
+          withCredentials: true,
+        };
+
+        return $http(req).success(function() {
+            that._readyToPut = true;
+            deferred.resolve(true);
+          }).error(function(data, status) {
+            $log.error('DashboardApi: Error from PUT at ' + url + ', status: ' + status + ', msg: ' + JSON.stringify(data));
+            that._readyToPut = true;
+            deferred.resolve(true);
+          });
+      }
+
       //persistStrategy.setDashboardData(dashboardData);
-      deferred.resolve(true);
       return deferred.promise;
       //return persistStrategy.setDashboardData(dashboardData).then(function(response) {
       //  return response;
@@ -649,12 +695,12 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
           return that.getNextStickyIndex().then(function(nextStickyIndex) {
             console.log('creating new board with sticky slot ' + nextStickyIndex);
             var newBoard = {
-            'name': name,
-            'id': dashboardId,
-            'stickyIndex': nextStickyIndex,
-            'layout': 'grid',
-            'frames': [
-            ]
+              'name': name,
+              'id': dashboardId,
+              'stickyIndex': nextStickyIndex,
+              'layout': 'grid',
+              'frames': [
+              ]
             };
             return that.getDashboards().then(function(dashboards) {
               dashboards.push(newBoard);
@@ -676,29 +722,6 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
         });
       }).catch(function(error) {
         console.log('should not have happened: ' + error);
-      });
-    },
-    createInitialDashboardData: function() {
-      $log.warn('Creating Default dashboard for user');
-      var that = this;
-      //  (like createInitialDashboardData)
-      // dashboard data is not structured properly (or completely missing),
-      // so create it. The new dashboard Id will be 0, since we have no
-      // dashboards
-      // TODO: get username
-      var data = {
-        'name': 'dashboards',
-        'user': 'J Smith',
-        'currentDashboard': '0',
-        'persist': true,
-        'dashboards': []
-      };
-      return this._setDashboardData(data).then(function() {
-        // create default dashboard
-        return that.createDashboard('Default').then(function() {
-          console.log('Default dashboard created');
-          return;
-        });
       });
     },
     /**

@@ -136,7 +136,6 @@ angular.module('ozpWebtop.dashboardView.desktop')
         $interval.cancel($scope.handleStateChangeSuccessInterval);
       }
 
-      $log.debug('DesktopCtrl: stateChangeSuccessHandler()');
       var layoutType = '';
       if (toState.name.indexOf('grid-sticky') > -1) {
         layoutType = 'grid';
@@ -178,7 +177,6 @@ angular.module('ozpWebtop.dashboardView.desktop')
       if ($scope.dashboardChangeHandlerInterval) {
         $interval.cancel($scope.dashboardChangeHandlerInterval);
       }
-      $log.debug('DesktopCtrl: dashboardChangeHandler()');
 
       dashboardApi.getDashboardById($scope.currentDashboardId).then(function(updatedDashboard) {
 

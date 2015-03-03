@@ -378,7 +378,6 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
     $scope.$on(initialDataReceivedEvent, function() {
       $scope.apps = dashboardApi._applicationData;
       $scope.ready = true;
-      $log.info(&#x27;GridCtrl is ready&#x27;);
     });
 
     // Initialize grid columns based on screen size
@@ -567,10 +566,9 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
       if ($scope.handleDashboardChangeInterval) {
         $interval.cancel($scope.handleDashboardChangeInterval);
       }
-      $log.info(&#x27;GridCtrl: doing handleDashboardChange()&#x27;);
+
       dashboardApi.getDashboardById($scope.dashboardId).then(function(dashboard) {
         if ($scope.frames === dashboard.frames) {
-          $log.debug(&#x27;GridCtrl: detected no change in frames. returning.&#x27;);
           return;
         }
 
@@ -626,6 +624,7 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
             });
           }, Promise.resolve()).then(function () {
               // reloadDashboard completed
+              $timeout(function() {$log.debug(&#x27;$timeout to apply scope&#x27;);}, 50);
           });
         }
       }).catch(function(error) {

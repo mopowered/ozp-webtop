@@ -141,24 +141,34 @@ angular.module( 'ozpWebtop', [
     }
 
     // get app data and dashboard data
-    $http.get($window.OzoneConfig.API_URL + '/profile/self/library', {withCredentials: true, headers: {'Content-Type': 'text/plain'}}).success(function(data, status) {
+    $http.get($window.OzoneConfig.API_URL + '/profile/self/library', {withCredentials: true, headers: {'Content-Type': 'application/vnd.ozp-library-v1+json'}}).success(function(data, status) {
       if (status !== 200) {
           $log.warn('WARNING: got non 200 status from /profile/self/library: ' + status);
         }
       dashboardApi.setApplicationData(data);
       // now the the current dashboard data
-      $http.get($window.OzoneConfig.API_URL + '/profile/self/data/dashboard-data', {withCredentials: true, headers: {'Content-Type': 'text/plain'}}).success(function(data, status) {
+      $http.get($window.OzoneConfig.API_URL + '/profile/self/data/dashboard-data', {withCredentials: true, headers: {'Content-Type': 'application/vnd.ozp-iwc-data-object-v1+json'}}).success(function(data, status) {
         if (status !== 200) {
           $log.warn('WARNING: got non 200 status from /profile/self/data/dashboard-data: ' + status);
         }
         var parsedData = JSON.parse(data['entity']); // jshint ignore:line
         // TODO: this is abusing the IWC store on the backend!
         // dashboardApi.setInitialDashboardData(parsedData.entity);
-        dashboardApi.setInitialDashboardData(parsedData);
-        $log.info('application listings and dashboard data retrieved - ready to start');
-        $rootScope.$broadcast(initialDataReceivedEvent);
+
+        dashboardApi.setInitialDashboardData(parsedData).then(function() {
+          $log.info('application listings and dashboard data retrieved - ready to start');
+          $rootScope.$broadcast(initialDataReceivedEvent);
+        });
       }).error(function(data, status) {
-        $log.error('ERROR getting dashboard data. status: ' + JSON.stringify(status) + ', data: ' + JSON.stringify(data));
+        if (status === 404) {
+          $log.warn('No dashboard data found. Creating default dashboard');
+          dashboardApi.setInitialDashboardData({}).then(function() {
+            $log.info('application listings and dashboard data retrieved - ready to start');
+            $rootScope.$broadcast(initialDataReceivedEvent);
+          });
+        } else {
+         $log.error('ERROR getting dashboard data. status: ' + JSON.stringify(status) + ', data: ' + JSON.stringify(data));
+        }
       });
     }).error(function(data, status) {
       $log.error('ERROR getting user library. status: ' + JSON.stringify(status) + ', data: ' + JSON.stringify(data));

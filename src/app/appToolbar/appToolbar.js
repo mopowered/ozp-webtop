@@ -154,7 +154,6 @@ angular.module( 'ozpWebtop.appToolbar')
     $scope.$on(initialDataReceivedEvent, function() {
       $scope.apps = dashboardApi._applicationData;
       $scope.ready = true;
-      $log.info('ApplicationToolbarCtrl: is ready');
     });
 
     $scope.$on(deviceSizeChangedEvent, function(event, value) {
@@ -228,7 +227,6 @@ angular.module( 'ozpWebtop.appToolbar')
       if ($scope.handleStateChangeInterval) {
         $interval.cancel($scope.handleStateChangeInterval);
       }
-      $log.info('ApplicationToolbarCtrl: handleStateChange(): DashboardId: ' + dashboardId + ', layout: ' + dashboardLayout);
       dashboardApi.getDashboards().then(function(dashboards) {
         $scope.dashboards = dashboards;
         for (var i=0; i < dashboards.length; i++) {
@@ -306,7 +304,7 @@ angular.module( 'ozpWebtop.appToolbar')
       if ($scope.updateAppsInterval) {
         $interval.cancel($scope.updateAppsInterval);
       }
-      $log.info('ApplicationToolbarCtrl: updateApps()...');
+
       return dashboardApi.getDashboards().then(function(dashboards) {
         $scope.dashboards = dashboards;
         for (var i=0; i < dashboards.length; i++) {
@@ -359,7 +357,6 @@ angular.module( 'ozpWebtop.appToolbar')
       $rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
       userSettingsApi.updateUserSettingByKey('fullScreenMode', fullScreenVal).then(function(resp) {
         if (resp) {
-          $log.debug('ApplicationToolbarCtrl: $broadcast fullScreenModeToggleEvent: ' + JSON.stringify(fullScreenVal));
           // TODO: fix this
           //$rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
         } else {
@@ -485,7 +482,6 @@ angular.module( 'ozpWebtop.appToolbar')
           // TODO: is this randomly generated name ok?
           var random_integer = Math.floor((Math.random()+0.10)*101);
           var name = 'Dashboard ' + random_integer.toString();
-          $log.info('creating new dashboard: ' + name);
           dashboardApi.createDashboard(name).then(function() {
             // now get this dashboard id
             dashboardApi.getDashboards().then(function(dashboards) {
@@ -507,7 +503,6 @@ angular.module( 'ozpWebtop.appToolbar')
               }, Promise.resolve()).then(function () {
                 // all apps added to dashboard
                 // redirect user to new dashboard (grid view by default)
-                $log.debug('ApplicationToolbarCtrl: $state.go for board ' + dashboardId + ' sticky index: ' + stickyIndex);
                 $state.go('dashboardview.grid-sticky-' + stickyIndex, {
                   'dashboardId': dashboardId});
               });
@@ -526,6 +521,7 @@ angular.module( 'ozpWebtop.appToolbar')
 
             // current dashboard id and layout hasn't changed, so just reload
             // the applications
+            $log.debug('issuing dashboardStateChangedEvent');
             $rootScope.$broadcast(dashboardStateChangedEvent, {
               'dashboardId': $scope.currentDashboard.id,
               'layout': $scope.currentDashboard.layout});

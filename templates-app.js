@@ -79,9 +79,11 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                        <li ng-repeat=\"board in dashboards\">\n" +
     "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
     "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
-    "                              <!-- <button type=\"button\" ng-click=\"openDeleteDashboardModal(board)\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button> -->\n" +
-    "                              <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
-    "                              <i class=\"icon-pencil pull-right\" ng-click=\"openEditDashboardModal()\"></i>\n" +
+    "                              <span ng-show=\"board.id === currentDashboard.id\">\n" +
+    "                                <!-- <button type=\"button\" ng-click=\"openDeleteDashboardModal(board)\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button> -->\n" +
+    "                                <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
+    "                                <i class=\"icon-pencil pull-right\" style=\"margin-right: 10px;\" ng-click=\"openEditDashboardModal()\"></i>\n" +
+    "                              </span>\n" +
     "                          </a>\n" +
     "                        </li>\n" +
     "                        <li>\n" +
