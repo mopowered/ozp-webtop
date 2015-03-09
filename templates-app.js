@@ -5,7 +5,7 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "<div class=\"wt-modal add-apps-style\" id=\"modal_openApps\">\n" +
     "  <div class=\"modal-header wt-modal-header\">\n" +
     "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
-    "      <span aria-hidden=\"true\"><i class=\"fa fa-close close-icon\"></i> </span>\n" +
+    "      <span aria-hidden=\"true\"><i class=\"icon-cross-14-grayLightest\"></i> </span>\n" +
     "      <span class=\"sr-only\">Close</span>\n" +
     "    </button>\n" +
     "    <h3 class=\"modal-title\">Open bookmarked apps</h3>\n" +
@@ -67,7 +67,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                <ul class=\"nav navbar-nav\">\n" +
     "                    <li class=\"highlight\">\n" +
     "                      <a class=\"lrg\" href=\"\" ng-click=\"openApplicationsModal()\">\n" +
-    "                        <i class=\"icon-plus\"></i>\n" +
+    "                        <i class=\"icon-plus-18-white\"></i>\n" +
     "                      </a>\n" +
     "                    </li>\n" +
     "                    \n" +
@@ -81,8 +81,8 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                        <li ng-repeat=\"board in dashboards\">\n" +
     "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
     "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
-    "                              <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
-    "                              <i class=\"icon-pencil pull-right\" ng-click=\"openEditDashboardModal(board)\"></i>\n" +
+    "                              <i class=\"icon-cross-14-grayLightest pull-right\" ng-click=\"openDeleteDashboardModal(board)\"></i>\n" +
+    "                              <i class=\"icon-pencil-grayLightest pull-right\" ng-click=\"openEditDashboardModal(board)\"></i>\n" +
     "                          </a>\n" +
     "                        </li>\n" +
     "                        <li>\n" +
@@ -107,14 +107,15 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "\n" +
     "            <div class=\"navbar-right\">\n" +
     "                <ul class=\"nav navbar-nav\">\n" +
+    "                  <li ng-click=\"cascadeWindows()\" ng-hide=\"currentDashboard.layout === 'grid'\">\n" +
+    "                      <a href=\"\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\">\n" +
+    "                        <i class=\"icon-stack\"></i></a>\n" +
+    "                    </li>\n" +
     "                    <li ng-click=\"toggleFullScreenMode();\">\n" +
     "                      <a href=\"\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\">\n" +
-    "                        <i class=\"icon-maximize\"  ></i></a>\n" +
+    "                        <i class=\"icon-maximize\"></i></a>\n" +
     "                    </li>\n" +
-    "                    <li ng-click=\"cascadeWindows()\" ng-hide=\"currentDashboard.layout === 'grid'\">\n" +
-    "                      <a href=\"\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\">\n" +
-    "                        <i class=\"icon-stack-2\"></i></a>\n" +
-    "                    </li>\n" +
+    "\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -146,13 +147,13 @@ angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCac
     "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
     "  <span class=\"chrome-controls\" >\n" +
     "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"layout !== 'desktop'\" ng-click=\"minimizeFrame()\">\n" +
-    "      <span class=\"icons icon-minus\"></span>\n" +
+    "      <i class=\"icon-minus-10-white\"></i>\n" +
     "    </button>\n" +
     "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"layout !== 'desktop'\" ng-click=\"maximizeFrame()\">\n" +
-    "      <span class=\"icons icon-plus\"></span>\n" +
+    "      <span class=\"icon-plus-10-white\"></span>\n" +
     "    </button>\n" +
     "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"removeFrame()\">\n" +
-    "      <span class=\"icons icon-cross\"></span>\n" +
+    "      <span class=\"icon-cross-10-white\"></span>\n" +
     "    </button>\n" +
     "  </span>\n" +
     "</div>\n" +
@@ -256,10 +257,10 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
     "      <div class=\"form-group col-lg-2\">\n" +
     "        <label>View</label><br />\n" +
     "        <button type=\"button\" class=\"btn btn-default\" ng-class=\"{'grid': 'active', 'desktop': ''}[dashboard.layout]\" ng-click=\"dashboard.layout = 'grid'\">\n" +
-    "            <i class=\"icon-grid\"></i>\n" +
+    "            <i class=\"icon-grid-white\"></i>\n" +
     "        </button>\n" +
     "        <button type=\"button\" class=\"btn btn-default\" ng-class=\"{'grid': '', 'desktop': 'active'}[dashboard.layout]\" ng-click=\"dashboard.layout = 'desktop'\">\n" +
-    "            <i class=\"icon-stack\"></i>\n" +
+    "            <i class=\"icon-stack-white\"></i>\n" +
     "        </button>\n" +
     "      </div>\n" +
     "      <div class=\"form-group col-lg-4 alert alert-warning\" style=\"padding-bottom: 0;\" ng-show=\"layoutChanged() && modalInstanceType != 'new'\">\n" +
@@ -290,9 +291,9 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "  <div class=\"container-fluid\">\n" +
     "    <div class=\"navbar-left\">\n" +
     "      <ul class=\"nav navbar-nav\">\n" +
-    "        <li><a class=\"lrg\" ng-href=\"{{hudUrl}}\"><i class=\"icon-home\"></i></a></li>\n" +
-    "        <li><a class=\"lrg\" ng-href=\"{{centerUrl}}\"><i class=\"icon-shopping\"></i></a></li>\n" +
-    "        <li class=\"active\"><a class=\"lrg\" ng-href=\"{{webtopUrl}}\"><i class=\"icon-layout\"></i></a></li>\n" +
+    "        <li><a class=\"lrg\" ng-href=\"{{hudUrl}}\"><i class=\"icon-home-grayLightest\"></i></a></li>\n" +
+    "        <li><a class=\"lrg\" ng-href=\"{{centerUrl}}\"><i class=\"icon-shopping-grayLightest\"></i></a></li>\n" +
+    "        <li class=\"active\"><a class=\"lrg\" ng-href=\"{{webtopUrl}}\"><i class=\"icon-layout-blue\"></i></a></li>\n" +
     "      </ul>\n" +
     "    </div>\n" +
     "\n" +
@@ -333,20 +334,20 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "          <a href=\"#\" class=\"lrg dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-menu\"></i></a>\n" +
     "          <ul class=\"dropdown-menu\">\n" +
     "            <li class=\"dropdown-header\">Personalize</li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-ribbon\"></i>Bookmarks</a></li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-head\"></i>Profile</a></li>\n" +
-    "            <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#modal_settings\"><i class=\"icon-cog\"></i>Settings</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-ribbon\"></i>Bookmarks</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-head\"></i>Profile</a></li>\n" +
+    "            <li><a href=\"\" data-toggle=\"modal\" data-target=\"#modal_settings\"><i class=\"icon-cog\"></i>Settings</a></li>\n" +
     "            <li class=\"divider\"></li>\n" +
     "            <li class=\"dropdown-header\">Create</li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-wrench\"></i>Build a Dashboard</a></li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-square-plus\"></i>Submit a Listing</a></li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-cloud\"></i>Developer Resources</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-wrench\"></i>Build a Dashboard</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-square-plus\"></i>Submit a Listing</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-cloud\"></i>Developer Resources</a></li>\n" +
     "            <li class=\"divider\"></li>\n" +
     "            <li class=\"dropdown-header\">Manage</li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-layers\"></i>Listing Management</a></li>\n" +
-    "            <li><a href=\"#\"><i class=\"icon-shopping-settings\"></i>Marketplace Settings</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-layers\"></i>Listing Management</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-shopping-settings\"></i>Marketplace Settings</a></li>\n" +
     "            <li><a ng-href=\"{{metricsUrl}}\" target=\"_blank\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
-    "            <li><a class=\"caboose\" href=\"#\"><i class=\"icon-arrow-right\"></i>Logout</a></li>\n" +
+    "            <li><a class=\"caboose\" href=\"\"><i class=\"icon-arrow-right\"></i>Logout</a></li>\n" +
     "          </ul>\n" +
     "        </li>\n" +
     "      </ul>\n" +
