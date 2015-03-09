@@ -222,7 +222,7 @@ angular.module(&#x27;ozpWebtop.addApplicationsModal&#x27;, [&#x27;ui.bootstrap&#
  * @constructor
  */
 angular.module(&#x27;ozpWebtop.addApplicationsModal&#x27;).controller(
-  &#x27;AddApplicationsModalInstanceCtrl&#x27;, function($scope, $modalInstance, $log, apps) {
+  &#x27;AddApplicationsModalInstanceCtrl&#x27;, function($scope, $modalInstance, $log, $window, apps) {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                            $scope properties
@@ -258,6 +258,14 @@ angular.module(&#x27;ozpWebtop.addApplicationsModal&#x27;).controller(
      * @type {Array}
      */
     $scope.selectedApps = [];
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //                           initialization
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    $scope.centerUrl = $window.OzoneConfig.CENTER_URL;
+
+
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                          methods

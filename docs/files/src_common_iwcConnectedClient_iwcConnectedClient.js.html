@@ -223,17 +223,9 @@ var app = angular.module(&#x27;ozp.common.iwc.client&#x27;);
  */
 app.factory(&#x27;iwcConnectedClient&#x27;, function($q, $location, $window, iwcClient) {
 
-  var ozpIwcPeerUrl = &#x27;&#x27;;
-  var queryParams = $location.search();
-  if (queryParams.hasOwnProperty(&#x27;ozpIwc.peer&#x27;)) {
-    ozpIwcPeerUrl = queryParams[&#x27;ozpIwc.peer&#x27;];
-  } else {
-    ozpIwcPeerUrl = $window.OzoneConfig.IWC_URL;
-  }
-
-  console.log(&#x27;creating iwc client using bus: &#x27; + ozpIwcPeerUrl);
+  console.log(&#x27;creating iwc client using bus: &#x27; + $window.OzoneConfig.IWC_URL);
   var client = new iwcClient.Client({
-    peerUrl: ozpIwcPeerUrl
+    peerUrl: $window.OzoneConfig.IWC_URL
   });
 
   var isConnected = false;
@@ -264,7 +256,7 @@ app.factory(&#x27;iwcConnectedClient&#x27;, function($q, $location, $window, iwc
       return deferred.promise;
       },
     getIwcBusUrl: function() {
-      return ozpIwcPeerUrl;
+      return $window.OzoneConfig.IWC_URL;
     }
   };
 });

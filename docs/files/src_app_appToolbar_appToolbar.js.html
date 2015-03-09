@@ -681,12 +681,13 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
           // create a new dashboard
           // TODO: is this randomly generated name ok?
           var random_integer = Math.floor((Math.random()+0.10)*101);
-          var name = &#x27;Dashboard &#x27; + random_integer.toString();
-          dashboardApi.createDashboard(name).then(function() {
+          var newDashboard = {};
+          newDashboard.name = &#x27;Dashboard &#x27; + random_integer.toString();
+          dashboardApi.createDashboard(newDashboard).then(function() {
             // now get this dashboard id
             dashboardApi.getDashboards().then(function(dashboards) {
               for (var i=0; i &lt; dashboards.length; i++) {
-                if (dashboards[i].name === name) {
+                if (dashboards[i].name === newDashboard.name) {
                   dashboardId = dashboards[i].id;
                   stickyIndex = dashboards[i].stickyIndex;
                 }
@@ -731,34 +732,91 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
       });
     };
 
-    $scope.openEditDashboardModal = function() {
-        var modalInstance = $modal.open({
+      /**
+       * Edit dashboard
+       *
+       * @method openEditDashboardModal
+       * @param board the changed board object
+       * @returns {*}
+       */
+    $scope.openEditDashboardModal = function(board) {
+      $scope.board = board;
+      var modalInstance = $modal.open({
         templateUrl: &#x27;editDashboardModal/editDashboardModal.tpl.html&#x27;,
         controller: &#x27;EditDashboardModalInstanceCtrl&#x27;,
         windowClass: &#x27;app-modal-window&#x27;,
-        scope: $rootScope,
+        scope: $scope,
+        resolve: {
+          dashboard: function() {
+            // return $scope.board;
+            return $scope.board;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (response) {
+        // if user updates the current dashboard layout, update browser state
+        if (($scope.currentDashboard.id === response.id) &amp;&amp; (response.layout !== $scope.currentDashboard.layout)) {
+          $rootScope.$broadcast(dashboardStateChangedEvent, {
+            &#x27;dashboardId&#x27;: $scope.currentDashboard.id,
+            &#x27;layout&#x27;: $scope.currentDashboard.layout});
+          $state.go(&#x27;dashboardview.&#x27; + response.layout + &#x27;-sticky-&#x27; +
+            response.stickyIndex, {dashboardId: response.id});
+        }
+
+        // update backend with dashboard changes
+        for(var a in $scope.dashboards){
+          console.log(&#x27;now doing this&#x27;);
+          if($scope.dashboards[a].id === response.id){
+            // changes the drop-up text and dashboard/grid icon
+            $scope.dashboards[a].name = response.name;
+            $scope.dashboards[a].layout = response.layout;
+            $scope.updatedDashboardData = $scope.dashboards[a];
+          }
+        }
+        dashboardApi.updateDashboard($scope.updatedDashboardData);
+      });
+    };
+
+    $scope.openNewDashboardModal = function() {
+      $scope.modalInstanceType = &#x27;new&#x27;;
+      var modalInstance = $modal.open({
+        templateUrl: &#x27;editDashboardModal/editDashboardModal.tpl.html&#x27;,
+        controller: &#x27;EditDashboardModalInstanceCtrl&#x27;,
+        windowClass: &#x27;app-modal-window&#x27;,
+        scope: $scope,
         resolve: {
           dashboard: function() {
             return $scope.currentDashboard;
           }
         }
-        });
+      });
 
-        modalInstance.result.then(function (response) {
-          // reload current dashboard if the layout type changed (this state
-          // change will be ignored if the dashboard id and layout haven&#x27;t
-          // changed)
-          $state.go(&#x27;dashboardview.&#x27; + response.layout + &#x27;-sticky-&#x27; +
-            response.stickyIndex, {dashboardId: response.id});
+      modalInstance.result.then(function (response) {
+        // reload current dashboard if the layout type changed (this state
+        // change will be ignored if the dashboard id and layout haven&#x27;t
+        // changed)
+        var dashboardId, stickyIndex;
+        dashboardApi.createDashboard(response).then(function() {
+          // now get this dashboard id
+          dashboardApi.getDashboards().then(function(dashboards) {
+            for (var i=0; i &lt; dashboards.length; i++) {
+              if (dashboards[i].name === response.name) {
+                dashboardId = dashboards[i].id;
+                stickyIndex = dashboards[i].stickyIndex;
+              }
+            }
+            $state.go(&#x27;dashboardview.&#x27; + response.layout + &#x27;-sticky-&#x27; + stickyIndex, {dashboardId: dashboardId});
 
-          // update the dashboard name if that changed
-          if (response.name !== $scope.currentDashboard.name) {
+            // update the dashboard name if that changed
             $rootScope.$broadcast(dashboardStateChangedEvent, {
-              &#x27;dashboardId&#x27;: $scope.currentDashboard.id,
-              &#x27;layout&#x27;: $scope.currentDashboard.layout});
-          }
+              &#x27;dashboardId&#x27;: dashboardId,
+              &#x27;layout&#x27;: response.layout
+            });
+          });
         });
-      };
+      });
+    };
 
     $scope.openDeleteDashboardModal = function(board) {
       if ($scope.dashboards.length === 1) {

@@ -286,7 +286,7 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
         var newBoard = {
           &#x27;name&#x27;: &#x27;Default&#x27;,
           &#x27;id&#x27;: &#x27;0&#x27;,
-          &#x27;stickyIndex&#x27;: &#x27;0&#x27;,
+          &#x27;stickyIndex&#x27;: 0,
           &#x27;layout&#x27;: &#x27;grid&#x27;,
           &#x27;frames&#x27;: [
           ]
@@ -345,7 +345,6 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
      * @private
      */
     _setDashboardData: function(dashboardData) {
-      var deferred = $q.defer();
       this._dashboardData = angular.copy(dashboardData);
       var that = this;
       if (this._readyToPut) {
@@ -363,15 +362,15 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
 
         return $http(req).success(function() {
             that._readyToPut = true;
-            deferred.resolve(true);
           }).error(function(data, status) {
             $log.error(&#x27;DashboardApi: Error from PUT at &#x27; + url + &#x27;, status: &#x27; + status + &#x27;, msg: &#x27; + JSON.stringify(data));
             that._readyToPut = true;
-            deferred.resolve(true);
           });
       }
 
       //persistStrategy.setDashboardData(dashboardData);
+      var deferred = $q.defer();
+      deferred.resolve(true);
       return deferred.promise;
       //return persistStrategy.setDashboardData(dashboardData).then(function(response) {
       //  return response;
@@ -666,36 +665,31 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
       });
 
     },
+
     /**
      * Change the user&#x27;s current dashboard
      *
-     * @method updateCurrentDashboardName
-     * @param dashboardName
+     * @method updateDashboard
+     * @param updatedDashboardData
      * @returns {Promise}
      */
-    updateCurrentDashboardName: function(dashboardName) {
+    updateDashboard: function(updatedDashboardData) {
       var that = this;
       return this.getDashboardData().then(function(dashboardData) {
-        var dashboardFound = false;
         for (var i=0; i &lt; dashboardData.dashboards.length; i++) {
-          if (dashboardData.dashboards[i].name === dashboardName) {
-            dashboardData.currentDashboard = dashboardData.dashboards[i].id;
-            dashboardFound = true;
+          if(dashboardData.dashboards[i].id === updatedDashboardData.id) {
+            dashboardData.dashboards[i].name = updatedDashboardData.name;
+            dashboardData.dashboards[i].layout = updatedDashboardData.layout;            
+            that._setDashboardData(dashboardData).then(function(response) {
+              return response;
+            });
           }
-        }
-        if (dashboardFound) {
-          return that._setDashboardData(dashboardData).then(function(response) {
-            return response;
-          }).catch(function(error) {
-            console.log(&#x27;should not have happened: &#x27; + error);
-          });
-        } else {
-          return false;
         }
       }).catch(function(error) {
         console.log(&#x27;should not have happened: &#x27; + error);
       });
     },
+
     /**
      * Return the name of the user&#x27;s current dashboard
      * @method getCurrentDashboardName
@@ -887,18 +881,21 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
      * @param name
      * @returns {Promise}
      */
-    createDashboard: function(name) {
+    createDashboard: function(dashboard) {
       var that = this;
       return this.getDashboardData().then(function(dashboardData) {
         // get new id for board
         return that.getNewDashboardId().then(function(dashboardId) {
           return that.getNextStickyIndex().then(function(nextStickyIndex) {
             console.log(&#x27;creating new board with sticky slot &#x27; + nextStickyIndex);
+            if(!dashboard.layout){
+              dashboard.layout = &#x27;grid&#x27;;
+            }
             var newBoard = {
-              &#x27;name&#x27;: name,
+              &#x27;name&#x27;: dashboard.name,
               &#x27;id&#x27;: dashboardId,
               &#x27;stickyIndex&#x27;: nextStickyIndex,
-              &#x27;layout&#x27;: &#x27;grid&#x27;,
+              &#x27;layout&#x27;: dashboard.layout,
               &#x27;frames&#x27;: [
               ]
             };

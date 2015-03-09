@@ -9,7 +9,9 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "      <span class=\"sr-only\">Close</span>\n" +
     "    </button>\n" +
     "    <h3 class=\"modal-title\">Open bookmarked apps</h3>\n" +
-    "    <button type=\"button\" class=\"btn btn-default pull-right\">Find more apps</button>\n" +
+    "    <a ng-href=\"{{centerUrl}}\">\n" +
+    "      <button type=\"button\" class=\"btn btn-default pull-right\">Find more apps</button>\n" +
+    "    </a>\n" +
     "    <p> These are apps you have already bookmarked from the Center. To edit your\n" +
     "      bookmarks, visit the HUD\n" +
     "    </p>\n" +
@@ -79,15 +81,12 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                        <li ng-repeat=\"board in dashboards\">\n" +
     "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
     "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
-    "                              <span ng-show=\"board.id === currentDashboard.id\">\n" +
-    "                                <!-- <button type=\"button\" ng-click=\"openDeleteDashboardModal(board)\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button> -->\n" +
-    "                                <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
-    "                                <i class=\"icon-pencil pull-right\" style=\"margin-right: 10px;\" ng-click=\"openEditDashboardModal()\"></i>\n" +
-    "                              </span>\n" +
+    "                              <span class=\"pull-right\" ng-click=\"openDeleteDashboardModal(board)\">X</span>\n" +
+    "                              <i class=\"icon-pencil pull-right\" ng-click=\"openEditDashboardModal(board)\"></i>\n" +
     "                          </a>\n" +
     "                        </li>\n" +
     "                        <li>\n" +
-    "                          <a class=\"caboose\" class=\"link-pointer\">\n" +
+    "                          <a class=\"caboose\" class=\"link-pointer\" href=\"\" ng-click=\"openNewDashboardModal()\">\n" +
     "                            <!-- TODO create dashboard view-->\n" +
     "                            <i class=\"icon-plus\"></i>Create a new dashboard\n" +
     "                          </a>\n" +
@@ -108,7 +107,6 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "\n" +
     "            <div class=\"navbar-right\">\n" +
     "                <ul class=\"nav navbar-nav\">\n" +
-    "                    <!-- <li><a href=\"#\"><i class=\"icon-fast-forward\"></i></a></li> -->\n" +
     "                    <li ng-click=\"toggleFullScreenMode();\">\n" +
     "                      <a href=\"\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\">\n" +
     "                        <i class=\"icon-maximize\"  ></i></a>\n" +
@@ -148,13 +146,13 @@ angular.module("dashboardView/chrome/ozpchrome.tpl.html", []).run(["$templateCac
     "  <span class=\"chrome-name\">{{frame.name}}</span>\n" +
     "  <span class=\"chrome-controls\" >\n" +
     "    <button type=\"button\" class=\"btn chrome-minimize\" ng-hide=\"layout !== 'desktop'\" ng-click=\"minimizeFrame()\">\n" +
-    "      <span class=\"glyphicon glyphicon-minus\"></span>\n" +
+    "      <span class=\"icons icon-minus\"></span>\n" +
     "    </button>\n" +
     "    <button type=\"button\" class=\"btn chrome-maximize\" ng-hide=\"layout !== 'desktop'\" ng-click=\"maximizeFrame()\">\n" +
-    "      <span class=\"glyphicon glyphicon-plus\"></span>\n" +
+    "      <span class=\"icons icon-plus\"></span>\n" +
     "    </button>\n" +
     "    <button type=\"button\" class=\"btn chrome-close\" ng-click=\"removeFrame()\">\n" +
-    "      <span class=\"glyphicon glyphicon-remove\"></span>\n" +
+    "      <span class=\"icons icon-cross\"></span>\n" +
     "    </button>\n" +
     "  </span>\n" +
     "</div>\n" +
@@ -196,10 +194,7 @@ angular.module("dashboardView/desktop/desktop.tpl.html", []).run(["$templateCach
     "<div ng-repeat=\"frame in frames\">\n" +
     "  <ozp-managed-frame myframe=\"frame\" class=\"ozp-managed-frame\"\n" +
     "                     ng-hide=\"isFrameMinimized(frame)\"\n" +
-    "                     style=\"width: {{frame.desktopLayout.width}}px;\n" +
-    "                     height: {{frame.desktopLayout.height}}px;\n" +
-    "                     top: {{frame.desktopLayout.top}}px;\n" +
-    "                     left: {{frame.desktopLayout.left}}px\"\n" +
+    "                     ng-style=\"frame.desktopLayout.style\"\n" +
     "                     ng-class=\"{'fullWidth' : frame.isMaximized}\">\n" +
     "  </ozp-managed-frame>\n" +
     "</div>");
@@ -241,50 +236,48 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
   $templateCache.put("editDashboardModal/editDashboardModal.tpl.html",
     "<div class=\"wt-modal\">\n" +
     "  <div class=\"modal-header wt-modal-header\">\n" +
-    "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
-    "      <span aria-hidden=\"true\"><i class=\"fa fa-close close-icon\"></i> </span>\n" +
-    "      <span class=\"sr-only\">Close</span>\n" +
-    "    </button>\n" +
-    "    <h3 class=\"modal-title\">Edit Dashboard</h3>\n" +
+    "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\n" +
+    "    <!-- New vs Edit Dashboard -->\n" +
+    "    <h3 ng-show=\"modalInstanceType != 'new'\" class=\"modal-title\">Edit the dashboard <b>{{dashboard.name}}</b></h3>\n" +
+    "    <h3 ng-show=\"modalInstanceType == 'new'\" class=\"modal-title\">Create new dashboard</b></h3>\n" +
     "  </div>\n" +
-    "  <div class=\"modal-body\">\n" +
-    "    <div class=\"container-fluid\">\n" +
-    "      <div class=\"row\">\n" +
-    "        <div class=\"col-sm-9 col-md-8\">\n" +
-    "          <form class=\"form-horizontal\" role=\"form\" name=\"editDashboardForm\" novalidate>\n" +
-    "            <div class=\"form-group\">\n" +
-    "              <label for=\"inputName\" class=\"col-sm-2 control-label\">Name</label>\n" +
-    "              <div class=\"col-sm-10\">\n" +
-    "                <small class=\"error\" ng-show=\"editDashboardForm.inputName.$error.required\">\n" +
-    "                  <strong>Dashboard name is required</strong>\n" +
-    "                </small>\n" +
-    "                <input type=\"text\" class=\"form-control\" id=\"inputName\" name=\"inputName\" ng-model=\"dashboard.name\" required>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "              <label for=\"selectLayout\" class=\"col-sm-2 control-label\">Layout</label>\n" +
-    "              <div class=\"col-sm-10\">\n" +
-    "                <select class=\"form-control\" id=\"selectLayout\" ng-model=\"dashboard.layout\">\n" +
-    "                  <option>grid</option>\n" +
-    "                  <option>desktop</option>\n" +
-    "                </select>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"alert alert-warning\" ng-show=\"layoutChanged()\">\n" +
-    "              <strong>Warning!</strong> Changing the dashboard layout will reset\n" +
-    "              the current widget states\n" +
-    "            </div>\n" +
-    "          </form>\n" +
-    "        </div>\n" +
+    "\n" +
+    "  <div class=\"modal-body wt-modal-body\">\n" +
+    "    <form role=\"form\" class=\"row\">\n" +
+    "      <div class=\"form-group col-lg-6\">\n" +
+    "        <label for=\"name\">Name</label>\n" +
+    "        <!-- New vs Edit Dashboard -->\n" +
+    "        <input type=\"text\" class=\"form-control\" id=\"name\" ng-show=\"modalInstanceType != 'new'\" placeholder=\"{{dashboard.name}}\" ng-model=\"dashboard.name\">\n" +
+    "        <input type=\"text\" class=\"form-control\" id=\"name\" ng-show=\"modalInstanceType == 'new'\" ng-model=\"dashboard.name\">\n" +
+    "        <small class=\"error\" ng-show=\"editDashboardForm.inputName.$error.required\">\n" +
+    "          <strong>Dashboard name is required</strong>\n" +
+    "        </small>\n" +
     "      </div>\n" +
-    "    </div>\n" +
+    "      <div class=\"form-group col-lg-2\">\n" +
+    "        <label>View</label><br />\n" +
+    "        <button type=\"button\" class=\"btn btn-default\" ng-class=\"{'grid': 'active', 'desktop': ''}[dashboard.layout]\" ng-click=\"dashboard.layout = 'grid'\">\n" +
+    "            <i class=\"icon-grid\"></i>\n" +
+    "        </button>\n" +
+    "        <button type=\"button\" class=\"btn btn-default\" ng-class=\"{'grid': '', 'desktop': 'active'}[dashboard.layout]\" ng-click=\"dashboard.layout = 'desktop'\">\n" +
+    "            <i class=\"icon-stack\"></i>\n" +
+    "        </button>\n" +
+    "      </div>\n" +
+    "      <div class=\"form-group col-lg-4 alert alert-warning\" style=\"padding-bottom: 0;\" ng-show=\"layoutChanged() && modalInstanceType != 'new'\">\n" +
+    "          Changing the layout resets widget states\n" +
+    "      </div>\n" +
+    "    </form>\n" +
     "  </div>\n" +
+    "\n" +
     "  <div class=\"modal-footer wt-modal-footer\">\n" +
-    "    <button ng-show=\"editDashboardForm.$error.pattern || editDashboardForm.$error.required\"\n" +
-    "            class=\"btn btn-primary\" disabled=\"disabled\">Ok</button>\n" +
-    "    <button ng-show=\"!editDashboardForm.$error.pattern && !editDashboardForm.$error.required\"\n" +
-    "            class=\"btn btn-primary\" ng-click=\"ok()\">OK</button>\n" +
-    "    <button class=\"btn btn-primary\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "    <button class=\"btn btn-default\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "    <span ng-show=\"modalInstanceType != 'new'\">\n" +
+    "      <button ng-show=\"editDashboardForm.$error.pattern || editDashboardForm.$error.required\"\n" +
+    "              class=\"btn btn-primary\" disabled=\"disabled\">Save Dashboard</button>\n" +
+    "      <button ng-show=\"!editDashboardForm.$error.pattern && !editDashboardForm.$error.required\"\n" +
+    "              class=\"btn btn-primary\" ng-click=\"ok()\">Save Dashboard</button>\n" +
+    "    </span>\n" +
+    "    <button ng-show=\"modalInstanceType == 'new'\" class=\"btn btn-primary\" ng-click=\"createDashboard()\">Create Dashboard</button>\n" +
+    "    </span>\n" +
     "  </div>\n" +
     "\n" +
     "</div>");
