@@ -6,9 +6,10 @@
  * @module ozpWebtop.ozpToolbar
  * @requires ozp.common.windowSizeWatcher
  * @requires ozpWebtop.models
+ * @requires ozpWebtop.settingsModal
  */
 angular.module('ozpWebtop.ozpToolbar', [ 'ozp.common.windowSizeWatcher',
-  'ozpWebtop.models']);
+  'ozpWebtop.models', 'ozpWebtop.settingsModal']);
 
 var app = angular.module( 'ozpWebtop.ozpToolbar')
 /**
@@ -32,7 +33,7 @@ var app = angular.module( 'ozpWebtop.ozpToolbar')
  *
  */
 .controller('OzpToolbarCtrl',
-  function($scope, $rootScope, $window, $log,
+  function($scope, $rootScope, $window, $log, $modal,
            models, windowSizeWatcher, deviceSizeChangedEvent,
            fullScreenModeToggleEvent) {
 
@@ -125,6 +126,35 @@ var app = angular.module( 'ozpWebtop.ozpToolbar')
     $scope.helpUser = function() {
       alert('Help functionality coming soon!');
     };
+
+        /**
+        * Edit dashboard
+        *
+        * @method opensettingsModal
+        * @param board the changed board object
+        * @returns {*}
+        */
+      $scope.openSettingsModal = function(board) {
+        $scope.board = board;
+        var modalInstance = $modal.open({
+          templateUrl: 'settingsModal/settingsModal.tpl.html',
+          controller: 'settingsModalInstanceCtrl',
+          windowClass: 'app-modal-window',
+          scope: $scope,
+          resolve: {
+            dashboard: function() {
+              // return $scope.board;
+              return $scope.board;
+            }
+          }
+        });
+
+       modalInstance.result.then(function () {
+
+
+       });
+    };
+
   }
 );
 
@@ -158,3 +188,4 @@ app.directive('ozpToolbar', function(){
    }
   };
 });
+
