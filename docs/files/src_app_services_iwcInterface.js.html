@@ -256,7 +256,6 @@ app.factory(&#x27;iwcInterface&#x27;, function($q, iwcConnectedClient) {
     setDashboardData: function (dashboardData) {
       // persist data
       dashboardData.persist = true;
-      console.log(&#x27;THIS SHOULD NOT BE BEING INVOKED RIGHT NOW&#x27;);
       return this._setData(&#x27;data.api&#x27;, &#x27;/dashboard-data&#x27;,
         {entity: dashboardData,
           contentType: &#x27;application/dashboard-data+json&#x27;});

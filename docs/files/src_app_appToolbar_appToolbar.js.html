@@ -741,6 +741,7 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
        */
     $scope.openEditDashboardModal = function(board) {
       $scope.board = board;
+      $scope.modalInstanceType = &#x27;edit&#x27;;
       var modalInstance = $modal.open({
         templateUrl: &#x27;editDashboardModal/editDashboardModal.tpl.html&#x27;,
         controller: &#x27;EditDashboardModalInstanceCtrl&#x27;,
@@ -755,26 +756,36 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
       });
 
       modalInstance.result.then(function (response) {
-        // if user updates the current dashboard layout, update browser state
-        if (($scope.currentDashboard.id === response.id) &amp;&amp; (response.layout !== $scope.currentDashboard.layout)) {
-          $rootScope.$broadcast(dashboardStateChangedEvent, {
-            &#x27;dashboardId&#x27;: $scope.currentDashboard.id,
-            &#x27;layout&#x27;: $scope.currentDashboard.layout});
-          $state.go(&#x27;dashboardview.&#x27; + response.layout + &#x27;-sticky-&#x27; +
-            response.stickyIndex, {dashboardId: response.id});
-        }
-
+        // NOTE: response.stickyIndex is invalid at this point
         // update backend with dashboard changes
-        for(var a in $scope.dashboards){
-          console.log(&#x27;now doing this&#x27;);
-          if($scope.dashboards[a].id === response.id){
+        var updatedDashboardData = {};
+        for (var i=0; i &lt; $scope.dashboards.length; i++) {
+          if ($scope.dashboards[i].id === response.id) {
             // changes the drop-up text and dashboard/grid icon
-            $scope.dashboards[a].name = response.name;
-            $scope.dashboards[a].layout = response.layout;
-            $scope.updatedDashboardData = $scope.dashboards[a];
+            $scope.dashboards[i].name = response.name;
+            $scope.dashboards[i].layout = response.layout;
+            updatedDashboardData = $scope.dashboards[i];
           }
         }
-        dashboardApi.updateDashboard($scope.updatedDashboardData);
+
+        dashboardApi.updateDashboard(updatedDashboardData).then(function(dashboard) {
+          for (var i=0; i &lt; $scope.dashboards.length; i++) {
+            if ($scope.dashboards[i].id === dashboard.id) {
+              // changes the drop-up text and dashboard/grid icon
+              $scope.dashboards[i].stickyIndex = dashboard.stickyIndex;
+            }
+          }
+          // if user updates the current dashboard layout, update browser state
+          if ($scope.currentDashboard.id === dashboard.id) {
+            $rootScope.$broadcast(dashboardStateChangedEvent, {
+              &#x27;dashboardId&#x27;: dashboard.id,
+              &#x27;layout&#x27;: dashboard.layout});
+            $state.go(&#x27;dashboardview.&#x27; + dashboard.layout + &#x27;-sticky-&#x27; +
+              dashboard.stickyIndex, {dashboardId: dashboard.id});
+          }
+        }).catch(function(error) {
+          $log.error(&#x27;Error updateDashboardData: &#x27; + error);
+        });
       });
     };
 

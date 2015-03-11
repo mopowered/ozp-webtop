@@ -70,16 +70,16 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                        <i class=\"icon-plus-18-white\"></i>\n" +
     "                      </a>\n" +
     "                    </li>\n" +
-    "                    \n" +
+    "\n" +
     "                    <li class=\"navbar-spacer\"></li>\n" +
     "                    <li class=\"dropdown dropup\">\n" +
     "                    <!-- we start -->\n" +
     "                      <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
-    "                        {{currentDashboard.name | limitTo : dashboardNameLength}} <i class=\"icon-caret-up\"></i></a>\n" +
+    "                        {{currentDashboard.name | limitTo : dashboardNameLength}} <i class=\"icon-caret-up-white\"></i></a>\n" +
     "                      <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                        <li class=\"dropdown-header\">Dashboards</li>\n" +
     "                        <li ng-repeat=\"board in dashboards\">\n" +
-    "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack', grid:'icon-grid'}[board.layout]\"></i>\n" +
+    "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack-grayLightest', grid:'icon-grid-grayLightest'}[board.layout]\"></i>\n" +
     "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
     "                              <i class=\"icon-cross-14-grayLightest pull-right\" ng-click=\"openDeleteDashboardModal(board)\"></i>\n" +
     "                              <i class=\"icon-pencil-grayLightest pull-right\" ng-click=\"openEditDashboardModal(board)\"></i>\n" +
@@ -88,20 +88,20 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                        <li>\n" +
     "                          <a class=\"caboose\" class=\"link-pointer\" href=\"\" ng-click=\"openNewDashboardModal()\">\n" +
     "                            <!-- TODO create dashboard view-->\n" +
-    "                            <i class=\"icon-plus\"></i>Create a new dashboard\n" +
+    "                            <i class=\"icon-plus-14-white\"></i>Create a new dashboard\n" +
     "                          </a>\n" +
     "                        </li>\n" +
     "                      </ul>\n" +
     "                    </li>\n" +
     "                    <li class=\"navbar-spacer\"></li>\n" +
-    " \n" +
+    "\n" +
     "                    <li class=\"app\" ng-repeat=\"app in myPinnedApps\" ng-class=\"{true:'',false:'active', 'undefined':'active'}[app.isMinimized]\">\n" +
     "                      <a tooltip=\"{{app.name | limitTo : 15}}\"\n" +
     "                          ng-click=\"maximizeFrame(app)\">\n" +
     "                        <img ng-src=\"{{app.icon.large}}\" />\n" +
     "                        <!-- <div ng-class=\"app.isMinimized && currentDashboard.layout === 'desktop'? 'app-toolbar-inactive-app' : 'app-toolbar-active-app'\">&nbsp</div> -->\n" +
     "                      </a>\n" +
-    "                    </li>                   \n" +
+    "                    </li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "\n" +
@@ -109,11 +109,11 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "                <ul class=\"nav navbar-nav\">\n" +
     "                  <li ng-click=\"cascadeWindows()\" ng-hide=\"currentDashboard.layout === 'grid'\">\n" +
     "                      <a href=\"\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\">\n" +
-    "                        <i class=\"icon-stack\"></i></a>\n" +
+    "                        <i class=\"icon-stack-grayLightest\"></i></a>\n" +
     "                    </li>\n" +
     "                    <li ng-click=\"toggleFullScreenMode();\">\n" +
     "                      <a href=\"\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\">\n" +
-    "                        <i class=\"icon-maximize\"></i></a>\n" +
+    "                        <i class=\"icon-maximize-grayLightest\"></i></a>\n" +
     "                    </li>\n" +
     "\n" +
     "                </ul>\n" +
@@ -125,7 +125,8 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "        tooltip=\"Exit Full Screen\" tooltip-placement=\"left\">\n" +
     "      <i class=\"icon-minimize\"></i>\n" +
     "    </button>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("dashboardView/button/ozpbutton.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -300,11 +301,11 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "    <div class=\"navbar-right\">\n" +
     "      <ul class=\"nav navbar-nav\">\n" +
     "        <li class=\"dropdown\">\n" +
-    "          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-bell-filled\"></i></a>\n" +
+    "          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-bell-filled-blue\"></i></a>\n" +
     "          <ul class=\"dropdown-menu\">\n" +
     "            <li>\n" +
     "              <a href=\"#\">\n" +
-    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\">�</span></button>\n" +
+    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button>\n" +
     "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/JotSpot32.png\" />\n" +
     "                <span>Writing down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
@@ -312,7 +313,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"divider\"></li>\n" +
     "            <li>\n" +
     "              <a href=\"#\">\n" +
-    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">�</span></button>\n" +
+    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">x</span></button>\n" +
     "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail32.png\" />\n" +
     "                <span>Airplanes down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
@@ -320,7 +321,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"divider\"></li>\n" +
     "            <li>\n" +
     "              <a href=\"#\">\n" +
-    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">�</span></button>\n" +
+    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">x</span></button>\n" +
     "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/ChatterBox32.png\" />\n" +
     "                <span>Chat down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
@@ -328,26 +329,26 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "          </ul>\n" +
     "        </li>\n" +
     "        <li>\n" +
-    "          <a ng-click=\"helpUser()\" data-toggle=\"modal\" data-target=\"#modal_help\"><i class=\"icon-question\"></i></a>\n" +
+    "          <a ng-click=\"helpUser()\" data-toggle=\"modal\" data-target=\"#modal_help\"><i class=\"icon-question-grayLightest\"></i></a>\n" +
     "        </li>\n" +
     "        <li class=\"dropdown\">\n" +
-    "          <a href=\"#\" class=\"lrg dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-menu\"></i></a>\n" +
+    "          <a href=\"#\" class=\"lrg dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-menu-grayLightest\"></i></a>\n" +
     "          <ul class=\"dropdown-menu\">\n" +
     "            <li class=\"dropdown-header\">Personalize</li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-ribbon\"></i>Bookmarks</a></li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-head\"></i>Profile</a></li>\n" +
-    "            <li><a href=\"\" data-toggle=\"modal\" data-target=\"#modal_settings\"><i class=\"icon-cog\"></i>Settings</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-ribbon-grayLightest\"></i>Bookmarks</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-head-grayLightest\"></i>Profile</a></li>\n" +
+    "            <li><a href=\"\" data-toggle=\"modal\" data-target=\"#modal_settings\"><i class=\"icon-cog-grayLightest\"></i>Settings</a></li>\n" +
     "            <li class=\"divider\"></li>\n" +
     "            <li class=\"dropdown-header\">Create</li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-wrench\"></i>Build a Dashboard</a></li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-square-plus\"></i>Submit a Listing</a></li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-cloud\"></i>Developer Resources</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-wrench-grayLightest\"></i>Build a Dashboard</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-square-plus-grayLightest\"></i>Submit a Listing</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-cloud-grayLightest\"></i>Developer Resources</a></li>\n" +
     "            <li class=\"divider\"></li>\n" +
     "            <li class=\"dropdown-header\">Manage</li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-layers\"></i>Listing Management</a></li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-shopping-settings\"></i>Marketplace Settings</a></li>\n" +
-    "            <li><a ng-href=\"{{metricsUrl}}\" target=\"_blank\"><i class=\"icon-bar-graph-2\"></i>Metrics</a></li>\n" +
-    "            <li><a class=\"caboose\" href=\"\"><i class=\"icon-arrow-right\"></i>Logout</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-layers-grayLightest\"></i>Listing Management</a></li>\n" +
+    "            <li><a href=\"\"><i class=\"icon-shopping-settings-grayLightest\"></i>Marketplace Settings</a></li>\n" +
+    "            <li><a ng-href=\"{{metricsUrl}}\" target=\"_blank\"><i class=\"icon-bar-graph-2-grayLightest\"></i>Metrics</a></li>\n" +
+    "            <li><a class=\"caboose\" href=\"\"><i class=\"icon-arrow-right-grayLightest\"></i>Logout</a></li>\n" +
     "          </ul>\n" +
     "        </li>\n" +
     "      </ul>\n" +

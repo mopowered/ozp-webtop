@@ -349,32 +349,45 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
       var that = this;
       if (this._readyToPut) {
         this._readyToPut = false;
-        var url = $window.OzoneConfig.API_URL + &#x27;/profile/self/data/dashboard-data&#x27;;
-        var req = {
-          method: &#x27;PUT&#x27;,
-          url: url,
-          headers: {
-            &#x27;Content-Type&#x27;: &#x27;application/vnd.ozp-iwc-data-object-v1+json&#x27;
-          },
-          data: dashboardData,
-          withCredentials: true,
-        };
+        // - - - - - - - - - - - - - - -
+        //LEAVE THIS HERE FOR NOW
+        //
+        // Example shows how to use raw HTTP requests to interact with the
+        // server endpoint intended exclusively for use via IWC&#x27;s data.api, which
+        // could be useful in the future
+        // - - - - - - - - - - - - - - -
 
-        return $http(req).success(function() {
-            that._readyToPut = true;
-          }).error(function(data, status) {
-            $log.error(&#x27;DashboardApi: Error from PUT at &#x27; + url + &#x27;, status: &#x27; + status + &#x27;, msg: &#x27; + JSON.stringify(data));
-            that._readyToPut = true;
-          });
+        //var url = $window.OzoneConfig.API_URL + &#x27;/profile/self/data/dashboard-data&#x27;;
+        //var req = {
+        //  method: &#x27;PUT&#x27;,
+        //  url: url,
+        //  headers: {
+        //    &#x27;Content-Type&#x27;: &#x27;application/vnd.ozp-iwc-data-object-v1+json&#x27;
+        //  },
+        //  data: dashboardData,
+        //  withCredentials: true,
+        //};
+
+        //return $http(req).success(function() {
+        //    that._readyToPut = true;
+        //  }).error(function(data, status) {
+        //    $log.error(&#x27;DashboardApi: Error from PUT at &#x27; + url + &#x27;, status: &#x27; + status + &#x27;, msg: &#x27; + JSON.stringify(data));
+        //    that._readyToPut = true;
+        //  });
+
+        return persistStrategy.setDashboardData(dashboardData).then(function (resp) {
+          that._readyToPut = true;
+          return resp;
+        }).catch(function (error) {
+          $log.error(&#x27;DashboardApi: Error setting dashboard data: &#x27; + JSON.stringify(error));
+          that._readyToPut = true;
+        });
       }
-
-      //persistStrategy.setDashboardData(dashboardData);
+      // if we aren&#x27;t ready to PUT, just ignore the failure and try again next
+      // time (this happens a lot, so don&#x27;t bother logging it)
       var deferred = $q.defer();
       deferred.resolve(true);
       return deferred.promise;
-      //return persistStrategy.setDashboardData(dashboardData).then(function(response) {
-      //  return response;
-      //});
     },
     /**
      * Set all dashboards
@@ -673,20 +686,27 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
      * @param updatedDashboardData
      * @returns {Promise}
      */
-    updateDashboard: function(updatedDashboardData) {
+    updateDashboard: function(updatedDashboard) {
       var that = this;
-      return this.getDashboardData().then(function(dashboardData) {
-        for (var i=0; i &lt; dashboardData.dashboards.length; i++) {
-          if(dashboardData.dashboards[i].id === updatedDashboardData.id) {
-            dashboardData.dashboards[i].name = updatedDashboardData.name;
-            dashboardData.dashboards[i].layout = updatedDashboardData.layout;            
-            that._setDashboardData(dashboardData).then(function(response) {
-              return response;
+      return this.getDashboardById(updatedDashboard.id).then(function(dashboard) {
+        dashboard.name = updatedDashboard.name;
+        // if the layout changes, we need to change the stickyIndex too
+        if (dashboard.layout !== updatedDashboard.layout) {
+          $log.debug(&#x27;dashboard layout changed for board &#x27; + dashboard.name);
+          return that.getNextStickyIndex(updatedDashboard.layout).then(function(stickyIndex) {
+            dashboard.layout = updatedDashboard.layout;
+            dashboard.stickyIndex = stickyIndex;
+            $log.debug(&#x27;changing stickyIndex of board &#x27; + dashboard.name + &#x27; to &#x27; + stickyIndex);
+            return that.saveDashboard(dashboard).then(function() {
+              return dashboard;
             });
-          }
+          });
+        } else {
+          $log.debug(&#x27;dashboard &#x27; + dashboard.name + &#x27; layout did not change&#x27;);
         }
-      }).catch(function(error) {
-        console.log(&#x27;should not have happened: &#x27; + error);
+        return that.saveDashboard(dashboard).then(function() {
+          return dashboard;
+        });
       });
     },
 
@@ -883,14 +903,14 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
      */
     createDashboard: function(dashboard) {
       var that = this;
+      if(!dashboard.layout){
+        dashboard.layout = &#x27;grid&#x27;;
+      }
       return this.getDashboardData().then(function(dashboardData) {
         // get new id for board
         return that.getNewDashboardId().then(function(dashboardId) {
-          return that.getNextStickyIndex().then(function(nextStickyIndex) {
+          return that.getNextStickyIndex(dashboard.layout).then(function(nextStickyIndex) {
             console.log(&#x27;creating new board with sticky slot &#x27; + nextStickyIndex);
-            if(!dashboard.layout){
-              dashboard.layout = &#x27;grid&#x27;;
-            }
             var newBoard = {
               &#x27;name&#x27;: dashboard.name,
               &#x27;id&#x27;: dashboardId,
@@ -951,19 +971,34 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
     /**
      * Get the next available sticky slot for a new dashboard
      */
-    getNextStickyIndex: function() {
+    getNextStickyIndex: function(dashboardLayout) {
       return this.getDashboards().then(function(dashboards) {
-        var usedStickySlots = [];
+        var gridUsedStickySlots = [];
+        var desktopUsedStickySlots = [];
         for (var i = 0; i &lt; dashboards.length; i++) {
-          usedStickySlots.push(dashboards[i].stickyIndex);
+          if (dashboards[i].layout === &#x27;grid&#x27;) {
+            gridUsedStickySlots.push(dashboards[i].stickyIndex);
+          } else if (dashboards[i].layout === &#x27;desktop&#x27;) {
+            desktopUsedStickySlots.push(dashboards[i].stickyIndex);
+          } else {
+            $log.error(&#x27;Invalid dashboard layout&#x27;);
+          }
         }
         // TODO: use constants.maxStickyBoards
         for (var j=0; j &lt; 10; j++) {
-          if (usedStickySlots.indexOf(j) &lt; 0) {
-            return j;
+          if (dashboardLayout === &#x27;grid&#x27;) {
+            if (gridUsedStickySlots.indexOf(j) &lt; 0) {
+              return j;
+            }
+          } else if (dashboardLayout === &#x27;desktop&#x27;) {
+            if (desktopUsedStickySlots.indexOf(j) &lt; 0) {
+              return j;
+            }
+          } else {
+            $log.error(&#x27;Invalid layout passed to getNextStickyIndex: &#x27; + dashboardLayout);
           }
         }
-        console.log(&#x27;WARNING: Sticky dashboard slots are full!&#x27;);
+        $log.error(&#x27;WARNING: Sticky dashboard slots are full!&#x27;);
       }).catch(function(error) {
         console.log(&#x27;should not have happened: &#x27; + error);
       });
