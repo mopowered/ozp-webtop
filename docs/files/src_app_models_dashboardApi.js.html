@@ -597,10 +597,20 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
         var utils = new Utilities();
         var frameId = utils.generateUuid();
 
+        // get the name for this app (if this app is later deleted, at least
+        // we can tell the user what it is called)
+        var appName = &#x27;unknown&#x27;;
+        for (var a=0; a &lt; that._applicationData.length; a++) {
+          if (that._applicationData[a].id === appId) {
+            appName = that._applicationData[a].name;
+          }
+        }
+
         // update the dashboard with this app
         var newApp = {
           &#x27;appId&#x27;: appId,
           &#x27;id&#x27;: frameId,
+          &#x27;name&#x27;: appName,
           &#x27;gridLayout&#x27;: {
             &#x27;sm&#x27;: {
               &#x27;row&#x27;: newRowSmall,
@@ -747,9 +757,9 @@ function generalDashboardModel($sce, $q, $log, $http, $window, persistStrategy, 
           }
         }
         if (!foundApp) {
-          $log.warn(&#x27;Found a frame with no corresponding application&#x27;);
+          $log.warn(&#x27;Found a frame with no corresponding application. Name: &#x27; + frames[j].name);
           frames[j].trustedUrl = &#x27;assets/appNotFound/index.html&#x27;;
-          frames[j].name = &#x27;Not Found&#x27;;
+          frames[j].name = frames[j].name + &#x27;: Not Found&#x27;;
           frames[j].singleton = false;
         }
       }
