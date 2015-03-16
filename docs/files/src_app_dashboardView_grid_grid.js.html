@@ -351,11 +351,6 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
       $log.debug(&#x27;size changed from lg to md&#x27;);
     }
 
-    $scope.$on(initialDataReceivedEvent, function() {
-      $scope.apps = models.getApplicationData();
-      $scope.ready = true;
-    });
-
     // Initialize grid columns based on screen size
     if (windowSizeWatcher.getCurrentSize() === &#x27;sm&#x27;) {
       $scope.gridOptions.columns = 3;
@@ -431,7 +426,7 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
     );
 
     $scope.handleStateChangeSuccess = function(event, toState, toParams) {
-      if (!$scope.ready) {
+      if (!models.dataCached()) {
         $log.warn(&#x27;GridCtrl: delaying call to handleStateChangeSuccess by 500ms - no data yet&#x27;);
         $scope.handleStateChangeSuccessInterval = $interval(function() {
           $scope.handleStateChangeSuccess(event, toState, toParams);
@@ -470,6 +465,19 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                          methods
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    function initializeData() {
+      if (!models.dataCached()) {
+        $log.warn(&#x27;GridCtrl: delaying initialization by 500ms - no data yet&#x27;);
+        $scope.initInterval = $interval(function() {
+          initializeData();
+        }, 500, 1);
+        return;
+      }
+      $scope.apps = models.getApplicationData();
+    }
+
+    initializeData();
 
     /**
      * Handle start event resizing a widget on Gridster
@@ -540,7 +548,7 @@ angular.module(&#x27;ozpWebtop.dashboardView.grid&#x27;)
      * @method handleDashboardChange
      */
     $scope.handleDashboardChange = function() {
-      if (!$scope.ready) {
+      if (!models.dataCached()) {
         $log.warn(&#x27;GridCtrl: delaying call to handleDashboardChange by 500ms - no data yet&#x27;);
         $scope.handleDashboardChangeInterval = $interval(function() {
           $scope.handleDashboardChange();

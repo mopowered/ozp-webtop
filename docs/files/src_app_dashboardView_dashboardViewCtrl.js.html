@@ -203,11 +203,7 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;, [&#x27;ozpWebtop.models&#x27
 angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
 
 .controller(&#x27;DashboardViewCtrl&#x27;, function ($scope, $state, $interval, $log,
-                                           models, initialDataReceivedEvent) {
-
-    $scope.$on(initialDataReceivedEvent, function() {
-      $scope.ready = true;
-    });
+                                           models) {
 
     $scope.$on(&#x27;$stateChangeSuccess&#x27;,
       function(event, toState, toParams/*, fromState, fromParams*/){
@@ -215,7 +211,7 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
     });
 
     function stateChangeHandler (event, toState, toParams) {
-      if (!$scope.ready) {
+      if (!models.dataCached()) {
         $log.warn(&#x27;DashboardViewCtrl: delaying call to handleStateChange by 500ms - no data yet&#x27;);
         $scope.readyPromise = $interval(function() {
           stateChangeHandler(event, toState, toParams);
