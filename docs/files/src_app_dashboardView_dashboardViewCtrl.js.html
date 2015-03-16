@@ -233,7 +233,7 @@ angular.module(&#x27;ozpWebtop.dashboardView&#x27;)
           dashboards[0].stickyIndex;
         $log.info(&#x27;DashboardViewCtrl: $state.go for board &#x27; + state + &#x27;, id: &#x27; + dashboards[0].id);
         $state.go(state, {dashboardId: dashboards[0].id});
-
+        return;
       }
 
       if (toState.name.indexOf(&#x27;grid-sticky&#x27;) &gt; -1) {
