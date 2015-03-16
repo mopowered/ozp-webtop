@@ -8,7 +8,7 @@
  * @module ozpWebtop.dashboardView
  *
  */
-angular.module('ozpWebtop.dashboardView', ['ozpWebtop.models.dashboard']);
+angular.module('ozpWebtop.dashboardView', ['ozpWebtop.models']);
 
 /**
  * Dashboard view controller
@@ -23,36 +23,37 @@ angular.module('ozpWebtop.dashboardView', ['ozpWebtop.models.dashboard']);
 angular.module('ozpWebtop.dashboardView')
 
 .controller('DashboardViewCtrl', function ($scope, $state, $interval, $log,
-                                           dashboardApi, initialDataReceivedEvent) {
+                                           models, initialDataReceivedEvent) {
 
     $scope.$on(initialDataReceivedEvent, function() {
-      if(window.location.hash === '#/'){
-        dashboardApi.getDashboards().then(function(dashboard) {
-          var state = 'dashboardview.' + dashboard[0].layout + '-sticky-' +
-            dashboard[0].stickyIndex;
-          $log.info('DashboardViewCtrl: $state.go for board ' + state + ', id: ' + dashboard[0].id);
-          $state.go(state, {dashboardId: dashboard[0].id});
-        });
-      }
       $scope.ready = true;
     });
 
     $scope.$on('$stateChangeSuccess',
-      function(event, toState/*, toParams, fromState, fromParams*/){
-        stateChangeHandler(event, toState);
+      function(event, toState, toParams/*, fromState, fromParams*/){
+        stateChangeHandler(event, toState, toParams);
     });
 
-    function stateChangeHandler (event, toState) {
+    function stateChangeHandler (event, toState, toParams) {
       if (!$scope.ready) {
         $log.warn('DashboardViewCtrl: delaying call to handleStateChange by 500ms - no data yet');
         $scope.readyPromise = $interval(function() {
-          stateChangeHandler(event, toState);
+          stateChangeHandler(event, toState, toParams);
         }, 500, 1);
         return;
       }
 
       if ($scope.readyPromise) {
         $interval.cancel($scope.readyPromise);
+      }
+
+      if(!toParams.dashboardId){
+        var dashboards = models.getDashboards();
+        var state = 'dashboardview.' + dashboards[0].layout + '-sticky-' +
+          dashboards[0].stickyIndex;
+        $log.info('DashboardViewCtrl: $state.go for board ' + state + ', id: ' + dashboards[0].id);
+        $state.go(state, {dashboardId: dashboards[0].id});
+
       }
 
       if (toState.name.indexOf('grid-sticky') > -1) {
@@ -63,13 +64,12 @@ angular.module('ozpWebtop.dashboardView')
         $log.warn('DashboardViewCtrl received state change for neither grid nor desktop: loading default dashboard. toState.name: ' + toState.name);
         // Get user's dashboard data - if it's present, redirect to first
         // board. If not present, create a default board
-        dashboardApi.getCurrentDashboard().then(function(dashboard) {
-          // TODO: shouldn't arbitrarily use grid mode
-          var state = 'dashboardview.' + dashboard.layout + '-sticky-' +
-            dashboard.stickyIndex;
-          $log.info('DashboardViewCtrl: $state.go for board ' + state + ', id: ' + dashboard.id);
-          $state.go(state, {dashboardId: dashboard.id});
-        });
+        var dashboard = models.getCurrentDashboard();
+        // TODO: shouldn't arbitrarily use grid mode
+        var newState = 'dashboardview.' + dashboard.layout + '-sticky-' +
+          dashboard.stickyIndex;
+        $log.info('DashboardViewCtrl: $state.go for board ' + newState + ', id: ' + dashboard.id);
+        $state.go(newState, {dashboardId: dashboard.id});
       }
     }
 

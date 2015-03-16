@@ -24,6 +24,12 @@
 
     <!-- runtime configurable constants -->
     <script src="OzoneConfig.js"></script>
+    <!-- cuz IE -->
+    <script>
+      if (!window.console) { window.console = {}; }
+      if (!window.console.log) { window.console.log = function () { }; }
+    </script>
+
     <!-- compiled JavaScript -->
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="vendor/jquery-ui/jquery-ui.min.js"></script>
@@ -38,7 +44,6 @@
     <script type="text/javascript" src="vendor/ozp-classification/ozp-classification.js"></script>
     <script type="text/javascript" src="src/app/addApplicationsModal/addApplications.js"></script>
     <script type="text/javascript" src="src/app/app.js"></script>
-    <script type="text/javascript" src="src/app/appLauncher/appLauncher.js"></script>
     <script type="text/javascript" src="src/app/appToolbar/appToolbar.js"></script>
     <script type="text/javascript" src="src/app/constants.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/button/ozpbutton.js"></script>
@@ -48,17 +53,13 @@
     <script type="text/javascript" src="src/app/dashboardView/desktop/ozpmanagedframe.js"></script>
     <script type="text/javascript" src="src/app/dashboardView/grid/grid.js"></script>
     <script type="text/javascript" src="src/app/editDashboardModal/editDashboard.js"></script>
-    <script type="text/javascript" src="src/app/models/dashboardApi.js"></script>
-    <script type="text/javascript" src="src/app/models/marketplaceApi.js"></script>
-    <script type="text/javascript" src="src/app/models/userSettingsApi.js"></script>
+    <script type="text/javascript" src="src/app/models.js"></script>
     <script type="text/javascript" src="src/app/ozpToolbar/ozpToolbar.js"></script>
     <script type="text/javascript" src="src/app/services/iwcInterface.js"></script>
-    <script type="text/javascript" src="src/app/services/localStorageInterface.js"></script>
+    <script type="text/javascript" src="src/app/services/restInterface.js"></script>
     <script type="text/javascript" src="src/app/urlWidgetLauncher/urlWidgetLauncher.js"></script>
     <script type="text/javascript" src="src/common/ellipticalFilter/elliptical.js"></script>
     <script type="text/javascript" src="src/common/iwcConnectedClient/iwcConnectedClient.js"></script>
-    <script type="text/javascript" src="src/common/localStorage/localstorage.js"></script>
-    <script type="text/javascript" src="src/common/urlOriginComparer/compareurl.js"></script>
     <script type="text/javascript" src="src/common/utilities/utilities.js"></script>
     <script type="text/javascript" src="src/common/windowSizeWatcher/windowSizeWatcher.js"></script>
     <script type="text/javascript" src="templates-common.js"></script>

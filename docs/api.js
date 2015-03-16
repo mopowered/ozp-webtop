@@ -1,7 +1,6 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "appLauncher.AppLauncherCtrl",
         "appToolbar.ApplicationToolbarCtrl",
         "appToolbar.appToolbar",
         "constants",
@@ -12,31 +11,24 @@ YUI.add("yuidoc-meta", function(Y) {
         "dashboardView.ozpButton",
         "dashboardView.ozpChrome",
         "dashboardView.ozpManagedFrame",
-        "models.dashboardApi",
-        "models.marketplaceApi",
-        "models.userSettingsApi",
-        "ozp.common.LocalStorage",
+        "models.models",
         "ozp.common.Utilities",
-        "ozp.common.compareUrl",
         "ozp.common.elliptical",
         "ozp.common.iwc.iwcConnectedClient",
         "ozp.common.windowSizeWatcher",
         "ozpToolbar.OzpToolbarCtrl",
         "ozpToolbar.ozpToolbar",
         "services.iwcInterface",
-        "services.localStorageInterface",
+        "services.restInterface",
         "urlWidgetLauncher.UrlWidgetLauncherCtrl"
     ],
     "modules": [
         "ozp.common.ellipticalFilter",
         "ozp.common.iwc.client",
-        "ozp.common.localStorage",
-        "ozp.common.urlOriginComparer",
         "ozp.common.utilities",
         "ozp.common.windowSizeWatcher",
         "ozpWebtop",
         "ozpWebtop.addApplicationsModal",
-        "ozpWebtop.appLauncher",
         "ozpWebtop.appToolbar",
         "ozpWebtop.constants",
         "ozpWebtop.dashboardView",
@@ -46,12 +38,10 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.dashboardView.desktop.managedFrame",
         "ozpWebtop.dashboardView.grid",
         "ozpWebtop.editDashboardModal",
-        "ozpWebtop.models.dashboard",
-        "ozpWebtop.models.marketplace",
-        "ozpWebtop.models.userSettings",
+        "ozpWebtop.models",
         "ozpWebtop.ozpToolbar",
         "ozpWebtop.services.iwcInterface",
-        "ozpWebtop.services.localStorageInterface",
+        "ozpWebtop.services.restInterface",
         "ozpWebtop.urlWidgetLauncher"
     ],
     "allModules": [
@@ -64,16 +54,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozp.common.iwc.client",
             "name": "ozp.common.iwc.client",
             "description": "IWC client"
-        },
-        {
-            "displayName": "ozp.common.localStorage",
-            "name": "ozp.common.localStorage",
-            "description": "LocalStorage interface"
-        },
-        {
-            "displayName": "ozp.common.urlOriginComparer",
-            "name": "ozp.common.urlOriginComparer",
-            "description": "compareUrl"
         },
         {
             "displayName": "ozp.common.utilities",
@@ -94,11 +74,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.addApplicationsModal",
             "name": "ozpWebtop.addApplicationsModal",
             "description": "Add Applications modal dialog"
-        },
-        {
-            "displayName": "ozpWebtop.appLauncher",
-            "name": "ozpWebtop.appLauncher",
-            "description": "Launches apps from other sources"
         },
         {
             "displayName": "ozpWebtop.appToolbar",
@@ -146,19 +121,9 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Edit Dashboard modal dialog"
         },
         {
-            "displayName": "ozpWebtop.models.dashboard",
-            "name": "ozpWebtop.models.dashboard",
-            "description": "Dashboard model"
-        },
-        {
-            "displayName": "ozpWebtop.models.marketplace",
-            "name": "ozpWebtop.models.marketplace",
-            "description": "Marketplace model"
-        },
-        {
-            "displayName": "ozpWebtop.models.userSettings",
-            "name": "ozpWebtop.models.userSettings",
-            "description": "User Settings model"
+            "displayName": "ozpWebtop.models",
+            "name": "ozpWebtop.models",
+            "description": "models and Data Access Layer for webtop"
         },
         {
             "displayName": "ozpWebtop.ozpToolbar",
@@ -171,9 +136,9 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Interface for working with IWC"
         },
         {
-            "displayName": "ozpWebtop.services.localStorageInterface",
-            "name": "ozpWebtop.services.localStorageInterface",
-            "description": "Interface for working with Local Storage"
+            "displayName": "ozpWebtop.services.restInterface",
+            "name": "ozpWebtop.services.restInterface",
+            "description": "Interface for working with the ozp-rest API"
         },
         {
             "displayName": "ozpWebtop.urlWidgetLauncher",

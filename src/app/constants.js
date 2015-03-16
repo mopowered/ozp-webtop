@@ -22,7 +22,7 @@ angular.module('ozpWebtop.constants')
  * @property useIwc
  * @type Boolean
  */
-.constant('useIwc', true)
+.constant('useIwc', false)
 
 /**
  * Number of sticky dashboard slots (for each grid and desktop layouts)
@@ -75,6 +75,14 @@ angular.module('ozpWebtop.constants')
  * @type String
  */
 .constant('highlightFrameOnGridLayoutEvent', 'highlightFrameOnGridLayout')
+
+/**
+ * Event fired when a dashboard is closed to remove its frames.
+ * @property removeFrameOnDeleteEvent
+ * @type String
+ */
+.constant('removeFramesOnDeleteEvent', 'removeFramesOnDelete')
+
 
 /**
  * Event fired when app and dashboard data is initially retrieved

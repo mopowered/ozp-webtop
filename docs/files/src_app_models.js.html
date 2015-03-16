@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/app/models.js - ozpwebtop</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+        
+	    <img alt="ozpwebtop" src="../assets/css/logo.png" style="max-height: 65%;" title="ozpwebtop">
+        
+            ozpwebtop
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.3.3</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/appToolbar.ApplicationToolbarCtrl", "classes/appToolbar.appToolbar", "classes/constants", "classes/dashboardView.ChromeCtrl", "classes/dashboardView.DashboardViewCtrl", "classes/dashboardView.DesktopCtrl", "classes/dashboardView.GridCtrl", "classes/dashboardView.ozpButton", "classes/dashboardView.ozpChrome", "classes/dashboardView.ozpManagedFrame", "classes/models.models", "classes/ozp.common.elliptical", "classes/ozp.common.iwc.iwcConnectedClient", "classes/ozp.common.Utilities", "classes/ozp.common.windowSizeWatcher", "classes/ozpToolbar.ozpToolbar", "classes/ozpToolbar.OzpToolbarCtrl", "classes/services.iwcInterface", "classes/services.restInterface", "classes/urlWidgetLauncher.UrlWidgetLauncherCtrl", "modules/ozp.common.ellipticalFilter", "modules/ozp.common.iwc.client", "modules/ozp.common.utilities", "modules/ozp.common.windowSizeWatcher", "modules/ozpWebtop", "modules/ozpWebtop.addApplicationsModal", "modules/ozpWebtop.appToolbar", "modules/ozpWebtop.constants", "modules/ozpWebtop.dashboardView", "modules/ozpWebtop.dashboardView.button", "modules/ozpWebtop.dashboardView.chrome", "modules/ozpWebtop.dashboardView.desktop", "modules/ozpWebtop.dashboardView.desktop.managedFrame", "modules/ozpWebtop.dashboardView.grid", "modules/ozpWebtop.editDashboardModal", "modules/ozpWebtop.models", "modules/ozpWebtop.ozpToolbar", "modules/ozpWebtop.services.iwcInterface", "modules/ozpWebtop.services.restInterface", "modules/ozpWebtop.urlWidgetLauncher"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+    <h3>APIs</h3>
+    <div id="sidebar">
+        <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+            <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+            <li><a href="#modules" data-toggle="tab">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" placeholder="Type to filter APIs">
+        </div>
+
+        <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+            <div class="tab-pane active" id="classes">
+                <ul id="api-classes" class="nav nav-list">
+                    
+                        <li><a href="../classes/appToolbar.ApplicationToolbarCtrl.html">appToolbar.ApplicationToolbarCtrl</a></li>
+                    
+                        <li><a href="../classes/appToolbar.appToolbar.html">appToolbar.appToolbar</a></li>
+                    
+                        <li><a href="../classes/constants.html">constants</a></li>
+                    
+                        <li><a href="../classes/dashboardView.ChromeCtrl.html">dashboardView.ChromeCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.DashboardViewCtrl.html">dashboardView.DashboardViewCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.DesktopCtrl.html">dashboardView.DesktopCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.GridCtrl.html">dashboardView.GridCtrl</a></li>
+                    
+                        <li><a href="../classes/dashboardView.ozpButton.html">dashboardView.ozpButton</a></li>
+                    
+                        <li><a href="../classes/dashboardView.ozpChrome.html">dashboardView.ozpChrome</a></li>
+                    
+                        <li><a href="../classes/dashboardView.ozpManagedFrame.html">dashboardView.ozpManagedFrame</a></li>
+                    
+                        <li><a href="../classes/models.models.html">models.models</a></li>
+                    
+                        <li><a href="../classes/ozp.common.elliptical.html">ozp.common.elliptical</a></li>
+                    
+                        <li><a href="../classes/ozp.common.iwc.iwcConnectedClient.html">ozp.common.iwc.iwcConnectedClient</a></li>
+                    
+                        <li><a href="../classes/ozp.common.Utilities.html">ozp.common.Utilities</a></li>
+                    
+                        <li><a href="../classes/ozp.common.windowSizeWatcher.html">ozp.common.windowSizeWatcher</a></li>
+                    
+                        <li><a href="../classes/ozpToolbar.ozpToolbar.html">ozpToolbar.ozpToolbar</a></li>
+                    
+                        <li><a href="../classes/ozpToolbar.OzpToolbarCtrl.html">ozpToolbar.OzpToolbarCtrl</a></li>
+                    
+                        <li><a href="../classes/services.iwcInterface.html">services.iwcInterface</a></li>
+                    
+                        <li><a href="../classes/services.restInterface.html">services.restInterface</a></li>
+                    
+                        <li><a href="../classes/urlWidgetLauncher.UrlWidgetLauncherCtrl.html">urlWidgetLauncher.UrlWidgetLauncherCtrl</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="tab-pane" id="modules">
+                <ul id="api-modules" class="nav nav-list">
+                    
+                        <li><a href="../modules/ozp.common.ellipticalFilter.html">ozp.common.ellipticalFilter</a></li>
+                    
+                        <li><a href="../modules/ozp.common.iwc.client.html">ozp.common.iwc.client</a></li>
+                    
+                        <li><a href="../modules/ozp.common.utilities.html">ozp.common.utilities</a></li>
+                    
+                        <li><a href="../modules/ozp.common.windowSizeWatcher.html">ozp.common.windowSizeWatcher</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.html">ozpWebtop</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.addApplicationsModal.html">ozpWebtop.addApplicationsModal</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.appToolbar.html">ozpWebtop.appToolbar</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.constants.html">ozpWebtop.constants</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.html">ozpWebtop.dashboardView</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.button.html">ozpWebtop.dashboardView.button</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.chrome.html">ozpWebtop.dashboardView.chrome</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.desktop.html">ozpWebtop.dashboardView.desktop</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.desktop.managedFrame.html">ozpWebtop.dashboardView.desktop.managedFrame</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.dashboardView.grid.html">ozpWebtop.dashboardView.grid</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.editDashboardModal.html">ozpWebtop.editDashboardModal</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.models.html">ozpWebtop.models</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.ozpToolbar.html">ozpWebtop.ozpToolbar</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.services.iwcInterface.html">ozpWebtop.services.iwcInterface</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.services.restInterface.html">ozpWebtop.services.restInterface</a></li>
+                    
+                        <li><a href="../modules/ozpWebtop.urlWidgetLauncher.html">ozpWebtop.urlWidgetLauncher</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+    <h1>src/app/models.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+&#x27;use strict&#x27;;
+
+/**
+ * models and Data Access Layer for webtop
+ *
+ * @module ozpWebtop.models
+ * @requires ozp.common.utilities
+ * @requires ozpWebtop.constants
+ * @requires ozpWebtop.services.iwcInterface
+ * @requires ozpWebtop.services.restInterface
+ */
+angular.module(&#x27;ozpWebtop.models&#x27;, [
+  &#x27;ozp.common.utilities&#x27;, &#x27;ozpWebtop.constants&#x27;,
+  &#x27;ozpWebtop.services.iwcInterface&#x27;,
+  &#x27;ozpWebtop.services.restInterface&#x27;]);
+
+var models = angular.module(&#x27;ozpWebtop.models&#x27;);
+
+/**
+ * Models and Data Access Layer for webtop. The service itself &#x27;caches&#x27; data
+ * from the server for both webtop data and Listing (application) data. Data
+ * is always read locally. When data is written to the server, it is written
+ * to the local &#x27;cache&#x27; first, then asynchronously sent to the server in a
+ * &#x27;fire and forget&#x27; manner. If the write fails, we will ignore it and hope
+ * it succeeds next time. This has the benefit of making all the code
+ * synchronous, which, in addition to being much faster, greatly simplifies
+ * the API
+ *
+ * ngtype: factory
+ *
+ * @class models
+ * @static
+ * @namespace models
+ */
+models.factory(&#x27;models&#x27;, function($sce, $q, $log, $http, $window, useIwc,
+                                  iwcInterface, restInterface, Utilities) {
+  
+  var cachedWebtopData = {};
+  var cachedApplicationData = {};
+  
+  /**
+   * Set all webtop data
+   *
+   * @method setWebtopData
+   * @param webtopData
+   * @returns {Promise}
+   * @private
+   */
+  function setWebtopData (webtopData) {
+    // first, cache this data locally
+    cachedWebtopData = angular.copy(webtopData);
+    if (useIwc) {
+      return iwcInterface.setWebtopData(webtopData);
+    } else {
+      return restInterface.setWebtopData(webtopData);
+    }
+  }
+  
+  
+  return {
+    /**
+     * Transform the raw Listing data into a format used for webtop
+     *
+     * TODO: At some point it would be nice to eliminate this...
+     */
+    setApplicationData: function(applicationData) {
+      if (!applicationData.length) {
+        $log.warn(&#x27;WARNING: no listings found for current user!&#x27;);
+      } else {
+       $log.info(&#x27;found &#x27; + applicationData.length + &#x27; app listings for current user&#x27;);
+      }
+      var apps = [];
+      for (var i=0; i &lt; applicationData.length; i++) {
+        apps.push({&#x27;name&#x27;: applicationData[i].listing.title, &#x27;id&#x27;: applicationData[i].listing.uuid,
+        &#x27;description&#x27;: &#x27;Description&#x27;, &#x27;descriptionShort&#x27;: &#x27;Short description&#x27;, &#x27;state&#x27;: &#x27;active&#x27;, &#x27;type&#x27;: &#x27;application&#x27;,
+        &#x27;uiHints&#x27;: {&#x27;width&#x27;: 200, &#x27;height&#x27;: 200, &#x27;singleton&#x27;: false}, &#x27;icons&#x27;: {
+            &#x27;small&#x27;: applicationData[i].listing.imageSmallUrl, &#x27;large&#x27;: applicationData[i].listing.imageMediumUrl},
+          &#x27;launchUrls&#x27;: {
+            &#x27;default&#x27;: applicationData[i].listing.launchUrl}});
+      }
+      cachedApplicationData = apps;
+    },
+    /**
+     * Get application data
+     * @returns {*}
+     */
+    getApplicationData: function() {
+      return cachedApplicationData;
+    },
+    /**
+     * Set the initial dashboard-data
+     *
+     * This should be invoked at application startup, after the webtop data
+     * is retrieved from the server
+     */
+    setInitialWebtopData: function(webtopData) {
+      if (!webtopData.dashboards || webtopData.dashboards.length &lt; 1) {
+        // create default dashboard
+        $log.warn(&#x27;WARNING: no dashboardData found for current user!&#x27;);
+        // TODO: use actual user name or remove
+        var newWebtopData = {
+          &#x27;name&#x27;: &#x27;dashboards&#x27;,
+          &#x27;user&#x27;: &#x27;J Smith&#x27;,
+          &#x27;currentDashboard&#x27;: &#x27;0&#x27;,
+          &#x27;userSettings&#x27;: {},
+          &#x27;persist&#x27;: true,
+          &#x27;dashboards&#x27;: []
+        };
+
+        var newBoard = {
+          &#x27;name&#x27;: &#x27;Default&#x27;,
+          &#x27;id&#x27;: &#x27;0&#x27;,
+          &#x27;stickyIndex&#x27;: 0,
+          &#x27;layout&#x27;: &#x27;grid&#x27;,
+          &#x27;frames&#x27;: [
+          ]
+        };
+        newWebtopData.dashboards.push(newBoard);
+        if (setWebtopData(newWebtopData)) {
+          $log.info(&#x27;default board created OK&#x27;);
+          return true;
+        } else {
+          $log.error(&#x27;Failed to create initial dashboard data&#x27;);
+          return false;
+        }
+      } else {
+        $log.info(&#x27;found &#x27; + webtopData.dashboards.length + &#x27; dashboards for current user&#x27;);
+        cachedWebtopData = angular.copy(webtopData);
+        return true;
+      }
+    },
+    /**
+     * Get all webtop data
+     *
+     * @method getWebtopData
+     * @returns webtop data
+     */
+    getWebtopData: function() {
+      return angular.copy(cachedWebtopData);
+    },
+    /**
+     * Get all dashboards
+     *
+     * @method getDashboards
+     * @returns dashboards
+     */
+    getDashboards: function() {
+      var data = this.getWebtopData();
+      if (data) {
+        return data.dashboards;
+      } else {
+        $log.warn(&#x27;WARNING: dashboardData is null!&#x27;);
+        return null;
+      }
+    },
+    /**
+     * Set all dashboards
+     *
+     * @method setAllDashboards
+     * @param dashboards
+     * @returns true on success
+     */
+    setAllDashboards: function(dashboards) {
+      var webtopData = this.getWebtopData();
+      webtopData.dashboards = dashboards;
+      return setWebtopData(webtopData);
+    },
+    /**
+     * Update dashboard layout
+     * @method updateLayoutType
+     * @param dashboardId
+     * @param layout &#x27;grid&#x27; or &#x27;desktop&#x27;
+     * @returns updated dashboard
+     */
+    updateLayoutType: function(dashboardId, layout) {
+      var dashboard = this.getDashboardById(dashboardId);
+      var validInputs = [&#x27;grid&#x27;, &#x27;desktop&#x27;];
+      if (validInputs.indexOf(layout) === -1) {
+        $log.error(&#x27;updateLayoutType received invalid dashboard layout: &#x27; + layout);
+        return false;
+      }
+      dashboard.layout = layout;
+      return this.saveDashboard(dashboard);
+      //return dashboard;
+    },
+    /**
+     * Toggle the value of a key in a frame
+     *
+     * @method toggleFrameKey
+     * @param frameId
+     * @param key
+     * @returns {Promise}
+     */
+    toggleFrameKey: function(frameId, key) {
+      var frame = this.getFrameById(frameId);
+      if (!frame) {
+        return false;
+      }
+      if (frame[key]) {
+        frame[key] = false;
+      }
+      else {
+        frame[key] = true;
+      }
+      if (this.saveFrame(frame)) {
+        return frame[key];
+      } else {
+        return false;
+      }
+    },
+    /**
+     * Update the grid layout of a frame in a dashboard
+     *
+     * @method updateGridFrame
+     * @param frameId
+     * @param sizeData
+     * @returns frameId if update succeeded
+     */
+    updateGridFrame: function(frameId, sizeData) {
+      var frame = this.getFrameById(frameId);
+      if (!frame) {
+        $log.warn(&#x27;Grid frame not found: &#x27; + frameId);
+        return false;
+      }
+      frame.gridLayout.sm.row = sizeData.sm.row;
+      frame.gridLayout.sm.col = sizeData.sm.col;
+      frame.gridLayout.sm.sizeX = sizeData.sm.sizeX;
+      frame.gridLayout.sm.sizeY = sizeData.sm.sizeY;
+
+      frame.gridLayout.md.row = sizeData.md.row;
+      frame.gridLayout.md.col = sizeData.md.col;
+      frame.gridLayout.md.sizeX = sizeData.md.sizeX;
+      frame.gridLayout.md.sizeY = sizeData.md.sizeY;
+      this.saveFrame(frame);
+      return frameId;
+    },
+    /**
+     * Update the desktop layout of a frame in a dashboard
+     * TODO: what about width and height?
+     * @method updateDesktopFrame
+     * @param frameId
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param zIndex
+     * @returns {Promise}
+     */
+    updateDesktopFrame: function(frameId, x, y, width, height, zIndex) {
+      var frame = this.getFrameById(frameId);
+      if (!frame) {
+        $log.error(&#x27;Error: frame with id &#x27; + frameId + &#x27; not found&#x27;);
+        return false;
+      }
+      if(!frame.isMaximized) {
+        frame.desktopLayout.left = x;
+        frame.desktopLayout.top = y;
+        frame.desktopLayout.width = width;
+        frame.desktopLayout.height = height;
+        frame.desktopLayout.zIndex = zIndex;
+      }
+      return this.saveFrame(frame);
+    },
+    /**
+     * Check to see if an application is already on a given dashboard
+     * @method isAppOnDashboard
+     * @param dashboardId
+     * @param applicationId
+     * @returns {Promise}
+     */
+    isAppOnDashboard: function(dashboardId, applicationId) {
+      var dashboard = this.getDashboardById(dashboardId);
+      for (var i=0; i &lt; dashboard.frames.length; i++) {
+        if (dashboard.frames[i].appId === applicationId) {
+          return true;
+        }
+      }
+      return false;
+    },
+    /**
+     * Create a new frame in a dashboard for a given application
+     * Creates a frame with with both grid and desktop layout data
+     * @method createFrame
+     * @param dashboardId
+     * @param appId
+     * @param gridMaxRows
+     * @returns {new frame}
+     */
+    createFrame: function(dashboardId, appId, gridMaxRows) {
+      var dashboard = this.getDashboardById(dashboardId);
+      // Calculate the row to place this frame in (for grid layout)
+
+      // for the grid layout, place new app in first col of first empty row
+      // for the desktop layout, just put it on and let user move it
+
+      var newRowSmall = 0;
+      var newRowMedium = 0;
+      for (var i=0; i &lt; dashboard.frames.length; i++) {
+        var thisNewRowSmall = dashboard.frames[i].gridLayout.sm.row +
+          dashboard.frames[i].gridLayout.sm.sizeY + 1;
+        var thisNewRowMd = dashboard.frames[i].gridLayout.md.row +
+          dashboard.frames[i].gridLayout.md.sizeY + 1;
+        if ((thisNewRowSmall + 2) &gt; newRowSmall) {
+          newRowSmall = thisNewRowSmall;
+        }
+        if ((thisNewRowMd + 2) &gt; newRowMedium) {
+          newRowMedium = thisNewRowMd;
+        }
+      }
+
+      if (newRowSmall &gt; gridMaxRows) {
+        // TODO: handle error
+        $log.error(&#x27;ERROR: cannot add frame to small row &#x27; + newRowSmall +
+          &#x27;, max rows: &#x27; + gridMaxRows);
+        return null;
+      }
+      if (newRowMedium &gt; gridMaxRows) {
+        // TODO: handle error
+        $log.error(&#x27;ERROR: cannot add frame to medium row &#x27; + newRowMedium +
+          &#x27;, max rows: &#x27; + gridMaxRows);
+        return null;
+      }
+
+      // by default, new frames will have minimal size
+      var col = 0;
+      var sizeX = 2;
+      var sizeY = 2;
+
+      // for the desktop layout, just put it on and let the user move it
+      var zIndex = 0;
+      var top = 100;
+      var left = 100;
+      var width = 200;
+      var height = 200;
+
+
+      var utils = new Utilities();
+      var frameId = utils.generateUuid();
+
+      // get the name for this app (if this app is later deleted, at least
+      // we can tell the user what it is called)
+      var appName = &#x27;unknown&#x27;;
+      var applicationData = this.getApplicationData();
+      for (var a=0; a &lt; applicationData.length; a++) {
+        if (applicationData[a].id === appId) {
+          appName = applicationData[a].name;
+        }
+      }
+
+      // update the dashboard with this app
+      var newApp = {
+        &#x27;appId&#x27;: appId,
+        &#x27;id&#x27;: frameId,
+        &#x27;name&#x27;: appName,
+        &#x27;gridLayout&#x27;: {
+          &#x27;sm&#x27;: {
+            &#x27;row&#x27;: newRowSmall,
+            &#x27;col&#x27;: col,
+            &#x27;sizeX&#x27;: 3,
+            &#x27;sizeY&#x27;: 1
+          },
+          &#x27;md&#x27;: {
+            &#x27;row&#x27;: newRowMedium,
+            &#x27;col&#x27;: col,
+            &#x27;sizeX&#x27;: sizeX,
+            &#x27;sizeY&#x27;: sizeY
+          }
+        },
+        &#x27;desktopLayout&#x27;: {
+          &#x27;zIndex&#x27;: zIndex,
+          &#x27;top&#x27;: top,
+          &#x27;left&#x27;: left,
+          &#x27;width&#x27;: width,
+          &#x27;height&#x27;: height
+        }
+      };
+
+      dashboard.frames.push(newApp);
+      this.saveDashboard(dashboard);
+      return newApp;
+    },
+    /**
+     * Remove a frame from a dashboard
+     * @method removeFrame
+     * @param frameId
+     * @returns
+     */
+    removeFrame: function(frameId) {
+      var dashboards = this.getDashboards();
+      var dashboardToUpdate;
+      for (var i=0; i &lt; dashboards.length; i++) {
+        var frames = dashboards[i].frames;
+        for (var j=0; j &lt; frames.length; j++) {
+          if (frameId === frames[j].id) {
+            dashboards[i].frames.splice(j,1);
+            dashboardToUpdate = i;
+          }
+        }
+      }
+      if (dashboardToUpdate &gt;= 0) {
+        return this.saveDashboard(dashboards[dashboardToUpdate]);
+      }
+    },
+    /**
+     * Change the user&#x27;s current dashboard
+     *
+     * @method updateDashboard
+     * @param updatedDashboardData
+     * @returns {}
+     */
+    updateDashboard: function(updatedDashboard) {
+      var dashboard = this.getDashboardById(updatedDashboard.id);
+      dashboard.name = updatedDashboard.name;
+      // if the layout changes, we need to change the stickyIndex too
+      if (dashboard.layout !== updatedDashboard.layout) {
+        $log.debug(&#x27;dashboard layout changed for board &#x27; + dashboard.name);
+        var stickyIndex = this.getNextStickyIndex(updatedDashboard.layout);
+        dashboard.layout = updatedDashboard.layout;
+        dashboard.stickyIndex = stickyIndex;
+        $log.debug(&#x27;changing stickyIndex of board &#x27; + dashboard.name + &#x27; to &#x27; + stickyIndex);
+        this.saveDashboard(dashboard);
+      } else {
+        $log.debug(&#x27;dashboard &#x27; + dashboard.name + &#x27; layout did not change&#x27;);
+      }
+      return dashboard;
+    },
+    /**
+     * Return the name of the user&#x27;s current dashboard
+     *
+     * @method getCurrentDashboardName
+     * @returns {String}
+     */
+    getCurrentDashboardName: function() {
+      var webtopData = this.getWebtopData();
+      var currentDashboardId = webtopData.currentDashboard;
+      for (var i=0; i &lt; webtopData.dashboards.length; i++) {
+        if (webtopData.dashboards[i].id === currentDashboardId) {
+          return webtopData.dashboards[i].name;
+        }
+      }
+    },
+    /**
+     * Augment the dashboard.frames data with application-specific data
+     * Note: data is not persisted, but rather the &#x27;frames&#x27; object is modified
+     * by reference
+     * @method mergeApplicationData
+     * @param frames
+     * @param marketplaceApps
+     */
+    mergeApplicationData: function(frames) {
+      var marketplaceApps = this.getApplicationData();
+
+      for (var j=0; j &lt; frames.length; j++) {
+        var foundApp = false;
+        for (var i=0; i &lt; marketplaceApps.length; i++) {
+          if (frames[j].appId === marketplaceApps[i].id) {
+            foundApp = true;
+            // if it is, then get all relevant info
+            frames[j].icon = {};
+            frames[j].icon.small = marketplaceApps[i].icons.small;
+            frames[j].icon.large = marketplaceApps[i].icons.large;
+            frames[j].url = marketplaceApps[i].launchUrls.default;
+            var utils = new Utilities();
+            var newUrl = utils.updateQueryString(&#x27;ozpIwc.peer&#x27;, $window.OzoneConfig.IWC_URL, frames[j].url);
+            frames[j].trustedUrl = $sce.trustAsResourceUrl(newUrl);
+            frames[j].name = marketplaceApps[i].name;
+            frames[j].descriptionShort = marketplaceApps[i].descriptionShort;
+            // TODO: get this data for real
+            frames[j].singleton = false;
+            break;
+          }
+        }
+        if (!foundApp) {
+          $log.warn(&#x27;Found a frame with no corresponding application. Name: &#x27; + frames[j].name);
+          frames[j].trustedUrl = &#x27;assets/appNotFound/index.html&#x27;;
+          frames[j].name = frames[j].name + &#x27;: Not Found&#x27;;
+          frames[j].singleton = false;
+        }
+      }
+    },
+    /**
+     * Save a dashboard
+     * TODO: make sure input is a valid dashboard:
+     * - dashboard.id should be unique
+     * - all frame.id&#x27;s should be
+     * @method saveDashboard
+     * @param dashboard
+     * @returns {}
+     */
+    saveDashboard: function(dashboard) {
+      var foundDashboard = false;
+      var dashboards = this.getDashboards();
+      for (var i=0; i &lt; dashboards.length; i++) {
+        if (dashboards[i].id === dashboard.id) {
+          dashboards[i] = dashboard;
+          foundDashboard = true;
+        }
+      }
+      if (foundDashboard) {
+        return this.setAllDashboards(dashboards);
+      } else {
+        return false;
+      }
+    },
+    /**
+     * Save a frame in a dashboard
+     * TODO: make sure input is a valid frame
+     *
+     * @method saveFrame
+     * @param frame
+     * @returns {}
+     */
+    saveFrame: function(frame) {
+      var dashboards = this.getDashboards();
+      var frameFound = false;
+      for (var i=0; i &lt; dashboards.length; i++) {
+        var frames = dashboards[i].frames;
+        for (var j=0; j &lt; frames.length; j++) {
+          if (frames[j].id === frame.id) {
+            dashboards[i].frames[j] = frame;
+            frameFound = true;
+          }
+        }
+      }
+      if (frameFound) {
+        return this.setAllDashboards(dashboards);
+      } else {
+        $log.error(&#x27;frame &#x27; + frame.id + &#x27; not found&#x27;);
+        return false;
+      }
+    },
+    /**
+     * Retrieve a frame by id
+     * @method getFrameById
+     * @param frameId
+     * @returns {}
+     */
+    getFrameById: function(frameId) {
+      var dashboards = this.getDashboards();
+      for (var i=0; i &lt; dashboards.length; i++) {
+        var frames = dashboards[i].frames;
+        for (var j=0; j &lt; frames.length; j++) {
+          if (frames[j].id === frameId) {
+            return frames[j];
+          }
+        }
+      }
+    },
+    /**
+     * Retrieve a dashboard by id
+     * @method getDashboardById
+     * @param dashboardId
+     * @returns {}
+     */
+    getDashboardById: function(dashboardId) {
+      var dashboards = this.getDashboards();
+      if (!dashboards) {
+        return null;
+      }
+      for (var i=0; i &lt; dashboards.length; i++) {
+        if (dashboards[i].id.toString() === dashboardId.toString()) {
+          return dashboards[i];
+        }
+      }
+      return null;
+    },
+    /**
+     * Delete a dashboard
+     * @method removeDashboard
+     * @param dashboardId
+     * @returns true if dashboard was found and removed, false otherwise
+     */
+    removeDashboard: function(dashboardId) {
+      var dashboardData = this.getWebtopData();
+      var dashboards = dashboardData.dashboards;
+      var idxToRemove = -1;
+      for (var i=0; i &lt; dashboards.length; i++) {
+        if (dashboards[i].id.toString() === dashboardId.toString()) {
+          idxToRemove = i;
+        }
+      }
+      if (idxToRemove &gt;= 0) {
+        dashboardData.dashboards.splice(idxToRemove,1);
+        $log.debug(&#x27;removed dashboard idx &#x27; + idxToRemove);
+        return setWebtopData(dashboardData);
+      } else {
+        $log.warn(&#x27;Cannot remove dashboard with id &#x27; + dashboardId + &#x27;, does not exit&#x27;);
+        return false;
+      }
+    },
+    /**
+     * Create a new dashboard
+     * @method createDashboard
+     * @param name
+     * @returns {}
+     */
+    createDashboard: function(dashboard) {
+      if(!dashboard.layout){
+        dashboard.layout = &#x27;grid&#x27;;
+      }
+      var dashboardData = this.getWebtopData();
+      var dashboardId = this.getNewDashboardId();
+      var nextStickyIndex = this.getNextStickyIndex(dashboard.layout);
+      $log.debug(&#x27;creating new board with sticky slot &#x27; + nextStickyIndex);
+      var newBoard = {
+        &#x27;name&#x27;: dashboard.name,
+        &#x27;id&#x27;: dashboardId,
+        &#x27;stickyIndex&#x27;: nextStickyIndex,
+        &#x27;layout&#x27;: dashboard.layout,
+        &#x27;frames&#x27;: [
+        ]
+      };
+      var dashboards = this.getDashboards();
+      dashboards.push(newBoard);
+      dashboardData.dashboards = dashboards;
+      return setWebtopData(dashboardData);
+    },
+    /**
+     * Get the next available id for a new dashboard
+     * TODO: this assumes ids are integers and not uuids
+     * @method getNewDashboardId
+     * @returns {Promise}
+     */
+    getNewDashboardId: function() {
+      var dashboards = this.getDashboards();
+      var existingIds = [];
+      var newId = -1;
+      // just a simple test to determine if the dashboardData is valid. Should
+      // do something better eventually
+      if (Object.prototype.toString.call( dashboards ) === &#x27;[object Array]&#x27;) {
+        for (var i=0; i &lt; dashboards.length; i++) {
+          existingIds.push(Number(dashboards[i].id));
+        }
+        if (!dashboards || dashboards.length === 0) {
+          newId = 0;
+        } else {
+          newId = Math.max.apply(Math, existingIds) + 1;
+        }
+        return newId.toString();
+      } else {
+        $log.error(&#x27;ERROR: Invalid dashboard data in getNewDashboardId&#x27;);
+      }
+    },
+    /**
+     * Get the next available sticky slot for a new dashboard
+     */
+    getNextStickyIndex: function(dashboardLayout) {
+      var dashboards = this.getDashboards();
+      var gridUsedStickySlots = [];
+      var desktopUsedStickySlots = [];
+      for (var i = 0; i &lt; dashboards.length; i++) {
+        if (dashboards[i].layout === &#x27;grid&#x27;) {
+          gridUsedStickySlots.push(dashboards[i].stickyIndex);
+        } else if (dashboards[i].layout === &#x27;desktop&#x27;) {
+          desktopUsedStickySlots.push(dashboards[i].stickyIndex);
+        } else {
+          $log.error(&#x27;Invalid dashboard layout&#x27;);
+        }
+      }
+      // TODO: use constants.maxStickyBoards
+      for (var j=0; j &lt; 10; j++) {
+        if (dashboardLayout === &#x27;grid&#x27;) {
+          if (gridUsedStickySlots.indexOf(j) &lt; 0) {
+            return j;
+          }
+        } else if (dashboardLayout === &#x27;desktop&#x27;) {
+          if (desktopUsedStickySlots.indexOf(j) &lt; 0) {
+            return j;
+          }
+        } else {
+          $log.error(&#x27;Invalid layout passed to getNextStickyIndex: &#x27; + dashboardLayout);
+        }
+      }
+      $log.error(&#x27;WARNING: Sticky dashboard slots are full!&#x27;);
+    },
+    /**
+     * Get the user&#x27;s current dashboard
+     * @method getCurrentDashboard
+     * @returns {Promise}
+     */
+    getCurrentDashboard: function() {
+      var dashboardData = this.getWebtopData();
+      try {
+        if (dashboardData.currentDashboard === undefined || dashboardData.currentDashboard === {}) {
+          return null;
+        }
+      } catch (err) {
+        return null;
+      }
+      return this.getDashboardById(dashboardData.currentDashboard);
+    },
+    cascadeWindows: function(dashboardId, origin, frameSize) {
+      var topOffset = 30;
+      var leftOffset = 30;
+      var dashboard = this.getDashboardById(dashboardId);
+      for (var i=0; i &lt; dashboard.frames.length; i++) {
+        try {
+          dashboard.frames[i].desktopLayout.zIndex = i;
+          dashboard.frames[i].desktopLayout.top = origin.y + (i*topOffset);
+          dashboard.frames[i].desktopLayout.left = origin.x + (i * leftOffset);
+          dashboard.frames[i].desktopLayout.width = frameSize.x;
+          dashboard.frames[i].desktopLayout.height = frameSize.y;
+          dashboard.frames[i].isMaximized = false;
+        }
+        catch (err) {
+          $log.error(&#x27;Error in cascadeWindows on board &#x27; + i + &#x27;:&#x27;  +
+            JSON.stringify(err));
+        }
+      }
+      return this.saveDashboard(dashboard);
+    },
+    /**
+     * Get all user settings for the current user
+     *
+     * @method getUserSettings
+     * @returns {*} All user settings for the current user
+     */
+    getUserSettings: function() {
+      return this.getWebtopData().userSettings;
+    },
+    /**
+     * Update all settings for the current user
+     *
+     * @method updateAllUserSettings
+     * @param {Obj} userSettings All user settings for current user
+     * @returns {Boolean} True if updated successfully, false on error
+     */
+    updateAllUserSettings: function(userSettings) {
+      var webtopData = this.getWebtopData();
+      webtopData.userSettings = userSettings;
+      return setWebtopData(webtopData);
+    },
+    /**
+     * Update a specific setting for the current user
+     *
+     * @method updateUserSettingsByKey
+     * @param {String} key Name of user setting to update
+     * @param {*} value Value of setting
+     * @returns {Boolean} True if updated successfully, false on error
+     */
+    updateUserSettingByKey: function(key, value) {
+      var webtopData = this.getWebtopData();
+      if (!webtopData.userSettings) {
+        webtopData.userSettings = {};
+      }
+      webtopData.userSettings[key] = value;
+      return setWebtopData(webtopData);
+    }
+  };
+});
+
+
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

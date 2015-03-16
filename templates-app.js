@@ -36,14 +36,14 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "  <div class=\"modal-footer wt-modal-footer\">\n" +
     "    <div ng-switch on=\"areAnyAppsSelected()\">\n" +
     "      <div ng-switch-when=\"true\">\n" +
-    "        <button class=\"btn add-apps-dark-text\"\n" +
+    "        <button class=\"btn btn-default\"\n" +
     "                ng-click=\"openAppsInNewDashboard()\">\n" +
     "        Open in new dashboard\n" +
     "        </button>\n" +
     "        <button class=\"btn btn-primary\" ng-click=\"openApps()\">Open</button>\n" +
     "      </div>\n" +
     "      <div ng-switch-default>\n" +
-    "        <button class=\"btn add-apps-dark-text\" disabled=\"disabled\"\n" +
+    "        <button class=\"btn btn-default\" disabled=\"disabled\"\n" +
     "                ng-click=\"openAppsInNewDashboard()\">\n" +
     "        Open in new dashboard\n" +
     "        </button>\n" +
@@ -54,7 +54,8 @@ angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$
     "    </div>\n" +
     "\n" +
     "  </div>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -123,7 +124,7 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "    <button class=\"hiddenToggle appHiddenToggle\" ng-click=\"toggleFullScreenMode();\"\n" +
     "        ng-class=\"{false: 'hide', true:''}[fullScreenMode]\"\n" +
     "        tooltip=\"Exit Full Screen\" tooltip-placement=\"left\">\n" +
-    "      <i class=\"icon-minimize\"></i>\n" +
+    "      <i class=\"icon-minimize-grayLightest\"></i>\n" +
     "    </button>\n" +
     "</div>\n" +
     "");
