@@ -24,11 +24,6 @@
 
     <!-- runtime configurable constants -->
     <script src="OzoneConfig.js"></script>
-    <!-- cuz IE -->
-    <script>
-      if (!window.console) { window.console = {}; }
-      if (!window.console.log) { window.console.log = function () { }; }
-    </script>
 
     <!-- compiled JavaScript -->
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
@@ -40,6 +35,7 @@
     <script type="text/javascript" src="vendor/angular-gridster/dist/angular-gridster.min.js"></script>
     <script type="text/javascript" src="vendor/javascript-detect-element-resize/detect-element-resize.js"></script>
     <script type="text/javascript" src="vendor/ozp-iwc-angular/dist/js/ozpIwc-client-angular.js"></script>
+    <script type="text/javascript" src="vendor/console-polyfill/index.js"></script>
     <script type="text/javascript" src="vendor/ozp-classification/jquery.classification.js"></script>
     <script type="text/javascript" src="vendor/ozp-classification/ozp-classification.js"></script>
     <script type="text/javascript" src="src/app/addApplicationsModal/addApplications.js"></script>
