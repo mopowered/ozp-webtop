@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.3.3</b>
+                    API Docs for Version: <b>0.4.0</b>
                 </p>
             </li>
         </div>
@@ -202,12 +202,15 @@ var app = angular.module(&#x27;ozpWebtop.services.restInterface&#x27;);
  * * @param $q ng $q service
  * @namespace services
  */
-app.factory(&#x27;restInterface&#x27;, function($window, $log, $http, $q) {
+app.factory(&#x27;restInterface&#x27;, function($window, $log, $http, $q, $interval) {
 
   // flag to ensure multiple PUT requests are not made concurrently
   var readyToPut = true;
 
-  return {
+  // data that wasn&#x27;t saved
+  var webtopDataToRetrySaving = null;
+
+  var service = {
     /**
      * Set all webtop data
      *
@@ -233,7 +236,7 @@ app.factory(&#x27;restInterface&#x27;, function($window, $log, $http, $q) {
             &#x27;Content-Type&#x27;: &#x27;application/vnd.ozp-iwc-data-object-v1+json&#x27;
           },
           data: webtopData,
-          withCredentials: true,
+          withCredentials: true
         };
 
         $http(req).success(function() {
@@ -243,8 +246,10 @@ app.factory(&#x27;restInterface&#x27;, function($window, $log, $http, $q) {
           readyToPut = true;
         });
 
+        webtopDataToRetrySaving = null;
         return true;
       }
+      webtopDataToRetrySaving = webtopData;
       return false;
     },
     /**
@@ -306,6 +311,18 @@ app.factory(&#x27;restInterface&#x27;, function($window, $log, $http, $q) {
       return deferred.promise;
     }
   };
+
+  // TODO: Find a more efficient way to do this
+  function retryPut() {
+    if (webtopDataToRetrySaving) {
+      $log.debug(&#x27;Retrying PUT request&#x27;);
+      service.setWebtopData(webtopDataToRetrySaving);
+    }
+  }
+
+  $interval(retryPut, 500);
+
+  return service;
 });
     </pre>
 </div>

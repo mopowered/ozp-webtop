@@ -2,7 +2,7 @@
     "project": {
         "name": "ozpwebtop",
         "description": "",
-        "version": "0.3.3",
+        "version": "0.4.0",
         "url": "https://github.com/ozone-development/ozp-webtop"
     },
     "files": {
@@ -2171,7 +2171,7 @@
         },
         {
             "file": "src/app/services/restInterface.js",
-            "line": 31,
+            "line": 34,
             "description": "Set all webtop data\n\nThis method uses HTTP requests directly on the api/profile/self/data\nendpoint intented for use exclusively by IWC\n\nIf another PUT request is already processing, this method will simply\nreturn. Even if the request does go through, it will return immediately\nand ignore the response - this is by design.",
             "itemtype": "method",
             "name": "setWebtopData",
@@ -2184,7 +2184,7 @@
         },
         {
             "file": "src/app/services/restInterface.js",
-            "line": 70,
+            "line": 75,
             "description": "Get all webtop data\n\nThis method uses HTTP requests directly on the api/profile/self/data\nendpoint intented for use exclusively by IWC",
             "itemtype": "method",
             "name": "getWebtopData",
@@ -2198,7 +2198,7 @@
         },
         {
             "file": "src/app/services/restInterface.js",
-            "line": 103,
+            "line": 108,
             "description": "Get all Listings (applications/widgets) for user",
             "itemtype": "method",
             "name": "getListings",
@@ -3021,15 +3021,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/restInterface.js:31"
+            "line": " src/app/services/restInterface.js:34"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/restInterface.js:70"
+            "line": " src/app/services/restInterface.js:75"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/app/services/restInterface.js:103"
+            "line": " src/app/services/restInterface.js:108"
         },
         {
             "message": "replacing incorrect tag: returns with return",
