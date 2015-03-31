@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ozpWebtop.dashboardView.chrome - ozpwebtop</title>
+    <title>src/app/settingsModal/settingsModal.js - ozpwebtop</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -175,69 +175,57 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>ozpWebtop.dashboardView.chrome <small>Module</small></h1>
+    <h1>src/app/settingsModal/settingsModal.js <small>File</small></h1>
 </div>
 
-<div class="clearfix well well-small">
-    
-
-    
-        <div class="uses">
-            Requires
-            <ul class="inline commas">
-                
-                    <li><a href="../modules/ozpWebtop.constants.html">ozpWebtop.constants</a></li>
-                
-                    <li><a href="../modules/ozpWebtop.models.html">ozpWebtop.models</a></li>
-                
-            </ul>
-        </div>
-    
-
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_app_dashboardView_chrome_chrome.js.html#l95"><code>src&#x2F;app&#x2F;dashboardView&#x2F;chrome&#x2F;chrome.js:95</code></a>
-        </div>
-    
-
-    
-</div>
+<div class="file">
+    <pre class="prettyprint linenums">
+&#x27;use strict&#x27;;
+/**
+*
+* @module ozpWebtop.settingsModal
+*
+* @requires ui.bootstrap
+*
+*/
+angular.module(&#x27;ozpWebtop.settingsModal&#x27;, [&#x27;ui.bootstrap&#x27;,
+&#x27;ozpWebtop.models&#x27;]);
+/**
+* Controller for settings modal
+*
+* @param $scope
+* @param $modalInstance
+* @constructor
+*/
+angular.module(&#x27;ozpWebtop.settingsModal&#x27;).controller(
+&#x27;settingsModalInstanceCtrl&#x27;, function($scope, $modalInstance) {
 
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// methods
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-<div class="moduledesc well well-small">
-    <p>ozp Chrome module</p>
+/**
+* Handler invoked when dialog is closed via Ok button
+*
+* TODO @method for ok button
+*/
+$scope.ok = function () {
+	$modalInstance.close();
+  };
 
-</div>
+/**
+* Handler invoked when modal is dismissed via the cancel button
+*
+* @method cancel
+*/
+$scope.cancel = function () {
+	$modalInstance.dismiss(&#x27;cancel&#x27;);
+   };
 
+});
 
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/dashboardView.ChromeCtrl.html">
-                        dashboardView.ChromeCtrl
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/dashboardView.ozpChrome.html">
-                        dashboardView.ozpChrome
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

@@ -1,4 +1,4 @@
-angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/dashboardView.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'editDashboardModal/editDashboardModal.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html']);
+angular.module('templates-app', ['addApplicationsModal/addApplicationsModal.tpl.html', 'appToolbar/appToolbar.tpl.html', 'dashboardView/button/ozpbutton.tpl.html', 'dashboardView/chrome/ozpchrome.tpl.html', 'dashboardView/dashboardView.tpl.html', 'dashboardView/desktop/desktop.tpl.html', 'dashboardView/desktop/managediframe.tpl.html', 'dashboardView/grid/grid.tpl.html', 'editDashboardModal/editDashboardModal.tpl.html', 'ozpToolbar/ozpToolbar.tpl.html', 'settingsModal/settingsModal.tpl.html']);
 
 angular.module("addApplicationsModal/addApplicationsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("addApplicationsModal/addApplicationsModal.tpl.html",
@@ -66,30 +66,30 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "        <div class=\"container-fluid\">\n" +
     "            <div class=\"navbar-left\">\n" +
     "                <ul class=\"nav navbar-nav\">\n" +
-    "                    <li class=\"highlight\">\n" +
+    "                    <li class=\"highlight app-toolbar-li\">\n" +
     "                      <a class=\"lrg\" href=\"\" ng-click=\"openApplicationsModal()\">\n" +
     "                        <i class=\"icon-plus-18-white\"></i>\n" +
     "                      </a>\n" +
     "                    </li>\n" +
     "\n" +
     "                    <li class=\"navbar-spacer\"></li>\n" +
-    "                    <li class=\"dropdown dropup\">\n" +
+    "                    <li class=\"dropdown dropup app-toolbar-li\">\n" +
     "                    <!-- we start -->\n" +
     "                      <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n" +
-    "                        {{currentDashboard.name | limitTo : dashboardNameLength}} <i class=\"icon-caret-up-white\"></i></a>\n" +
+    "                        {{currentDashboard.name | limitTo : dashboardNameLength}} <i class=\"icon-caret-up-grayLightest\"></i></a>\n" +
     "                      <ul class=\"dropdown-menu\" role=\"menu\">\n" +
     "                        <li class=\"dropdown-header\">Dashboards</li>\n" +
     "                        <li ng-repeat=\"board in dashboards\">\n" +
     "                          <a class=\"link-pointer\"><i ng-class=\"{desktop:'icon-stack-grayLightest', grid:'icon-grid-grayLightest'}[board.layout]\"></i>\n" +
     "                            <span ng-click=\"loadDashboard(board)\">{{board.name}}</span>\n" +
-    "                              <i class=\"icon-cross-14-grayLightest pull-right\" ng-click=\"openDeleteDashboardModal(board)\"></i>\n" +
+    "                              <i class=\"icon-trash-grayLightest pull-right\" ng-click=\"openDeleteDashboardModal(board)\"></i>\n" +
     "                              <i class=\"icon-pencil-grayLightest pull-right\" ng-click=\"openEditDashboardModal(board)\"></i>\n" +
     "                          </a>\n" +
     "                        </li>\n" +
     "                        <li>\n" +
     "                          <a class=\"caboose\" class=\"link-pointer\" href=\"\" ng-click=\"openNewDashboardModal()\">\n" +
     "                            <!-- TODO create dashboard view-->\n" +
-    "                            <i class=\"icon-plus-14-white\"></i>Create a new dashboard\n" +
+    "                            <i class=\"icon-plus-14-grayLightest\"></i>Create a new dashboard\n" +
     "                          </a>\n" +
     "                        </li>\n" +
     "                      </ul>\n" +
@@ -108,11 +108,11 @@ angular.module("appToolbar/appToolbar.tpl.html", []).run(["$templateCache", func
     "\n" +
     "            <div class=\"navbar-right\">\n" +
     "                <ul class=\"nav navbar-nav\">\n" +
-    "                  <li ng-click=\"cascadeWindows()\" ng-hide=\"currentDashboard.layout === 'grid'\">\n" +
+    "                  <li class=\"app-toolbar-li\" ng-click=\"cascadeWindows()\" ng-hide=\"currentDashboard.layout === 'grid'\">\n" +
     "                      <a href=\"\" tooltip=\"Cascade Windows\" tooltip-placement=\"top\">\n" +
     "                        <i class=\"icon-stack-grayLightest\"></i></a>\n" +
     "                    </li>\n" +
-    "                    <li ng-click=\"toggleFullScreenMode();\">\n" +
+    "                    <li class=\"app-toolbar-li\" ng-click=\"toggleFullScreenMode();\">\n" +
     "                      <a href=\"\" tooltip=\"Enter Full Screen\" tooltip-placement=\"top\">\n" +
     "                        <i class=\"icon-maximize-grayLightest\"></i></a>\n" +
     "                    </li>\n" +
@@ -239,7 +239,7 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
   $templateCache.put("editDashboardModal/editDashboardModal.tpl.html",
     "<div class=\"wt-modal\">\n" +
     "  <div class=\"modal-header wt-modal-header\">\n" +
-    "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\n" +
+    "    <button type=\"button\" class=\"close\" ng-click=\"cancel()\"><span aria-hidden=\"true\"><i class=\"icon-cross-16-white\"></i></span><span class=\"sr-only\">Close</span></button>\n" +
     "    <!-- New vs Edit Dashboard -->\n" +
     "    <h3 ng-show=\"modalInstanceType != 'new'\" class=\"modal-title\">Edit the dashboard <b>{{dashboard.name}}</b></h3>\n" +
     "    <h3 ng-show=\"modalInstanceType == 'new'\" class=\"modal-title\">Create new dashboard</b></h3>\n" +
@@ -283,7 +283,8 @@ angular.module("editDashboardModal/editDashboardModal.tpl.html", []).run(["$temp
     "    </span>\n" +
     "  </div>\n" +
     "\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -306,7 +307,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "          <ul class=\"dropdown-menu\">\n" +
     "            <li>\n" +
     "              <a href=\"#\">\n" +
-    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\">x</span></button>\n" +
+    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\"><i class=\"icon-cross-10-white\"></i></span></button>\n" +
     "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/JotSpot32.png\" />\n" +
     "                <span>Writing down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
@@ -314,7 +315,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"divider\"></li>\n" +
     "            <li>\n" +
     "              <a href=\"#\">\n" +
-    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">x</span></button>\n" +
+    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\"><i class=\"icon-cross-10-white\"></i></span></button>\n" +
     "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/AirMail32.png\" />\n" +
     "                <span>Airplanes down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
@@ -322,7 +323,7 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"divider\"></li>\n" +
     "            <li>\n" +
     "              <a href=\"#\">\n" +
-    "                <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">x</span></button>\n" +
+    "                <button type=\"button\" class=\"close pull-right\"><span aria-hidden=\"true\"><i class=\"icon-cross-10-white\"></i></span></button>\n" +
     "                <img class=\"img-thumbnail pull-left\" src=\"https://raw.githubusercontent.com/ozone-development/center-ui/master/app/images/sample-listings/ChatterBox32.png\" />\n" +
     "                <span>Chat down for maintenance</span><br /><i class=\"small\">12/12/12 00:00</i>\n" +
     "              </a>\n" +
@@ -338,10 +339,9 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li class=\"dropdown-header\">Personalize</li>\n" +
     "            <li><a href=\"\"><i class=\"icon-ribbon-grayLightest\"></i>Bookmarks</a></li>\n" +
     "            <li><a href=\"\"><i class=\"icon-head-grayLightest\"></i>Profile</a></li>\n" +
-    "            <li><a href=\"\" data-toggle=\"modal\" data-target=\"#modal_settings\"><i class=\"icon-cog-grayLightest\"></i>Settings</a></li>\n" +
+    "            <li><a href=\"\" ng-click=\"openSettingsModal()\"><i class=\"icon-cog-grayLightest\"></i>Settings</a></li>\n" +
     "            <li class=\"divider\"></li>\n" +
     "            <li class=\"dropdown-header\">Create</li>\n" +
-    "            <li><a href=\"\"><i class=\"icon-wrench-grayLightest\"></i>Build a Dashboard</a></li>\n" +
     "            <li><a href=\"\"><i class=\"icon-square-plus-grayLightest\"></i>Submit a Listing</a></li>\n" +
     "            <li><a href=\"\"><i class=\"icon-cloud-grayLightest\"></i>Developer Resources</a></li>\n" +
     "            <li class=\"divider\"></li>\n" +
@@ -349,12 +349,39 @@ angular.module("ozpToolbar/ozpToolbar.tpl.html", []).run(["$templateCache", func
     "            <li><a href=\"\"><i class=\"icon-layers-grayLightest\"></i>Listing Management</a></li>\n" +
     "            <li><a href=\"\"><i class=\"icon-shopping-settings-grayLightest\"></i>Marketplace Settings</a></li>\n" +
     "            <li><a ng-href=\"{{metricsUrl}}\" target=\"_blank\"><i class=\"icon-bar-graph-2-grayLightest\"></i>Metrics</a></li>\n" +
-    "            <li><a class=\"caboose\" href=\"\"><i class=\"icon-arrow-right-grayLightest\"></i>Logout</a></li>\n" +
-    "          </ul>\n" +
+    "        </ul>\n" +
     "        </li>\n" +
     "      </ul>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</nav>\n" +
     "");
+}]);
+
+angular.module("settingsModal/settingsModal.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("settingsModal/settingsModal.tpl.html",
+    "<div class=\"wt-modal\">\n" +
+    "	<div class=\"modal-header wt-modal-header\">\n" +
+    "		<button type=\"button\" class=\"close\" ng-click=\"cancel()\">\n" +
+    "			<span aria-hidden=\"true\"><i class=\"icon-cross-16-white\"></i></span>\n" +
+    "			<span class=\"sr-only\">Close</span>\n" +
+    "		</button>\n" +
+    "\n" +
+    "\n" +
+    "		<h3 class=\"modal-title\">Settings</h3>\n" +
+    "	</div>\n" +
+    "\n" +
+    "	<div class=\"modal-body wt-modal-body\">\n" +
+    "		<form role=\"form\" class=\"row\">\n" +
+    "			<div class=\"form-group col-lg-6\">\n" +
+    "				<p>This area is blank until we place something here and, add functionality to the OK button.</p>\n" +
+    "			</div>\n" +
+    "		</form>\n" +
+    "	</div>\n" +
+    "\n" +
+    "	<div class=\"modal-footer wt-modal-footer\">\n" +
+    "		<button class=\"btn btn-default\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "		<button class=\"btn btn-primary\" ng-click=\"ok\">OK</button>\n" +
+    "	</div>\n" +
+    "</div>");
 }]);

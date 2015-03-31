@@ -2,7 +2,7 @@
     "project": {
         "name": "ozpwebtop",
         "description": "",
-        "version": "0.4.0",
+        "version": "0.4.1",
         "url": "https://github.com/ozone-development/ozp-webtop"
     },
     "files": {
@@ -156,6 +156,15 @@
             "namespaces": {
                 "services": 1
             }
+        },
+        "src/app/settingsModal/settingsModal.js": {
+            "name": "src/app/settingsModal/settingsModal.js",
+            "modules": {
+                "ozpWebtop.settingsModal": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
         },
         "src/app/urlWidgetLauncher/urlWidgetLauncher.js": {
             "name": "src/app/urlWidgetLauncher/urlWidgetLauncher.js",
@@ -431,7 +440,7 @@
             },
             "tag": "module",
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 131,
+            "line": 158,
             "description": "The ozp toolbar component shown in the Webtop.",
             "requires": [
                 "ozp.common.windowSizeWatcher",
@@ -470,6 +479,19 @@
             "file": "src/app/services/restInterface.js",
             "line": 12,
             "description": "Interface for working with the ozp-rest API"
+        },
+        "ozpWebtop.settingsModal": {
+            "name": "ozpWebtop.settingsModal",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/app/settingsModal/settingsModal.js",
+            "line": 2,
+            "requires": [
+                "ui.bootstrap"
+            ]
         },
         "ozpWebtop.urlWidgetLauncher": {
             "name": "ozpWebtop.urlWidgetLauncher",
@@ -517,6 +539,7 @@
                 "ozpWebtop.dashboardView.grid",
                 "ozpWebtop.addApplicationsModal",
                 "ozpWebtop.editDashboardModal",
+                "ozpWebtop.settingsModal",
                 "ozpWebtop.urlWidgetLauncher",
                 "ui.router",
                 "ct.ui.router.extras",
@@ -986,7 +1009,7 @@
             "module": "ozpWebtop.ozpToolbar",
             "namespace": "ozpToolbar",
             "file": "src/app/ozpToolbar/ozpToolbar.js",
-            "line": 131,
+            "line": 158,
             "description": "Directive for the ozp toolbar\n\nngtype: directive",
             "static": 1
         },
@@ -2071,6 +2094,25 @@
             "namespace": "ozpToolbar"
         },
         {
+            "file": "src/app/ozpToolbar/ozpToolbar.js",
+            "line": 130,
+            "itemtype": "method",
+            "name": "opensettingsModal",
+            "params": [
+                {
+                    "name": "board",
+                    "description": "the changed board object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "class": "ozpToolbar.OzpToolbarCtrl",
+            "module": "ozpWebtop.ozpToolbar",
+            "namespace": "ozpToolbar"
+        },
+        {
             "file": "src/app/services/iwcInterface.js",
             "line": 31,
             "description": "Get resource from IWC bus",
@@ -2209,6 +2251,40 @@
             "class": "services.restInterface",
             "module": "ozpWebtop.services.restInterface",
             "namespace": "services"
+        },
+        {
+            "file": "src/app/settingsModal/settingsModal.js",
+            "line": 11,
+            "description": "Controller for settings modal",
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": ""
+                },
+                {
+                    "name": "$modalInstance",
+                    "description": ""
+                }
+            ],
+            "is_constructor": 1,
+            "class": "urlWidgetLauncher.UrlWidgetLauncherCtrl",
+            "module": "ozpWebtop.settingsModal"
+        },
+        {
+            "file": "src/app/settingsModal/settingsModal.js",
+            "line": 26,
+            "description": "Handler invoked when dialog is closed via Ok button\n\nTODO @method for ok button",
+            "class": "urlWidgetLauncher.UrlWidgetLauncherCtrl",
+            "module": "ozpWebtop.settingsModal"
+        },
+        {
+            "file": "src/app/settingsModal/settingsModal.js",
+            "line": 35,
+            "description": "Handler invoked when modal is dismissed via the cancel button",
+            "itemtype": "method",
+            "name": "cancel",
+            "class": "urlWidgetLauncher.UrlWidgetLauncherCtrl",
+            "module": "ozpWebtop.settingsModal"
         },
         {
             "file": "src/app/constants.js",
@@ -3001,6 +3077,10 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
+            "line": " src/app/ozpToolbar/ozpToolbar.js:130"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
             "line": " src/app/services/iwcInterface.js:31"
         },
         {
@@ -3162,6 +3242,14 @@
         {
             "message": "Missing item type\nSet resource on IWC bus",
             "line": " src/app/services/iwcInterface.js:50"
+        },
+        {
+            "message": "Missing item type\nController for settings modal",
+            "line": " src/app/settingsModal/settingsModal.js:11"
+        },
+        {
+            "message": "Missing item type\nHandler invoked when dialog is closed via Ok button\n\nTODO @method for ok button",
+            "line": " src/app/settingsModal/settingsModal.js:26"
         },
         {
             "message": "Missing item type\nTransform the raw Listing data into a format used for webtop\n\nTODO: At some point it would be nice to eliminate this...",

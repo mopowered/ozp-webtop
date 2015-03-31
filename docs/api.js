@@ -42,6 +42,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ozpWebtop.ozpToolbar",
         "ozpWebtop.services.iwcInterface",
         "ozpWebtop.services.restInterface",
+        "ozpWebtop.settingsModal",
         "ozpWebtop.urlWidgetLauncher"
     ],
     "allModules": [
@@ -139,6 +140,10 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "ozpWebtop.services.restInterface",
             "name": "ozpWebtop.services.restInterface",
             "description": "Interface for working with the ozp-rest API"
+        },
+        {
+            "displayName": "ozpWebtop.settingsModal",
+            "name": "ozpWebtop.settingsModal"
         },
         {
             "displayName": "ozpWebtop.urlWidgetLauncher",
