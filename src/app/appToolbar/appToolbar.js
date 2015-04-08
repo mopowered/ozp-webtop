@@ -1,71 +1,200 @@
 'use strict';
-angular.module('ozpWebtop.appToolbar', [
-  'ui.router',
-  'ui.bootstrap',
+
+/**
+ * The application toolbar in the Webtop.
+ *
+ * @module ozpWebtop.appToolbar
+ * @requires ui.router
+ * @requires ui.bootstrap
+ * @requires ozpWebtop.models
+ * @requires ozp.common.windowSizeWatcher
+ * @requires ozpWebtop.addApplicationsModal
+ * @requires ozpWebtop.editDashboardModal
+ * @requires ozp.common.windowSizeWatcher
+ */
+angular.module('ozpWebtop.appToolbar', ['ui.router', 'ui.bootstrap',
   'ozpWebtop.models',
   'ozpWebtop.addApplicationsModal',
   'ozpWebtop.editDashboardModal',
-  'ozp.common.windowSizeWatcher'
-]);
-angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
-  '$scope',
-  '$rootScope',
-  '$state',
-  '$modal',
-  '$interval',
-  '$window',
-  '$log',
-  'models',
-  'windowSizeWatcher',
-  'maxStickyBoards',
-  'deviceSizeChangedEvent',
-  'dashboardStateChangedEvent',
-  'fullScreenModeToggleEvent',
-  'highlightFrameOnGridLayoutEvent',
-  'removeFramesOnDeleteEvent',
-  function ($scope, $rootScope, $state, $modal, $interval, $window, $log, models, windowSizeWatcher, maxStickyBoards, deviceSizeChangedEvent, dashboardStateChangedEvent, fullScreenModeToggleEvent, highlightFrameOnGridLayoutEvent, removeFramesOnDeleteEvent) {
+  'ozp.common.windowSizeWatcher']);
+
+/**
+ * Application toolbar on the bottom of Webtop. Contains a menu for adding
+ * favorited apps to the dashboard and shows names/icons for all apps
+ * currently on the dashboard. Clicking on the app name/icon buttons in the
+ * toolbar results in the application being shown or hidden from the dashboard
+ * view (in desktop layout)
+ *
+ * dashboard selector
+ * buttons to switch between grid and desktop layouts
+ *
+ * ngtype: controller
+ *
+ * @namespace appToolbar
+ * @class ApplicationToolbarCtrl
+ * @constructor
+ * @param $scope $scope service
+ * @param $rootScope $rootScope service
+ * @param $state $state service
+ * @param $modal $modal service from ui.bootstrap
+ * @param $interval $interval service from ui.bootstrap
+ * @param $window $window service from ui.bootstrap
+ * @param models webtop data model
+ * @param windowSizeWatcher Notify when window size changes
+ * @param maxStickyBoards max number of dashboards
+ * @param deviceSizeChangedEvent event name
+ * @param dashboardStateChangedEvent event name
+ * @param fullScreenModeToggleEvent event name
+ * @param highlightFrameOnGridLayoutEvent event name
+ */
+angular.module( 'ozpWebtop.appToolbar')
+  .controller('ApplicationToolbarCtrl', function($scope, $rootScope, $state,
+                                                 $modal, $interval, $window,
+                                                 $log, models,
+                                                 windowSizeWatcher,
+                                                 maxStickyBoards,
+                                                 deviceSizeChangedEvent,
+                                                 dashboardStateChangedEvent,
+                                                 fullScreenModeToggleEvent,
+                                                 highlightFrameOnGridLayoutEvent,
+                                                 removeFramesOnDeleteEvent) {
+
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //                            $scope properties
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    /**
+     * @property dashboards Dashboards for current user
+     * @type {Array}
+     */
     $scope.dashboards = [];
+
+    /**
+     * @property currentDashboard Current active dashboard
+     * @type {string}
+     */
     $scope.currentDashboard = '';
+
+    /**
+     * @property $scope.frames Frames on current dashboard (includes marketplace
+     *  data like app name, icons, description, etc)
+     * @type {Array}
+     */
     $scope.frames = [];
+
+    /**
+     * @property $scope.myPinnedApps Applications in current dashboard that are
+     *  shown in the application toolbar
+     * @type {Array}
+     */
     $scope.myPinnedApps = [];
+
+    /**
+     * @property $scope.apps All applications available in the marketplace
+     * @type {Array}
+     */
     $scope.apps = [];
+
+    /**
+     * @property dashboardNameLength Max length of dashboard name, based on
+     * current screen size
+     * @type {String}
+     */
     $scope.dashboardNameLength = 0;
+
+    /**
+     * @property $scope.maxAppsDisplayed The maximum number of apps that can be
+     * displayed on the toolbar (based on screen width)
+     * @type {Number}
+     */
     $scope.maxAppsDisplayed = '';
+
+    /**
+     * @property $scope.fullScreenMode Flag indicating if the toolbar is hidden or
+     *  not
+     * @type {boolean}
+     */
     $scope.fullScreenMode = false;
+
+    /**
+     * @property $scope.myPinnedAppsFirstDisplayedIndex The index (in
+     *  $scope.myPinnedApps) of the first application shown in the application
+     *  toolbar to display
+     * @type {number}
+     */
     $scope.myPinnedAppsFirstDisplayedIndex = 0;
+    /**
+     * @property $scope.nextAppsVisible Flag for the 'pagination' next arrow
+     *  in the toolbar
+     * @type {boolean}
+     */
     $scope.nextAppsVisible = false;
+    /**
+     * @property $scope.previousAppsVisible Flag for the 'pagination' previous
+     *  arrow in the toolbar
+     * @type {boolean}
+     */
     $scope.previousAppsVisible = false;
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //                           initialization
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    // activate the window size watcher so we receive notification when the
+    // window size changes
     windowSizeWatcher.run();
+
+    // toolbar is not hidden by default
     $scope.fullScreenMode = false;
-    $scope.$on(deviceSizeChangedEvent, function (event, value) {
+
+    $scope.$on(deviceSizeChangedEvent, function(event, value) {
       $scope.handleWindowSizeChange(value);
     });
-    $scope.$on(dashboardStateChangedEvent, function () {
+
+    $scope.$on(dashboardStateChangedEvent, function() {
       $scope.updateApps();
     });
-    $scope.$on('$stateChangeSuccess', function (event, toState, toParams) {
-      var layoutType = '';
-      if (toState.name.indexOf('grid-sticky') > -1) {
-        layoutType = 'grid';
-      } else if (toState.name.indexOf('desktop-sticky') > -1) {
-        layoutType = 'desktop';
-      } else {
-        return;
-      }
-      $scope.handleStateChange(toParams.dashboardId, layoutType);
+
+    $scope.$on('$stateChangeSuccess',
+      function(event, toState, toParams/*, fromState, fromParams*/){
+        var layoutType = '';
+        if (toState.name.indexOf('grid-sticky') > -1) {
+          layoutType = 'grid';
+        } else if (toState.name.indexOf('desktop-sticky') > -1) {
+          layoutType = 'desktop';
+        } else {
+          return;
+        }
+        $scope.handleStateChange(toParams.dashboardId, layoutType);
     });
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //                          methods
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     function initializeData() {
       if (!models.dataCached()) {
         $log.warn('ApplicationToolbarCtrl: delaying initialization by 500ms - no data yet');
-        $scope.initInterval = $interval(function () {
+        $scope.initInterval = $interval(function() {
           initializeData();
         }, 500, 1);
         return;
       }
       $scope.apps = models.getApplicationData();
     }
+
+
     initializeData();
-    $scope.handleWindowSizeChange = function (value) {
+
+    /**
+     * Handle the deviceSizeChangedEvent
+     *
+     * Update $scope.maxAppsDisplayed and invoke $scope.setPinnedApps()
+     * @method handleWindowSizeChange
+     * @param value Data from deviceSizeChangedEvent
+     */
+    $scope.handleWindowSizeChange = function(value) {
       if (value.deviceSize === 'sm') {
         $scope.maxAppsDisplayed = 6;
         $scope.setPinnedApps();
@@ -76,18 +205,27 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
         $scope.maxAppsDisplayed = 15;
         $scope.setPinnedApps();
       }
+
       if (value.deviceSize === 'sm') {
         $scope.dashboardNameLength = 9;
       } else if (value.deviceSize === 'md') {
-        $scope.dashboardNameLength = 28;
+          $scope.dashboardNameLength = 28;
       } else if (value.deviceSize === 'lg') {
-        $scope.dashboardNameLength = 48;
+          $scope.dashboardNameLength = 48;
       }
     };
-    $scope.handleStateChange = function (dashboardId, dashboardLayout) {
+
+    /**
+     * Handle state change
+     *
+     *
+     * @method handleStateChange
+     */
+    $scope.handleStateChange= function(dashboardId, dashboardLayout) {
+      // get dashboards
       if (!models.dataCached()) {
         $log.warn('ApplicationToolbarCtrl: delaying call to handleStateChange by 500ms - no data yet');
-        $scope.handleStateChangeInterval = $interval(function () {
+        $scope.handleStateChangeInterval = $interval(function() {
           $scope.handleStateChange(dashboardId, dashboardLayout);
         }, 500, 1);
         return;
@@ -97,7 +235,7 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
       }
       var dashboards = models.getDashboards();
       $scope.dashboards = dashboards;
-      for (var i = 0; i < dashboards.length; i++) {
+      for (var i=0; i < dashboards.length; i++) {
         if (dashboards[i].id === dashboardId) {
           $scope.currentDashboard = dashboards[i];
         }
@@ -105,19 +243,39 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
       if (!$scope.currentDashboard) {
         $log.warn('WARNING: No dashboards found');
       }
+
       if ($scope.currentDashboard.layout !== dashboardLayout) {
         $log.debug('dashboard layout mismatch, changing state');
-        $state.go('dashboardview.' + $scope.currentDashboard.layout + '-sticky-' + $scope.currentDashboard.stickyIndex, { 'dashboardId': $scope.currentDashboard.id });
+        $state.go('dashboardview.' +
+          $scope.currentDashboard.layout + '-sticky-' +
+          $scope.currentDashboard.stickyIndex, {
+          'dashboardId': $scope.currentDashboard.id});
       }
       $scope.updateApps();
     };
-    $scope.loadDashboard = function (board) {
-      $state.go('dashboardview.' + board.layout + '-sticky-' + board.stickyIndex, { dashboardId: board.id });
+
+    /**
+     * Load a dashboard
+     * @method loadDashboard
+     * @param board Dashboard to load
+     */
+    $scope.loadDashboard = function(board) {
+      $state.go('dashboardview.' + board.layout + '-sticky-' +
+            board.stickyIndex, {dashboardId: board.id});
     };
-    $scope.isCurrentBoard = function (board) {
+
+    $scope.isCurrentBoard = function(board) {
       return $scope.currentDashboard.id === board.id;
     };
-    $scope.setPinnedApps = function () {
+
+    /**
+     * Set $scope.myPinnedApps
+     *
+     * Requires that $scope.frames is set first
+     *
+     * @method setPinnedApps
+     */
+    $scope.setPinnedApps = function() {
       if (!$scope.frames) {
         return;
       }
@@ -133,7 +291,14 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
         $scope.previousAppsVisible = false;
       }
     };
-    $scope.updateApps = function () {
+
+
+    /**
+     * Update application data in the toolbar (invoked on a dashboard change)
+     *
+     * @method updateApps
+     */
+    $scope.updateApps = function() {
       if (!models.dataCached()) {
         $log.warn('ApplicationToolbarCtrl: delaying call to updateApps by 500ms - no data yet');
         $scope.updateAppsInterval = $interval($scope.updateApps, 500, 1);
@@ -142,9 +307,10 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
       if ($scope.updateAppsInterval) {
         $interval.cancel($scope.updateAppsInterval);
       }
+
       var dashboards = models.getDashboards();
       $scope.dashboards = dashboards;
-      for (var i = 0; i < dashboards.length; i++) {
+      for (var i=0; i < dashboards.length; i++) {
         if (dashboards[i].id === $scope.currentDashboard.id) {
           $scope.currentDashboard = dashboards[i];
           $scope.frames = angular.copy(dashboards[i].frames);
@@ -153,33 +319,58 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
         }
       }
     };
-    $scope.maximizeFrame = function (e) {
-      if ($scope.currentDashboard.layout === 'grid') {
-        $log.debug('sending highlight msg for frame ' + e.id);
-        $rootScope.$broadcast(highlightFrameOnGridLayoutEvent, { 'frameId': e.id });
-      } else {
-        models.toggleFrameKey(e.id, 'isMinimized');
-        $rootScope.$broadcast(dashboardStateChangedEvent, {
-          'dashboardId': $scope.currentDashboard.id,
-          'layout': 'desktop'
-        });
-      }
-    };
-    $scope.toggleFullScreenMode = function () {
+
+    /**
+     * Maximize (or show) a frame that was previously minimized (hidden)
+     * @method maximizeFrame
+     * @param {Object} e The application to maximize/show
+     */
+     $scope.maximizeFrame = function(e) {
+       if ($scope.currentDashboard.layout === 'grid') {
+         $log.debug('sending highlight msg for frame ' + e.id);
+         $rootScope.$broadcast(highlightFrameOnGridLayoutEvent, {'frameId': e.id});
+       }
+       else {
+         models.toggleFrameKey(e.id, 'isMinimized');
+         $rootScope.$broadcast(dashboardStateChangedEvent, {
+           'dashboardId': $scope.currentDashboard.id, 'layout': 'desktop'});
+       }
+     };
+
+    /**
+     * Show or hide the application toolbar
+     *
+     * If successful, broadcasts a fullScreenModeToggleEvent
+     *
+     * @method toggleFullScreenMode
+     */
+    $scope.toggleFullScreenMode = function() {
       var fullScreenVal = false;
-      if (!$scope.fullScreenMode || ($scope.fullScreenMode = false)) {
+      // TODO: bug??
+      if ((!$scope.fullScreenMode) || ($scope.fullScreenMode = false)) {
         fullScreenVal = true;
       }
       $scope.fullScreenMode = fullScreenVal;
-      $rootScope.$broadcast(fullScreenModeToggleEvent, { 'fullScreenMode': fullScreenVal });
+      $rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
       var resp = models.updateUserSettingByKey('fullScreenMode', fullScreenVal);
       if (resp) {
+        // TODO: fix this
+        //$rootScope.$broadcast(fullScreenModeToggleEvent, {'fullScreenMode': fullScreenVal});
       } else {
-        $log.error('ERROR failed to update fullScreenMode in user ' + 'settings');
+        $log.error('ERROR failed to update fullScreenMode in user ' +
+          'settings');
       }
     };
-    $scope.previousApps = function () {
-      var start = $scope.myPinnedAppsFirstDisplayedIndex - $scope.maxAppsDisplayed;
+
+    /**
+     * A pagination method to show the previous set of apps currently on the
+     * dashboard in the toolbar, if the screen width isn't wide enough to
+     * display them all
+     * @method previousApps
+     */
+    $scope.previousApps = function() {
+      var start = $scope.myPinnedAppsFirstDisplayedIndex -
+        $scope.maxAppsDisplayed;
       var end = start + $scope.maxAppsDisplayed;
       $scope.myPinnedApps = $scope.frames.slice(start, end);
       $scope.myPinnedAppsFirstDisplayedIndex = start;
@@ -190,8 +381,17 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
       }
       $scope.nextAppsVisible = true;
     };
-    $scope.nextApps = function () {
-      var start = $scope.myPinnedAppsFirstDisplayedIndex + $scope.maxAppsDisplayed;
+
+    /**
+     * A pagination method to show the next set of apps currently on the
+     * dashboard in the toolbar, if the screen width isn't wide enough to
+     * display them all
+     *
+     * @method nextApps
+     */
+    $scope.nextApps = function() {
+      var start = $scope.myPinnedAppsFirstDisplayedIndex +
+        $scope.maxAppsDisplayed;
       var end = start + $scope.maxAppsDisplayed;
       $scope.myPinnedApps = $scope.frames.slice(start, end);
       $scope.myPinnedAppsFirstDisplayedIndex = start;
@@ -202,166 +402,235 @@ angular.module('ozpWebtop.appToolbar').controller('ApplicationToolbarCtrl', [
       }
       $scope.previousAppsVisible = true;
     };
-    $scope.cascadeWindows = function () {
-      var origin = {
-          'x': 50,
-          'y': 80
-        };
-      var frameSize = {
-          'x': 800,
-          'y': 400
-        };
+
+    $scope.cascadeWindows = function() {
+      // reposition each window on the page
+      // get the window size and starting position
+      // TODO: get this dynamically from screen size
+      var origin = {'x': 50, 'y': 80};
+      var frameSize = {'x': 800, 'y': 400};
       models.cascadeWindows($scope.currentDashboard.id, origin, frameSize);
+      // send dashboard state change msg
       $rootScope.$broadcast(dashboardStateChangedEvent, {
-        'dashboardId': $scope.currentDashboard.id,
-        'layout': 'desktop'
-      });
+         'dashboardId': $scope.currentDashboard.id, 'layout': 'desktop'});
     };
-    $scope.openApplicationsModal = function () {
+
+    /**
+     * Opens the Add Application modal dialog
+     *
+     * @method openApplicationsModal
+     */
+    $scope.openApplicationsModal = function() {
       var modalInstance = $modal.open({
-          templateUrl: 'addApplicationsModal/addApplicationsModal.tpl.html',
-          controller: 'AddApplicationsModalInstanceCtrl',
-          windowClass: 'app-modal-window',
-          scope: $rootScope,
-          resolve: {
-            apps: function () {
-              return $scope.apps;
-            }
+        templateUrl: 'addApplicationsModal/addApplicationsModal.tpl.html',
+        controller: 'AddApplicationsModalInstanceCtrl',
+        windowClass: 'app-modal-window',
+        scope: $rootScope,
+        resolve: {
+          apps: function() {
+            return $scope.apps;
           }
-        });
+        }
+      });
+
+
+      /**
+       * Add an application to a dashboard
+       *
+       * @method addAppToDashboard
+       * @param app The application to add
+       * @param dashboardId The dashboard to add the application to
+       * @returns {*}
+       */
       function addAppToDashboard(app, dashboardId) {
+        // check if the app is already on the current dashboard
         var isOnDashboard = models.isAppOnDashboard(dashboardId, app.id);
         if (isOnDashboard && app.singleton) {
           $log.warn('WARNING: Only one instance of ' + app.name + ' may be on your dashboard');
         } else {
+          // TODO: use message broadcast to get grid max rows and grid max cols
           return models.createFrame(dashboardId, app.id, 25);
         }
       }
+
       modalInstance.result.then(function (response) {
         var dashboardId;
         var stickyIndex;
         if (response.useNewDashboard) {
+          // make sure max # of dashboards hasn't been hit
           if ($scope.dashboards.length >= maxStickyBoards) {
             var msg = 'ERROR: Max number of dashboards reached';
             $log.error(msg);
             alert(msg);
             return;
           }
-          var random_integer = Math.floor((Math.random() + 0.1) * 101);
+          // create a new dashboard
+          // TODO: is this randomly generated name ok?
+          var random_integer = Math.floor((Math.random()+0.10)*101);
           var newDashboard = {};
           newDashboard.name = 'Dashboard ' + random_integer.toString();
           models.createDashboard(newDashboard);
+          // now get this dashboard id
           var dashboards = models.getDashboards();
-          for (var i = 0; i < dashboards.length; i++) {
+          for (var i=0; i < dashboards.length; i++) {
             if (dashboards[i].name === newDashboard.name) {
               dashboardId = dashboards[i].id;
               stickyIndex = dashboards[i].stickyIndex;
             }
           }
-          for (var a = 0; a < response.appsToOpen.length; a++) {
+
+          // add the apps to the newly minted dashboard
+          for (var a=0; a < response.appsToOpen.length; a++) {
             addAppToDashboard(response.appsToOpen[a], dashboardId);
           }
-          $state.go('dashboardview.grid-sticky-' + stickyIndex, { 'dashboardId': dashboardId });
+          // all apps added to dashboard
+          // redirect user to new dashboard (grid view by default)
+          $state.go('dashboardview.grid-sticky-' + stickyIndex, {
+            'dashboardId': dashboardId});
         } else {
-          for (var b = 0; b < response.appsToOpen.length; b++) {
+          for (var b=0; b < response.appsToOpen.length; b++) {
             addAppToDashboard(response.appsToOpen[b], $scope.currentDashboard.id);
           }
+          // all apps added to dashboard
+          // current dashboard id and layout hasn't changed, so just reload
+          // the applications
           $log.debug('issuing dashboardStateChangedEvent');
           $rootScope.$broadcast(dashboardStateChangedEvent, {
             'dashboardId': $scope.currentDashboard.id,
-            'layout': $scope.currentDashboard.layout
-          });
+            'layout': $scope.currentDashboard.layout});
         }
+
       });
     };
-    $scope.openEditDashboardModal = function (board) {
-      $scope.board = board;
-      $scope.modalInstanceType = 'edit';
-      var modalInstance = $modal.open({
-          templateUrl: 'editDashboardModal/editDashboardModal.tpl.html',
-          controller: 'EditDashboardModalInstanceCtrl',
-          windowClass: 'app-modal-window',
-          scope: $scope,
-          resolve: {
-            dashboard: function () {
-              return $scope.board;
-            }
-          }
-        });
-      modalInstance.result.then(function (response) {
-        var updatedDashboardData = {};
-        for (var i = 0; i < $scope.dashboards.length; i++) {
-          if ($scope.dashboards[i].id === response.id) {
-            $scope.dashboards[i].name = response.name;
-            $scope.dashboards[i].layout = response.layout;
-            updatedDashboardData = $scope.dashboards[i];
-          }
-        }
-        var dashboard = models.updateDashboard(updatedDashboardData);
-        for (var j = 0; j < $scope.dashboards.length; j++) {
-          if ($scope.dashboards[j].id === dashboard.id) {
-            $scope.dashboards[j].stickyIndex = dashboard.stickyIndex;
-          }
-        }
-        if ($scope.currentDashboard.id === dashboard.id) {
-          $rootScope.$broadcast(dashboardStateChangedEvent, {
-            'dashboardId': dashboard.id,
-            'layout': dashboard.layout
-          });
-          $state.go('dashboardview.' + dashboard.layout + '-sticky-' + dashboard.stickyIndex, { dashboardId: dashboard.id });
-        }
-      });
-    };
-    $scope.openNewDashboardModal = function () {
+
+      /**
+       * Edit dashboard
+       *
+       * @method openEditDashboardModal
+       * @param board the changed board object
+       * @returns {*}
+       */
+       $scope.openEditDashboardModal = function(board) {
+         $scope.board = board;
+         $scope.modalInstanceType = 'edit';
+         var modalInstance = $modal.open({
+           templateUrl: 'editDashboardModal/editDashboardModal.tpl.html',
+           controller: 'EditDashboardModalInstanceCtrl',
+           windowClass: 'app-modal-window',
+           scope: $scope,
+           resolve: {
+             dashboard: function() {
+               return $scope.board;
+             }
+           }
+         });
+
+         modalInstance.result.then(function (response) {
+           // declare dashboard object here to be used in the loop
+           var dashboard;
+           for (var i=0; i < $scope.dashboards.length; i++) {
+
+             // if the dashboard id's match up
+             if ($scope.dashboards[i].id === response.id) {
+               // changes the drop-up text
+               $scope.dashboards[i].name = response.name;
+               if($scope.dashboards[i].layout !== response.layout){ //if dashboard layout not the same as the response layout
+                 //set the local scope layout to change, this allows the icon to update
+                 $scope.dashboards[i].layout = response.layout;
+
+                 // save the dashboard to the backend
+                 dashboard = models.updateDashboard($scope.dashboards[i]);
+                 // get the sticky index from the backend
+                 $scope.dashboards[i].stickyIndex = dashboard.stickyIndex;
+
+                 // if the current dashboard = the response dashboard, update the state (tears down dom)
+                 if($scope.currentDashboard.id === dashboard.id){
+                   //stuff
+                   $rootScope.$broadcast(dashboardStateChangedEvent, {
+                     'dashboardId': dashboard.id,
+                     'layout': $scope.dashboards[i].layout});
+                   $state.go('dashboardview.' + $scope.dashboards[i].layout + '-sticky-' +
+                     $scope.dashboards[i].stickyIndex, {dashboardId: dashboard.id});
+                 }
+               }
+             }
+           }
+         });
+       };
+
+    $scope.openNewDashboardModal = function() {
       $scope.modalInstanceType = 'new';
       var modalInstance = $modal.open({
-          templateUrl: 'editDashboardModal/editDashboardModal.tpl.html',
-          controller: 'EditDashboardModalInstanceCtrl',
-          windowClass: 'app-modal-window',
-          scope: $scope,
-          resolve: {
-            dashboard: function () {
-              return $scope.currentDashboard;
-            }
+        templateUrl: 'editDashboardModal/editDashboardModal.tpl.html',
+        controller: 'EditDashboardModalInstanceCtrl',
+        windowClass: 'app-modal-window',
+        scope: $scope,
+        resolve: {
+          dashboard: function() {
+            return $scope.currentDashboard;
           }
-        });
+        }
+      });
+
       modalInstance.result.then(function (response) {
+        // reload current dashboard if the layout type changed (this state
+        // change will be ignored if the dashboard id and layout haven't
+        // changed)
         var dashboardId, stickyIndex;
         models.createDashboard(response);
+        // now get this dashboard id
         var dashboards = models.getDashboards();
-        for (var i = 0; i < dashboards.length; i++) {
+        for (var i=0; i < dashboards.length; i++) {
           if (dashboards[i].name === response.name) {
             dashboardId = dashboards[i].id;
             stickyIndex = dashboards[i].stickyIndex;
           }
         }
-        $state.go('dashboardview.' + response.layout + '-sticky-' + stickyIndex, { dashboardId: dashboardId });
+        $state.go('dashboardview.' + response.layout + '-sticky-' + stickyIndex, {dashboardId: dashboardId});
+
+        // update the dashboard name if that changed
         $rootScope.$broadcast(dashboardStateChangedEvent, {
           'dashboardId': dashboardId,
           'layout': response.layout
         });
       });
     };
-    $scope.openDeleteDashboardModal = function (board) {
+
+    $scope.openDeleteDashboardModal = function(board) {
       if ($scope.dashboards.length === 1) {
         $log.error('ERROR: You may not delete your last dashboard');
         return;
       } else {
         $log.debug('dashboards remaining: ' + $scope.dashboards.length);
       }
-      var msg = 'Are you sure you want to delete dashboard ' + board.name + '? This action cannot be undone';
+      var msg = 'Are you sure you want to delete dashboard ' +
+          board.name + '? This action cannot be undone';
       if ($window.confirm(msg)) {
-        $rootScope.$broadcast(removeFramesOnDeleteEvent, { 'dashboardId': board.id });
+        // Notify the grid controller to remove its widgets.
+        $rootScope.$broadcast(removeFramesOnDeleteEvent, {'dashboardId': board.id});
         models.removeDashboard(board.id);
+        // redirect user to their first board
         $scope.dashboards = models.getDashboards();
-        $state.go('dashboardview.' + $scope.dashboards[0].layout + '-sticky-' + $scope.dashboards[0].stickyIndex, { 'dashboardId': $scope.dashboards[0].id });
+        $state.go('dashboardview.' +
+        $scope.dashboards[0].layout + '-sticky-' +
+        $scope.dashboards[0].stickyIndex, {
+        'dashboardId': $scope.dashboards[0].id});
       }
     };
-  }
-]);
-angular.module('ozpWebtop.appToolbar').directive('appToolbar', function () {
-  return {
-    restrict: 'E',
-    templateUrl: 'appToolbar/appToolbar.tpl.html'
-  };
+  });
+
+/**
+ * Directive for the application toolbar
+ *
+ * ngtype: directive
+ *
+ * @class appToolbar
+ * @static
+ */
+angular.module( 'ozpWebtop.appToolbar')
+    .directive('appToolbar',function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'appToolbar/appToolbar.tpl.html'
+    };
 });

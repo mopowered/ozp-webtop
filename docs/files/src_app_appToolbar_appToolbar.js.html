@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.4.1</b>
+                    API Docs for Version: <b>0.4.2-rc</b>
                 </p>
             </li>
         </div>
@@ -366,6 +366,7 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
       $scope.apps = models.getApplicationData();
     }
 
+
     initializeData();
 
     /**
@@ -691,52 +692,53 @@ angular.module( &#x27;ozpWebtop.appToolbar&#x27;)
        * @param board the changed board object
        * @returns {*}
        */
-    $scope.openEditDashboardModal = function(board) {
-      $scope.board = board;
-      $scope.modalInstanceType = &#x27;edit&#x27;;
-      var modalInstance = $modal.open({
-        templateUrl: &#x27;editDashboardModal/editDashboardModal.tpl.html&#x27;,
-        controller: &#x27;EditDashboardModalInstanceCtrl&#x27;,
-        windowClass: &#x27;app-modal-window&#x27;,
-        scope: $scope,
-        resolve: {
-          dashboard: function() {
-            // return $scope.board;
-            return $scope.board;
-          }
-        }
-      });
+       $scope.openEditDashboardModal = function(board) {
+         $scope.board = board;
+         $scope.modalInstanceType = &#x27;edit&#x27;;
+         var modalInstance = $modal.open({
+           templateUrl: &#x27;editDashboardModal/editDashboardModal.tpl.html&#x27;,
+           controller: &#x27;EditDashboardModalInstanceCtrl&#x27;,
+           windowClass: &#x27;app-modal-window&#x27;,
+           scope: $scope,
+           resolve: {
+             dashboard: function() {
+               return $scope.board;
+             }
+           }
+         });
 
-      modalInstance.result.then(function (response) {
-        // NOTE: response.stickyIndex is invalid at this point
-        // update backend with dashboard changes
-        var updatedDashboardData = {};
-        for (var i=0; i &lt; $scope.dashboards.length; i++) {
-          if ($scope.dashboards[i].id === response.id) {
-            // changes the drop-up text and dashboard/grid icon
-            $scope.dashboards[i].name = response.name;
-            $scope.dashboards[i].layout = response.layout;
-            updatedDashboardData = $scope.dashboards[i];
-          }
-        }
+         modalInstance.result.then(function (response) {
+           // declare dashboard object here to be used in the loop
+           var dashboard;
+           for (var i=0; i &lt; $scope.dashboards.length; i++) {
 
-        var dashboard = models.updateDashboard(updatedDashboardData);
-        for (var j=0; j &lt; $scope.dashboards.length; j++) {
-          if ($scope.dashboards[j].id === dashboard.id) {
-            // changes the drop-up text and dashboard/grid icon
-            $scope.dashboards[j].stickyIndex = dashboard.stickyIndex;
-          }
-        }
-        // if user updates the current dashboard layout, update browser state
-        if ($scope.currentDashboard.id === dashboard.id) {
-          $rootScope.$broadcast(dashboardStateChangedEvent, {
-            &#x27;dashboardId&#x27;: dashboard.id,
-            &#x27;layout&#x27;: dashboard.layout});
-          $state.go(&#x27;dashboardview.&#x27; + dashboard.layout + &#x27;-sticky-&#x27; +
-            dashboard.stickyIndex, {dashboardId: dashboard.id});
-        }
-      });
-    };
+             // if the dashboard id&#x27;s match up
+             if ($scope.dashboards[i].id === response.id) {
+               // changes the drop-up text
+               $scope.dashboards[i].name = response.name;
+               if($scope.dashboards[i].layout !== response.layout){ //if dashboard layout not the same as the response layout
+                 //set the local scope layout to change, this allows the icon to update
+                 $scope.dashboards[i].layout = response.layout;
+
+                 // save the dashboard to the backend
+                 dashboard = models.updateDashboard($scope.dashboards[i]);
+                 // get the sticky index from the backend
+                 $scope.dashboards[i].stickyIndex = dashboard.stickyIndex;
+
+                 // if the current dashboard = the response dashboard, update the state (tears down dom)
+                 if($scope.currentDashboard.id === dashboard.id){
+                   //stuff
+                   $rootScope.$broadcast(dashboardStateChangedEvent, {
+                     &#x27;dashboardId&#x27;: dashboard.id,
+                     &#x27;layout&#x27;: $scope.dashboards[i].layout});
+                   $state.go(&#x27;dashboardview.&#x27; + $scope.dashboards[i].layout + &#x27;-sticky-&#x27; +
+                     $scope.dashboards[i].stickyIndex, {dashboardId: dashboard.id});
+                 }
+               }
+             }
+           }
+         });
+       };
 
     $scope.openNewDashboardModal = function() {
       $scope.modalInstanceType = &#x27;new&#x27;;

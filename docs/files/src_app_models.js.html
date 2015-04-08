@@ -23,7 +23,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.4.1</b>
+                    API Docs for Version: <b>0.4.2-rc</b>
                 </p>
             </li>
         </div>
@@ -216,10 +216,10 @@ var models = angular.module(&#x27;ozpWebtop.models&#x27;);
  */
 models.factory(&#x27;models&#x27;, function($sce, $q, $log, $http, $window, useIwc,
                                   iwcInterface, restInterface, Utilities) {
-  
+
   var cachedWebtopData = null;
   var cachedApplicationData = null;
-  
+
   /**
    * Set all webtop data
    *
@@ -237,8 +237,8 @@ models.factory(&#x27;models&#x27;, function($sce, $q, $log, $http, $window, useI
       return restInterface.setWebtopData(webtopData);
     }
   }
-  
-  
+
+
   return {
     /**
      * Transform the raw Listing data into a format used for webtop
@@ -940,8 +940,6 @@ models.factory(&#x27;models&#x27;, function($sce, $q, $log, $http, $window, useI
     }
   };
 });
-
-
 
     </pre>
 </div>
