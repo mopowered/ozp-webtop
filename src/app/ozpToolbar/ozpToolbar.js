@@ -203,6 +203,22 @@ var app = angular.module( 'ozpWebtop.ozpToolbar')
       });
     };
 
+<<<<<<< HEAD
+=======
+       /**
+      * @property isAdmin indicates if the metrics link in ozpToolbar should be hidden
+      */
+
+     restInterface.getProfile().then(function(d){
+       var userRole=d.highestRole;
+       if(userRole === 'ADMIN' || userRole === 'METRICS'){
+          $scope.isAdmin =  true;
+       }else{
+        $scope.isAdmin = false;
+      }
+    }); 
+
+>>>>>>> 45b5166... fix(restInterface.js): Hide metrics link unless user is an app mall steward.
   }
 );
 
